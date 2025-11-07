@@ -80,9 +80,6 @@ git reset --hard <提交哈希>
 # 回到最新的提交
 git checkout master
 
-
-
-
 # 或者
 git checkout main
 ```
