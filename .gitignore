@@ -1,0 +1,33 @@
+# ROS 工作空间编译生成的文件
+build/
+install/
+log/
+devel/
+
+# Python 缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE 文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.bak
+*.log
+
+# 大文件（如果不需要版本控制）
+# maps/*.data
+# maps/*.posegraph
+

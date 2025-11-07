@@ -1,0 +1,90 @@
+slam_toolbox:
+  ros__parameters:
+    
+    # Plugin params (ROS2 Humble required)
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    ceres_loss_function: None
+    use_sim_time: false
+
+    # ###########################
+    # #### 核心参数 (至关重要) ####
+    # ###########################
+
+    # 1. 定义坐标系 (Frames)
+    #    根据你的diff_drive_controller.yaml，base_frame_id是base_footprint
+    odom_frame: odom              # 里程计坐标系，由ros2_control的差分驱动控制器发布
+    map_frame: map                # 地图坐标系，由SLAM系统发布，是固定在世界上的最终参考系
+    base_frame: base_footprint    # 必须与diff_drive_controller.yaml中的base_frame_id一致
+
+    # 2. 定义传感器话题
+    scan_topic: /scan
+    use_map_saver: true
+
+    # ###########################
+    # #### 模式与性能 ####
+    # ###########################
+
+    # 3. 设置工作模式
+    mode: mapping  # mapping模式用于构建地图
+    enable_interactive_mode: true  # 启用交互模式用于手动回环检测
+
+    # 4. 启用扫描匹配
+    use_scan_matching: true
+    use_scan_barycenter: true
+    
+    # ###########################
+    # #### 地图与传感器参数 ####
+    # ###########################
+
+    # 地图更新间隔 (秒)
+    map_update_interval: 0.5
+    
+    # 地图分辨率 (米/像素) - 100㎡大场地高精度配置
+    resolution: 0.02  # 2cm/像素（从2.5cm提高），墙壁更细、转角更锐利
+    
+    # 激光雷达范围限制 (保守配置，提高数据质量)
+    min_laser_range: 0.15   # 过滤15cm内噪声和自身干扰（从0.1提高）
+    max_laser_range: 10.0   # 办公室环境优化，过滤远距离噪声（从12.0降低）
+
+    # ###########################
+    # #### ROS2 Humble必需参数 ####
+    # ###########################
+    
+    debug_logging: false
+    throttle_scans: 1
+    transform_publish_period: 0.02
+    minimum_time_interval: 0.15     # 0.15s强制更新 → 转弯时每0.15s创建节点，避免盲区
+    transform_timeout: 0.2
+    tf_buffer_duration: 30.0
+    stack_size_to_use: 40000000
+
+    # 运动阈值 (优化转弯跳变：降低阈值让转弯时也密集创建节点)
+    minimum_travel_distance: 0.02   # 2cm（从3cm降低），直行时更密集
+    minimum_travel_heading: 0.044   # 2.5°（从5°降低），转弯时每2.5°创建节点，90°转弯36个节点
+    
+    # 扫描缓冲区 (⚠️ 关键修复！保留完整轨迹用于回环检测)
+    scan_buffer_size: 3000                    # 走一圈3-4分钟 × 10Hz = 需要1800-2400帧，设为3000帧保险
+    scan_buffer_maximum_scan_distance: 10.0   # 与max_laser_range保持一致（思岚S2L官方18m，我们限制10m）
+    
+    # 回环检测 (优化100㎡大场地：增大搜索半径，适当放宽初筛条件)
+    do_loop_closing: true
+    loop_match_minimum_chain_size: 2          # ✅ 降到2，极宽松（经验证需要）
+    loop_match_maximum_variance_coarse: 12.0  # ✅ 容忍12倍偏差（适应10°角度误差）
+    loop_match_minimum_response_coarse: 0.25  # ✅ 降低置信度要求（从0.35→0.25）
+    loop_search_maximum_distance: 8.0         # 搜索半径8m (从5.0增到8.0，适合100㎡大场地)
+    loop_match_minimum_response_fine: 0.35    # ✅ 精细匹配放宽（从0.45→0.35）
+    
+    # 🔧 新增：搜索空间参数（解决回环检测失败）
+    loop_search_space_resolution: 0.1         # 搜索分辨率放宽（从默认0.05→0.1）
+    loop_search_space_smear_deviation: 0.1    # 容差放宽（从默认0.03→0.1）
+    correlation_search_space_smear_deviation: 0.1  # ⚠️ 修正：上限为0.1（之前0.2超出范围导致崩溃）
+    
+    # 🔧 新增：惩罚参数（关键修复！）
+    minimum_angle_penalty: 0.1                # ⚠️ 关键！降低角度惩罚（从默认0.9→0.1）
+    minimum_distance_penalty: 0.01            # ⚠️ 降低距离惩罚（从默认0.05→0.01）
+    angle_variance_penalty: 0.3               # ⚠️ 降低角度方差惩罚（从默认1.0→0.3）
+    distance_variance_penalty: 0.2            # ⚠️ 降低距离方差惩罚（从默认0.5→0.2）

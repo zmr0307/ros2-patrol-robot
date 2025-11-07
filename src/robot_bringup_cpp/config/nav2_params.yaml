@@ -1,0 +1,396 @@
+# nav2_params.yaml
+# Nav2 Configuration specifically tailored for your robot_bringup_cpp project
+# Fully compatible with your existing SLAM, controller, and URDF setup
+# ROS 2 Humble + Gazebo Simulation
+
+# ====================================
+# AMCL Localization
+# ====================================
+amcl:
+  ros__parameters:
+    use_sim_time: false  # 匹配您的slam_toolbox设置
+    
+    # 运动模型噪声参数（降低因为里程计精度很高<1cm）
+    alpha1: 0.05  # 旋转导致的旋转噪声（0.2→0.05，里程计很准）
+    alpha2: 0.05  # 平移导致的旋转噪声（0.2→0.05）
+    alpha3: 0.1   # 平移导致的平移噪声（0.2→0.1）
+    alpha4: 0.05  # 旋转导致的平移噪声（0.2→0.05）
+    alpha5: 0.05  # 平移的额外噪声（0.2→0.05）
+    
+    # 粒子滤波器参数（高精度模式 - 适配Jetson Nano 8GB Super）
+    min_particles: 1500   # 提高到1500（8GB Super可承受，定位更精准）
+    max_particles: 5000   # 提高到5000（允许更多粒子跟踪复杂环境）
+    kld_err: 0.02         # 降低到0.02（要求更高精度，增加粒子数）
+    kld_z: 0.99           # KLD置信度（保持）
+    
+    # 更新阈值 - 高频更新以获得精确定位
+    update_min_d: 0.05  # 移动5cm就更新（高频定位，更精确）
+    update_min_a: 0.10  # 旋转5.7°就更新（高频定位）
+    resample_interval: 1  # 每次更新都重采样（最高精度）
+    
+    # 变换容差 - 增大以容忍启动时的延迟
+    transform_tolerance: 1.0  # 从0.2增加到1.0秒，避免启动时TF超时错误
+    
+    # 初始位姿
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+    
+    # 坐标系 - 严格匹配您的系统配置
+    global_frame_id: "map"        # 匹配slam_toolbox的map_frame
+    odom_frame_id: "odom"         # 匹配diff_drive_controller的odom_frame_id
+    base_frame_id: "base_footprint"  # 匹配diff_drive_controller的base_frame_id
+    
+    # 激光雷达配置 - 高精度模式（Jetson Nano 8GB Super）
+    scan_topic: "/scan"  # 匹配URDF中的remapping ~/out:=scan
+    max_beams: 100       # 提高到100（更多激光束，定位更准确）
+    
+    # 其他配置
+    always_reset_initial_pose: false
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"  # 差分驱动
+    set_initial_pose: true
+    
+    # 激光模型参数（高精度模式）
+    laser_min_range: 0.15   # 匹配SLAM（思岚S2L实际0.2m，过滤噪声）
+    laser_max_range: 10.0   # 匹配SLAM（办公室环境优化）
+    laser_likelihood_max_dist: 0.3  # 进一步降低到0.3m（要求更精确的匹配）
+    laser_model_type: "likelihood_field"
+    z_hit: 0.97           # 进一步提高激光命中权重（0.95→0.97）
+    z_rand: 0.03          # 进一步降低随机权重（0.05→0.03）
+
+# ====================================
+# Controller Server
+# ====================================
+controller_server:
+  ros__parameters:
+    use_sim_time: false
+    controller_frequency: 20.0  # 恢复20Hz（高精度模式，Jetson 8GB Super可承受）
+    min_x_velocity_threshold: 0.005  # 提高到0.005（减少静止时微小校正，防抖动）
+    min_y_velocity_threshold: 0.0  # 差速底盘无侧向速度
+    min_theta_velocity_threshold: 0.01  # 提高到0.01（减少静止时微小旋转校正，防抖动）
+    failure_tolerance: 2.0  # 恢复2秒（高频率下更快响应）
+    progress_checker_plugin: "progress_checker"
+    goal_checker_plugins: ["general_goal_checker"]
+    controller_plugins: ["FollowPath"]
+    
+    # 进度检查器 - 进一步放宽以适应低速和狭窄空间
+    progress_checker:
+      plugin: "nav2_controller::SimpleProgressChecker"
+      required_movement_radius: 0.15  # 进一步降低到15cm（适应狭窄空间慢速移动）
+      movement_time_allowance: 20.0   # 增加到20秒（给足时间慢速通过狭窄区域）
+    
+    # 目标检查器 - 适应低速机器人的精确定位（减少抖动）
+    general_goal_checker:
+      plugin: "nav2_controller::SimpleGoalChecker"
+      xy_goal_tolerance: 0.07  # 7cm（平衡精度与稳定性）
+      yaw_goal_tolerance: 0.0785  # 4.5°（平衡精度与稳定性）
+      stateful: true
+    
+    # DWB控制器 - 匹配8 RPM电机限制（serial_bridge_node）
+    FollowPath:
+      plugin: "dwb_core::DWBLocalPlanner"
+      debug_trajectory_details: true
+      min_vel_x: -0.030  # 后退速度降低（更安全）
+      min_vel_y: 0.0     # 差分驱动，无侧向移动
+      max_vel_x: 0.030   # 进一步降低前进速度（0.035→0.030），防撞
+      max_vel_y: 0.0
+      max_vel_theta: 0.20  # 进一步降低旋转速度（0.25→0.20），避免超限
+      min_speed_xy: 0.02   # ⚠️ 实测最低速度：键盘遥控speed=0.02，低于此扭矩不足
+      max_speed_xy: 0.030  # 与max_vel_x一致
+      min_speed_theta: 0.02  # ⚠️ 实测最低角速度：键盘遥控turn=0.02，低于此无法转动
+      acc_lim_x: 0.05    # 提高加速度适应8 RPM
+      acc_lim_y: 0.0
+      acc_lim_theta: 0.30  # 提高角加速度
+      decel_lim_x: -0.05   # 提高减速度
+      decel_lim_y: 0.0
+      decel_lim_theta: -0.30
+      vx_samples: 12  # 提高到12（高精度模式，更多轨迹选择）
+      vy_samples: 1   # 差分驱动无侧向移动
+      vtheta_samples: 20  # 提高到20（高精度模式，更精细的角度控制）
+      sim_time: 4.0   # 提高到4秒（高精度模式，前瞻距离=4*0.03=12cm）
+      linear_granularity: 0.005  # 降低到0.005（更精细的线速度粒度）
+      angular_granularity: 0.015  # 降低到0.015（更精细的角速度粒度）
+      transform_tolerance: 1.0  # 增大到1.0秒，避免启动时TF超时错误
+      xy_goal_tolerance: 0.07  # 7cm（平衡精度与稳定性）
+      yaw_goal_tolerance: 0.0524  # 3°（从4.5°提升精度33%，匹配AMCL±1-2°精度）
+      trans_stopped_velocity: 0.015  # 提高到0.015（更容易判定为"已停稳"，防抖动）
+      short_circuit_trajectory_evaluation: true
+      stateful: true
+      critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
+      BaseObstacle.scale: 10.0  # 提高避障权重到10.0（高精度+高安全）
+      PathAlign.scale: 32.0     # 保持路径对齐权重（路径稳定性）
+      GoalAlign.scale: 28.0     # 提高目标对齐权重（更精确朝向）
+      PathDist.scale: 32.0      # 保持路径距离权重（路径稳定性）
+      GoalDist.scale: 28.0      # 提高目标距离权重（更准确到达）
+      RotateToGoal.scale: 36.0  # 提高旋转到目标权重（更精确的最终朝向）
+      Oscillation.scale: 2.0    # 进一步提高震荡惩罚（防止来回摆动）
+
+# ====================================
+# Planner Server
+# ====================================
+planner_server:
+  ros__parameters:
+    use_sim_time: false
+    expected_planner_frequency: 10.0  # 提高到10Hz（高精度模式，更频繁的路径更新）
+    planner_plugins: ["GridBased"]
+    
+    GridBased:
+      plugin: "nav2_navfn_planner/NavfnPlanner"
+      tolerance: 0.2   # 降低容差到0.2m（高精度模式，要求更精确的路径）
+      use_astar: false  # 🔑 关键！使用Dijkstra算法，找"总代价最小"而非"距离最短"的路径
+      allow_unknown: true
+      use_final_approach_orientation: false
+
+# ====================================
+# Behavior Tree Navigator
+# ====================================
+bt_navigator:
+  ros__parameters:
+    use_sim_time: false
+    global_frame: map
+    robot_base_frame: base_footprint
+    odom_topic: /odometry/filtered  # ✅ 使用EKF融合后的里程计（编码器+IMU）
+    bt_loop_duration: 10
+    default_server_timeout: 20
+    # 使用Nav2的默认行为树
+    default_nav_to_pose_bt_xml: /opt/ros/humble/share/nav2_bt_navigator/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml
+    default_nav_through_poses_bt_xml: ""
+    plugin_lib_names:
+      - nav2_compute_path_to_pose_action_bt_node
+      - nav2_follow_path_action_bt_node
+      - nav2_back_up_action_bt_node
+      - nav2_spin_action_bt_node
+      - nav2_wait_action_bt_node
+      - nav2_clear_costmap_service_bt_node
+      - nav2_is_stuck_condition_bt_node
+      - nav2_goal_reached_condition_bt_node
+      - nav2_goal_updated_condition_bt_node
+      - nav2_initial_pose_received_condition_bt_node
+      - nav2_rate_controller_bt_node
+      - nav2_distance_controller_bt_node
+      - nav2_speed_controller_bt_node
+      - nav2_recovery_node_bt_node
+      - nav2_pipeline_sequence_bt_node
+      - nav2_round_robin_node_bt_node
+      - nav2_transform_available_condition_bt_node
+      - nav2_time_expired_condition_bt_node
+      - nav2_navigate_to_pose_action_bt_node
+
+# ====================================
+# Behavior Server
+# ====================================
+behavior_server:
+  ros__parameters:
+    use_sim_time: false
+    costmap_topic: local_costmap/costmap_raw
+    footprint_topic: local_costmap/published_footprint
+    cycle_frequency: 10.0  # 恢复10Hz（高精度模式）
+    behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
+    
+    spin:
+      plugin: "nav2_behaviors/Spin"
+    backup:
+      plugin: "nav2_behaviors/BackUp"
+      backup_dist: 0.20        # 后退距离增加到20cm（帮助脱困）
+      backup_speed: 0.025      # 后退速度保持低速
+    drive_on_heading:
+      plugin: "nav2_behaviors/DriveOnHeading"
+    wait:
+      plugin: "nav2_behaviors/Wait"
+    
+    global_frame: odom
+    robot_base_frame: base_footprint
+    transform_tolerance: 1.0  # 增大到1.0秒，避免启动时TF超时错误
+    simulate_ahead_time: 2.0
+    max_rotational_vel: 0.20  # 同步降低到0.20（匹配max_vel_theta），避免超限
+    min_rotational_vel: 0.05  # 进一步降低最小旋转速度（0.1→0.05），更精细控制
+    rotational_acc_lim: 0.30  # 匹配acc_lim_theta
+
+# ====================================
+# Map Server
+# ====================================
+map_server:
+  ros__parameters:
+    use_sim_time: false
+    # 将使用您的office_map文件
+    yaml_filename: ""  # 在launch文件中设置为maps/office_map.yaml
+    topic_name: "map"
+    frame_id: "map"
+
+# ====================================
+# Map Saver (保持与slam_toolbox兼容)
+# ====================================
+map_saver:
+  ros__parameters:
+    use_sim_time: false
+    save_map_timeout: 5.0
+    free_thresh_default: 0.25
+    occupied_thresh_default: 0.65
+    map_subscribe_transient_local: true
+
+# ====================================
+# Waypoint Follower
+# ====================================
+waypoint_follower:
+  ros__parameters:
+    use_sim_time: false
+    loop_rate: 20
+    stop_on_failure: false
+    waypoint_task_executor_plugin: "wait_at_waypoint"
+    
+    wait_at_waypoint:
+      plugin: "nav2_waypoint_follower::WaitAtWaypoint"
+      enabled: true
+      waypoint_pause_duration: 200
+
+# ====================================
+# Smoother Server
+# ====================================
+smoother_server:
+  ros__parameters:
+    use_sim_time: false
+    smoother_plugins: ["simple_smoother"]
+    
+    simple_smoother:
+      plugin: "nav2_smoother::SimpleSmoother"
+      tolerance: 1.0e-10
+      max_its: 1000
+      w_data: 0.2
+      w_smooth: 0.3
+      do_refinement: true
+
+# ====================================
+# Global Costmap (全局代价地图)
+# ====================================
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      use_sim_time: false
+      update_frequency: 1.0  # 提高到1.0Hz（高精度模式）
+      publish_frequency: 1.0
+      global_frame: map
+      robot_base_frame: base_footprint
+      # ✅ 适中footprint（实际45×38cm + 7cm安全余量 = 52×45cm）
+      footprint: "[ [0.26, 0.225], [0.26, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
+      resolution: 0.025  # 匹配slam_toolbox的resolution（2.5cm/像素）
+      track_unknown_space: true
+      always_send_full_costmap: true
+      
+      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      
+      static_layer:
+        plugin: "nav2_costmap_2d::StaticLayer"
+        map_subscribe_transient_local: true
+        enabled: true
+      
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: true
+        observation_sources: scan
+        scan:
+          topic: /scan
+          max_obstacle_height: 2.0
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+          raytrace_max_range: 10.0  # 增加到10m，与激光雷达范围匹配
+          raytrace_min_range: 0.0
+          obstacle_max_range: 9.5   # 略小于raytrace_max_range
+          obstacle_min_range: 0.0
+      
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 3.0  # 提高到3.0，让蓝色区域代价更低，机器人敢走
+        inflation_radius: 0.30  # 适中膨胀（0.40→0.30），既能绕路又不会堵死所有窄通道
+        inflate_unknown: true    # 未知区域也膨胀，更安全
+        inflate_around_unknown: true  # 未知区域周围也膨胀
+        enabled: true
+
+# ====================================
+# Local Costmap (局部代价地图)
+# ====================================
+local_costmap:
+  local_costmap:
+    ros__parameters:
+      use_sim_time: false
+      update_frequency: 5.0  # 保持5Hz（平衡精度和性能）
+      publish_frequency: 3.0
+      global_frame: odom
+      robot_base_frame: base_footprint
+      rolling_window: true
+      width: 3  # 3m×3m（适中范围）
+      height: 3
+      resolution: 0.025  # 恢复2.5cm/像素（高精度模式，与global_costmap一致）
+      # 机器人轮廓 - 必须与global_costmap一致（适中安全余量）
+      footprint: "[ [0.26, 0.225], [0.26, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
+      always_send_full_costmap: true
+      
+      # 使用 ObstacleLayer 而不是 VoxelLayer - 更适合2D激光雷达
+      plugins: ["obstacle_layer", "inflation_layer"]
+      
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: true
+        observation_sources: scan
+        scan:
+          topic: /scan
+          max_obstacle_height: 2.0
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+          raytrace_max_range: 3.0  # 局部地图保持3m（快速避障）
+          raytrace_min_range: 0.0
+          obstacle_max_range: 2.5  # 局部地图保持2.5m
+          obstacle_min_range: 0.0
+      
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 5.0  # 提高到5.0，让蓝色区域代价更低，机器人敢走
+        inflation_radius: 0.23  # 增大到0.23m，必须≥footprint内切圆半径0.225m
+        inflate_unknown: true    # 未知区域也膨胀，更安全
+        inflate_around_unknown: true  # 未知区域周围也膨胀
+        enabled: true
+
+# ====================================
+# Lifecycle Manager (统一管理所有Nav2节点)
+# ====================================
+lifecycle_manager_localization:
+  ros__parameters:
+    use_sim_time: false
+    autostart: true
+    node_names: ['map_server', 'amcl']
+    bond_timeout: 4.0
+    heartbeat_period: 1.0
+
+# ====================================
+# Lifecycle Manager - 导航系统
+# ====================================
+lifecycle_manager_navigation:
+  ros__parameters:
+    use_sim_time: false
+    autostart: true
+    node_names: ['controller_server', 'smoother_server', 'planner_server', 
+                 'behavior_server', 'bt_navigator', 'waypoint_follower', 
+                 'velocity_smoother']
+    bond_timeout: 4.0
+    heartbeat_period: 1.0
+
+# ====================================
+# Velocity Smoother (可选，但推荐用于平滑运动)
+# ====================================
+velocity_smoother:
+  ros__parameters:
+    use_sim_time: false
+    smoothing_frequency: 20.0
+    scale_velocities: false
+    feedback: "OPEN_LOOP"
+    max_velocity: [0.030, 0.0, 0.20]  # 进一步降低速度，防撞+避免超限 [vx, vy, w]
+    min_velocity: [-0.030, 0.0, -0.20]
+    max_accel: [0.05, 0.0, 0.30]  # 提高加速度适应8 RPM
+    max_decel: [-0.05, 0.0, -0.30]
+    odom_topic: "/odometry/filtered"  # ✅ 使用EKF融合后的里程计（编码器+IMU）
+    odom_duration: 0.1
+    deadband_velocity: [0.01, 0.0, 0.03]  # 死区：低于此速度直接输出0（减少微小抖动）
+    velocity_timeout: 1.0

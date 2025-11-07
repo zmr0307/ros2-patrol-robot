@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:63px;font-family:XEKKFX+SimHei;color:#8d6c01;}
+	.ft11{font-size:39px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft12{font-size:39px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft13{font-size:32px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft14{font-size:15px;font-family:XEKKFX+SimHei;color:#ff6600;}
+	.ft15{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft16{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU应用教程-ROS应用001.png" alt="background image"/>
+<p style="position:absolute;top:92px;left:321px;white-space:nowrap" class="ft10">幻尔科技</p>
+<p style="position:absolute;top:207px;left:245px;white-space:nowrap" class="ft11"><b>IMU</b></p>
+<p style="position:absolute;top:211px;left:319px;white-space:nowrap" class="ft12">应用教程</p>
+<p style="position:absolute;top:207px;left:475px;white-space:nowrap" class="ft11"><b>-ROS</b></p>
+<p style="position:absolute;top:211px;left:571px;white-space:nowrap" class="ft12">应用</p>
+<p style="position:absolute;top:279px;left:411px;white-space:nowrap" class="ft13"><b>V1.0</b></p>
+<p style="position:absolute;top:717px;left:177px;white-space:nowrap" class="ft14">版本号</p>
+<p style="position:absolute;top:717px;left:356px;white-space:nowrap" class="ft15">修改日期</p>
+<p style="position:absolute;top:717px;left:456px;white-space:nowrap" class="ft15">修改摘要</p>
+<p style="position:absolute;top:783px;left:177px;white-space:nowrap" class="ft16">V1.0</p>
+<p style="position:absolute;top:783px;left:356px;white-space:nowrap" class="ft16">20231124</p>
+<p style="position:absolute;top:787px;left:456px;white-space:nowrap" class="ft15">初次发布</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU应用教程-ROS应用002.png" alt="background image"/>
+<p style="position:absolute;top:85px;left:431px;white-space:nowrap" class="ft20">目录</p>
+<p style="position:absolute;top:105px;left:140px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-3.html">1.&#160;ROS1&#160;应用教程&#160;.................................................................&#160;3</a></p>
+<p style="position:absolute;top:136px;left:167px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-3.html">1.1&#160;ROS&#160;环境安装&#160;系统安装及环境搭建&#160;...........................................&#160;3</a></p>
+<p style="position:absolute;top:167px;left:167px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-3.html">1.2&#160;绑定端口&#160;..................................................................3</a></p>
+<p style="position:absolute;top:197px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-3.html">1.2.1&#160;自动绑定端口号&#160;......................................................3</a></p>
+<p style="position:absolute;top:228px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-4.html">1.2.3&#160;手动修改&#160;USB&#160;设备号&#160;..................................................4</a></p>
+<p style="position:absolute;top:258px;left:167px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-5.html">1.3&#160;IMU&#160;软件包使用&#160;............................................................5</a></p>
+<p style="position:absolute;top:289px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-5.html">1.3.1&#160;编译工作空间&#160;........................................................5</a></p>
+<p style="position:absolute;top:320px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-6.html">1.3.2&#160;修改参数配置&#160;........................................................6</a></p>
+<p style="position:absolute;top:350px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-7.html">1.3.3&#160;运行可视化界面&#160;......................................................7</a></p>
+<p style="position:absolute;top:381px;left:135px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-8.html">2.&#160;ROS2&#160;应用教程&#160;..................................................................8</a></p>
+<p style="position:absolute;top:412px;left:167px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-9.html">2.1&#160;绑定端口&#160;..................................................................9</a></p>
+<p style="position:absolute;top:442px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-9.html">2.1.1&#160;自动绑定端口号&#160;......................................................9</a></p>
+<p style="position:absolute;top:473px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-9.html">2.1.3&#160;手动修改&#160;USB&#160;设备号&#160;..................................................9</a></p>
+<p style="position:absolute;top:504px;left:167px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-11.html">2.2&#160;功能包使用&#160;...............................................................11</a></p>
+<p style="position:absolute;top:534px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-11.html">2.2.1&#160;编译工作空间&#160;.......................................................11</a></p>
+<p style="position:absolute;top:565px;left:198px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-11.html">2.2.2&#160;修改参数配置&#160;.......................................................11</a></p>
+<p style="position:absolute;top:595px;left:167px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-12.html">2.3&#160;运行测试&#160;.................................................................12</a></p>
+<p style="position:absolute;top:626px;left:135px;white-space:nowrap" class="ft20"><a href="IMU应用教程-ROS应用-12.html">3.&#160;融合&#160;IMU&#160;和&#160;GPS&#160;数据&#160;...........................................................&#160;12</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft31{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft32{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft33{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft34{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft35{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft36{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft37{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft38{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft39{font-size:15px;line-height:27px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU应用教程-ROS应用003.png" alt="background image"/>
+<p style="position:absolute;top:83px;left:104px;white-space:nowrap" class="ft30"><b>1.&#160;ROS1</b></p>
+<p style="position:absolute;top:86px;left:190px;white-space:nowrap" class="ft31">应用教程</p>
+<p style="position:absolute;top:143px;left:104px;white-space:nowrap" class="ft32"><b>1.1&#160;ROS</b></p>
+<p style="position:absolute;top:145px;left:190px;white-space:nowrap" class="ft33">环境安装&#160;系统安装及环境搭建</p>
+<p style="position:absolute;top:186px;left:135px;white-space:nowrap" class="ft34">本例程默认视为系统已经安装好</p>
+<p style="position:absolute;top:183px;left:360px;white-space:nowrap" class="ft35">ROS</p>
+<p style="position:absolute;top:186px;left:390px;white-space:nowrap" class="ft34">开发环境，如果没有安装</p>
+<p style="position:absolute;top:183px;left:568px;white-space:nowrap" class="ft35">ROS</p>
+<p style="position:absolute;top:186px;left:599px;white-space:nowrap" class="ft34">环境，请自行安装好</p>
+<p style="position:absolute;top:183px;left:745px;white-space:nowrap" class="ft35">ROS</p>
+<p style="position:absolute;top:186px;left:775px;white-space:nowrap" class="ft34">环</p>
+<p style="position:absolute;top:216px;left:104px;white-space:nowrap" class="ft34">境再来运行此例程。</p>
+<p style="position:absolute;top:247px;left:135px;white-space:nowrap" class="ft34">请在终端运行对应的命令</p>
+<p style="position:absolute;top:275px;left:135px;white-space:nowrap" class="ft35">1.</p>
+<p style="position:absolute;top:278px;left:167px;white-space:nowrap" class="ft34">如果你使用的是</p>
+<p style="position:absolute;top:275px;left:285px;white-space:nowrap" class="ft35">ubuntu&#160;16.04</p>
+<p style="position:absolute;top:278px;left:388px;white-space:nowrap" class="ft34">，</p>
+<p style="position:absolute;top:275px;left:404px;white-space:nowrap" class="ft35">ROS&#160;kinetic</p>
+<p style="position:absolute;top:278px;left:500px;white-space:nowrap" class="ft34">，</p>
+<p style="position:absolute;top:275px;left:515px;white-space:nowrap" class="ft35">python2&#160;:</p>
+<p style="position:absolute;top:308px;left:135px;white-space:nowrap" class="ft34">安装</p>
+<p style="position:absolute;top:306px;left:170px;white-space:nowrap" class="ft35">IMU</p>
+<p style="position:absolute;top:308px;left:200px;white-space:nowrap" class="ft34">数据处理工具和可视化工具：</p>
+<p style="position:absolute;top:336px;left:135px;white-space:nowrap" class="ft39"><b>“sudo&#160;apt-get&#160;install&#160;ros-kinetic-imu-tools&#160;ros-kinetic-rviz-imu-plugin”<br/>“sudo&#160;apt-get&#160;install&#160;python-visual”</b></p>
+<p style="position:absolute;top:392px;left:135px;white-space:nowrap" class="ft35">2.</p>
+<p style="position:absolute;top:394px;left:167px;white-space:nowrap" class="ft34">如果你使用的是</p>
+<p style="position:absolute;top:392px;left:285px;white-space:nowrap" class="ft35">ubuntu&#160;18.04</p>
+<p style="position:absolute;top:394px;left:388px;white-space:nowrap" class="ft34">，</p>
+<p style="position:absolute;top:392px;left:404px;white-space:nowrap" class="ft35">ROS&#160;Melodic</p>
+<p style="position:absolute;top:394px;left:500px;white-space:nowrap" class="ft34">，</p>
+<p style="position:absolute;top:392px;left:515px;white-space:nowrap" class="ft35">python2&#160;:</p>
+<p style="position:absolute;top:425px;left:135px;white-space:nowrap" class="ft34">安装</p>
+<p style="position:absolute;top:423px;left:170px;white-space:nowrap" class="ft35">IMU</p>
+<p style="position:absolute;top:425px;left:200px;white-space:nowrap" class="ft34">数据处理工具和可视化工具：</p>
+<p style="position:absolute;top:453px;left:135px;white-space:nowrap" class="ft36"><b>“sudo&#160;apt-get&#160;install&#160;ros-melodic-imu-tools&#160;ros-melodic-rviz-imu-plugin”</b></p>
+<p style="position:absolute;top:481px;left:135px;white-space:nowrap" class="ft35">3.</p>
+<p style="position:absolute;top:483px;left:167px;white-space:nowrap" class="ft34">如果你使用的是</p>
+<p style="position:absolute;top:481px;left:285px;white-space:nowrap" class="ft35">ubuntu&#160;20.04</p>
+<p style="position:absolute;top:483px;left:388px;white-space:nowrap" class="ft34">，</p>
+<p style="position:absolute;top:481px;left:404px;white-space:nowrap" class="ft35">ROS&#160;Noetic</p>
+<p style="position:absolute;top:483px;left:491px;white-space:nowrap" class="ft34">，</p>
+<p style="position:absolute;top:481px;left:507px;white-space:nowrap" class="ft35">python3&#160;:</p>
+<p style="position:absolute;top:514px;left:135px;white-space:nowrap" class="ft34">安装</p>
+<p style="position:absolute;top:512px;left:170px;white-space:nowrap" class="ft35">IMU</p>
+<p style="position:absolute;top:514px;left:200px;white-space:nowrap" class="ft34">数据处理工具和可视化工具：</p>
+<p style="position:absolute;top:542px;left:135px;white-space:nowrap" class="ft36"><b>“sudo&#160;apt-get&#160;install&#160;ros-noetic-imu-tools&#160;ros-noetic-rviz-imu-plugin”</b></p>
+<p style="position:absolute;top:572px;left:135px;white-space:nowrap" class="ft34">安装串行端口通信库：</p>
+<p style="position:absolute;top:600px;left:135px;white-space:nowrap" class="ft36"><b>“pip3&#160;install&#160;pyserial”</b></p>
+<p style="position:absolute;top:642px;left:135px;white-space:nowrap" class="ft35">4.</p>
+<p style="position:absolute;top:645px;left:167px;white-space:nowrap" class="ft34">安装</p>
+<p style="position:absolute;top:642px;left:202px;white-space:nowrap" class="ft35">ROS</p>
+<p style="position:absolute;top:645px;left:232px;white-space:nowrap" class="ft34">串口驱动：</p>
+<p style="position:absolute;top:675px;left:135px;white-space:nowrap" class="ft34">“</p>
+<p style="position:absolute;top:673px;left:151px;white-space:nowrap" class="ft36"><b>sudo&#160;apt-get&#160;install&#160;ros-$ROS_DISTRO-serial</b></p>
+<p style="position:absolute;top:675px;left:523px;white-space:nowrap" class="ft34">”</p>
+<p style="position:absolute;top:718px;left:135px;white-space:nowrap" class="ft34">以下内容以</p>
+<p style="position:absolute;top:716px;left:218px;white-space:nowrap" class="ft35">ubuntu&#160;18.04</p>
+<p style="position:absolute;top:718px;left:322px;white-space:nowrap" class="ft34">，</p>
+<p style="position:absolute;top:716px;left:337px;white-space:nowrap" class="ft35">ROS&#160;Melodic</p>
+<p style="position:absolute;top:718px;left:437px;white-space:nowrap" class="ft34">版本为例。</p>
+<p style="position:absolute;top:748px;left:104px;white-space:nowrap" class="ft32"><b>1.2</b></p>
+<p style="position:absolute;top:751px;left:143px;white-space:nowrap" class="ft33">绑定端口</p>
+<p style="position:absolute;top:790px;left:104px;white-space:nowrap" class="ft37"><b>1.2.1</b></p>
+<p style="position:absolute;top:792px;left:158px;white-space:nowrap" class="ft38">自动绑定端口号</p>
+<p style="position:absolute;top:839px;left:135px;white-space:nowrap" class="ft34">先将</p>
+<p style="position:absolute;top:837px;left:171px;white-space:nowrap" class="ft35">IMU</p>
+<p style="position:absolute;top:839px;left:201px;white-space:nowrap" class="ft34">模块连接到电脑虚拟机的</p>
+<p style="position:absolute;top:837px;left:379px;white-space:nowrap" class="ft35">USB</p>
+<p style="position:absolute;top:839px;left:409px;white-space:nowrap" class="ft34">口，再将资料中的示例程序</p>
+<p style="position:absolute;top:837px;left:603px;white-space:nowrap" class="ft35">ros1_imu.zip</p>
+<p style="position:absolute;top:839px;left:711px;white-space:nowrap" class="ft34">复制放到用</p>
+<p style="position:absolute;top:870px;left:104px;white-space:nowrap" class="ft34">户目录。运行以下命令解压：</p>
+<p style="position:absolute;top:900px;left:135px;white-space:nowrap" class="ft34">“</p>
+<p style="position:absolute;top:898px;left:151px;white-space:nowrap" class="ft36"><b>unzip&#160;ros1_imu.zip</b></p>
+<p style="position:absolute;top:900px;left:307px;white-space:nowrap" class="ft34">”</p>
+<p style="position:absolute;top:960px;left:135px;white-space:nowrap" class="ft34">“</p>
+<p style="position:absolute;top:958px;left:151px;white-space:nowrap" class="ft36"><b>cd&#160;~/wit_ros_imu</b></p>
+<p style="position:absolute;top:960px;left:289px;white-space:nowrap" class="ft34">”</p>
+<p style="position:absolute;top:990px;left:135px;white-space:nowrap" class="ft34">“</p>
+<p style="position:absolute;top:988px;left:151px;white-space:nowrap" class="ft36"><b>sudo&#160;bash&#160;bind_usb.sh</b></p>
+<p style="position:absolute;top:990px;left:332px;white-space:nowrap" class="ft34">”</p>
+<p style="position:absolute;top:1071px;left:104px;white-space:nowrap" class="ft34">重新插拔</p>
+<p style="position:absolute;top:1068px;left:170px;white-space:nowrap" class="ft35">usb</p>
+<p style="position:absolute;top:1071px;left:200px;white-space:nowrap" class="ft34">之后。后查看端口是否已经绑定完成。输入指令</p>
+<p style="position:absolute;top:1068px;left:531px;white-space:nowrap" class="ft35">:</p>
+<p style="position:absolute;top:1071px;left:540px;white-space:nowrap" class="ft34">“</p>
+<p style="position:absolute;top:1069px;left:555px;white-space:nowrap" class="ft36"><b>ll&#160;/dev/imu_usb</b></p>
+<p style="position:absolute;top:1071px;left:685px;white-space:nowrap" class="ft34">”。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft41{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft42{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft43{font-size:15px;font-family:XEKKFX+SimHei;color:#333333;}
+	.ft44{font-size:15px;font-family:QHIUOC+Consolas;color:#333333;}
+	.ft45{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft46{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft47{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用004.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft40">4</p>
+<p style="position:absolute;top:122px;left:167px;white-space:nowrap" class="ft41">注意：如果上述操作未能显示绑定的端口号，插拔</p>
+<p style="position:absolute;top:119px;left:512px;white-space:nowrap" class="ft42">usb</p>
+<p style="position:absolute;top:122px;left:541px;white-space:nowrap" class="ft41">接头，两次输入“</p>
+<p style="position:absolute;top:119px;left:662px;white-space:nowrap" class="ft42">lsusb</p>
+<p style="position:absolute;top:122px;left:705px;white-space:nowrap" class="ft41">”指令，</p>
+<p style="position:absolute;top:157px;left:135px;white-space:nowrap" class="ft43">检查设备的厂商</p>
+<p style="position:absolute;top:154px;left:238px;white-space:nowrap" class="ft44">ID</p>
+<p style="position:absolute;top:157px;left:258px;white-space:nowrap" class="ft43">和产品</p>
+<p style="position:absolute;top:154px;left:307px;white-space:nowrap" class="ft44">ID</p>
+<p style="position:absolute;top:157px;left:326px;white-space:nowrap" class="ft43">对不对，在</p>
+<p style="position:absolute;top:154px;left:397px;white-space:nowrap" class="ft44">~/wit_ros_imu/imu_usb.rules</p>
+<p style="position:absolute;top:157px;left:615px;white-space:nowrap" class="ft43">文件进行相应的更改。</p>
+<p style="position:absolute;top:660px;left:167px;white-space:nowrap" class="ft41">修改完之后重新输入“</p>
+<p style="position:absolute;top:658px;left:324px;white-space:nowrap" class="ft45"><b>sudo&#160;bash&#160;bind_usb.sh</b></p>
+<p style="position:absolute;top:660px;left:506px;white-space:nowrap" class="ft41">”</p>
+<p style="position:absolute;top:745px;left:135px;white-space:nowrap" class="ft46"><b>1.2.3</b></p>
+<p style="position:absolute;top:747px;left:189px;white-space:nowrap" class="ft47">手动修改</p>
+<p style="position:absolute;top:745px;left:266px;white-space:nowrap" class="ft46"><b>USB</b></p>
+<p style="position:absolute;top:747px;left:300px;white-space:nowrap" class="ft47">设备号</p>
+<p style="position:absolute;top:790px;left:167px;white-space:nowrap" class="ft41">如果上述自动绑定端口操作仍未能成功，则需要手动修改模块对应的</p>
+<p style="position:absolute;top:788px;left:648px;white-space:nowrap" class="ft42">USB</p>
+<p style="position:absolute;top:790px;left:678px;white-space:nowrap" class="ft41">设备号，具</p>
+<p style="position:absolute;top:825px;left:135px;white-space:nowrap" class="ft41">体操作如下：</p>
+<p style="position:absolute;top:858px;left:167px;white-space:nowrap" class="ft42">1.</p>
+<p style="position:absolute;top:860px;left:198px;white-space:nowrap" class="ft41">查看</p>
+<p style="position:absolute;top:858px;left:233px;white-space:nowrap" class="ft42">USB</p>
+<p style="position:absolute;top:860px;left:263px;white-space:nowrap" class="ft41">端口号。将惯导模块通过</p>
+<p style="position:absolute;top:858px;left:439px;white-space:nowrap" class="ft42">USB-typeC</p>
+<p style="position:absolute;top:860px;left:521px;white-space:nowrap" class="ft41">数据线连接到电脑的</p>
+<p style="position:absolute;top:858px;left:667px;white-space:nowrap" class="ft42">USB</p>
+<p style="position:absolute;top:860px;left:696px;white-space:nowrap" class="ft41">口，在终</p>
+<p style="position:absolute;top:895px;left:135px;white-space:nowrap" class="ft41">端输入以下命令来检测设备端口“</p>
+<p style="position:absolute;top:894px;left:374px;white-space:nowrap" class="ft45"><b>ls&#160;/dev/ttyUSB*</b></p>
+<p style="position:absolute;top:895px;left:504px;white-space:nowrap" class="ft41">”，下面是插和拔的情况，确定端口</p>
+<p style="position:absolute;top:930px;left:135px;white-space:nowrap" class="ft41">号（建议每次开机要重新确认端口号）：</p>
+<p style="position:absolute;top:1059px;left:167px;white-space:nowrap" class="ft41">上面的情况是电脑连接多个</p>
+<p style="position:absolute;top:1057px;left:362px;white-space:nowrap" class="ft42">USB</p>
+<p style="position:absolute;top:1059px;left:392px;white-space:nowrap" class="ft41">设备，先不插惯导模块查看一次端口，再插入惯导模</p>
+<p style="position:absolute;top:1094px;left:135px;white-space:nowrap" class="ft41">块后再次查看端口，对比前后两次打印出来的端口号，第二次多的端口号就是惯导模块的</p>
+<p style="position:absolute;top:1127px;left:135px;white-space:nowrap" class="ft42">USB</p>
+<p style="position:absolute;top:1129px;left:165px;white-space:nowrap" class="ft41">设备号。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft51{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft52{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft53{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft54{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft55{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft56{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft57{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用005.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft50">5</p>
+<p style="position:absolute;top:119px;left:167px;white-space:nowrap" class="ft51">2.</p>
+<p style="position:absolute;top:122px;left:198px;white-space:nowrap" class="ft52">修改参数配置。需要修改的参数包括</p>
+<p style="position:absolute;top:119px;left:454px;white-space:nowrap" class="ft51">USB</p>
+<p style="position:absolute;top:122px;left:484px;white-space:nowrap" class="ft52">端口号。</p>
+<p style="position:absolute;top:154px;left:167px;white-space:nowrap" class="ft53"><b>“cd&#160;~/ros1Imu_ws/src/wit_ros_imu/launch”</b></p>
+<p style="position:absolute;top:190px;left:167px;white-space:nowrap" class="ft53"><b>“vim&#160;rviz_and_imu.launch”</b></p>
+<p style="position:absolute;top:227px;left:167px;white-space:nowrap" class="ft52">进入脚本目录</p>
+<p style="position:absolute;top:225px;left:265px;white-space:nowrap" class="ft51">src/launch</p>
+<p style="position:absolute;top:227px;left:352px;white-space:nowrap" class="ft52">，打开</p>
+<p style="position:absolute;top:225px;left:403px;white-space:nowrap" class="ft51">rviz_and_imu.launch</p>
+<p style="position:absolute;top:227px;left:571px;white-space:nowrap" class="ft52">文件中的配置参数</p>
+<p style="position:absolute;top:262px;left:167px;white-space:nowrap" class="ft52">设备号</p>
+<p style="position:absolute;top:260px;left:214px;white-space:nowrap" class="ft51">/dev/ttyUSB0</p>
+<p style="position:absolute;top:262px;left:317px;white-space:nowrap" class="ft52">（脚本默认用的</p>
+<p style="position:absolute;top:260px;left:435px;white-space:nowrap" class="ft51">/dev/ttyUSB0</p>
+<p style="position:absolute;top:262px;left:539px;white-space:nowrap" class="ft52">），如果你的电脑识别出来的数</p>
+<p style="position:absolute;top:297px;left:135px;white-space:nowrap" class="ft52">字不是</p>
+<p style="position:absolute;top:295px;left:186px;white-space:nowrap" class="ft51">USB0</p>
+<p style="position:absolute;top:297px;left:221px;white-space:nowrap" class="ft52">，则修改为你电脑识别到的号。注意：如果连接了多个</p>
+<p style="position:absolute;top:295px;left:602px;white-space:nowrap" class="ft51">USB</p>
+<p style="position:absolute;top:297px;left:632px;white-space:nowrap" class="ft52">串口设备，可能每</p>
+<p style="position:absolute;top:332px;left:135px;white-space:nowrap" class="ft52">次开机都需要手动查看并修改对应的串口号。</p>
+<p style="position:absolute;top:484px;left:167px;white-space:nowrap" class="ft52">修改完成后保存并退出。</p>
+<p style="position:absolute;top:517px;left:167px;white-space:nowrap" class="ft51">3.</p>
+<p style="position:absolute;top:519px;left:198px;white-space:nowrap" class="ft52">如果出现提示</p>
+<p style="position:absolute;top:517px;left:298px;white-space:nowrap" class="ft51">USB</p>
+<p style="position:absolute;top:519px;left:328px;white-space:nowrap" class="ft52">权限问题，请在终端输入以下命令增加权限，或者添加当前用</p>
+<p style="position:absolute;top:555px;left:135px;white-space:nowrap" class="ft52">户到</p>
+<p style="position:absolute;top:552px;left:170px;white-space:nowrap" class="ft51">USB</p>
+<p style="position:absolute;top:555px;left:200px;white-space:nowrap" class="ft52">设备权限列表中：</p>
+<p style="position:absolute;top:553px;left:326px;white-space:nowrap" class="ft53"><b>sudo&#160;chmod&#160;777&#160;/dev/ttyUSB0</b></p>
+<p style="position:absolute;top:685px;left:135px;white-space:nowrap" class="ft54"><b>1.3&#160;IMU</b></p>
+<p style="position:absolute;top:687px;left:221px;white-space:nowrap" class="ft55">软件包使用</p>
+<p style="position:absolute;top:734px;left:135px;white-space:nowrap" class="ft56"><b>1.3.1</b></p>
+<p style="position:absolute;top:736px;left:189px;white-space:nowrap" class="ft57">编译工作空间</p>
+<p style="position:absolute;top:779px;left:167px;white-space:nowrap" class="ft52">打开命令终端，运行下面指令：</p>
+<p style="position:absolute;top:812px;left:167px;white-space:nowrap" class="ft51">1.</p>
+<p style="position:absolute;top:814px;left:198px;white-space:nowrap" class="ft52">创建新的工作空间目录</p>
+<p style="position:absolute;top:847px;left:167px;white-space:nowrap" class="ft53"><b>“mkdir&#160;ros1Imu_ws”</b></p>
+<p style="position:absolute;top:882px;left:167px;white-space:nowrap" class="ft51">2.</p>
+<p style="position:absolute;top:884px;left:198px;white-space:nowrap" class="ft52">进入该目录</p>
+<p style="position:absolute;top:917px;left:167px;white-space:nowrap" class="ft53"><b>“cd&#160;ros1Imu_ws”</b></p>
+<p style="position:absolute;top:952px;left:167px;white-space:nowrap" class="ft51">3.</p>
+<p style="position:absolute;top:954px;left:198px;white-space:nowrap" class="ft52">在工作空间内创建一个</p>
+<p style="position:absolute;top:952px;left:359px;white-space:nowrap" class="ft51">src</p>
+<p style="position:absolute;top:954px;left:389px;white-space:nowrap" class="ft52">目录，输入指令</p>
+<p style="position:absolute;top:988px;left:167px;white-space:nowrap" class="ft53"><b>“mkdir&#160;src”</b></p>
+<p style="position:absolute;top:1022px;left:167px;white-space:nowrap" class="ft51">4.</p>
+<p style="position:absolute;top:1025px;left:198px;white-space:nowrap" class="ft52">导入功能包，将</p>
+<p style="position:absolute;top:1022px;left:312px;white-space:nowrap" class="ft51">ros1_imu</p>
+<p style="position:absolute;top:1025px;left:385px;white-space:nowrap" class="ft52">目录下的</p>
+<p style="position:absolute;top:1022px;left:452px;white-space:nowrap" class="ft51">wit_ros_imu</p>
+<p style="position:absolute;top:1025px;left:552px;white-space:nowrap" class="ft52">复制到</p>
+<p style="position:absolute;top:1022px;left:603px;white-space:nowrap" class="ft51">src</p>
+<p style="position:absolute;top:1025px;left:633px;white-space:nowrap" class="ft52">中</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft61{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft62{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft63{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft64{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft65{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用006.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft60">6</p>
+<p style="position:absolute;top:400px;left:167px;white-space:nowrap" class="ft61">5.</p>
+<p style="position:absolute;top:402px;left:198px;white-space:nowrap" class="ft62">确保您在工作空间的根目录中</p>
+<p style="position:absolute;top:435px;left:167px;white-space:nowrap" class="ft63"><b>“cd&#160;~/ros1Imu_ws”</b></p>
+<p style="position:absolute;top:470px;left:167px;white-space:nowrap" class="ft61">6.</p>
+<p style="position:absolute;top:473px;left:198px;white-space:nowrap" class="ft62">初始化工作空间</p>
+<p style="position:absolute;top:505px;left:167px;white-space:nowrap" class="ft63"><b>“catkin_make”</b></p>
+<p style="position:absolute;top:540px;left:167px;white-space:nowrap" class="ft61">7.</p>
+<p style="position:absolute;top:543px;left:198px;white-space:nowrap" class="ft62">添加</p>
+<p style="position:absolute;top:540px;left:230px;white-space:nowrap" class="ft61">.py</p>
+<p style="position:absolute;top:543px;left:259px;white-space:nowrap" class="ft62">的权限</p>
+<p style="position:absolute;top:576px;left:167px;white-space:nowrap" class="ft63"><b>“cd&#160;~/ros1Imu_ws/src/ros_imu_ws/src/scripts”</b></p>
+<p style="position:absolute;top:611px;left:167px;white-space:nowrap" class="ft63"><b>“sudo&#160;chmod&#160;777&#160;*.py”</b></p>
+<p style="position:absolute;top:646px;left:167px;white-space:nowrap" class="ft61">8.</p>
+<p style="position:absolute;top:648px;left:198px;white-space:nowrap" class="ft62">将</p>
+<p style="position:absolute;top:646px;left:222px;white-space:nowrap" class="ft61">&#34;source&#160;~/ros1Imu_ws/devel/setup.sh&#34;</p>
+<p style="position:absolute;top:648px;left:541px;white-space:nowrap" class="ft62">添加到</p>
+<p style="position:absolute;top:646px;left:596px;white-space:nowrap" class="ft61">~/.zshrc</p>
+<p style="position:absolute;top:648px;left:674px;white-space:nowrap" class="ft62">文件。</p>
+<p style="position:absolute;top:824px;left:167px;white-space:nowrap" class="ft62">最后输入指令</p>
+<p style="position:absolute;top:822px;left:261px;white-space:nowrap" class="ft63"><b>“source&#160;~/.zshrc”</b></p>
+<p style="position:absolute;top:862px;left:135px;white-space:nowrap" class="ft64"><b>1.3.2</b></p>
+<p style="position:absolute;top:864px;left:189px;white-space:nowrap" class="ft65">修改参数配置</p>
+<p style="position:absolute;top:907px;left:167px;white-space:nowrap" class="ft62">在路径“</p>
+<p style="position:absolute;top:905px;left:232px;white-space:nowrap" class="ft61">~/ros1Imu_ws/src/wit_ros_imu/launch/rviz_and_imu.launch</p>
+<p style="position:absolute;top:907px;left:709px;white-space:nowrap" class="ft62">”下，</p>
+<p style="position:absolute;top:942px;left:135px;white-space:nowrap" class="ft62">修改相对应的参数。波特率根据实际使用设定，默认波特率</p>
+<p style="position:absolute;top:940px;left:553px;white-space:nowrap" class="ft61">baud</p>
+<p style="position:absolute;top:942px;left:592px;white-space:nowrap" class="ft62">的值为</p>
+<p style="position:absolute;top:940px;left:644px;white-space:nowrap" class="ft61">9600</p>
+<p style="position:absolute;top:942px;left:678px;white-space:nowrap" class="ft62">，如果用户</p>
+<p style="position:absolute;top:977px;left:135px;white-space:nowrap" class="ft62">通过上位机修改了波特率，需要对应修改成修改后的波特率。</p>
+<p style="position:absolute;top:1010px;left:167px;white-space:nowrap" class="ft63"><b>“cd&#160;~/ros1Imu_ws/src/wit_ros_imu/launch”</b></p>
+<p style="position:absolute;top:1045px;left:167px;white-space:nowrap" class="ft63"><b>“vim&#160;rviz_and_imu.launch”</b></p>
+<p style="position:absolute;top:1082px;left:167px;white-space:nowrap" class="ft62">进入脚本目录</p>
+<p style="position:absolute;top:1080px;left:265px;white-space:nowrap" class="ft61">src/launch</p>
+<p style="position:absolute;top:1082px;left:352px;white-space:nowrap" class="ft62">，打开</p>
+<p style="position:absolute;top:1080px;left:403px;white-space:nowrap" class="ft61">rviz_and_imu.launch</p>
+<p style="position:absolute;top:1082px;left:571px;white-space:nowrap" class="ft62">文件中的配置参数</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft71{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft72{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft73{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft74{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft75{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用007.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft70">7</p>
+<p style="position:absolute;top:242px;left:135px;white-space:nowrap" class="ft71"><b>1.3.3</b></p>
+<p style="position:absolute;top:244px;left:189px;white-space:nowrap" class="ft72">运行可视化界面</p>
+<p style="position:absolute;top:284px;left:167px;white-space:nowrap" class="ft73">1.</p>
+<p style="position:absolute;top:287px;left:198px;white-space:nowrap" class="ft74">首先关闭手机</p>
+<p style="position:absolute;top:284px;left:300px;white-space:nowrap" class="ft73">APP</p>
+<p style="position:absolute;top:287px;left:326px;white-space:nowrap" class="ft74">：</p>
+<p style="position:absolute;top:285px;left:343px;white-space:nowrap" class="ft75"><b>“sudo&#160;systemctl&#160;stop&#160;start_app_node.service”</b></p>
+<p style="position:absolute;top:287px;left:726px;white-space:nowrap" class="ft74">（在</p>
+<p style="position:absolute;top:322px;left:135px;white-space:nowrap" class="ft74">我司提供的机器人镜像里面需要关闭手机</p>
+<p style="position:absolute;top:320px;left:425px;white-space:nowrap" class="ft73">APP</p>
+<p style="position:absolute;top:322px;left:455px;white-space:nowrap" class="ft74">服务，在虚拟机镜像里面没有自启服务不需</p>
+<p style="position:absolute;top:357px;left:135px;white-space:nowrap" class="ft74">要输入这条指令）</p>
+<p style="position:absolute;top:390px;left:167px;white-space:nowrap" class="ft73">2.</p>
+<p style="position:absolute;top:392px;left:198px;white-space:nowrap" class="ft74">打开终端，运行</p>
+<p style="position:absolute;top:390px;left:314px;white-space:nowrap" class="ft73">launch</p>
+<p style="position:absolute;top:392px;left:371px;white-space:nowrap" class="ft74">文件，注意要在实际桌面打开，或者</p>
+<p style="position:absolute;top:390px;left:632px;white-space:nowrap" class="ft73">VNC</p>
+<p style="position:absolute;top:392px;left:662px;white-space:nowrap" class="ft74">远程，不可在</p>
+<p style="position:absolute;top:425px;left:135px;white-space:nowrap" class="ft73">SSH</p>
+<p style="position:absolute;top:427px;left:165px;white-space:nowrap" class="ft74">远程终端中打开。</p>
+<p style="position:absolute;top:460px;left:135px;white-space:nowrap" class="ft75"><b>“roslaunch&#160;wit_ros_imu&#160;rviz_and_imu.launch”</b></p>
+<p style="position:absolute;top:542px;left:167px;white-space:nowrap" class="ft73">3.</p>
+<p style="position:absolute;top:544px;left:198px;white-space:nowrap" class="ft74">话题选中</p>
+<p style="position:absolute;top:542px;left:261px;white-space:nowrap" class="ft73">/imu/data</p>
+<p style="position:absolute;top:544px;left:339px;white-space:nowrap" class="ft74">，查看模型转动效果。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft81{font-size:12px;font-family:ALTLSG+LucidaConsole;color:#333333;}
+	.ft82{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft83{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft84{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft85{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft86{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用008.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft80">8</p>
+<p style="position:absolute;top:639px;left:334px;white-space:nowrap" class="ft81">rostopic</p>
+<p style="position:absolute;top:519px;left:167px;white-space:nowrap" class="ft82">打开两个新终端输入分别输入下面两行命令，查看数据“</p>
+<p style="position:absolute;top:517px;left:560px;white-space:nowrap" class="ft83">rostopic&#160;echo</p>
+<p style="position:absolute;top:519px;left:673px;white-space:nowrap" class="ft82">”</p>
+<p style="position:absolute;top:552px;left:167px;white-space:nowrap" class="ft84"><b>“rostopic&#160;echo&#160;/wit/mag”</b></p>
+<p style="position:absolute;top:587px;left:167px;white-space:nowrap" class="ft84"><b>“rostopic&#160;echo&#160;/imu/data”</b></p>
+<p style="position:absolute;top:625px;left:167px;white-space:nowrap" class="ft82">如下图，驱动运行成功后和输出的信息</p>
+<p style="position:absolute;top:934px;left:135px;white-space:nowrap" class="ft85"><b>2.&#160;ROS2</b></p>
+<p style="position:absolute;top:937px;left:222px;white-space:nowrap" class="ft86">应用教程</p>
+<p style="position:absolute;top:997px;left:167px;white-space:nowrap" class="ft82">环境搭建</p>
+<p style="position:absolute;top:1032px;left:167px;white-space:nowrap" class="ft82">本节课程说明如何在</p>
+<p style="position:absolute;top:1029px;left:312px;white-space:nowrap" class="ft83">ros2</p>
+<p style="position:absolute;top:1032px;left:351px;white-space:nowrap" class="ft82">中搭建十轴</p>
+<p style="position:absolute;top:1029px;left:433px;white-space:nowrap" class="ft83">IMU</p>
+<p style="position:absolute;top:1032px;left:463px;white-space:nowrap" class="ft82">模块环境，其中包括编译功能包、绑定串口、</p>
+<p style="position:absolute;top:1067px;left:135px;white-space:nowrap" class="ft82">运行程序并查看数据。本节以</p>
+<p style="position:absolute;top:1064px;left:344px;white-space:nowrap" class="ft83">ubuntu20.04+ros-foxy</p>
+<p style="position:absolute;top:1067px;left:517px;white-space:nowrap" class="ft82">，功能空间名字以</p>
+<p style="position:absolute;top:1064px;left:647px;white-space:nowrap" class="ft83">ros1_ws</p>
+<p style="position:absolute;top:1067px;left:711px;white-space:nowrap" class="ft82">为例，</p>
+<p style="position:absolute;top:1102px;left:135px;white-space:nowrap" class="ft82">默认波特率是</p>
+<p style="position:absolute;top:1100px;left:233px;white-space:nowrap" class="ft83">9600</p>
+<p style="position:absolute;top:1102px;left:268px;white-space:nowrap" class="ft82">。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft91{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft92{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft93{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft94{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft95{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft96{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft97{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用009.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft90">9</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft91"><b>2.1</b></p>
+<p style="position:absolute;top:125px;left:175px;white-space:nowrap" class="ft92">绑定端口</p>
+<p style="position:absolute;top:172px;left:135px;white-space:nowrap" class="ft93"><b>2.1.1</b></p>
+<p style="position:absolute;top:174px;left:189px;white-space:nowrap" class="ft94">自动绑定端口号</p>
+<p style="position:absolute;top:217px;left:167px;white-space:nowrap" class="ft95">先将</p>
+<p style="position:absolute;top:214px;left:202px;white-space:nowrap" class="ft96">IMU</p>
+<p style="position:absolute;top:217px;left:232px;white-space:nowrap" class="ft95">模块连接到电脑的</p>
+<p style="position:absolute;top:214px;left:362px;white-space:nowrap" class="ft96">USB</p>
+<p style="position:absolute;top:217px;left:392px;white-space:nowrap" class="ft95">口，再将资料中的示例程序</p>
+<p style="position:absolute;top:214px;left:577px;white-space:nowrap" class="ft96">ros_imu2_ws.zip</p>
+<p style="position:absolute;top:217px;left:711px;white-space:nowrap" class="ft95">复制放</p>
+<p style="position:absolute;top:252px;left:135px;white-space:nowrap" class="ft95">到用户目录。运行以下命令解压：</p>
+<p style="position:absolute;top:287px;left:167px;white-space:nowrap" class="ft95">“</p>
+<p style="position:absolute;top:284px;left:182px;white-space:nowrap" class="ft96">u</p>
+<p style="position:absolute;top:285px;left:191px;white-space:nowrap" class="ft97"><b>nzip&#160;wit_ros2_imu.zip</b></p>
+<p style="position:absolute;top:287px;left:373px;white-space:nowrap" class="ft95">”</p>
+<p style="position:absolute;top:357px;left:167px;white-space:nowrap" class="ft95">“</p>
+<p style="position:absolute;top:355px;left:182px;white-space:nowrap" class="ft97"><b>cd&#160;~/wit_ros2_imu</b></p>
+<p style="position:absolute;top:357px;left:329px;white-space:nowrap" class="ft95">”</p>
+<p style="position:absolute;top:427px;left:167px;white-space:nowrap" class="ft95">“</p>
+<p style="position:absolute;top:426px;left:182px;white-space:nowrap" class="ft97"><b>sudo&#160;bash&#160;bind_usb.sh</b></p>
+<p style="position:absolute;top:427px;left:364px;white-space:nowrap" class="ft95">”</p>
+<p style="position:absolute;top:497px;left:167px;white-space:nowrap" class="ft95">重新插拔</p>
+<p style="position:absolute;top:495px;left:233px;white-space:nowrap" class="ft96">usb</p>
+<p style="position:absolute;top:497px;left:263px;white-space:nowrap" class="ft95">先之后。后查看端口是否已经绑定完成。输入指令“</p>
+<p style="position:absolute;top:495px;left:625px;white-space:nowrap" class="ft96">ll&#160;/dev/imu_usb</p>
+<p style="position:absolute;top:497px;left:750px;white-space:nowrap" class="ft95">”</p>
+<p style="position:absolute;top:603px;left:167px;white-space:nowrap" class="ft95">注意：如果上述操作未能显示绑定的端口号，插拔</p>
+<p style="position:absolute;top:600px;left:512px;white-space:nowrap" class="ft96">usb</p>
+<p style="position:absolute;top:603px;left:541px;white-space:nowrap" class="ft95">接头，两次输入“</p>
+<p style="position:absolute;top:600px;left:662px;white-space:nowrap" class="ft96">lsusb</p>
+<p style="position:absolute;top:603px;left:705px;white-space:nowrap" class="ft95">”指令，</p>
+<p style="position:absolute;top:638px;left:135px;white-space:nowrap" class="ft95">检查设备的厂商</p>
+<p style="position:absolute;top:635px;left:249px;white-space:nowrap" class="ft96">ID</p>
+<p style="position:absolute;top:638px;left:270px;white-space:nowrap" class="ft95">和产品</p>
+<p style="position:absolute;top:635px;left:325px;white-space:nowrap" class="ft96">ID</p>
+<p style="position:absolute;top:638px;left:347px;white-space:nowrap" class="ft95">对不对，在</p>
+<p style="position:absolute;top:671px;left:167px;white-space:nowrap" class="ft96">~/ros_ws/src/wit_ros2_imu/imu_usb.rules</p>
+<p style="position:absolute;top:673px;left:508px;white-space:nowrap" class="ft95">文件进行相应的更改。</p>
+<p style="position:absolute;top:931px;left:135px;white-space:nowrap" class="ft95">注意：修改完成</p>
+<p style="position:absolute;top:929px;left:250px;white-space:nowrap" class="ft97"><b>ID</b></p>
+<p style="position:absolute;top:931px;left:271px;white-space:nowrap" class="ft95">号和端口号后，需要使用如下指令重新加载规则文件：</p>
+<p style="position:absolute;top:966px;left:167px;white-space:nowrap" class="ft95">“</p>
+<p style="position:absolute;top:964px;left:182px;white-space:nowrap" class="ft97"><b>sudo&#160;udevadm&#160;control&#160;--reload-rules</b></p>
+<p style="position:absolute;top:966px;left:485px;white-space:nowrap" class="ft95">”</p>
+<p style="position:absolute;top:1001px;left:167px;white-space:nowrap" class="ft95">“</p>
+<p style="position:absolute;top:1000px;left:182px;white-space:nowrap" class="ft97"><b>sudo&#160;udevadm&#160;trigger</b></p>
+<p style="position:absolute;top:1001px;left:356px;white-space:nowrap" class="ft95">”</p>
+<p style="position:absolute;top:1041px;left:135px;white-space:nowrap" class="ft93"><b>2.1.3</b></p>
+<p style="position:absolute;top:1043px;left:189px;white-space:nowrap" class="ft94">手动修改</p>
+<p style="position:absolute;top:1041px;left:266px;white-space:nowrap" class="ft93"><b>USB</b></p>
+<p style="position:absolute;top:1043px;left:300px;white-space:nowrap" class="ft94">设备号</p>
+<p style="position:absolute;top:1086px;left:167px;white-space:nowrap" class="ft95">如果上述自动绑定端口操作仍未能成功，则需要手动修改模块对应的</p>
+<p style="position:absolute;top:1083px;left:648px;white-space:nowrap" class="ft96">USB</p>
+<p style="position:absolute;top:1086px;left:678px;white-space:nowrap" class="ft95">设备号，具</p>
+<p style="position:absolute;top:1121px;left:135px;white-space:nowrap" class="ft95">体操作如下：</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft101{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft102{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft103{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用010.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft100">10</p>
+<p style="position:absolute;top:119px;left:167px;white-space:nowrap" class="ft101">4.</p>
+<p style="position:absolute;top:122px;left:198px;white-space:nowrap" class="ft102">查看</p>
+<p style="position:absolute;top:119px;left:233px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:122px;left:263px;white-space:nowrap" class="ft102">端口号。将惯导模块通过</p>
+<p style="position:absolute;top:119px;left:439px;white-space:nowrap" class="ft101">USB-typeC</p>
+<p style="position:absolute;top:122px;left:521px;white-space:nowrap" class="ft102">数据线连接到电脑的</p>
+<p style="position:absolute;top:119px;left:667px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:122px;left:696px;white-space:nowrap" class="ft102">口，在终</p>
+<p style="position:absolute;top:157px;left:135px;white-space:nowrap" class="ft102">端输入以下命令来检测设备端口“</p>
+<p style="position:absolute;top:155px;left:374px;white-space:nowrap" class="ft103"><b>ls&#160;/dev/ttyUSB*</b></p>
+<p style="position:absolute;top:157px;left:504px;white-space:nowrap" class="ft102">”，下面是插和拔的情况，确定端口</p>
+<p style="position:absolute;top:192px;left:135px;white-space:nowrap" class="ft102">号（建议每次开机要重新确认端口号）：</p>
+<p style="position:absolute;top:321px;left:167px;white-space:nowrap" class="ft102">上面的情况是电脑连接多个</p>
+<p style="position:absolute;top:318px;left:362px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:321px;left:392px;white-space:nowrap" class="ft102">设备，先不插惯导模块查看一次端口，再插入惯导模</p>
+<p style="position:absolute;top:356px;left:135px;white-space:nowrap" class="ft102">块后再次查看端口，对比前后两次打印出来的端口号，第二次多的端口号就是惯导模块的</p>
+<p style="position:absolute;top:388px;left:135px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:391px;left:165px;white-space:nowrap" class="ft102">设备号。</p>
+<p style="position:absolute;top:423px;left:167px;white-space:nowrap" class="ft101">5.</p>
+<p style="position:absolute;top:426px;left:198px;white-space:nowrap" class="ft102">修改参数配置。需要修改的参数包括</p>
+<p style="position:absolute;top:423px;left:454px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:426px;left:484px;white-space:nowrap" class="ft102">端口号。</p>
+<p style="position:absolute;top:461px;left:167px;white-space:nowrap" class="ft102">“</p>
+<p style="position:absolute;top:459px;left:182px;white-space:nowrap" class="ft101">cd&#160;~/ros2_ws/src/wit_ros2_imu/launch</p>
+<p style="position:absolute;top:461px;left:494px;white-space:nowrap" class="ft102">”</p>
+<p style="position:absolute;top:496px;left:167px;white-space:nowrap" class="ft102">“</p>
+<p style="position:absolute;top:494px;left:182px;white-space:nowrap" class="ft101">vim&#160;rviz_and_imu.launch.py</p>
+<p style="position:absolute;top:496px;left:407px;white-space:nowrap" class="ft102">”</p>
+<p style="position:absolute;top:531px;left:167px;white-space:nowrap" class="ft102">进入脚本目录</p>
+<p style="position:absolute;top:529px;left:265px;white-space:nowrap" class="ft101">src/launch</p>
+<p style="position:absolute;top:531px;left:352px;white-space:nowrap" class="ft102">，打开</p>
+<p style="position:absolute;top:529px;left:403px;white-space:nowrap" class="ft101">rviz_and_imu.launch.py</p>
+<p style="position:absolute;top:531px;left:597px;white-space:nowrap" class="ft102">文件中的配置参数</p>
+<p style="position:absolute;top:566px;left:167px;white-space:nowrap" class="ft102">设备号</p>
+<p style="position:absolute;top:564px;left:214px;white-space:nowrap" class="ft101">/dev/ttyUSB0</p>
+<p style="position:absolute;top:566px;left:317px;white-space:nowrap" class="ft102">（脚本默认用的</p>
+<p style="position:absolute;top:564px;left:435px;white-space:nowrap" class="ft101">/dev/ttyUSB0</p>
+<p style="position:absolute;top:566px;left:539px;white-space:nowrap" class="ft102">），如果你的电脑识别出来的数</p>
+<p style="position:absolute;top:601px;left:135px;white-space:nowrap" class="ft102">字不是</p>
+<p style="position:absolute;top:599px;left:186px;white-space:nowrap" class="ft101">USB0</p>
+<p style="position:absolute;top:601px;left:221px;white-space:nowrap" class="ft102">，则修改为你电脑识别到的号。注意：如果连接了多个</p>
+<p style="position:absolute;top:599px;left:602px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:601px;left:632px;white-space:nowrap" class="ft102">串口设备，可能每</p>
+<p style="position:absolute;top:636px;left:135px;white-space:nowrap" class="ft102">次开机都需要手动查看并修改对应的串口号。</p>
+<p style="position:absolute;top:929px;left:167px;white-space:nowrap" class="ft102">修改完成后保存并退出。</p>
+<p style="position:absolute;top:962px;left:167px;white-space:nowrap" class="ft101">4.</p>
+<p style="position:absolute;top:964px;left:198px;white-space:nowrap" class="ft102">如果出现提示</p>
+<p style="position:absolute;top:962px;left:298px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:964px;left:328px;white-space:nowrap" class="ft102">权限问题，请在终端输入以下命令增加权限，或者添加当前用</p>
+<p style="position:absolute;top:999px;left:135px;white-space:nowrap" class="ft102">户到</p>
+<p style="position:absolute;top:997px;left:170px;white-space:nowrap" class="ft101">USB</p>
+<p style="position:absolute;top:999px;left:200px;white-space:nowrap" class="ft102">设备权限列表中：</p>
+<p style="position:absolute;top:997px;left:326px;white-space:nowrap" class="ft101">sudo&#160;chmod&#160;777&#160;/dev/ttyUSB0</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft111{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft112{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft113{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft114{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft115{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft116{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft117{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用011.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft110">11</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft111"><b>2.2</b></p>
+<p style="position:absolute;top:125px;left:175px;white-space:nowrap" class="ft112">功能包使用</p>
+<p style="position:absolute;top:172px;left:135px;white-space:nowrap" class="ft113"><b>2.2.1</b></p>
+<p style="position:absolute;top:174px;left:189px;white-space:nowrap" class="ft114">编译工作空间</p>
+<p style="position:absolute;top:217px;left:167px;white-space:nowrap" class="ft115">建立一个工作空间</p>
+<p style="position:absolute;top:214px;left:295px;white-space:nowrap" class="ft116">ros_ws</p>
+<p style="position:absolute;top:217px;left:349px;white-space:nowrap" class="ft115">并且在该目录下新建一个</p>
+<p style="position:absolute;top:214px;left:525px;white-space:nowrap" class="ft116">src</p>
+<p style="position:absolute;top:217px;left:553px;white-space:nowrap" class="ft115">文件夹存放功能包，终端输入，</p>
+<p style="position:absolute;top:249px;left:167px;white-space:nowrap" class="ft116">Mkdir&#160;ros_ws</p>
+<p style="position:absolute;top:284px;left:167px;white-space:nowrap" class="ft116">cd&#160;ros_ws</p>
+<p style="position:absolute;top:319px;left:167px;white-space:nowrap" class="ft116">mkdir&#160;src</p>
+<p style="position:absolute;top:357px;left:167px;white-space:nowrap" class="ft115">然后，解压文件，得到</p>
+<p style="position:absolute;top:355px;left:330px;white-space:nowrap" class="ft116">wit_ros2_imu</p>
+<p style="position:absolute;top:357px;left:438px;white-space:nowrap" class="ft115">文件夹，把它复制到刚才建立的</p>
+<p style="position:absolute;top:355px;left:664px;white-space:nowrap" class="ft116">src</p>
+<p style="position:absolute;top:357px;left:694px;white-space:nowrap" class="ft115">目录下，</p>
+<p style="position:absolute;top:392px;left:135px;white-space:nowrap" class="ft115">然后回到工作空间目录下，使用</p>
+<p style="position:absolute;top:390px;left:359px;white-space:nowrap" class="ft116">colcon&#160;build</p>
+<p style="position:absolute;top:392px;left:467px;white-space:nowrap" class="ft115">命令进行编译，终端输入，</p>
+<p style="position:absolute;top:425px;left:167px;white-space:nowrap" class="ft116">cd&#160;~/ros_ws</p>
+<p style="position:absolute;top:460px;left:167px;white-space:nowrap" class="ft116">sudo&#160;colcon&#160;build</p>
+<p style="position:absolute;top:497px;left:167px;white-space:nowrap" class="ft115">然后把工作空间的路径加入到</p>
+<p style="position:absolute;top:495px;left:371px;white-space:nowrap" class="ft116">.bashrc</p>
+<p style="position:absolute;top:497px;left:436px;white-space:nowrap" class="ft115">中，终端输入，</p>
+<p style="position:absolute;top:541px;left:179px;white-space:nowrap" class="ft116">sudo&#160;vim&#160;~/.bashrc</p>
+<p style="position:absolute;top:579px;left:179px;white-space:nowrap" class="ft116">source&#160;~/ros_ws/install/setup.bash&#160;#</p>
+<p style="position:absolute;top:582px;left:489px;white-space:nowrap" class="ft115">把这句加在最后边，这里的我工作空</p>
+<p style="position:absolute;top:611px;left:147px;white-space:nowrap" class="ft115">间是在</p>
+<p style="position:absolute;top:608px;left:194px;white-space:nowrap" class="ft116">~</p>
+<p style="position:absolute;top:611px;left:203px;white-space:nowrap" class="ft115">目录下的，根据自己的工作空间目录进行修改</p>
+<p style="position:absolute;top:608px;left:518px;white-space:nowrap" class="ft116">.</p>
+<p style="position:absolute;top:646px;left:135px;white-space:nowrap" class="ft113"><b>2.2.2</b></p>
+<p style="position:absolute;top:648px;left:189px;white-space:nowrap" class="ft114">修改参数配置</p>
+<p style="position:absolute;top:693px;left:179px;white-space:nowrap" class="ft115">程序默认是使用</p>
+<p style="position:absolute;top:691px;left:293px;white-space:nowrap" class="ft116">9600</p>
+<p style="position:absolute;top:693px;left:331px;white-space:nowrap" class="ft115">的波特率，如果在上位机修改了波特率，那么则需要修改源</p>
+<p style="position:absolute;top:722px;left:147px;white-space:nowrap" class="ft115">码中的波特率，源码修改波特率的位置是，</p>
+<p style="position:absolute;top:720px;left:454px;white-space:nowrap" class="ft116">~/ros_ws/src/wit_ros2_imu/launch</p>
+<p style="position:absolute;top:757px;left:179px;white-space:nowrap" class="ft115">把</p>
+<p style="position:absolute;top:755px;left:198px;white-space:nowrap" class="ft116">9600</p>
+<p style="position:absolute;top:757px;left:237px;white-space:nowrap" class="ft115">改成上位机上修改的波特率，然后保存后退出，最后回到工作空间目录下</p>
+<p style="position:absolute;top:786px;left:147px;white-space:nowrap" class="ft115">进行编译即可。</p>
+<p style="position:absolute;top:821px;left:179px;white-space:nowrap" class="ft115">在路径“</p>
+<p style="position:absolute;top:819px;left:239px;white-space:nowrap" class="ft116">~/ros_ws/src/wit_ros_imu/launch/rviz_and_imu.launch</p>
+<p style="position:absolute;top:821px;left:681px;white-space:nowrap" class="ft115">”下的文</p>
+<p style="position:absolute;top:850px;left:147px;white-space:nowrap" class="ft115">件，修改相对应的参数。波特率根据实际使用设定，默认波特率</p>
+<p style="position:absolute;top:848px;left:587px;white-space:nowrap" class="ft116">baud</p>
+<p style="position:absolute;top:850px;left:626px;white-space:nowrap" class="ft115">的值为</p>
+<p style="position:absolute;top:848px;left:677px;white-space:nowrap" class="ft116">9600</p>
+<p style="position:absolute;top:850px;left:711px;white-space:nowrap" class="ft115">，如</p>
+<p style="position:absolute;top:879px;left:147px;white-space:nowrap" class="ft115">果用户通过上位机修改了波特率，需要对应修改成修改后的波特率。</p>
+<p style="position:absolute;top:914px;left:179px;white-space:nowrap" class="ft115">“</p>
+<p style="position:absolute;top:911px;left:194px;white-space:nowrap" class="ft116">cd&#160;~/ros_ws/src/wit_ros2_imu/launch</p>
+<p style="position:absolute;top:914px;left:498px;white-space:nowrap" class="ft115">”</p>
+<p style="position:absolute;top:949px;left:179px;white-space:nowrap" class="ft115">“</p>
+<p style="position:absolute;top:946px;left:194px;white-space:nowrap" class="ft116">vim&#160;rviz_and_imu.launch.py</p>
+<p style="position:absolute;top:949px;left:420px;white-space:nowrap" class="ft115">”</p>
+<p style="position:absolute;top:984px;left:179px;white-space:nowrap" class="ft115">进入脚本目录</p>
+<p style="position:absolute;top:981px;left:277px;white-space:nowrap" class="ft116">src/launch</p>
+<p style="position:absolute;top:984px;left:364px;white-space:nowrap" class="ft115">，打开</p>
+<p style="position:absolute;top:981px;left:415px;white-space:nowrap" class="ft116">rviz_and_imu.launch.py</p>
+<p style="position:absolute;top:984px;left:609px;white-space:nowrap" class="ft115">文件中的配置参数</p>
+<p style="position:absolute;top:1019px;left:179px;white-space:nowrap" class="ft115">注意：</p>
+<p style="position:absolute;top:1053px;left:179px;white-space:nowrap" class="ft117"><b>1.</b></p>
+<p style="position:absolute;top:1054px;left:198px;white-space:nowrap" class="ft115">修改程序之后要重新编译否则可能不生效：</p>
+<p style="position:absolute;top:1053px;left:498px;white-space:nowrap" class="ft117"><b>sudo&#160;colcon&#160;build</b></p>
+<p style="position:absolute;top:1088px;left:179px;white-space:nowrap" class="ft117"><b>2.</b></p>
+<p style="position:absolute;top:1089px;left:198px;white-space:nowrap" class="ft115">更改目录权限：</p>
+<p style="position:absolute;top:1088px;left:309px;white-space:nowrap" class="ft117"><b>sudo&#160;chmod&#160;-R&#160;755&#160;/path/ros_ws/src</b></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft121{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft122{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft123{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft124{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft125{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft126{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用012.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft120">12</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft121"><b>2.3</b></p>
+<p style="position:absolute;top:125px;left:175px;white-space:nowrap" class="ft122">运行测试</p>
+<p style="position:absolute;top:169px;left:167px;white-space:nowrap" class="ft123">测试之前需要相安装库：</p>
+<p style="position:absolute;top:167px;left:340px;white-space:nowrap" class="ft124">sudo&#160;pip&#160;install&#160;pyserial</p>
+<p style="position:absolute;top:204px;left:167px;white-space:nowrap" class="ft123">终端输入，</p>
+<p style="position:absolute;top:202px;left:245px;white-space:nowrap" class="ft124">ros2&#160;launch&#160;wit_ros2_imu&#160;rviz_and_imu.launch.py</p>
+<p style="position:absolute;top:333px;left:167px;white-space:nowrap" class="ft123">使用</p>
+<p style="position:absolute;top:331px;left:202px;white-space:nowrap" class="ft124">ros2&#160;topic&#160;echo</p>
+<p style="position:absolute;top:333px;left:340px;white-space:nowrap" class="ft123">工具可以看发布的数据的具体内容，终端输入，</p>
+<p style="position:absolute;top:376px;left:179px;white-space:nowrap" class="ft124">“ros2&#160;topic&#160;echo&#160;/imu/data_raw”</p>
+<p style="position:absolute;top:483px;left:167px;white-space:nowrap" class="ft123">显示内容下图所示：</p>
+<p style="position:absolute;top:933px;left:135px;white-space:nowrap" class="ft125"><b>3.</b></p>
+<p style="position:absolute;top:935px;left:167px;white-space:nowrap" class="ft126">融合</p>
+<p style="position:absolute;top:933px;left:217px;white-space:nowrap" class="ft125"><b>IMU</b></p>
+<p style="position:absolute;top:935px;left:260px;white-space:nowrap" class="ft126">和</p>
+<p style="position:absolute;top:933px;left:288px;white-space:nowrap" class="ft125"><b>GPS</b></p>
+<p style="position:absolute;top:935px;left:331px;white-space:nowrap" class="ft126">数据</p>
+<p style="position:absolute;top:996px;left:135px;white-space:nowrap" class="ft121"><b>3.1</b></p>
+<p style="position:absolute;top:998px;left:175px;white-space:nowrap" class="ft122">模块连接</p>
+<p style="position:absolute;top:1043px;left:167px;white-space:nowrap" class="ft123">这个的端口区分是采用</p>
+<p style="position:absolute;top:1040px;left:328px;white-space:nowrap" class="ft124">jetson&#160;nano</p>
+<p style="position:absolute;top:1043px;left:427px;white-space:nowrap" class="ft123">主控举例，使用电脑虚拟机或树莓派主控，可查</p>
+<p style="position:absolute;top:1078px;left:135px;white-space:nowrap" class="ft123">询修改对应的备标识号。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft131{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft132{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft133{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft134{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft135{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用013.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft130">13</p>
+<p style="position:absolute;top:544px;left:135px;white-space:nowrap" class="ft131"><b>3.2</b></p>
+<p style="position:absolute;top:547px;left:175px;white-space:nowrap" class="ft132">端口区分</p>
+<p style="position:absolute;top:600px;left:167px;white-space:nowrap" class="ft133">1</p>
+<p style="position:absolute;top:602px;left:175px;white-space:nowrap" class="ft134">）导入</p>
+<p style="position:absolute;top:600px;left:226px;white-space:nowrap" class="ft133">gps_ws</p>
+<p style="position:absolute;top:602px;left:282px;white-space:nowrap" class="ft134">和</p>
+<p style="position:absolute;top:600px;left:302px;white-space:nowrap" class="ft133">imu_ws</p>
+<p style="position:absolute;top:602px;left:358px;white-space:nowrap" class="ft134">软件包到</p>
+<p style="position:absolute;top:600px;left:425px;white-space:nowrap" class="ft133">jetson&#160;nano</p>
+<p style="position:absolute;top:602px;left:524px;white-space:nowrap" class="ft134">的桌面。</p>
+<p style="position:absolute;top:646px;left:167px;white-space:nowrap" class="ft133">2</p>
+<p style="position:absolute;top:649px;left:175px;white-space:nowrap" class="ft134">）终端输入</p>
+<p style="position:absolute;top:646px;left:263px;white-space:nowrap" class="ft133">lsusb</p>
+<p style="position:absolute;top:649px;left:314px;white-space:nowrap" class="ft134">查找</p>
+<p style="position:absolute;top:646px;left:350px;white-space:nowrap" class="ft133">GPS</p>
+<p style="position:absolute;top:649px;left:380px;white-space:nowrap" class="ft134">和</p>
+<p style="position:absolute;top:646px;left:400px;white-space:nowrap" class="ft133">IMU</p>
+<p style="position:absolute;top:649px;left:430px;white-space:nowrap" class="ft134">模块连接的设备</p>
+<p style="position:absolute;top:646px;left:545px;white-space:nowrap" class="ft133">ID</p>
+<p style="position:absolute;top:649px;left:567px;white-space:nowrap" class="ft134">号，如下图所示，我们可以</p>
+<p style="position:absolute;top:684px;left:135px;white-space:nowrap" class="ft134">看到两者的</p>
+<p style="position:absolute;top:682px;left:218px;white-space:nowrap" class="ft133">ID</p>
+<p style="position:absolute;top:684px;left:239px;white-space:nowrap" class="ft134">号是一样的。</p>
+<p style="position:absolute;top:880px;left:167px;white-space:nowrap" class="ft133">3</p>
+<p style="position:absolute;top:883px;left:175px;white-space:nowrap" class="ft134">）记下来进行进一步的区分，使用设备在</p>
+<p style="position:absolute;top:880px;left:454px;white-space:nowrap" class="ft133">USB</p>
+<p style="position:absolute;top:883px;left:484px;white-space:nowrap" class="ft134">总线上的地址进行区分，先是只插入</p>
+<p style="position:absolute;top:881px;left:732px;white-space:nowrap" class="ft135"><b>imu</b></p>
+<p style="position:absolute;top:918px;left:135px;white-space:nowrap" class="ft134">模块，输入指令</p>
+<p style="position:absolute;top:916px;left:253px;white-space:nowrap" class="ft133">udevadm&#160;info&#160;-a&#160;-n&#160;/dev/ttyUSB*</p>
+<p style="position:absolute;top:918px;left:537px;white-space:nowrap" class="ft134">，如下图显示我们可以看到</p>
+<p style="position:absolute;top:916px;left:730px;white-space:nowrap" class="ft133">imu</p>
+<p style="position:absolute;top:953px;left:135px;white-space:nowrap" class="ft134">的在此机器人的唯一设备标识号为“</p>
+<p style="position:absolute;top:951px;left:387px;white-space:nowrap" class="ft135"><b>1-2.3:1.0</b></p>
+<p style="position:absolute;top:953px;left:465px;white-space:nowrap" class="ft134">”&#160;。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft141{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft142{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft143{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用014.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft140">14</p>
+<p style="position:absolute;top:388px;left:167px;white-space:nowrap" class="ft141">4</p>
+<p style="position:absolute;top:391px;left:175px;white-space:nowrap" class="ft142">）接着拔除</p>
+<p style="position:absolute;top:388px;left:258px;white-space:nowrap" class="ft141">imu</p>
+<p style="position:absolute;top:391px;left:288px;white-space:nowrap" class="ft142">模块的</p>
+<p style="position:absolute;top:388px;left:339px;white-space:nowrap" class="ft141">USB</p>
+<p style="position:absolute;top:391px;left:369px;white-space:nowrap" class="ft142">线，插入</p>
+<p style="position:absolute;top:388px;left:436px;white-space:nowrap" class="ft141">gps</p>
+<p style="position:absolute;top:391px;left:466px;white-space:nowrap" class="ft142">模块的</p>
+<p style="position:absolute;top:388px;left:517px;white-space:nowrap" class="ft141">USB</p>
+<p style="position:absolute;top:391px;left:543px;white-space:nowrap" class="ft142">，输入指令：</p>
+<p style="position:absolute;top:435px;left:135px;white-space:nowrap" class="ft141">udevadm&#160;info&#160;-a&#160;-n&#160;/dev/ttyUSB*</p>
+<p style="position:absolute;top:438px;left:419px;white-space:nowrap" class="ft142">可以看到此时设备的唯一标识为“</p>
+<p style="position:absolute;top:436px;left:655px;white-space:nowrap" class="ft143"><b>1-2.4:1.0</b></p>
+<p style="position:absolute;top:438px;left:733px;white-space:nowrap" class="ft142">”</p>
+<p style="position:absolute;top:833px;left:167px;white-space:nowrap" class="ft141">5</p>
+<p style="position:absolute;top:835px;left:175px;white-space:nowrap" class="ft142">）在</p>
+<p style="position:absolute;top:833px;left:216px;white-space:nowrap" class="ft141">imu_usb.rules</p>
+<p style="position:absolute;top:835px;left:338px;white-space:nowrap" class="ft142">文&#160;件&#160;添&#160;加&#160;设&#160;备&#160;标&#160;识&#160;左&#160;区&#160;分&#160;，&#160;输&#160;入&#160;指&#160;令</p>
+<p style="position:absolute;top:833px;left:683px;white-space:nowrap" class="ft141">sudo&#160;vim</p>
+<p style="position:absolute;top:868px;left:135px;white-space:nowrap" class="ft141">/etc/udev/rules.d/imu_usb.rules</p>
+<p style="position:absolute;top:870px;left:411px;white-space:nowrap" class="ft142">在文档里输入下面的内容：</p>
+<p style="position:absolute;top:915px;left:135px;white-space:nowrap" class="ft141">SUBSYSTEM==&#34;tty&#34;,&#160;KERNELS==&#34;1-2.3:1.0&#34;,&#160;MODE:=&#34;0666&#34;,</p>
+<p style="position:absolute;top:962px;left:135px;white-space:nowrap" class="ft141">SYMLINK+=&#34;imu_usb&#34;</p>
+<p style="position:absolute;top:1068px;left:167px;white-space:nowrap" class="ft141">6</p>
+<p style="position:absolute;top:1071px;left:175px;white-space:nowrap" class="ft142">）在</p>
+<p style="position:absolute;top:1068px;left:218px;white-space:nowrap" class="ft141">gps.rules</p>
+<p style="position:absolute;top:1071px;left:307px;white-space:nowrap" class="ft142">文&#160;件&#160;添&#160;加&#160;设&#160;备&#160;标&#160;识&#160;左&#160;区&#160;分&#160;，&#160;输&#160;入&#160;指&#160;令</p>
+<p style="position:absolute;top:1068px;left:681px;white-space:nowrap" class="ft141">sudo&#160;vim</p>
+<p style="position:absolute;top:1103px;left:135px;white-space:nowrap" class="ft141">/etc/udev/rules.d/gps.rules</p>
+<p style="position:absolute;top:1106px;left:377px;white-space:nowrap" class="ft142">在文档里输入下面的内容：</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft151{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft152{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft153{font-size:14px;font-family:YMVEVT+MicrosoftYaHei;color:#000000;}
+	.ft154{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft155{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用015.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft150">15</p>
+<p style="position:absolute;top:120px;left:135px;white-space:nowrap" class="ft151">SUBSYSTEM==&#34;tty&#34;,&#160;KERNELS==&#34;1-2.4:1.0&#34;,&#160;MODE:=&#34;0666&#34;,</p>
+<p style="position:absolute;top:166px;left:135px;white-space:nowrap" class="ft151">SYMLINK+=&#34;gps_serial&#34;</p>
+<p style="position:absolute;top:296px;left:167px;white-space:nowrap" class="ft151">7</p>
+<p style="position:absolute;top:299px;left:175px;white-space:nowrap" class="ft152">）修改完之后，输入下面两句指令，重新加载</p>
+<p style="position:absolute;top:296px;left:494px;white-space:nowrap" class="ft151">udev</p>
+<p style="position:absolute;top:299px;left:533px;white-space:nowrap" class="ft152">规则，并触发设备重新识别：</p>
+<p style="position:absolute;top:343px;left:135px;white-space:nowrap" class="ft151">sudo&#160;udevadm&#160;control&#160;--reload-rules</p>
+<p style="position:absolute;top:389px;left:135px;white-space:nowrap" class="ft151">sudo&#160;udevadm&#160;trigger</p>
+<p style="position:absolute;top:495px;left:135px;white-space:nowrap" class="ft151">imu</p>
+<p style="position:absolute;top:497px;left:165px;white-space:nowrap" class="ft152">和</p>
+<p style="position:absolute;top:495px;left:185px;white-space:nowrap" class="ft151">gps</p>
+<p style="position:absolute;top:497px;left:215px;white-space:nowrap" class="ft152">模块都插上验证：</p>
+<p style="position:absolute;top:650px;left:135px;white-space:nowrap" class="ft152">拔掉</p>
+<p style="position:absolute;top:647px;left:170px;white-space:nowrap" class="ft151">imu</p>
+<p style="position:absolute;top:650px;left:200px;white-space:nowrap" class="ft152">模块验证：</p>
+<p style="position:absolute;top:806px;left:135px;white-space:nowrap" class="ft153">验证无误后进行下面的内容。</p>
+<p style="position:absolute;top:861px;left:135px;white-space:nowrap" class="ft154"><b>3.3</b></p>
+<p style="position:absolute;top:863px;left:175px;white-space:nowrap" class="ft155">编译工作空间</p>
+<p style="position:absolute;top:907px;left:167px;white-space:nowrap" class="ft151">1)</p>
+<p style="position:absolute;top:910px;left:192px;white-space:nowrap" class="ft152">将</p>
+<p style="position:absolute;top:907px;left:211px;white-space:nowrap" class="ft151">gps_ws</p>
+<p style="position:absolute;top:910px;left:267px;white-space:nowrap" class="ft152">和</p>
+<p style="position:absolute;top:907px;left:287px;white-space:nowrap" class="ft151">imu_ws</p>
+<p style="position:absolute;top:910px;left:343px;white-space:nowrap" class="ft152">功能包放在主目录下，分别进入到</p>
+<p style="position:absolute;top:907px;left:582px;white-space:nowrap" class="ft151">gps_ws</p>
+<p style="position:absolute;top:910px;left:638px;white-space:nowrap" class="ft152">和</p>
+<p style="position:absolute;top:907px;left:658px;white-space:nowrap" class="ft151">imu_ws</p>
+<p style="position:absolute;top:910px;left:710px;white-space:nowrap" class="ft152">，输</p>
+<p style="position:absolute;top:939px;left:135px;white-space:nowrap" class="ft152">入指令进行编译：</p>
+<p style="position:absolute;top:980px;left:167px;white-space:nowrap" class="ft151">catkin_make</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft161{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft162{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft163{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft164{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft165{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用016.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft160">16</p>
+<p style="position:absolute;top:116px;left:167px;white-space:nowrap" class="ft161">2)</p>
+<p style="position:absolute;top:118px;left:192px;white-space:nowrap" class="ft162">将下面内容添加到</p>
+<p style="position:absolute;top:116px;left:325px;white-space:nowrap" class="ft161">~/.zshrc</p>
+<p style="position:absolute;top:118px;left:403px;white-space:nowrap" class="ft162">文件。</p>
+<p style="position:absolute;top:151px;left:135px;white-space:nowrap" class="ft161">source&#160;~/imu_ws/devel/setup.sh</p>
+<p style="position:absolute;top:186px;left:135px;white-space:nowrap" class="ft161">source&#160;~/gps_ws/devel/setup.sh</p>
+<p style="position:absolute;top:316px;left:167px;white-space:nowrap" class="ft161">3)</p>
+<p style="position:absolute;top:318px;left:192px;white-space:nowrap" class="ft162">最后输入指令刷新环境变量：</p>
+<p style="position:absolute;top:351px;left:167px;white-space:nowrap" class="ft161">source&#160;~/.zshrc</p>
+<p style="position:absolute;top:387px;left:135px;white-space:nowrap" class="ft163"><b>3.4</b></p>
+<p style="position:absolute;top:389px;left:175px;white-space:nowrap" class="ft164">融合</p>
+<p style="position:absolute;top:387px;left:222px;white-space:nowrap" class="ft163"><b>IMU</b></p>
+<p style="position:absolute;top:389px;left:262px;white-space:nowrap" class="ft164">和</p>
+<p style="position:absolute;top:387px;left:288px;white-space:nowrap" class="ft163"><b>GPS</b></p>
+<p style="position:absolute;top:389px;left:328px;white-space:nowrap" class="ft164">数据</p>
+<p style="position:absolute;top:436px;left:167px;white-space:nowrap" class="ft162">该功能融合</p>
+<p style="position:absolute;top:434px;left:249px;white-space:nowrap" class="ft161">IMU</p>
+<p style="position:absolute;top:436px;left:279px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:434px;left:299px;white-space:nowrap" class="ft161">GPS</p>
+<p style="position:absolute;top:436px;left:329px;white-space:nowrap" class="ft162">数据，并且在</p>
+<p style="position:absolute;top:434px;left:427px;white-space:nowrap" class="ft161">rviz</p>
+<p style="position:absolute;top:436px;left:466px;white-space:nowrap" class="ft162">中展示融合后的数据。&#160;注意以下几点：</p>
+<p style="position:absolute;top:468px;left:167px;white-space:nowrap" class="ft161">1)</p>
+<p style="position:absolute;top:471px;left:192px;white-space:nowrap" class="ft162">该功能需要将购买的</p>
+<p style="position:absolute;top:468px;left:337px;white-space:nowrap" class="ft161">IMU</p>
+<p style="position:absolute;top:471px;left:367px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:468px;left:387px;white-space:nowrap" class="ft161">GPS</p>
+<p style="position:absolute;top:471px;left:417px;white-space:nowrap" class="ft162">模块通过两条数据线接在主控上。</p>
+<p style="position:absolute;top:503px;left:167px;white-space:nowrap" class="ft161">2)</p>
+<p style="position:absolute;top:506px;left:192px;white-space:nowrap" class="ft162">需要有两个工作空间，</p>
+<p style="position:absolute;top:503px;left:348px;white-space:nowrap" class="ft161">gps_ws</p>
+<p style="position:absolute;top:506px;left:404px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:503px;left:424px;white-space:nowrap" class="ft161">imu_ws</p>
+<p style="position:absolute;top:506px;left:476px;white-space:nowrap" class="ft162">，它们的源码在当前目录下，对应的是</p>
+<p style="position:absolute;top:532px;left:135px;white-space:nowrap" class="ft161">gps_src</p>
+<p style="position:absolute;top:535px;left:199px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:532px;left:223px;white-space:nowrap" class="ft161">imu_src</p>
+<p style="position:absolute;top:535px;left:284px;white-space:nowrap" class="ft162">。</p>
+<p style="position:absolute;top:532px;left:300px;white-space:nowrap" class="ft161">gps_src</p>
+<p style="position:absolute;top:535px;left:364px;white-space:nowrap" class="ft162">解压后，把</p>
+<p style="position:absolute;top:532px;left:447px;white-space:nowrap" class="ft161">gps_src</p>
+<p style="position:absolute;top:535px;left:511px;white-space:nowrap" class="ft162">里边的</p>
+<p style="position:absolute;top:532px;left:563px;white-space:nowrap" class="ft161">src</p>
+<p style="position:absolute;top:535px;left:592px;white-space:nowrap" class="ft162">里边的内容复制到</p>
+<p style="position:absolute;top:561px;left:135px;white-space:nowrap" class="ft161">gps_ws</p>
+<p style="position:absolute;top:564px;left:191px;white-space:nowrap" class="ft162">的</p>
+<p style="position:absolute;top:561px;left:211px;white-space:nowrap" class="ft161">src</p>
+<p style="position:absolute;top:564px;left:240px;white-space:nowrap" class="ft162">中，然后使用</p>
+<p style="position:absolute;top:561px;left:340px;white-space:nowrap" class="ft161">catkin_make</p>
+<p style="position:absolute;top:564px;left:440px;white-space:nowrap" class="ft162">编译它；</p>
+<p style="position:absolute;top:561px;left:500px;white-space:nowrap" class="ft161">imu_src</p>
+<p style="position:absolute;top:564px;left:565px;white-space:nowrap" class="ft162">解压后，把</p>
+<p style="position:absolute;top:561px;left:645px;white-space:nowrap" class="ft161">imu_src</p>
+<p style="position:absolute;top:564px;left:710px;white-space:nowrap" class="ft162">里边</p>
+<p style="position:absolute;top:593px;left:135px;white-space:nowrap" class="ft162">的</p>
+<p style="position:absolute;top:590px;left:155px;white-space:nowrap" class="ft161">src</p>
+<p style="position:absolute;top:593px;left:185px;white-space:nowrap" class="ft162">里边的内容复制到</p>
+<p style="position:absolute;top:590px;left:314px;white-space:nowrap" class="ft161">imu_ws</p>
+<p style="position:absolute;top:593px;left:370px;white-space:nowrap" class="ft162">的</p>
+<p style="position:absolute;top:590px;left:390px;white-space:nowrap" class="ft161">src</p>
+<p style="position:absolute;top:593px;left:420px;white-space:nowrap" class="ft162">中，然&#160;后使用</p>
+<p style="position:absolute;top:590px;left:526px;white-space:nowrap" class="ft161">catkin_make</p>
+<p style="position:absolute;top:593px;left:626px;white-space:nowrap" class="ft162">编译它。这一步</p>
+<p style="position:absolute;top:622px;left:135px;white-space:nowrap" class="ft162">骤可以参看虚拟机里边的</p>
+<p style="position:absolute;top:619px;left:312px;white-space:nowrap" class="ft161">gps_ws</p>
+<p style="position:absolute;top:622px;left:368px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:619px;left:388px;white-space:nowrap" class="ft161">imu_ws</p>
+<p style="position:absolute;top:622px;left:440px;white-space:nowrap" class="ft162">。</p>
+<p style="position:absolute;top:655px;left:167px;white-space:nowrap" class="ft165"><b>3)</b></p>
+<p style="position:absolute;top:654px;left:192px;white-space:nowrap" class="ft161">Imu</p>
+<p style="position:absolute;top:657px;left:221px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:654px;left:241px;white-space:nowrap" class="ft161">gps</p>
+<p style="position:absolute;top:657px;left:271px;white-space:nowrap" class="ft162">模块的波特率都是</p>
+<p style="position:absolute;top:655px;left:401px;white-space:nowrap" class="ft165"><b>9600</b></p>
+<p style="position:absolute;top:691px;left:179px;white-space:nowrap" class="ft162">数据融合需要有两个话题的数据，</p>
+<p style="position:absolute;top:689px;left:415px;white-space:nowrap" class="ft161">/imu/data</p>
+<p style="position:absolute;top:691px;left:497px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:689px;left:512px;white-space:nowrap" class="ft161">/fix</p>
+<p style="position:absolute;top:691px;left:547px;white-space:nowrap" class="ft162">。这两个数据我们可以通过</p>
+<p style="position:absolute;top:720px;left:147px;white-space:nowrap" class="ft162">启动</p>
+<p style="position:absolute;top:718px;left:183px;white-space:nowrap" class="ft161">IMU</p>
+<p style="position:absolute;top:720px;left:213px;white-space:nowrap" class="ft162">和</p>
+<p style="position:absolute;top:718px;left:232px;white-space:nowrap" class="ft161">GPS</p>
+<p style="position:absolute;top:720px;left:262px;white-space:nowrap" class="ft162">模块来获&#160;取。终端输入指令：</p>
+<p style="position:absolute;top:753px;left:179px;white-space:nowrap" class="ft161">roslaunch&#160;imu_gps_localization&#160;imu_gps_test.launch</p>
+<p style="position:absolute;top:788px;left:167px;white-space:nowrap" class="ft161">4)</p>
+<p style="position:absolute;top:790px;left:192px;white-space:nowrap" class="ft162">程序启动后，会提示出不够</p>
+<p style="position:absolute;top:788px;left:383px;white-space:nowrap" class="ft161">IMU</p>
+<p style="position:absolute;top:790px;left:413px;white-space:nowrap" class="ft162">数据，这时候只需要耐心等待一下，过一会儿就</p>
+<p style="position:absolute;top:819px;left:135px;white-space:nowrap" class="ft162">会看到这个警告&#160;消失了，随后就会打印出数据融合后的路径。下图为实现的效果图片：</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft171{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft172{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用017.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft170">17</p>
+<p style="position:absolute;top:497px;left:167px;white-space:nowrap" class="ft171">5)&#160;launch</p>
+<p style="position:absolute;top:499px;left:248px;white-space:nowrap" class="ft172">的具体内容如下图所示：</p>
+<p style="position:absolute;top:844px;left:179px;white-space:nowrap" class="ft172">可以看出，启动了</p>
+<p style="position:absolute;top:842px;left:305px;white-space:nowrap" class="ft171">nmea_serial_driver.launch</p>
+<p style="position:absolute;top:844px;left:522px;white-space:nowrap" class="ft172">，这是用来获取</p>
+<p style="position:absolute;top:842px;left:632px;white-space:nowrap" class="ft171">GPS</p>
+<p style="position:absolute;top:844px;left:662px;white-space:nowrap" class="ft172">数据并且发</p>
+<p style="position:absolute;top:873px;left:147px;white-space:nowrap" class="ft172">布</p>
+<p style="position:absolute;top:871px;left:163px;white-space:nowrap" class="ft171">/fix</p>
+<p style="position:absolute;top:873px;left:202px;white-space:nowrap" class="ft172">数据；启动了</p>
+<p style="position:absolute;top:871px;left:304px;white-space:nowrap" class="ft171">rviz_and_imu.launch</p>
+<p style="position:absolute;top:873px;left:468px;white-space:nowrap" class="ft172">，这是用来获取</p>
+<p style="position:absolute;top:871px;left:583px;white-space:nowrap" class="ft171">IMU</p>
+<p style="position:absolute;top:873px;left:613px;white-space:nowrap" class="ft172">数据，并且发布</p>
+<p style="position:absolute;top:900px;left:147px;white-space:nowrap" class="ft171">/imu/data</p>
+<p style="position:absolute;top:902px;left:225px;white-space:nowrap" class="ft172">；最后，启动了</p>
+<p style="position:absolute;top:900px;left:343px;white-space:nowrap" class="ft171">imu_gps_localization_node</p>
+<p style="position:absolute;top:902px;left:560px;white-space:nowrap" class="ft172">，这个节点订阅了</p>
+<p style="position:absolute;top:900px;left:686px;white-space:nowrap" class="ft171">/fix</p>
+<p style="position:absolute;top:902px;left:724px;white-space:nowrap" class="ft172">和</p>
+<p style="position:absolute;top:929px;left:147px;white-space:nowrap" class="ft171">/imu/data</p>
+<p style="position:absolute;top:931px;left:229px;white-space:nowrap" class="ft172">话题，得到数据后，就开始进行融合，最后发布出</p>
+<p style="position:absolute;top:929px;left:575px;white-space:nowrap" class="ft171">/fused_path</p>
+<p style="position:absolute;top:931px;left:675px;white-space:nowrap" class="ft172">的数据，</p>
+<p style="position:absolute;top:960px;left:147px;white-space:nowrap" class="ft172">可以通过</p>
+<p style="position:absolute;top:957px;left:214px;white-space:nowrap" class="ft171">rostopic&#160;list</p>
+<p style="position:absolute;top:960px;left:328px;white-space:nowrap" class="ft172">查看话题列表，也可以通过</p>
+<p style="position:absolute;top:957px;left:521px;white-space:nowrap" class="ft171">rosrun&#160;rqt_graph&#160;rqt_graph</p>
+<p style="position:absolute;top:989px;left:147px;white-space:nowrap" class="ft172">来查看节点之间的关系。话题图片如下图所示：</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-ROS应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft180{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-ROS应用018.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft180">18</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft11{font-size:63px;font-family:XEKKFX+SimHei;color:#8d6c01;}
+	.ft12{font-size:39px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft13{font-size:39px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft14{font-size:32px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft15{font-size:15px;font-family:XEKKFX+SimHei;color:#ff6600;}
+	.ft16{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft17{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用001.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft10">1</p>
+<p style="position:absolute;top:127px;left:320px;white-space:nowrap" class="ft11">幻尔科技</p>
+<p style="position:absolute;top:217px;left:242px;white-space:nowrap" class="ft12"><b>IMU</b></p>
+<p style="position:absolute;top:221px;left:316px;white-space:nowrap" class="ft13">应用教程</p>
+<p style="position:absolute;top:217px;left:473px;white-space:nowrap" class="ft12"><b>-</b></p>
+<p style="position:absolute;top:221px;left:494px;white-space:nowrap" class="ft13">基础应用</p>
+<p style="position:absolute;top:278px;left:410px;white-space:nowrap" class="ft14"><b>V1.0</b></p>
+<p style="position:absolute;top:708px;left:176px;white-space:nowrap" class="ft15">版本号</p>
+<p style="position:absolute;top:708px;left:356px;white-space:nowrap" class="ft16">修改日期</p>
+<p style="position:absolute;top:708px;left:455px;white-space:nowrap" class="ft16">修改摘要</p>
+<p style="position:absolute;top:776px;left:176px;white-space:nowrap" class="ft17">V1.0</p>
+<p style="position:absolute;top:776px;left:356px;white-space:nowrap" class="ft17">20231124</p>
+<p style="position:absolute;top:779px;left:455px;white-space:nowrap" class="ft16">初次发布</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft21{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft22{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用002.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft20">2</p>
+<p style="position:absolute;top:162px;left:431px;white-space:nowrap" class="ft21">目录</p>
+<p style="position:absolute;top:189px;left:171px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-3.html">1.&#160;STM32-</a></p>
+<p style="position:absolute;top:192px;left:249px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-3.html">串口应用例程</a></p>
+<p style="position:absolute;top:189px;left:348px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-3.html">..............................................&#160;3</a></p>
+<p style="position:absolute;top:225px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-3.html">1.1</a></p>
+<p style="position:absolute;top:227px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-3.html">准备工作</a></p>
+<p style="position:absolute;top:225px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-3.html">....................................................&#160;3</a></p>
+<p style="position:absolute;top:260px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-3.html">1.2</a></p>
+<p style="position:absolute;top:262px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-3.html">案例开发</a></p>
+<p style="position:absolute;top:260px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-3.html">....................................................&#160;3</a></p>
+<p style="position:absolute;top:295px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-4.html">1.3</a></p>
+<p style="position:absolute;top:297px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-4.html">实验效果</a></p>
+<p style="position:absolute;top:295px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-4.html">....................................................&#160;4</a></p>
+<p style="position:absolute;top:330px;left:167px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-5.html">2.&#160;STM32-IIC</a></p>
+<p style="position:absolute;top:332px;left:274px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-5.html">应用例程</a></p>
+<p style="position:absolute;top:330px;left:342px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-5.html">...............................................&#160;5</a></p>
+<p style="position:absolute;top:365px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-8.html">1.1</a></p>
+<p style="position:absolute;top:367px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-8.html">准备工作</a></p>
+<p style="position:absolute;top:365px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-8.html">....................................................&#160;8</a></p>
+<p style="position:absolute;top:400px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-9.html">1.2</a></p>
+<p style="position:absolute;top:402px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-9.html">案例开发</a></p>
+<p style="position:absolute;top:400px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-9.html">....................................................&#160;9</a></p>
+<p style="position:absolute;top:435px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-10.html">1.3</a></p>
+<p style="position:absolute;top:438px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-10.html">实验效果</a></p>
+<p style="position:absolute;top:435px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-10.html">...................................................&#160;10</a></p>
+<p style="position:absolute;top:470px;left:167px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-11.html">3.</a></p>
+<p style="position:absolute;top:473px;left:192px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-11.html">树莓派</a></p>
+<p style="position:absolute;top:470px;left:239px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-11.html">-USB</a></p>
+<p style="position:absolute;top:473px;left:278px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-11.html">应用例程</a></p>
+<p style="position:absolute;top:470px;left:345px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-11.html">.............................................&#160;11</a></p>
+<p style="position:absolute;top:505px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-11.html">3.1</a></p>
+<p style="position:absolute;top:508px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-11.html">准备工作</a></p>
+<p style="position:absolute;top:505px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-11.html">...................................................&#160;11</a></p>
+<p style="position:absolute;top:540px;left:230px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-11.html">3.1.1</a></p>
+<p style="position:absolute;top:543px;left:277px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-11.html">硬件连接</a></p>
+<p style="position:absolute;top:540px;left:344px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-11.html">.............................................&#160;11</a></p>
+<p style="position:absolute;top:576px;left:230px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-12.html">3.1.2</a></p>
+<p style="position:absolute;top:578px;left:277px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-12.html">安装串口驱动库</a></p>
+<p style="position:absolute;top:576px;left:391px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-12.html">........................................&#160;12</a></p>
+<p style="position:absolute;top:611px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-12.html">3.2</a></p>
+<p style="position:absolute;top:613px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-12.html">案例开发</a></p>
+<p style="position:absolute;top:611px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-12.html">...................................................&#160;12</a></p>
+<p style="position:absolute;top:646px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-13.html">3.3</a></p>
+<p style="position:absolute;top:648px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-13.html">实验效果</a></p>
+<p style="position:absolute;top:646px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-13.html">...................................................&#160;13</a></p>
+<p style="position:absolute;top:681px;left:167px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">4.&#160;Jetson&#160;Nano-USB</a></p>
+<p style="position:absolute;top:683px;left:326px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-14.html">应用例程</a></p>
+<p style="position:absolute;top:681px;left:393px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">........................................&#160;14</a></p>
+<p style="position:absolute;top:716px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">4.1</a></p>
+<p style="position:absolute;top:718px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-14.html">准备工作</a></p>
+<p style="position:absolute;top:716px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">...................................................&#160;14</a></p>
+<p style="position:absolute;top:751px;left:230px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">4.1.1</a></p>
+<p style="position:absolute;top:753px;left:277px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-14.html">准备硬件连接</a></p>
+<p style="position:absolute;top:751px;left:375px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">..........................................&#160;14</a></p>
+<p style="position:absolute;top:786px;left:230px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">4.1.2</a></p>
+<p style="position:absolute;top:789px;left:277px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-14.html">安装串口驱动库</a></p>
+<p style="position:absolute;top:786px;left:391px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">........................................&#160;14</a></p>
+<p style="position:absolute;top:821px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">4.2</a></p>
+<p style="position:absolute;top:824px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-14.html">案例开发</a></p>
+<p style="position:absolute;top:821px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-14.html">...................................................&#160;14</a></p>
+<p style="position:absolute;top:856px;left:198px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-15.html">4.3</a></p>
+<p style="position:absolute;top:859px;left:228px;white-space:nowrap" class="ft21"><a href="IMU应用教程-基础应用-15.html">实验效果</a></p>
+<p style="position:absolute;top:856px;left:295px;white-space:nowrap" class="ft22"><a href="IMU应用教程-基础应用-15.html">...................................................&#160;15</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft31{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft32{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft33{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft34{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft35{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft36{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用003.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft30">3</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft31"><b>1.&#160;STM32F103-</b></p>
+<p style="position:absolute;top:124px;left:290px;white-space:nowrap" class="ft32">串口应用例程</p>
+<p style="position:absolute;top:184px;left:167px;white-space:nowrap" class="ft33">本次例程使用的是</p>
+<p style="position:absolute;top:182px;left:296px;white-space:nowrap" class="ft34">STM32F103C8T6</p>
+<p style="position:absolute;top:184px;left:412px;white-space:nowrap" class="ft33">芯片开发板，为了演示方便以下内容简称为</p>
+<p style="position:absolute;top:182px;left:707px;white-space:nowrap" class="ft34">STM32</p>
+<p style="position:absolute;top:184px;left:750px;white-space:nowrap" class="ft33">。</p>
+<p style="position:absolute;top:219px;left:167px;white-space:nowrap" class="ft33">需要准备的产品：</p>
+<p style="position:absolute;top:217px;left:293px;white-space:nowrap" class="ft34">Win10/Win11</p>
+<p style="position:absolute;top:219px;left:392px;white-space:nowrap" class="ft33">电脑、</p>
+<p style="position:absolute;top:217px;left:440px;white-space:nowrap" class="ft34">IMU</p>
+<p style="position:absolute;top:219px;left:470px;white-space:nowrap" class="ft33">模块（数据接口已引线）、</p>
+<p style="position:absolute;top:217px;left:660px;white-space:nowrap" class="ft34">micro-USB</p>
+<p style="position:absolute;top:219px;left:742px;white-space:nowrap" class="ft33">数</p>
+<p style="position:absolute;top:254px;left:135px;white-space:nowrap" class="ft33">据线、</p>
+<p style="position:absolute;top:252px;left:182px;white-space:nowrap" class="ft34">CH340</p>
+<p style="position:absolute;top:254px;left:230px;white-space:nowrap" class="ft33">模块、杜邦线若干。</p>
+<p style="position:absolute;top:291px;left:135px;white-space:nowrap" class="ft35"><b>1.1</b></p>
+<p style="position:absolute;top:293px;left:175px;white-space:nowrap" class="ft36">准备工作</p>
+<p style="position:absolute;top:338px;left:167px;white-space:nowrap" class="ft33">将</p>
+<p style="position:absolute;top:335px;left:186px;white-space:nowrap" class="ft34">STM32</p>
+<p style="position:absolute;top:338px;left:233px;white-space:nowrap" class="ft33">串口</p>
+<p style="position:absolute;top:335px;left:269px;white-space:nowrap" class="ft34">1</p>
+<p style="position:absolute;top:338px;left:281px;white-space:nowrap" class="ft33">连接到</p>
+<p style="position:absolute;top:335px;left:333px;white-space:nowrap" class="ft34">CH340</p>
+<p style="position:absolute;top:338px;left:380px;white-space:nowrap" class="ft33">模块，</p>
+<p style="position:absolute;top:335px;left:424px;white-space:nowrap" class="ft34">CH340</p>
+<p style="position:absolute;top:338px;left:471px;white-space:nowrap" class="ft33">模块插到</p>
+<p style="position:absolute;top:335px;left:538px;white-space:nowrap" class="ft34">Win10</p>
+<p style="position:absolute;top:338px;left:585px;white-space:nowrap" class="ft33">电脑的</p>
+<p style="position:absolute;top:335px;left:637px;white-space:nowrap" class="ft34">USB</p>
+<p style="position:absolute;top:338px;left:667px;white-space:nowrap" class="ft33">口。将</p>
+<p style="position:absolute;top:335px;left:715px;white-space:nowrap" class="ft34">STM32</p>
+<p style="position:absolute;top:373px;left:135px;white-space:nowrap" class="ft33">串口</p>
+<p style="position:absolute;top:370px;left:170px;white-space:nowrap" class="ft34">2</p>
+<p style="position:absolute;top:373px;left:183px;white-space:nowrap" class="ft33">连接到</p>
+<p style="position:absolute;top:370px;left:234px;white-space:nowrap" class="ft34">IMU</p>
+<p style="position:absolute;top:373px;left:264px;white-space:nowrap" class="ft33">模块的串口接口。</p>
+<p style="position:absolute;top:408px;left:167px;white-space:nowrap" class="ft33">将</p>
+<p style="position:absolute;top:405px;left:186px;white-space:nowrap" class="ft34">micro-USB</p>
+<p style="position:absolute;top:408px;left:268px;white-space:nowrap" class="ft33">数据线连接到</p>
+<p style="position:absolute;top:405px;left:366px;white-space:nowrap" class="ft34">STM32</p>
+<p style="position:absolute;top:408px;left:414px;white-space:nowrap" class="ft33">和电脑的</p>
+<p style="position:absolute;top:405px;left:481px;white-space:nowrap" class="ft34">USB</p>
+<p style="position:absolute;top:408px;left:510px;white-space:nowrap" class="ft33">口，作为</p>
+<p style="position:absolute;top:405px;left:577px;white-space:nowrap" class="ft34">STM32</p>
+<p style="position:absolute;top:408px;left:625px;white-space:nowrap" class="ft33">供电。</p>
+<p style="position:absolute;top:443px;left:167px;white-space:nowrap" class="ft33">接线说明：</p>
+<p style="position:absolute;top:475px;left:167px;white-space:nowrap" class="ft34">STM32</p>
+<p style="position:absolute;top:475px;left:293px;white-space:nowrap" class="ft34">IMU</p>
+<p style="position:absolute;top:510px;left:167px;white-space:nowrap" class="ft34">VCC</p>
+<p style="position:absolute;top:510px;left:216px;white-space:nowrap" class="ft34">------&gt;&#160;VCC</p>
+<p style="position:absolute;top:545px;left:167px;white-space:nowrap" class="ft34">GND</p>
+<p style="position:absolute;top:545px;left:214px;white-space:nowrap" class="ft34">------&gt;&#160;GND</p>
+<p style="position:absolute;top:581px;left:167px;white-space:nowrap" class="ft34">PA10</p>
+<p style="position:absolute;top:581px;left:225px;white-space:nowrap" class="ft34">&lt;------&#160;TXD</p>
+<p style="position:absolute;top:1018px;left:135px;white-space:nowrap" class="ft35"><b>1.2</b></p>
+<p style="position:absolute;top:1020px;left:175px;white-space:nowrap" class="ft36">案例开发</p>
+<p style="position:absolute;top:1065px;left:167px;white-space:nowrap" class="ft33">具体代码请看资料中的源码。</p>
+<p style="position:absolute;top:1100px;left:167px;white-space:nowrap" class="ft33">本例程将串口打印的波特率设置为</p>
+<p style="position:absolute;top:1097px;left:405px;white-space:nowrap" class="ft34">115200&#160;bps</p>
+<p style="position:absolute;top:1100px;left:487px;white-space:nowrap" class="ft33">，将</p>
+<p style="position:absolute;top:1097px;left:512px;white-space:nowrap" class="ft34">IMU</p>
+<p style="position:absolute;top:1100px;left:540px;white-space:nowrap" class="ft33">模块连接的波特率设置为</p>
+<p style="position:absolute;top:1097px;left:716px;white-space:nowrap" class="ft34">9600</p>
+<p style="position:absolute;top:1100px;left:750px;white-space:nowrap" class="ft33">。</p>
+<p style="position:absolute;top:1135px;left:135px;white-space:nowrap" class="ft33">可以根据</p>
+<p style="position:absolute;top:1132px;left:202px;white-space:nowrap" class="ft34">IMU</p>
+<p style="position:absolute;top:1135px;left:232px;white-space:nowrap" class="ft33">模块的波特率修改</p>
+<p style="position:absolute;top:1132px;left:362px;white-space:nowrap" class="ft34">STM32</p>
+<p style="position:absolute;top:1135px;left:409px;white-space:nowrap" class="ft33">串口</p>
+<p style="position:absolute;top:1132px;left:444px;white-space:nowrap" class="ft34">2</p>
+<p style="position:absolute;top:1135px;left:457px;white-space:nowrap" class="ft33">的波特率。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft41{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft42{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft43{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft44{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用004.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft40">4</p>
+<p style="position:absolute;top:168px;left:167px;white-space:nowrap" class="ft41">读取并打印</p>
+<p style="position:absolute;top:166px;left:249px;white-space:nowrap" class="ft42">IMU</p>
+<p style="position:absolute;top:168px;left:279px;white-space:nowrap" class="ft41">模块的数据。</p>
+<p style="position:absolute;top:860px;left:135px;white-space:nowrap" class="ft43"><b>1.3</b></p>
+<p style="position:absolute;top:863px;left:175px;white-space:nowrap" class="ft44">实验效果</p>
+<p style="position:absolute;top:907px;left:167px;white-space:nowrap" class="ft41">程序下载进入</p>
+<p style="position:absolute;top:905px;left:266px;white-space:nowrap" class="ft42">STM32</p>
+<p style="position:absolute;top:907px;left:313px;white-space:nowrap" class="ft41">后，打开猫猫串口助手（配置参数如下图所示），可以看到一直</p>
+<p style="position:absolute;top:942px;left:135px;white-space:nowrap" class="ft41">打印</p>
+<p style="position:absolute;top:940px;left:170px;white-space:nowrap" class="ft42">IMU</p>
+<p style="position:absolute;top:942px;left:200px;white-space:nowrap" class="ft41">模块的数据，当我们改变</p>
+<p style="position:absolute;top:940px;left:377px;white-space:nowrap" class="ft42">IMU</p>
+<p style="position:absolute;top:942px;left:407px;white-space:nowrap" class="ft41">模块的姿态，数据会发生变化。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft51{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft52{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft53{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft54{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft55{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft56{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用005.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft50">5</p>
+<p style="position:absolute;top:817px;left:135px;white-space:nowrap" class="ft51"><b>2.&#160;STM32F407-</b></p>
+<p style="position:absolute;top:819px;left:290px;white-space:nowrap" class="ft52">串口应用例程</p>
+<p style="position:absolute;top:879px;left:167px;white-space:nowrap" class="ft53">本次例程使用的是</p>
+<p style="position:absolute;top:877px;left:296px;white-space:nowrap" class="ft54">STM32F407C8T6</p>
+<p style="position:absolute;top:879px;left:412px;white-space:nowrap" class="ft53">芯片开发板，为了演示方便以下内容简称为</p>
+<p style="position:absolute;top:877px;left:707px;white-space:nowrap" class="ft54">STM32</p>
+<p style="position:absolute;top:879px;left:750px;white-space:nowrap" class="ft53">。</p>
+<p style="position:absolute;top:914px;left:167px;white-space:nowrap" class="ft53">需要准备的产品：</p>
+<p style="position:absolute;top:912px;left:293px;white-space:nowrap" class="ft54">Win10/Win11</p>
+<p style="position:absolute;top:914px;left:392px;white-space:nowrap" class="ft53">电脑、</p>
+<p style="position:absolute;top:912px;left:440px;white-space:nowrap" class="ft54">IMU</p>
+<p style="position:absolute;top:914px;left:470px;white-space:nowrap" class="ft53">模块（数据接口已引线）、</p>
+<p style="position:absolute;top:912px;left:660px;white-space:nowrap" class="ft54">micro-USB</p>
+<p style="position:absolute;top:914px;left:742px;white-space:nowrap" class="ft53">数</p>
+<p style="position:absolute;top:949px;left:135px;white-space:nowrap" class="ft53">据线、</p>
+<p style="position:absolute;top:947px;left:182px;white-space:nowrap" class="ft54">CH340</p>
+<p style="position:absolute;top:949px;left:230px;white-space:nowrap" class="ft53">模块、杜邦线若干。</p>
+<p style="position:absolute;top:986px;left:135px;white-space:nowrap" class="ft55"><b>2.1</b></p>
+<p style="position:absolute;top:988px;left:175px;white-space:nowrap" class="ft56">准备工作</p>
+<p style="position:absolute;top:1033px;left:167px;white-space:nowrap" class="ft53">将</p>
+<p style="position:absolute;top:1030px;left:186px;white-space:nowrap" class="ft54">STM32</p>
+<p style="position:absolute;top:1033px;left:233px;white-space:nowrap" class="ft53">串口</p>
+<p style="position:absolute;top:1030px;left:269px;white-space:nowrap" class="ft54">1</p>
+<p style="position:absolute;top:1033px;left:281px;white-space:nowrap" class="ft53">电脑的</p>
+<p style="position:absolute;top:1030px;left:333px;white-space:nowrap" class="ft54">USB</p>
+<p style="position:absolute;top:1033px;left:363px;white-space:nowrap" class="ft53">口。将</p>
+<p style="position:absolute;top:1030px;left:414px;white-space:nowrap" class="ft54">STM32</p>
+<p style="position:absolute;top:1033px;left:461px;white-space:nowrap" class="ft53">串口</p>
+<p style="position:absolute;top:1030px;left:496px;white-space:nowrap" class="ft54">2</p>
+<p style="position:absolute;top:1033px;left:509px;white-space:nowrap" class="ft53">连接到</p>
+<p style="position:absolute;top:1030px;left:560px;white-space:nowrap" class="ft54">IMU</p>
+<p style="position:absolute;top:1033px;left:590px;white-space:nowrap" class="ft53">模块的串口接口。</p>
+<p style="position:absolute;top:1068px;left:167px;white-space:nowrap" class="ft53">将</p>
+<p style="position:absolute;top:1065px;left:186px;white-space:nowrap" class="ft54">micro-USB</p>
+<p style="position:absolute;top:1068px;left:268px;white-space:nowrap" class="ft53">数据线连接到</p>
+<p style="position:absolute;top:1065px;left:366px;white-space:nowrap" class="ft54">STM32</p>
+<p style="position:absolute;top:1068px;left:414px;white-space:nowrap" class="ft53">和电脑的</p>
+<p style="position:absolute;top:1065px;left:481px;white-space:nowrap" class="ft54">USB</p>
+<p style="position:absolute;top:1068px;left:510px;white-space:nowrap" class="ft53">口，作为</p>
+<p style="position:absolute;top:1065px;left:577px;white-space:nowrap" class="ft54">STM32</p>
+<p style="position:absolute;top:1068px;left:625px;white-space:nowrap" class="ft53">供电。</p>
+<p style="position:absolute;top:1103px;left:167px;white-space:nowrap" class="ft53">接线说明：</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft61{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft62{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft63{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft64{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用006.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft60">6</p>
+<p style="position:absolute;top:119px;left:167px;white-space:nowrap" class="ft61">STM32</p>
+<p style="position:absolute;top:119px;left:293px;white-space:nowrap" class="ft61">IMU</p>
+<p style="position:absolute;top:154px;left:167px;white-space:nowrap" class="ft61">5V</p>
+<p style="position:absolute;top:154px;left:207px;white-space:nowrap" class="ft61">------&gt;</p>
+<p style="position:absolute;top:154px;left:293px;white-space:nowrap" class="ft61">5V</p>
+<p style="position:absolute;top:189px;left:167px;white-space:nowrap" class="ft61">GND</p>
+<p style="position:absolute;top:189px;left:214px;white-space:nowrap" class="ft61">------&gt;&#160;GND</p>
+<p style="position:absolute;top:224px;left:167px;white-space:nowrap" class="ft61">PA3</p>
+<p style="position:absolute;top:224px;left:216px;white-space:nowrap" class="ft61">&lt;------&#160;TXD</p>
+<p style="position:absolute;top:638px;left:135px;white-space:nowrap" class="ft62"><b>2.2</b></p>
+<p style="position:absolute;top:640px;left:175px;white-space:nowrap" class="ft63">案例开发</p>
+<p style="position:absolute;top:685px;left:167px;white-space:nowrap" class="ft64">具体代码请看资料中的源码。</p>
+<p style="position:absolute;top:720px;left:167px;white-space:nowrap" class="ft64">本例程将串口打印的波特率设置为</p>
+<p style="position:absolute;top:717px;left:405px;white-space:nowrap" class="ft61">115200&#160;bps</p>
+<p style="position:absolute;top:720px;left:487px;white-space:nowrap" class="ft64">，将</p>
+<p style="position:absolute;top:717px;left:512px;white-space:nowrap" class="ft61">IMU</p>
+<p style="position:absolute;top:720px;left:540px;white-space:nowrap" class="ft64">模块连接的波特率设置为</p>
+<p style="position:absolute;top:717px;left:716px;white-space:nowrap" class="ft61">9600</p>
+<p style="position:absolute;top:720px;left:750px;white-space:nowrap" class="ft64">。</p>
+<p style="position:absolute;top:755px;left:135px;white-space:nowrap" class="ft64">可以根据</p>
+<p style="position:absolute;top:752px;left:202px;white-space:nowrap" class="ft61">IMU</p>
+<p style="position:absolute;top:755px;left:232px;white-space:nowrap" class="ft64">模块的波特率修改</p>
+<p style="position:absolute;top:752px;left:362px;white-space:nowrap" class="ft61">STM32</p>
+<p style="position:absolute;top:755px;left:409px;white-space:nowrap" class="ft64">串口</p>
+<p style="position:absolute;top:752px;left:444px;white-space:nowrap" class="ft61">2</p>
+<p style="position:absolute;top:755px;left:457px;white-space:nowrap" class="ft64">的波特率。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft71{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft72{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft73{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft74{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用007.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft70">7</p>
+<p style="position:absolute;top:309px;left:167px;white-space:nowrap" class="ft71">读取并打印</p>
+<p style="position:absolute;top:306px;left:249px;white-space:nowrap" class="ft72">IMU</p>
+<p style="position:absolute;top:309px;left:279px;white-space:nowrap" class="ft71">模块的数据。</p>
+<p style="position:absolute;top:884px;left:135px;white-space:nowrap" class="ft73"><b>2.3</b></p>
+<p style="position:absolute;top:886px;left:175px;white-space:nowrap" class="ft74">实验效果</p>
+<p style="position:absolute;top:930px;left:167px;white-space:nowrap" class="ft71">程序下载进入</p>
+<p style="position:absolute;top:928px;left:266px;white-space:nowrap" class="ft72">STM32</p>
+<p style="position:absolute;top:930px;left:313px;white-space:nowrap" class="ft71">后，打开猫猫串口助手（配置参数如下图所示），可以看到一直</p>
+<p style="position:absolute;top:965px;left:135px;white-space:nowrap" class="ft71">打印</p>
+<p style="position:absolute;top:963px;left:170px;white-space:nowrap" class="ft72">IMU</p>
+<p style="position:absolute;top:965px;left:200px;white-space:nowrap" class="ft71">模块的数据，当我们改变</p>
+<p style="position:absolute;top:963px;left:377px;white-space:nowrap" class="ft72">IMU</p>
+<p style="position:absolute;top:965px;left:407px;white-space:nowrap" class="ft71">模块的姿态，数据会发生变化。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft81{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft82{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft83{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft84{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft85{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft86{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用008.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft80">8</p>
+<p style="position:absolute;top:817px;left:135px;white-space:nowrap" class="ft81"><b>3.&#160;STM32-IIC</b></p>
+<p style="position:absolute;top:819px;left:284px;white-space:nowrap" class="ft82">应用例程</p>
+<p style="position:absolute;top:879px;left:167px;white-space:nowrap" class="ft83">本次例程使用的是</p>
+<p style="position:absolute;top:877px;left:296px;white-space:nowrap" class="ft84">STM32F103C8T6</p>
+<p style="position:absolute;top:879px;left:412px;white-space:nowrap" class="ft83">芯片开发板，为了演示方便以下内容简称为</p>
+<p style="position:absolute;top:877px;left:707px;white-space:nowrap" class="ft84">STM32</p>
+<p style="position:absolute;top:879px;left:750px;white-space:nowrap" class="ft83">。</p>
+<p style="position:absolute;top:914px;left:167px;white-space:nowrap" class="ft83">需要准备的产品：</p>
+<p style="position:absolute;top:912px;left:293px;white-space:nowrap" class="ft84">Win10/Win11</p>
+<p style="position:absolute;top:914px;left:392px;white-space:nowrap" class="ft83">电脑、</p>
+<p style="position:absolute;top:912px;left:440px;white-space:nowrap" class="ft84">IMU</p>
+<p style="position:absolute;top:914px;left:470px;white-space:nowrap" class="ft83">模块（数据接口已引线）、</p>
+<p style="position:absolute;top:912px;left:660px;white-space:nowrap" class="ft84">micro-USB</p>
+<p style="position:absolute;top:914px;left:742px;white-space:nowrap" class="ft83">数</p>
+<p style="position:absolute;top:949px;left:135px;white-space:nowrap" class="ft83">据线、</p>
+<p style="position:absolute;top:947px;left:182px;white-space:nowrap" class="ft84">CH340</p>
+<p style="position:absolute;top:949px;left:230px;white-space:nowrap" class="ft83">模块、杜邦线若干。</p>
+<p style="position:absolute;top:986px;left:135px;white-space:nowrap" class="ft85"><b>3.1</b></p>
+<p style="position:absolute;top:988px;left:175px;white-space:nowrap" class="ft86">准备工作</p>
+<p style="position:absolute;top:1033px;left:167px;white-space:nowrap" class="ft83">将</p>
+<p style="position:absolute;top:1030px;left:186px;white-space:nowrap" class="ft84">STM32</p>
+<p style="position:absolute;top:1033px;left:233px;white-space:nowrap" class="ft83">串口</p>
+<p style="position:absolute;top:1030px;left:269px;white-space:nowrap" class="ft84">1</p>
+<p style="position:absolute;top:1033px;left:281px;white-space:nowrap" class="ft83">连接到</p>
+<p style="position:absolute;top:1030px;left:333px;white-space:nowrap" class="ft84">CH340</p>
+<p style="position:absolute;top:1033px;left:380px;white-space:nowrap" class="ft83">模块，</p>
+<p style="position:absolute;top:1030px;left:424px;white-space:nowrap" class="ft84">CH340</p>
+<p style="position:absolute;top:1033px;left:471px;white-space:nowrap" class="ft83">模块插到</p>
+<p style="position:absolute;top:1030px;left:538px;white-space:nowrap" class="ft84">Win10</p>
+<p style="position:absolute;top:1033px;left:585px;white-space:nowrap" class="ft83">电脑的</p>
+<p style="position:absolute;top:1030px;left:637px;white-space:nowrap" class="ft84">USB</p>
+<p style="position:absolute;top:1033px;left:667px;white-space:nowrap" class="ft83">口。将</p>
+<p style="position:absolute;top:1030px;left:715px;white-space:nowrap" class="ft84">STM32</p>
+<p style="position:absolute;top:1068px;left:135px;white-space:nowrap" class="ft83">的</p>
+<p style="position:absolute;top:1065px;left:155px;white-space:nowrap" class="ft84">IIC</p>
+<p style="position:absolute;top:1068px;left:185px;white-space:nowrap" class="ft83">接口</p>
+<p style="position:absolute;top:1065px;left:220px;white-space:nowrap" class="ft84">2</p>
+<p style="position:absolute;top:1068px;left:233px;white-space:nowrap" class="ft83">连接到</p>
+<p style="position:absolute;top:1065px;left:284px;white-space:nowrap" class="ft84">IMU</p>
+<p style="position:absolute;top:1068px;left:314px;white-space:nowrap" class="ft83">模块的</p>
+<p style="position:absolute;top:1065px;left:365px;white-space:nowrap" class="ft84">IIC</p>
+<p style="position:absolute;top:1068px;left:395px;white-space:nowrap" class="ft83">接口。</p>
+<p style="position:absolute;top:1103px;left:167px;white-space:nowrap" class="ft83">将</p>
+<p style="position:absolute;top:1101px;left:186px;white-space:nowrap" class="ft84">micro-USB</p>
+<p style="position:absolute;top:1103px;left:268px;white-space:nowrap" class="ft83">数据线连接到</p>
+<p style="position:absolute;top:1101px;left:366px;white-space:nowrap" class="ft84">STM32</p>
+<p style="position:absolute;top:1103px;left:414px;white-space:nowrap" class="ft83">和电脑的</p>
+<p style="position:absolute;top:1101px;left:481px;white-space:nowrap" class="ft84">USB</p>
+<p style="position:absolute;top:1103px;left:510px;white-space:nowrap" class="ft83">口，作为</p>
+<p style="position:absolute;top:1101px;left:577px;white-space:nowrap" class="ft84">STM32</p>
+<p style="position:absolute;top:1103px;left:625px;white-space:nowrap" class="ft83">供电。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft91{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft92{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft93{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft94{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用009.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:456px;white-space:nowrap" class="ft90">9</p>
+<p style="position:absolute;top:521px;left:135px;white-space:nowrap" class="ft91"><b>3.2</b></p>
+<p style="position:absolute;top:523px;left:175px;white-space:nowrap" class="ft92">案例开发</p>
+<p style="position:absolute;top:568px;left:167px;white-space:nowrap" class="ft93">具体代码请看资料中的源码。</p>
+<p style="position:absolute;top:603px;left:167px;white-space:nowrap" class="ft93">本例本例程已经将波特率设置为</p>
+<p style="position:absolute;top:600px;left:391px;white-space:nowrap" class="ft94">115200&#160;bps</p>
+<p style="position:absolute;top:603px;left:473px;white-space:nowrap" class="ft93">，注意此波特率是</p>
+<p style="position:absolute;top:600px;left:600px;white-space:nowrap" class="ft94">STM32</p>
+<p style="position:absolute;top:603px;left:648px;white-space:nowrap" class="ft93">串口打印的波特</p>
+<p style="position:absolute;top:638px;left:135px;white-space:nowrap" class="ft93">率，并非</p>
+<p style="position:absolute;top:635px;left:202px;white-space:nowrap" class="ft94">IMU</p>
+<p style="position:absolute;top:638px;left:232px;white-space:nowrap" class="ft93">模块的波特率。</p>
+<p style="position:absolute;top:708px;left:167px;white-space:nowrap" class="ft93">接下来需要注意的是</p>
+<p style="position:absolute;top:706px;left:312px;white-space:nowrap" class="ft94">IMU</p>
+<p style="position:absolute;top:708px;left:342px;white-space:nowrap" class="ft93">模块的</p>
+<p style="position:absolute;top:706px;left:393px;white-space:nowrap" class="ft94">IIC</p>
+<p style="position:absolute;top:708px;left:423px;white-space:nowrap" class="ft93">地址，默认为</p>
+<p style="position:absolute;top:706px;left:520px;white-space:nowrap" class="ft94">0x50</p>
+<p style="position:absolute;top:708px;left:555px;white-space:nowrap" class="ft93">，如果修改了其他的地址请修</p>
+<p style="position:absolute;top:743px;left:135px;white-space:nowrap" class="ft93">改此参数。</p>
+<p style="position:absolute;top:825px;left:167px;white-space:nowrap" class="ft93">循环读取并打印</p>
+<p style="position:absolute;top:823px;left:281px;white-space:nowrap" class="ft94">IMU</p>
+<p style="position:absolute;top:825px;left:311px;white-space:nowrap" class="ft93">模块的数据。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft101{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft102{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft103{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft104{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用010.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft100">10</p>
+<p style="position:absolute;top:661px;left:135px;white-space:nowrap" class="ft101"><b>3.3</b></p>
+<p style="position:absolute;top:664px;left:175px;white-space:nowrap" class="ft102">实验效果</p>
+<p style="position:absolute;top:708px;left:167px;white-space:nowrap" class="ft103">程序下载进入</p>
+<p style="position:absolute;top:706px;left:266px;white-space:nowrap" class="ft104">STM32</p>
+<p style="position:absolute;top:708px;left:313px;white-space:nowrap" class="ft103">后，打开猫猫串口助手（配置参数如下图所示），可以看到一直</p>
+<p style="position:absolute;top:743px;left:135px;white-space:nowrap" class="ft103">打印</p>
+<p style="position:absolute;top:741px;left:170px;white-space:nowrap" class="ft104">IMU</p>
+<p style="position:absolute;top:743px;left:200px;white-space:nowrap" class="ft103">模块的数据，当我们改变</p>
+<p style="position:absolute;top:741px;left:377px;white-space:nowrap" class="ft104">IMU</p>
+<p style="position:absolute;top:743px;left:407px;white-space:nowrap" class="ft103">模块的姿态，数据会发生变化。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft111{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft112{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft113{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft114{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft115{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft116{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft117{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft118{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用011.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft110">11</p>
+<p style="position:absolute;top:746px;left:135px;white-space:nowrap" class="ft111"><b>4.</b></p>
+<p style="position:absolute;top:749px;left:167px;white-space:nowrap" class="ft112">树莓派</p>
+<p style="position:absolute;top:746px;left:234px;white-space:nowrap" class="ft111"><b>-USB</b></p>
+<p style="position:absolute;top:749px;left:289px;white-space:nowrap" class="ft112">应用例程</p>
+<p style="position:absolute;top:809px;left:167px;white-space:nowrap" class="ft113">需要准备的产品：</p>
+<p style="position:absolute;top:807px;left:290px;white-space:nowrap" class="ft114">Win10</p>
+<p style="position:absolute;top:809px;left:337px;white-space:nowrap" class="ft113">或</p>
+<p style="position:absolute;top:807px;left:357px;white-space:nowrap" class="ft114">Win11</p>
+<p style="position:absolute;top:809px;left:404px;white-space:nowrap" class="ft113">电脑、</p>
+<p style="position:absolute;top:807px;left:449px;white-space:nowrap" class="ft114">IMU</p>
+<p style="position:absolute;top:809px;left:479px;white-space:nowrap" class="ft113">模块、</p>
+<p style="position:absolute;top:807px;left:523px;white-space:nowrap" class="ft114">Type-C</p>
+<p style="position:absolute;top:809px;left:579px;white-space:nowrap" class="ft113">数据线、树莓派开发套件。</p>
+<p style="position:absolute;top:846px;left:135px;white-space:nowrap" class="ft115"><b>4.1</b></p>
+<p style="position:absolute;top:848px;left:175px;white-space:nowrap" class="ft116">准备工作</p>
+<p style="position:absolute;top:908px;left:171px;white-space:nowrap" class="ft117"><b>4.1.1</b></p>
+<p style="position:absolute;top:910px;left:225px;white-space:nowrap" class="ft118">硬件连接</p>
+<p style="position:absolute;top:966px;left:167px;white-space:nowrap" class="ft113">使用</p>
+<p style="position:absolute;top:963px;left:202px;white-space:nowrap" class="ft114">Type-C</p>
+<p style="position:absolute;top:966px;left:258px;white-space:nowrap" class="ft113">数据线将</p>
+<p style="position:absolute;top:963px;left:325px;white-space:nowrap" class="ft114">IMU</p>
+<p style="position:absolute;top:966px;left:355px;white-space:nowrap" class="ft113">模块和树莓派的</p>
+<p style="position:absolute;top:963px;left:469px;white-space:nowrap" class="ft114">USB</p>
+<p style="position:absolute;top:966px;left:499px;white-space:nowrap" class="ft113">口连接起来。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft121{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft122{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft123{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft124{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft125{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft126{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用012.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft120">12</p>
+<p style="position:absolute;top:429px;left:135px;white-space:nowrap" class="ft121"><b>4.1.2</b></p>
+<p style="position:absolute;top:431px;left:189px;white-space:nowrap" class="ft122">安装串口驱动库</p>
+<p style="position:absolute;top:474px;left:167px;white-space:nowrap" class="ft123">如果</p>
+<p style="position:absolute;top:472px;left:202px;white-space:nowrap" class="ft124">Python3</p>
+<p style="position:absolute;top:474px;left:266px;white-space:nowrap" class="ft123">里没有安装</p>
+<p style="position:absolute;top:472px;left:349px;white-space:nowrap" class="ft124">serial</p>
+<p style="position:absolute;top:474px;left:405px;white-space:nowrap" class="ft123">串口驱动库，请运行以下命令安装。</p>
+<p style="position:absolute;top:474px;left:643px;white-space:nowrap" class="ft123">“</p>
+<p style="position:absolute;top:472px;left:659px;white-space:nowrap" class="ft124">pip3&#160;install</p>
+<p style="position:absolute;top:507px;left:135px;white-space:nowrap" class="ft124">pyserial</p>
+<p style="position:absolute;top:509px;left:204px;white-space:nowrap" class="ft123">”</p>
+<p style="position:absolute;top:579px;left:167px;white-space:nowrap" class="ft123">输入指令可以查看“</p>
+<p style="position:absolute;top:577px;left:308px;white-space:nowrap" class="ft124">pip3&#160;list&#160;|&#160;grep&#160;pyserial</p>
+<p style="position:absolute;top:579px;left:525px;white-space:nowrap" class="ft123">”可以查看</p>
+<p style="position:absolute;top:577px;left:608px;white-space:nowrap" class="ft124">serial</p>
+<p style="position:absolute;top:579px;left:663px;white-space:nowrap" class="ft123">串口驱动库是</p>
+<p style="position:absolute;top:614px;left:135px;white-space:nowrap" class="ft123">否安装，安装会列出</p>
+<p style="position:absolute;top:612px;left:281px;white-space:nowrap" class="ft124">pyserial</p>
+<p style="position:absolute;top:614px;left:354px;white-space:nowrap" class="ft123">及其版本号：</p>
+<p style="position:absolute;top:721px;left:135px;white-space:nowrap" class="ft125"><b>4.2</b></p>
+<p style="position:absolute;top:724px;left:175px;white-space:nowrap" class="ft126">案例开发</p>
+<p style="position:absolute;top:768px;left:167px;white-space:nowrap" class="ft123">具体代码请看资料中的源码。</p>
+<p style="position:absolute;top:803px;left:167px;white-space:nowrap" class="ft123">如果连接的</p>
+<p style="position:absolute;top:801px;left:251px;white-space:nowrap" class="ft124">USB</p>
+<p style="position:absolute;top:803px;left:281px;white-space:nowrap" class="ft123">设备不止一个，请查看并确认</p>
+<p style="position:absolute;top:801px;left:494px;white-space:nowrap" class="ft124">IMU</p>
+<p style="position:absolute;top:803px;left:524px;white-space:nowrap" class="ft123">模块的</p>
+<p style="position:absolute;top:801px;left:577px;white-space:nowrap" class="ft124">USB</p>
+<p style="position:absolute;top:803px;left:607px;white-space:nowrap" class="ft123">设备号，并修改</p>
+<p style="position:absolute;top:801px;left:723px;white-space:nowrap" class="ft124">port</p>
+<p style="position:absolute;top:838px;left:135px;white-space:nowrap" class="ft123">的值。程序中已经设置</p>
+<p style="position:absolute;top:836px;left:296px;white-space:nowrap" class="ft124">USB</p>
+<p style="position:absolute;top:838px;left:326px;white-space:nowrap" class="ft123">的波特率</p>
+<p style="position:absolute;top:836px;left:392px;white-space:nowrap" class="ft124">baud=9600</p>
+<p style="position:absolute;top:838px;left:470px;white-space:nowrap" class="ft123">，根据</p>
+<p style="position:absolute;top:836px;left:521px;white-space:nowrap" class="ft124">IMU</p>
+<p style="position:absolute;top:838px;left:551px;white-space:nowrap" class="ft123">模块的波特率，修改</p>
+<p style="position:absolute;top:836px;left:696px;white-space:nowrap" class="ft124">baud</p>
+<p style="position:absolute;top:838px;left:734px;white-space:nowrap" class="ft123">值。</p>
+<p style="position:absolute;top:1084px;left:167px;white-space:nowrap" class="ft123">输入指令“</p>
+<p style="position:absolute;top:1082px;left:246px;white-space:nowrap" class="ft124">ls&#160;/dev/ttyUSB*</p>
+<p style="position:absolute;top:1084px;left:376px;white-space:nowrap" class="ft123">”，插拔</p>
+<p style="position:absolute;top:1082px;left:443px;white-space:nowrap" class="ft124">USB</p>
+<p style="position:absolute;top:1084px;left:473px;white-space:nowrap" class="ft123">数据线，判断串行端口号，可以判断出端</p>
+<p style="position:absolute;top:1119px;left:135px;white-space:nowrap" class="ft123">口号为“</p>
+<p style="position:absolute;top:1117px;left:193px;white-space:nowrap" class="ft124">ttyUSB0</p>
+<p style="position:absolute;top:1119px;left:254px;white-space:nowrap" class="ft123">”，如果端口号和程序“</p>
+<p style="position:absolute;top:1117px;left:412px;white-space:nowrap" class="ft124">imu_usb.py</p>
+<p style="position:absolute;top:1119px;left:499px;white-space:nowrap" class="ft123">”中的不一致，要对应更改为</p>
+<p style="position:absolute;top:1117px;left:697px;white-space:nowrap" class="ft124">ttyUSB0</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft131{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft132{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft133{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft134{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用013.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft130">13</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft131">的符号</p>
+<p style="position:absolute;top:157px;left:135px;white-space:nowrap" class="ft131">插入</p>
+<p style="position:absolute;top:154px;left:170px;white-space:nowrap" class="ft132">USB</p>
+<p style="position:absolute;top:157px;left:200px;white-space:nowrap" class="ft131">发现串口号为“</p>
+<p style="position:absolute;top:154px;left:311px;white-space:nowrap" class="ft132">ttyUSB0</p>
+<p style="position:absolute;top:157px;left:371px;white-space:nowrap" class="ft131">”，</p>
+<p style="position:absolute;top:262px;left:135px;white-space:nowrap" class="ft131">拔出则无串口号显示，</p>
+<p style="position:absolute;top:416px;left:135px;white-space:nowrap" class="ft133"><b>4.3</b></p>
+<p style="position:absolute;top:418px;left:175px;white-space:nowrap" class="ft134">实验效果</p>
+<p style="position:absolute;top:462px;left:167px;white-space:nowrap" class="ft131">将</p>
+<p style="position:absolute;top:460px;left:186px;white-space:nowrap" class="ft132">imu_usb.py</p>
+<p style="position:absolute;top:462px;left:277px;white-space:nowrap" class="ft131">文件导入到系统中，打开终端，进入对应文件夹，然后运行以下命令：</p>
+<p style="position:absolute;top:497px;left:135px;white-space:nowrap" class="ft131">“</p>
+<p style="position:absolute;top:495px;left:151px;white-space:nowrap" class="ft132">python3&#160;imu_usb.py</p>
+<p style="position:absolute;top:497px;left:307px;white-space:nowrap" class="ft131">”可以看到终端一直打印</p>
+<p style="position:absolute;top:495px;left:487px;white-space:nowrap" class="ft132">IMU</p>
+<p style="position:absolute;top:497px;left:517px;white-space:nowrap" class="ft131">模块的数据，当改变</p>
+<p style="position:absolute;top:495px;left:664px;white-space:nowrap" class="ft132">IMU</p>
+<p style="position:absolute;top:497px;left:694px;white-space:nowrap" class="ft131">模块的姿</p>
+<p style="position:absolute;top:533px;left:135px;white-space:nowrap" class="ft131">态，数据会跟着变化。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft141{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft142{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft143{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft144{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft145{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft146{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft147{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft148{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用014.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft140">14</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft141"><b>5.</b></p>
+<p style="position:absolute;top:122px;left:167px;white-space:nowrap" class="ft142"><b>Jetson&#160;Nano-USB</b></p>
+<p style="position:absolute;top:124px;left:358px;white-space:nowrap" class="ft143">应用例程</p>
+<p style="position:absolute;top:184px;left:167px;white-space:nowrap" class="ft144">需要准备的产品：</p>
+<p style="position:absolute;top:182px;left:292px;white-space:nowrap" class="ft145">Win10</p>
+<p style="position:absolute;top:184px;left:339px;white-space:nowrap" class="ft144">电脑、惯导模块、</p>
+<p style="position:absolute;top:182px;left:463px;white-space:nowrap" class="ft145">Type-C</p>
+<p style="position:absolute;top:184px;left:519px;white-space:nowrap" class="ft144">数据线、</p>
+<p style="position:absolute;top:182px;left:581px;white-space:nowrap" class="ft145">Jetson&#160;Nano</p>
+<p style="position:absolute;top:184px;left:687px;white-space:nowrap" class="ft144">开发套件。</p>
+<p style="position:absolute;top:221px;left:135px;white-space:nowrap" class="ft141"><b>5.1</b></p>
+<p style="position:absolute;top:223px;left:175px;white-space:nowrap" class="ft146">准备工作</p>
+<p style="position:absolute;top:270px;left:135px;white-space:nowrap" class="ft147"><b>5.1.1</b></p>
+<p style="position:absolute;top:272px;left:189px;white-space:nowrap" class="ft148">准备硬件连接</p>
+<p style="position:absolute;top:315px;left:167px;white-space:nowrap" class="ft144">使用</p>
+<p style="position:absolute;top:313px;left:202px;white-space:nowrap" class="ft145">Type-C</p>
+<p style="position:absolute;top:315px;left:258px;white-space:nowrap" class="ft144">数据线将惯导模块和</p>
+<p style="position:absolute;top:313px;left:404px;white-space:nowrap" class="ft145">Jetson&#160;Nano</p>
+<p style="position:absolute;top:315px;left:510px;white-space:nowrap" class="ft144">的</p>
+<p style="position:absolute;top:313px;left:529px;white-space:nowrap" class="ft145">USB</p>
+<p style="position:absolute;top:315px;left:559px;white-space:nowrap" class="ft144">口连接起来。</p>
+<p style="position:absolute;top:728px;left:135px;white-space:nowrap" class="ft147"><b>5.1.2</b></p>
+<p style="position:absolute;top:730px;left:189px;white-space:nowrap" class="ft148">安装串口驱动库</p>
+<p style="position:absolute;top:773px;left:167px;white-space:nowrap" class="ft144">输入指令可以查看“</p>
+<p style="position:absolute;top:770px;left:308px;white-space:nowrap" class="ft145">pip3&#160;list&#160;|&#160;grep&#160;pyserial</p>
+<p style="position:absolute;top:773px;left:525px;white-space:nowrap" class="ft144">”可以查看</p>
+<p style="position:absolute;top:770px;left:608px;white-space:nowrap" class="ft145">serial</p>
+<p style="position:absolute;top:773px;left:663px;white-space:nowrap" class="ft144">串口驱动库是</p>
+<p style="position:absolute;top:808px;left:135px;white-space:nowrap" class="ft144">否安装，安装会列出</p>
+<p style="position:absolute;top:806px;left:281px;white-space:nowrap" class="ft145">pyserial</p>
+<p style="position:absolute;top:808px;left:354px;white-space:nowrap" class="ft144">及其版本号：</p>
+<p style="position:absolute;top:960px;left:167px;white-space:nowrap" class="ft144">如果</p>
+<p style="position:absolute;top:958px;left:202px;white-space:nowrap" class="ft145">Python3</p>
+<p style="position:absolute;top:960px;left:266px;white-space:nowrap" class="ft144">里没有安装</p>
+<p style="position:absolute;top:958px;left:349px;white-space:nowrap" class="ft145">serial</p>
+<p style="position:absolute;top:960px;left:405px;white-space:nowrap" class="ft144">串口驱动库，请运行以下命令安装。</p>
+<p style="position:absolute;top:960px;left:643px;white-space:nowrap" class="ft144">“</p>
+<p style="position:absolute;top:958px;left:659px;white-space:nowrap" class="ft145">pip3&#160;install</p>
+<p style="position:absolute;top:993px;left:135px;white-space:nowrap" class="ft145">pyserial</p>
+<p style="position:absolute;top:995px;left:204px;white-space:nowrap" class="ft144">”</p>
+<p style="position:absolute;top:1079px;left:135px;white-space:nowrap" class="ft141"><b>5.2</b></p>
+<p style="position:absolute;top:1081px;left:175px;white-space:nowrap" class="ft146">案例开发</p>
+<p style="position:absolute;top:1130px;left:176px;white-space:nowrap" class="ft144">具体代码请看资料中的源码。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft151{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft152{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft153{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft154{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用015.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft150">15</p>
+<p style="position:absolute;top:122px;left:167px;white-space:nowrap" class="ft151">如果连接的</p>
+<p style="position:absolute;top:119px;left:251px;white-space:nowrap" class="ft152">USB</p>
+<p style="position:absolute;top:122px;left:282px;white-space:nowrap" class="ft151">设备不止一个，请查看并确认惯导模块的</p>
+<p style="position:absolute;top:119px;left:576px;white-space:nowrap" class="ft152">USB</p>
+<p style="position:absolute;top:122px;left:606px;white-space:nowrap" class="ft151">设备号，并修改</p>
+<p style="position:absolute;top:119px;left:723px;white-space:nowrap" class="ft152">port</p>
+<p style="position:absolute;top:157px;left:135px;white-space:nowrap" class="ft151">的值。程序中已经设置</p>
+<p style="position:absolute;top:154px;left:291px;white-space:nowrap" class="ft152">USB</p>
+<p style="position:absolute;top:157px;left:321px;white-space:nowrap" class="ft151">的波特率</p>
+<p style="position:absolute;top:154px;left:388px;white-space:nowrap" class="ft152">baud=9600</p>
+<p style="position:absolute;top:157px;left:466px;white-space:nowrap" class="ft151">，根据惯导模块的波特率，修改</p>
+<p style="position:absolute;top:154px;left:680px;white-space:nowrap" class="ft152">baud</p>
+<p style="position:absolute;top:157px;left:719px;white-space:nowrap" class="ft151">的值。</p>
+<p style="position:absolute;top:386px;left:167px;white-space:nowrap" class="ft151">输入指令“</p>
+<p style="position:absolute;top:384px;left:246px;white-space:nowrap" class="ft152">ll&#160;/dev/ttyUSB*</p>
+<p style="position:absolute;top:386px;left:376px;white-space:nowrap" class="ft151">”，插拔</p>
+<p style="position:absolute;top:384px;left:443px;white-space:nowrap" class="ft152">USB</p>
+<p style="position:absolute;top:386px;left:473px;white-space:nowrap" class="ft151">数据线，判断串行端口号，可以判断出端</p>
+<p style="position:absolute;top:421px;left:135px;white-space:nowrap" class="ft151">口号为“</p>
+<p style="position:absolute;top:419px;left:198px;white-space:nowrap" class="ft152">ttyUSB1</p>
+<p style="position:absolute;top:421px;left:259px;white-space:nowrap" class="ft151">”</p>
+<p style="position:absolute;top:574px;left:167px;white-space:nowrap" class="ft151">在上述程序“</p>
+<p style="position:absolute;top:571px;left:261px;white-space:nowrap" class="ft152">imu_usb.py</p>
+<p style="position:absolute;top:574px;left:348px;white-space:nowrap" class="ft151">”中对应更改</p>
+<p style="position:absolute;top:571px;left:446px;white-space:nowrap" class="ft152">ttyUSB1</p>
+<p style="position:absolute;top:574px;left:510px;white-space:nowrap" class="ft151">的符号</p>
+<p style="position:absolute;top:657px;left:135px;white-space:nowrap" class="ft153"><b>5.3</b></p>
+<p style="position:absolute;top:659px;left:175px;white-space:nowrap" class="ft154">实验效果</p>
+<p style="position:absolute;top:704px;left:167px;white-space:nowrap" class="ft151">将</p>
+<p style="position:absolute;top:702px;left:186px;white-space:nowrap" class="ft152">imu_usb.py</p>
+<p style="position:absolute;top:704px;left:277px;white-space:nowrap" class="ft151">文件导入到系统中，打开终端，进入对应文件夹，然后运行以下命令：</p>
+<p style="position:absolute;top:739px;left:135px;white-space:nowrap" class="ft151">“</p>
+<p style="position:absolute;top:737px;left:151px;white-space:nowrap" class="ft152">python3&#160;imu_usb.py</p>
+<p style="position:absolute;top:739px;left:302px;white-space:nowrap" class="ft151">”可以看到终端一直打印惯导模块的数据，当改变惯导模块的姿态，</p>
+<p style="position:absolute;top:774px;left:135px;white-space:nowrap" class="ft151">数据会跟着变化。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft161{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft162{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft163{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft164{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft165{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft166{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用016.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft160">16</p>
+<p style="position:absolute;top:770px;left:135px;white-space:nowrap" class="ft161"><b>6.&#160;Arduino-</b></p>
+<p style="position:absolute;top:772px;left:266px;white-space:nowrap" class="ft162">串口应用例程</p>
+<p style="position:absolute;top:832px;left:167px;white-space:nowrap" class="ft163">本次例程使用的是</p>
+<p style="position:absolute;top:830px;left:296px;white-space:nowrap" class="ft164">Arduino&#160;UNO</p>
+<p style="position:absolute;top:832px;left:396px;white-space:nowrap" class="ft163">开发板，为了演示方便以下内容简称为</p>
+<p style="position:absolute;top:830px;left:667px;white-space:nowrap" class="ft164">Arduino</p>
+<p style="position:absolute;top:832px;left:736px;white-space:nowrap" class="ft163">。</p>
+<p style="position:absolute;top:868px;left:167px;white-space:nowrap" class="ft163">需要准备的产品：</p>
+<p style="position:absolute;top:865px;left:293px;white-space:nowrap" class="ft164">Win10/Win11</p>
+<p style="position:absolute;top:868px;left:392px;white-space:nowrap" class="ft163">电脑、</p>
+<p style="position:absolute;top:865px;left:439px;white-space:nowrap" class="ft164">IMU</p>
+<p style="position:absolute;top:868px;left:469px;white-space:nowrap" class="ft163">模块（数据接口已引线）、杜邦线若干。</p>
+<p style="position:absolute;top:904px;left:135px;white-space:nowrap" class="ft165"><b>6.1</b></p>
+<p style="position:absolute;top:906px;left:175px;white-space:nowrap" class="ft166">准备工作</p>
+<p style="position:absolute;top:951px;left:167px;white-space:nowrap" class="ft163">将</p>
+<p style="position:absolute;top:948px;left:186px;white-space:nowrap" class="ft164">Arduino</p>
+<p style="position:absolute;top:951px;left:251px;white-space:nowrap" class="ft163">的烧录线连接到电脑。将</p>
+<p style="position:absolute;top:948px;left:428px;white-space:nowrap" class="ft164">Arduino</p>
+<p style="position:absolute;top:951px;left:492px;white-space:nowrap" class="ft163">串口连接到</p>
+<p style="position:absolute;top:948px;left:575px;white-space:nowrap" class="ft164">IMU</p>
+<p style="position:absolute;top:951px;left:605px;white-space:nowrap" class="ft163">模块的串口接口。</p>
+<p style="position:absolute;top:986px;left:135px;white-space:nowrap" class="ft163">接线说明：</p>
+<p style="position:absolute;top:1018px;left:167px;white-space:nowrap" class="ft164">Arduino</p>
+<p style="position:absolute;top:1018px;left:293px;white-space:nowrap" class="ft164">IMU</p>
+<p style="position:absolute;top:1053px;left:167px;white-space:nowrap" class="ft164">5V</p>
+<p style="position:absolute;top:1053px;left:207px;white-space:nowrap" class="ft164">------&gt;</p>
+<p style="position:absolute;top:1053px;left:293px;white-space:nowrap" class="ft164">5V</p>
+<p style="position:absolute;top:1089px;left:167px;white-space:nowrap" class="ft164">GND</p>
+<p style="position:absolute;top:1089px;left:214px;white-space:nowrap" class="ft164">------&gt;&#160;GND</p>
+<p style="position:absolute;top:1124px;left:167px;white-space:nowrap" class="ft164">IO7</p>
+<p style="position:absolute;top:1124px;left:216px;white-space:nowrap" class="ft164">&lt;------&#160;TXD</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft171{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft172{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft173{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft174{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用017.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft170">17</p>
+<p style="position:absolute;top:119px;left:167px;white-space:nowrap" class="ft171">IO6</p>
+<p style="position:absolute;top:119px;left:216px;white-space:nowrap" class="ft171">&lt;------&#160;RXD</p>
+<p style="position:absolute;top:579px;left:135px;white-space:nowrap" class="ft172"><b>6.2</b></p>
+<p style="position:absolute;top:582px;left:175px;white-space:nowrap" class="ft173">案例开发</p>
+<p style="position:absolute;top:626px;left:167px;white-space:nowrap" class="ft174">具体代码请看资料中的源码。</p>
+<p style="position:absolute;top:661px;left:167px;white-space:nowrap" class="ft174">本例程将串口打印的波特率设置为</p>
+<p style="position:absolute;top:659px;left:405px;white-space:nowrap" class="ft171">115200&#160;bps</p>
+<p style="position:absolute;top:661px;left:487px;white-space:nowrap" class="ft174">，将</p>
+<p style="position:absolute;top:659px;left:512px;white-space:nowrap" class="ft171">IMU</p>
+<p style="position:absolute;top:661px;left:540px;white-space:nowrap" class="ft174">模块连接的波特率设置为</p>
+<p style="position:absolute;top:659px;left:716px;white-space:nowrap" class="ft171">9600</p>
+<p style="position:absolute;top:661px;left:750px;white-space:nowrap" class="ft174">。</p>
+<p style="position:absolute;top:696px;left:135px;white-space:nowrap" class="ft174">可以根据</p>
+<p style="position:absolute;top:694px;left:202px;white-space:nowrap" class="ft171">IMU</p>
+<p style="position:absolute;top:696px;left:232px;white-space:nowrap" class="ft174">模块的波特率修改</p>
+<p style="position:absolute;top:694px;left:362px;white-space:nowrap" class="ft171">Arduino</p>
+<p style="position:absolute;top:696px;left:430px;white-space:nowrap" class="ft174">串口的波特率。</p>
+<p style="position:absolute;top:802px;left:167px;white-space:nowrap" class="ft174">读取并打印</p>
+<p style="position:absolute;top:799px;left:249px;white-space:nowrap" class="ft171">IMU</p>
+<p style="position:absolute;top:802px;left:279px;white-space:nowrap" class="ft174">模块的数据。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft180{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft181{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft182{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft183{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft184{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用018.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft180">18</p>
+<p style="position:absolute;top:895px;left:135px;white-space:nowrap" class="ft181"><b>6.3</b></p>
+<p style="position:absolute;top:898px;left:175px;white-space:nowrap" class="ft182">实验效果</p>
+<p style="position:absolute;top:942px;left:167px;white-space:nowrap" class="ft183">程序下载进入</p>
+<p style="position:absolute;top:940px;left:268px;white-space:nowrap" class="ft184">Arduino</p>
+<p style="position:absolute;top:942px;left:337px;white-space:nowrap" class="ft183">后，打开工具栏目的串口监视器（如下图所示），波特率为</p>
+<p style="position:absolute;top:975px;left:135px;white-space:nowrap" class="ft184">115200</p>
+<p style="position:absolute;top:977px;left:187px;white-space:nowrap" class="ft183">，可以看到一直打印</p>
+<p style="position:absolute;top:975px;left:332px;white-space:nowrap" class="ft184">IMU</p>
+<p style="position:absolute;top:977px;left:362px;white-space:nowrap" class="ft183">模块的数据，当我们改变</p>
+<p style="position:absolute;top:975px;left:539px;white-space:nowrap" class="ft184">IMU</p>
+<p style="position:absolute;top:977px;left:569px;white-space:nowrap" class="ft183">模块的姿态，数据会发生变</p>
+<p style="position:absolute;top:1012px;left:135px;white-space:nowrap" class="ft183">化。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft190{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft191{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft192{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft193{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft194{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page19-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用019.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft190">19</p>
+<p style="position:absolute;top:980px;left:135px;white-space:nowrap" class="ft191"><b>7.&#160;Arduino-IIC</b></p>
+<p style="position:absolute;top:983px;left:308px;white-space:nowrap" class="ft192">应用例程</p>
+<p style="position:absolute;top:1043px;left:167px;white-space:nowrap" class="ft193">本次例程使用的是</p>
+<p style="position:absolute;top:1041px;left:296px;white-space:nowrap" class="ft194">Arduino&#160;UNO</p>
+<p style="position:absolute;top:1043px;left:396px;white-space:nowrap" class="ft193">开发板，为了演示方便以下内容简称为</p>
+<p style="position:absolute;top:1041px;left:667px;white-space:nowrap" class="ft194">Arduino</p>
+<p style="position:absolute;top:1043px;left:736px;white-space:nowrap" class="ft193">。</p>
+<p style="position:absolute;top:1078px;left:167px;white-space:nowrap" class="ft193">需要准备的产品：</p>
+<p style="position:absolute;top:1076px;left:290px;white-space:nowrap" class="ft194">Win10/Win11</p>
+<p style="position:absolute;top:1078px;left:390px;white-space:nowrap" class="ft193">电脑、</p>
+<p style="position:absolute;top:1076px;left:435px;white-space:nowrap" class="ft194">IMU</p>
+<p style="position:absolute;top:1078px;left:464px;white-space:nowrap" class="ft193">模块（数据接口已引线）、</p>
+<p style="position:absolute;top:1076px;left:647px;white-space:nowrap" class="ft194">type-c</p>
+<p style="position:absolute;top:1078px;left:703px;white-space:nowrap" class="ft193">数据线、</p>
+<p style="position:absolute;top:1113px;left:135px;white-space:nowrap" class="ft193">杜邦线若干。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft200{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft201{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft202{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft203{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft204{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page20-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用020.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft200">20</p>
+<p style="position:absolute;top:158px;left:135px;white-space:nowrap" class="ft201"><b>7.1</b></p>
+<p style="position:absolute;top:161px;left:175px;white-space:nowrap" class="ft202">准备工作</p>
+<p style="position:absolute;top:205px;left:167px;white-space:nowrap" class="ft203">将</p>
+<p style="position:absolute;top:203px;left:186px;white-space:nowrap" class="ft204">Arduino</p>
+<p style="position:absolute;top:205px;left:251px;white-space:nowrap" class="ft203">的烧录线连接到电脑。将</p>
+<p style="position:absolute;top:203px;left:428px;white-space:nowrap" class="ft204">Arduino</p>
+<p style="position:absolute;top:205px;left:492px;white-space:nowrap" class="ft203">与</p>
+<p style="position:absolute;top:203px;left:512px;white-space:nowrap" class="ft204">IMU</p>
+<p style="position:absolute;top:205px;left:542px;white-space:nowrap" class="ft203">模块的</p>
+<p style="position:absolute;top:203px;left:593px;white-space:nowrap" class="ft204">I2C</p>
+<p style="position:absolute;top:205px;left:623px;white-space:nowrap" class="ft203">接口。</p>
+<p style="position:absolute;top:240px;left:135px;white-space:nowrap" class="ft203">接线说明：</p>
+<p style="position:absolute;top:272px;left:167px;white-space:nowrap" class="ft204">Arduino</p>
+<p style="position:absolute;top:272px;left:293px;white-space:nowrap" class="ft204">IMU</p>
+<p style="position:absolute;top:308px;left:167px;white-space:nowrap" class="ft204">GND</p>
+<p style="position:absolute;top:308px;left:214px;white-space:nowrap" class="ft204">------&gt;&#160;GND</p>
+<p style="position:absolute;top:343px;left:167px;white-space:nowrap" class="ft204">D6</p>
+<p style="position:absolute;top:343px;left:214px;white-space:nowrap" class="ft204">------&gt;&#160;SDA</p>
+<p style="position:absolute;top:378px;left:167px;white-space:nowrap" class="ft204">D7</p>
+<p style="position:absolute;top:378px;left:214px;white-space:nowrap" class="ft204">------&gt;&#160;SCL</p>
+<p style="position:absolute;top:745px;left:135px;white-space:nowrap" class="ft201"><b>7.2</b></p>
+<p style="position:absolute;top:747px;left:175px;white-space:nowrap" class="ft202">案例开发</p>
+<p style="position:absolute;top:791px;left:167px;white-space:nowrap" class="ft203">具体代码请看资料中的源码。</p>
+<p style="position:absolute;top:826px;left:167px;white-space:nowrap" class="ft203">本例本例程已经将波特率设置为</p>
+<p style="position:absolute;top:824px;left:394px;white-space:nowrap" class="ft204">115200&#160;bps</p>
+<p style="position:absolute;top:826px;left:482px;white-space:nowrap" class="ft203">，注意此波特率是</p>
+<p style="position:absolute;top:824px;left:613px;white-space:nowrap" class="ft204">Arduino</p>
+<p style="position:absolute;top:826px;left:678px;white-space:nowrap" class="ft203">串口打印的</p>
+<p style="position:absolute;top:862px;left:135px;white-space:nowrap" class="ft203">波特率，并非</p>
+<p style="position:absolute;top:859px;left:233px;white-space:nowrap" class="ft204">IMU</p>
+<p style="position:absolute;top:862px;left:263px;white-space:nowrap" class="ft203">模块的波特率。</p>
+<p style="position:absolute;top:943px;left:167px;white-space:nowrap" class="ft203">接下来需要注意的是</p>
+<p style="position:absolute;top:941px;left:312px;white-space:nowrap" class="ft204">IMU</p>
+<p style="position:absolute;top:943px;left:342px;white-space:nowrap" class="ft203">模块的</p>
+<p style="position:absolute;top:941px;left:393px;white-space:nowrap" class="ft204">IIC</p>
+<p style="position:absolute;top:943px;left:423px;white-space:nowrap" class="ft203">地址，默认为</p>
+<p style="position:absolute;top:941px;left:520px;white-space:nowrap" class="ft204">0x50</p>
+<p style="position:absolute;top:943px;left:555px;white-space:nowrap" class="ft203">，如果修改了其他的地址请修</p>
+<p style="position:absolute;top:979px;left:135px;white-space:nowrap" class="ft203">改此参数。</p>
+<p style="position:absolute;top:1060px;left:167px;white-space:nowrap" class="ft203">循环读取并打印</p>
+<p style="position:absolute;top:1058px;left:281px;white-space:nowrap" class="ft204">IMU</p>
+<p style="position:absolute;top:1060px;left:311px;white-space:nowrap" class="ft203">模块的数据。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft210{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft211{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft212{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft213{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft214{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page21-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用021.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft210">21</p>
+<p style="position:absolute;top:732px;left:135px;white-space:nowrap" class="ft211"><b>7.3</b></p>
+<p style="position:absolute;top:734px;left:175px;white-space:nowrap" class="ft212">实验效果</p>
+<p style="position:absolute;top:778px;left:167px;white-space:nowrap" class="ft213">程序下载进入</p>
+<p style="position:absolute;top:776px;left:268px;white-space:nowrap" class="ft214">Arduino</p>
+<p style="position:absolute;top:778px;left:337px;white-space:nowrap" class="ft213">后，打开工具栏目的串口监视器（如下图所示），波特率为</p>
+<p style="position:absolute;top:811px;left:135px;white-space:nowrap" class="ft214">115200</p>
+<p style="position:absolute;top:813px;left:187px;white-space:nowrap" class="ft213">，可以看到一直打印</p>
+<p style="position:absolute;top:811px;left:332px;white-space:nowrap" class="ft214">IMU</p>
+<p style="position:absolute;top:813px;left:362px;white-space:nowrap" class="ft213">模块的数据，当我们改变</p>
+<p style="position:absolute;top:811px;left:539px;white-space:nowrap" class="ft214">IMU</p>
+<p style="position:absolute;top:813px;left:569px;white-space:nowrap" class="ft213">模块的姿态，数据会发生变</p>
+<p style="position:absolute;top:848px;left:135px;white-space:nowrap" class="ft213">化。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU应用教程-基础应用-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft220{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page22-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU应用教程-基础应用022.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft220">22</p>
+</div>
+</body>
+</html>

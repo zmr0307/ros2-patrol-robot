@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:63px;font-family:XEKKFX+SimHei;color:#8d6c01;}
+	.ft11{font-size:39px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft12{font-size:39px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft13{font-size:32px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft14{font-size:15px;font-family:XEKKFX+SimHei;color:#ff6600;}
+	.ft15{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft16{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册001.png" alt="background image"/>
+<p style="position:absolute;top:79px;left:321px;white-space:nowrap" class="ft10">幻尔科技</p>
+<p style="position:absolute;top:194px;left:291px;white-space:nowrap" class="ft11"><b>IMU</b></p>
+<p style="position:absolute;top:198px;left:365px;white-space:nowrap" class="ft12">用户手册</p>
+<p style="position:absolute;top:200px;left:531px;white-space:nowrap" class="ft13"><b>V1.0</b></p>
+<p style="position:absolute;top:745px;left:186px;white-space:nowrap" class="ft14">版本号</p>
+<p style="position:absolute;top:745px;left:369px;white-space:nowrap" class="ft15">修改日期</p>
+<p style="position:absolute;top:745px;left:470px;white-space:nowrap" class="ft15">修改摘要</p>
+<p style="position:absolute;top:804px;left:186px;white-space:nowrap" class="ft16">V1.0</p>
+<p style="position:absolute;top:804px;left:369px;white-space:nowrap" class="ft16">20231124</p>
+<p style="position:absolute;top:808px;left:470px;white-space:nowrap" class="ft15">初次发布</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册002.png" alt="background image"/>
+<p style="position:absolute;top:44px;left:431px;white-space:nowrap" class="ft20">目录</p>
+<p style="position:absolute;top:65px;left:177px;white-space:nowrap" class="ft20"><a href="IMU用户手册-3.html">1.&#160;IMU&#160;模块简介&#160;.............................................................&#160;3</a></p>
+<p style="position:absolute;top:95px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-3.html">1.1&#160;模块正面&#160;.................................................................&#160;3</a></p>
+<p style="position:absolute;top:126px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-4.html">1.2&#160;引脚功能说明&#160;.............................................................&#160;4</a></p>
+<p style="position:absolute;top:157px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-5.html">1.3&#160;模块背面&#160;.................................................................&#160;5</a></p>
+<p style="position:absolute;top:187px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-6.html">1.4&#160;版本区别&#160;.................................................................&#160;6</a></p>
+<p style="position:absolute;top:218px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-7.html">1.5&#160;产品特点&#160;.................................................................&#160;7</a></p>
+<p style="position:absolute;top:249px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-7.html">1.6&#160;传感器参数指标&#160;...........................................................&#160;7</a></p>
+<p style="position:absolute;top:279px;left:199px;white-space:nowrap" class="ft20"><a href="IMU用户手册-7.html">加速度计参数&#160;.............................................................&#160;7</a></p>
+<p style="position:absolute;top:310px;left:199px;white-space:nowrap" class="ft20"><a href="IMU用户手册-7.html">陀螺仪参数&#160;...............................................................&#160;7</a></p>
+<p style="position:absolute;top:340px;left:199px;white-space:nowrap" class="ft20"><a href="IMU用户手册-8.html">磁力计参数&#160;...............................................................&#160;8</a></p>
+<p style="position:absolute;top:371px;left:199px;white-space:nowrap" class="ft20"><a href="IMU用户手册-8.html">气压计参数&#160;...............................................................&#160;8</a></p>
+<p style="position:absolute;top:402px;left:199px;white-space:nowrap" class="ft20"><a href="IMU用户手册-8.html">俯仰角、横滚角参数&#160;.......................................................&#160;8</a></p>
+<p style="position:absolute;top:432px;left:199px;white-space:nowrap" class="ft20"><a href="IMU用户手册-8.html">航向角参数&#160;...............................................................&#160;8</a></p>
+<p style="position:absolute;top:463px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-8.html">1.7&#160;模块参数&#160;.................................................................&#160;8</a></p>
+<p style="position:absolute;top:494px;left:199px;white-space:nowrap" class="ft20"><a href="IMU用户手册-8.html">基本参数&#160;.................................................................&#160;8</a></p>
+<p style="position:absolute;top:524px;left:199px;white-space:nowrap" class="ft20">电器参数&#160;................................................&#160;错误！未定义书签。</p>
+<p style="position:absolute;top:555px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-9.html">2.&#160;外壳安装&#160;......................................................................&#160;9</a></p>
+<p style="position:absolute;top:586px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-11.html">3.&#160;注意事项&#160;.....................................................................&#160;11</a></p>
+<p style="position:absolute;top:616px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-12.html">4.&#160;上位机使用—安装串口驱动&#160;.....................................................&#160;12</a></p>
+<p style="position:absolute;top:647px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-12.html">5.&#160;上位机使用—设备连接&#160;.........................................................&#160;12</a></p>
+<p style="position:absolute;top:677px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-12.html">5.1&#160;串口连接上位机&#160;..........................................................&#160;12</a></p>
+<p style="position:absolute;top:708px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-14.html">5.2&#160;体验&#160;IMU&#160;模块&#160;............................................................&#160;14</a></p>
+<p style="position:absolute;top:739px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-15.html">6.&#160;上位机使用—参数配置说明&#160;.....................................................&#160;15</a></p>
+<p style="position:absolute;top:769px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-15.html">6.1&#160;配置界面讲解&#160;............................................................&#160;15</a></p>
+<p style="position:absolute;top:800px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-19.html">7.&#160;上位机使用—校准&#160;IMU&#160;模块&#160;.....................................................&#160;19</a></p>
+<p style="position:absolute;top:831px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-19.html">7.1&#160;加速度计校准&#160;............................................................&#160;19</a></p>
+<p style="position:absolute;top:861px;left:168px;white-space:nowrap" class="ft20">7.2&#160;磁力计校准&#160;..............................................&#160;错误！未定义书签。</p>
+<p style="position:absolute;top:892px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-26.html">7.3&#160;陀螺仪校准&#160;..............................................................&#160;26</a></p>
+<p style="position:absolute;top:923px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-29.html">7.4&#160;高度校准&#160;................................................................&#160;29</a></p>
+<p style="position:absolute;top:953px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-29.html">8.&#160;上位机使用—图形化显示数据&#160;...................................................&#160;29</a></p>
+<p style="position:absolute;top:984px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-29.html">8.1&#160;显示数据&#160;................................................................&#160;29</a></p>
+<p style="position:absolute;top:1015px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-30.html">8.2&#160;加速度图形化展示数据&#160;....................................................&#160;30</a></p>
+<p style="position:absolute;top:1045px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-31.html">8.3&#160;陀螺仪图形化展示数据&#160;....................................................&#160;31</a></p>
+<p style="position:absolute;top:1076px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-32.html">8.4&#160;姿态角度图形化展示数据&#160;..................................................&#160;32</a></p>
+<p style="position:absolute;top:1106px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-33.html">8.5&#160;磁场图形化展示数据&#160;......................................................&#160;33</a></p>
+<p style="position:absolute;top:1137px;left:136px;white-space:nowrap" class="ft20"><a href="IMU用户手册-34.html">9.&#160;上位机使用—接入&#160;GPS&#160;模块&#160;.....................................................&#160;34</a></p>
+<p style="position:absolute;top:1168px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-34.html">9.1&#160;外接&#160;GPS&#160;说明&#160;............................................................&#160;34</a></p>
+<p style="position:absolute;top:1198px;left:168px;white-space:nowrap" class="ft20"><a href="IMU用户手册-34.html">9.2&#160;修改&#160;GPS&#160;的串口波特率&#160;....................................................&#160;34</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft31{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft32{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft33{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft34{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft35{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册003.png" alt="background image"/>
+<p style="position:absolute;top:44px;left:168px;white-space:nowrap" class="ft30"><a href="IMU用户手册-36.html">9.3&#160;上位机配置&#160;GPS&#160;参数&#160;......................................................&#160;36</a></p>
+<p style="position:absolute;top:162px;left:105px;white-space:nowrap" class="ft31"><b>1.&#160;IMU</b></p>
+<p style="position:absolute;top:165px;left:179px;white-space:nowrap" class="ft32">模块简介</p>
+<p style="position:absolute;top:232px;left:136px;white-space:nowrap" class="ft30">该产品是基于</p>
+<p style="position:absolute;top:230px;left:235px;white-space:nowrap" class="ft33">MEMS</p>
+<p style="position:absolute;top:232px;left:273px;white-space:nowrap" class="ft30">技术的高性能三维运动姿态测量系统。它包含三轴陀螺仪、三轴加速度计，</p>
+<p style="position:absolute;top:263px;left:105px;white-space:nowrap" class="ft30">三轴电子罗盘运动传感器和气压计。通过集成各种高性能传感器和运用自主研发的姿态动力学核心</p>
+<p style="position:absolute;top:294px;left:105px;white-space:nowrap" class="ft30">算法引擎，结合高动态卡尔曼滤波融合算法，为客户提供高精度、高动态、实时补偿的三轴姿态角&#160;度，</p>
+<p style="position:absolute;top:324px;left:105px;white-space:nowrap" class="ft30">通过对各类数据的灵活选择配置，满足不同的应用场景。</p>
+<p style="position:absolute;top:355px;left:136px;white-space:nowrap" class="ft30">领先的基于</p>
+<p style="position:absolute;top:352px;left:229px;white-space:nowrap" class="ft33">Kalman</p>
+<p style="position:absolute;top:355px;left:289px;white-space:nowrap" class="ft30">滤波原理并具有自主知识产权的传感器融合算法，可以实时提供高达</p>
+<p style="position:absolute;top:383px;left:105px;white-space:nowrap" class="ft33">200Hz</p>
+<p style="position:absolute;top:385px;left:152px;white-space:nowrap" class="ft30">更新率的数据，从而满足各种高精度的应用需求，实现准确的动作捕捉和姿态估计。产品内</p>
+<p style="position:absolute;top:416px;left:105px;white-space:nowrap" class="ft30">部集成自主研发的高精度校准和标定算法，提高产品的测量精度。</p>
+<p style="position:absolute;top:447px;left:136px;white-space:nowrap" class="ft30">同时提供用户所需要的上位机、使用说明、开发手册、开发代码，使得针对各类需求的研发时</p>
+<p style="position:absolute;top:477px;left:105px;white-space:nowrap" class="ft30">间降至最低。</p>
+<p style="position:absolute;top:535px;left:105px;white-space:nowrap" class="ft34"><b>1.1</b></p>
+<p style="position:absolute;top:537px;left:145px;white-space:nowrap" class="ft35">模块正面</p>
+<p style="position:absolute;top:1201px;left:136px;white-space:nowrap" class="ft30">①</p>
+<p style="position:absolute;top:1199px;left:152px;white-space:nowrap" class="ft33">IMU</p>
+<p style="position:absolute;top:1201px;left:182px;white-space:nowrap" class="ft30">模块的核心模组：所有计算位姿都通过此核心模组完成。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft41{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft42{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft43{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册004.png" alt="background image"/>
+<p style="position:absolute;top:44px;left:136px;white-space:nowrap" class="ft40">②外接引脚：可连接</p>
+<p style="position:absolute;top:42px;left:282px;white-space:nowrap" class="ft41">GPS</p>
+<p style="position:absolute;top:44px;left:312px;white-space:nowrap" class="ft40">模块或者</p>
+<p style="position:absolute;top:42px;left:379px;white-space:nowrap" class="ft41">I2C</p>
+<p style="position:absolute;top:44px;left:409px;white-space:nowrap" class="ft40">设备。</p>
+<p style="position:absolute;top:75px;left:136px;white-space:nowrap" class="ft40">③串口引脚：输出</p>
+<p style="position:absolute;top:73px;left:266px;white-space:nowrap" class="ft41">TTL</p>
+<p style="position:absolute;top:75px;left:296px;white-space:nowrap" class="ft40">信号，可与</p>
+<p style="position:absolute;top:73px;left:379px;white-space:nowrap" class="ft41">STM32</p>
+<p style="position:absolute;top:75px;left:426px;white-space:nowrap" class="ft40">等单片机通讯。</p>
+<p style="position:absolute;top:106px;left:136px;white-space:nowrap" class="ft40">④</p>
+<p style="position:absolute;top:103px;left:152px;white-space:nowrap" class="ft41">CP2102</p>
+<p style="position:absolute;top:106px;left:208px;white-space:nowrap" class="ft40">芯片：</p>
+<p style="position:absolute;top:103px;left:255px;white-space:nowrap" class="ft41">USB</p>
+<p style="position:absolute;top:106px;left:285px;white-space:nowrap" class="ft40">转串口功能。</p>
+<p style="position:absolute;top:136px;left:136px;white-space:nowrap" class="ft40">⑤电源指示灯：模块状态指示灯，模块正常情况下常亮。</p>
+<p style="position:absolute;top:167px;left:136px;white-space:nowrap" class="ft40">⑥</p>
+<p style="position:absolute;top:165px;left:152px;white-space:nowrap" class="ft41">Type-C</p>
+<p style="position:absolute;top:167px;left:208px;white-space:nowrap" class="ft40">接口：连接到模块的串口，做为通讯接口使用。</p>
+<p style="position:absolute;top:198px;left:136px;white-space:nowrap" class="ft40">⑦固定铜柱：用于安装金属外壳或者安装</p>
+<p style="position:absolute;top:195px;left:424px;white-space:nowrap" class="ft41">GPS</p>
+<p style="position:absolute;top:198px;left:454px;white-space:nowrap" class="ft40">模块。</p>
+<p style="position:absolute;top:227px;left:105px;white-space:nowrap" class="ft42"><b>1.2</b></p>
+<p style="position:absolute;top:230px;left:145px;white-space:nowrap" class="ft43">引脚功能说明</p>
+<p style="position:absolute;top:271px;left:181px;white-space:nowrap" class="ft40">引脚编号</p>
+<p style="position:absolute;top:271px;left:514px;white-space:nowrap" class="ft40">引脚功能</p>
+<p style="position:absolute;top:303px;left:204px;white-space:nowrap" class="ft41">NC</p>
+<p style="position:absolute;top:307px;left:538px;white-space:nowrap" class="ft40">空</p>
+<p style="position:absolute;top:339px;left:204px;white-space:nowrap" class="ft41">D1</p>
+<p style="position:absolute;top:343px;left:458px;white-space:nowrap" class="ft40">连接</p>
+<p style="position:absolute;top:340px;left:493px;white-space:nowrap" class="ft41">GPS</p>
+<p style="position:absolute;top:343px;left:523px;white-space:nowrap" class="ft40">模块的数据接口</p>
+<p style="position:absolute;top:375px;left:199px;white-space:nowrap" class="ft41">GND</p>
+<p style="position:absolute;top:379px;left:530px;white-space:nowrap" class="ft40">接地</p>
+<p style="position:absolute;top:411px;left:204px;white-space:nowrap" class="ft41">5V</p>
+<p style="position:absolute;top:411px;left:537px;white-space:nowrap" class="ft41">5V</p>
+<p style="position:absolute;top:447px;left:199px;white-space:nowrap" class="ft41">GND</p>
+<p style="position:absolute;top:451px;left:530px;white-space:nowrap" class="ft40">接地</p>
+<p style="position:absolute;top:483px;left:199px;white-space:nowrap" class="ft41">SDA</p>
+<p style="position:absolute;top:484px;left:489px;white-space:nowrap" class="ft41">I2C-</p>
+<p style="position:absolute;top:487px;left:523px;white-space:nowrap" class="ft40">串行数据线</p>
+<p style="position:absolute;top:519px;left:199px;white-space:nowrap" class="ft41">SCL</p>
+<p style="position:absolute;top:520px;left:489px;white-space:nowrap" class="ft41">I2C-</p>
+<p style="position:absolute;top:523px;left:523px;white-space:nowrap" class="ft40">串行时钟线</p>
+<p style="position:absolute;top:555px;left:199px;white-space:nowrap" class="ft41">3V3</p>
+<p style="position:absolute;top:555px;left:528px;white-space:nowrap" class="ft41">3.3V</p>
+<p style="position:absolute;top:591px;left:204px;white-space:nowrap" class="ft41">RX</p>
+<p style="position:absolute;top:595px;left:478px;white-space:nowrap" class="ft40">串口</p>
+<p style="position:absolute;top:592px;left:510px;white-space:nowrap" class="ft41">-</p>
+<p style="position:absolute;top:595px;left:518px;white-space:nowrap" class="ft40">数据接收引脚</p>
+<p style="position:absolute;top:627px;left:204px;white-space:nowrap" class="ft41">TX</p>
+<p style="position:absolute;top:631px;left:478px;white-space:nowrap" class="ft40">串口</p>
+<p style="position:absolute;top:628px;left:510px;white-space:nowrap" class="ft41">-</p>
+<p style="position:absolute;top:631px;left:518px;white-space:nowrap" class="ft40">数据发送引脚</p>
+<p style="position:absolute;top:663px;left:199px;white-space:nowrap" class="ft41">GND</p>
+<p style="position:absolute;top:667px;left:530px;white-space:nowrap" class="ft40">接地</p>
+<p style="position:absolute;top:699px;left:204px;white-space:nowrap" class="ft41">5V</p>
+<p style="position:absolute;top:699px;left:537px;white-space:nowrap" class="ft41">5V</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft51{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册005.png" alt="background image"/>
+<p style="position:absolute;top:43px;left:105px;white-space:nowrap" class="ft50"><b>1.3</b></p>
+<p style="position:absolute;top:45px;left:145px;white-space:nowrap" class="ft51">模块背面</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft61{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft62{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft63{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册006.png" alt="background image"/>
+<p style="position:absolute;top:44px;left:105px;white-space:nowrap" class="ft60"><b>1.4</b></p>
+<p style="position:absolute;top:46px;left:145px;white-space:nowrap" class="ft61">版本区别</p>
+<p style="position:absolute;top:84px;left:136px;white-space:nowrap" class="ft62">IMU</p>
+<p style="position:absolute;top:87px;left:166px;white-space:nowrap" class="ft63">模块有分裸机版本和带金属外壳版本，金属外壳版本出厂已经安装好外壳，裸机版本可以通</p>
+<p style="position:absolute;top:117px;left:105px;white-space:nowrap" class="ft63">过串口连接到</p>
+<p style="position:absolute;top:115px;left:203px;white-space:nowrap" class="ft62">STM32</p>
+<p style="position:absolute;top:117px;left:251px;white-space:nowrap" class="ft63">等单片机使用、也可以通过</p>
+<p style="position:absolute;top:115px;left:444px;white-space:nowrap" class="ft62">USB</p>
+<p style="position:absolute;top:117px;left:474px;white-space:nowrap" class="ft63">数据线与树莓派连接。装上金属外壳后只能使</p>
+<p style="position:absolute;top:148px;left:105px;white-space:nowrap" class="ft63">用</p>
+<p style="position:absolute;top:146px;left:125px;white-space:nowrap" class="ft62">USB</p>
+<p style="position:absolute;top:148px;left:155px;white-space:nowrap" class="ft63">通讯。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft71{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft72{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft73{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft74{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册007.png" alt="background image"/>
+<p style="position:absolute;top:86px;left:105px;white-space:nowrap" class="ft70"><b>1.5</b></p>
+<p style="position:absolute;top:88px;left:145px;white-space:nowrap" class="ft71">产品特点</p>
+<p style="position:absolute;top:126px;left:136px;white-space:nowrap" class="ft72">1.</p>
+<p style="position:absolute;top:129px;left:168px;white-space:nowrap" class="ft73">模块集成高精度的陀螺仪、加速度计、地磁场传感器和气压计，采用高性能的微处理器和</p>
+<p style="position:absolute;top:159px;left:105px;white-space:nowrap" class="ft73">先进的动力学解算与卡尔曼动态滤波算法，能够快速求解出模块当前的实时运动姿态。</p>
+<p style="position:absolute;top:188px;left:136px;white-space:nowrap" class="ft72">2.</p>
+<p style="position:absolute;top:190px;left:168px;white-space:nowrap" class="ft73">采用先进的数字滤波技术，能有效降低测量噪声，提高测量精度。</p>
+<p style="position:absolute;top:218px;left:136px;white-space:nowrap" class="ft72">3.</p>
+<p style="position:absolute;top:221px;left:168px;white-space:nowrap" class="ft73">模块内部集成了姿态解算器，配合动态卡尔曼滤波算法，能够在动态环境下准确输出模块</p>
+<p style="position:absolute;top:251px;left:105px;white-space:nowrap" class="ft73">的当前姿态，&#160;姿态测量精度静态</p>
+<p style="position:absolute;top:249px;left:342px;white-space:nowrap" class="ft72">0.05</p>
+<p style="position:absolute;top:251px;left:384px;white-space:nowrap" class="ft73">度，动态</p>
+<p style="position:absolute;top:249px;left:455px;white-space:nowrap" class="ft72">0.1</p>
+<p style="position:absolute;top:251px;left:489px;white-space:nowrap" class="ft73">度，稳定性极高，性能甚至优于某些专业的</p>
+<p style="position:absolute;top:282px;left:105px;white-space:nowrap" class="ft73">倾角仪。</p>
+<p style="position:absolute;top:310px;left:136px;white-space:nowrap" class="ft72">4.&#160;Z</p>
+<p style="position:absolute;top:312px;left:181px;white-space:nowrap" class="ft73">轴航向角加入地磁传感器滤波融合，解决了</p>
+<p style="position:absolute;top:310px;left:480px;white-space:nowrap" class="ft72">6</p>
+<p style="position:absolute;top:312px;left:493px;white-space:nowrap" class="ft73">轴算法中，由于陀螺仪积分的漂移引起的累</p>
+<p style="position:absolute;top:343px;left:105px;white-space:nowrap" class="ft73">计误差，可长期稳定输出航向角数据。注意：要由于有磁场检测，使用前需要校准，而且使用时需</p>
+<p style="position:absolute;top:374px;left:105px;white-space:nowrap" class="ft73">要远离磁干扰区域、电子设备、磁铁、扬声器等硬磁性物体至少</p>
+<p style="position:absolute;top:371px;left:550px;white-space:nowrap" class="ft72">20cm</p>
+<p style="position:absolute;top:374px;left:588px;white-space:nowrap" class="ft73">的距离。</p>
+<p style="position:absolute;top:402px;left:136px;white-space:nowrap" class="ft72">5.</p>
+<p style="position:absolute;top:404px;left:168px;white-space:nowrap" class="ft73">模块内部自带电压稳定电路，工作电压</p>
+<p style="position:absolute;top:402px;left:437px;white-space:nowrap" class="ft72">3.3~5V</p>
+<p style="position:absolute;top:404px;left:489px;white-space:nowrap" class="ft73">，引脚电平兼容</p>
+<p style="position:absolute;top:402px;left:601px;white-space:nowrap" class="ft72">3.3V/5V</p>
+<p style="position:absolute;top:404px;left:665px;white-space:nowrap" class="ft73">的嵌入式系统，连</p>
+<p style="position:absolute;top:435px;left:105px;white-space:nowrap" class="ft73">接&#160;方&#160;便&#160;。&#160;支&#160;持&#160;串&#160;口&#160;和</p>
+<p style="position:absolute;top:433px;left:281px;white-space:nowrap" class="ft72">IIC</p>
+<p style="position:absolute;top:435px;left:314px;white-space:nowrap" class="ft73">两&#160;种&#160;数&#160;字&#160;接&#160;口&#160;。&#160;方&#160;便&#160;用&#160;户&#160;选&#160;择&#160;最&#160;佳&#160;的&#160;连&#160;接&#160;方&#160;式&#160;。&#160;串&#160;口&#160;速&#160;率</p>
+<p style="position:absolute;top:463px;left:105px;white-space:nowrap" class="ft72">4800bps~921600bps</p>
+<p style="position:absolute;top:466px;left:256px;white-space:nowrap" class="ft73">可调，</p>
+<p style="position:absolute;top:463px;left:303px;white-space:nowrap" class="ft72">IIC</p>
+<p style="position:absolute;top:466px;left:333px;white-space:nowrap" class="ft73">接口支持全速</p>
+<p style="position:absolute;top:463px;left:432px;white-space:nowrap" class="ft72">400K</p>
+<p style="position:absolute;top:466px;left:470px;white-space:nowrap" class="ft73">速率。</p>
+<p style="position:absolute;top:494px;left:136px;white-space:nowrap" class="ft72">6.</p>
+<p style="position:absolute;top:496px;left:168px;white-space:nowrap" class="ft73">最高</p>
+<p style="position:absolute;top:494px;left:203px;white-space:nowrap" class="ft72">200Hz</p>
+<p style="position:absolute;top:496px;left:251px;white-space:nowrap" class="ft73">数据输出速率。输出内容可以自由选择，输出速率</p>
+<p style="position:absolute;top:494px;left:596px;white-space:nowrap" class="ft72">0.2</p>
+<p style="position:absolute;top:496px;left:622px;white-space:nowrap" class="ft73">～</p>
+<p style="position:absolute;top:494px;left:637px;white-space:nowrap" class="ft72">200Hz</p>
+<p style="position:absolute;top:496px;left:685px;white-space:nowrap" class="ft73">可调节。保留</p>
+<p style="position:absolute;top:494px;left:780px;white-space:nowrap" class="ft72">4</p>
+<p style="position:absolute;top:527px;left:105px;white-space:nowrap" class="ft73">路扩展端口，可以分别配置为模拟输入，数字输入，数字输出等功能。</p>
+<p style="position:absolute;top:555px;left:136px;white-space:nowrap" class="ft72">7.</p>
+<p style="position:absolute;top:558px;left:168px;white-space:nowrap" class="ft73">具备</p>
+<p style="position:absolute;top:555px;left:204px;white-space:nowrap" class="ft72">GPS</p>
+<p style="position:absolute;top:558px;left:234px;white-space:nowrap" class="ft73">连接能力。可接受符合</p>
+<p style="position:absolute;top:555px;left:397px;white-space:nowrap" class="ft72">NMEA-0183</p>
+<p style="position:absolute;top:558px;left:479px;white-space:nowrap" class="ft73">标准的串口</p>
+<p style="position:absolute;top:555px;left:563px;white-space:nowrap" class="ft72">GPS</p>
+<p style="position:absolute;top:558px;left:593px;white-space:nowrap" class="ft73">数据，形成</p>
+<p style="position:absolute;top:555px;left:677px;white-space:nowrap" class="ft72">GPS-IMU</p>
+<p style="position:absolute;top:558px;left:741px;white-space:nowrap" class="ft73">组合导</p>
+<p style="position:absolute;top:588px;left:105px;white-space:nowrap" class="ft73">航单元。</p>
+<p style="position:absolute;top:618px;left:105px;white-space:nowrap" class="ft70"><b>1.6</b></p>
+<p style="position:absolute;top:620px;left:145px;white-space:nowrap" class="ft71">传感器参数指标</p>
+<p style="position:absolute;top:662px;left:105px;white-space:nowrap" class="ft74">加速度计参数</p>
+<p style="position:absolute;top:710px;left:201px;white-space:nowrap" class="ft73">参数</p>
+<p style="position:absolute;top:710px;left:409px;white-space:nowrap" class="ft73">条件</p>
+<p style="position:absolute;top:710px;left:648px;white-space:nowrap" class="ft73">典型值</p>
+<p style="position:absolute;top:747px;left:201px;white-space:nowrap" class="ft73">量程</p>
+<p style="position:absolute;top:747px;left:650px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:745px;left:666px;white-space:nowrap" class="ft72">16g</p>
+<p style="position:absolute;top:784px;left:194px;white-space:nowrap" class="ft73">分辨率</p>
+<p style="position:absolute;top:784px;left:404px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:782px;left:420px;white-space:nowrap" class="ft72">16g</p>
+<p style="position:absolute;top:781px;left:615px;white-space:nowrap" class="ft72">0.0005(g/LSB)</p>
+<p style="position:absolute;top:819px;left:186px;white-space:nowrap" class="ft72">RMS</p>
+<p style="position:absolute;top:822px;left:216px;white-space:nowrap" class="ft73">噪声</p>
+<p style="position:absolute;top:822px;left:383px;white-space:nowrap" class="ft73">带宽</p>
+<p style="position:absolute;top:819px;left:415px;white-space:nowrap" class="ft72">=100Hz</p>
+<p style="position:absolute;top:818px;left:619px;white-space:nowrap" class="ft72">0.75~1mg-rms</p>
+<p style="position:absolute;top:859px;left:186px;white-space:nowrap" class="ft73">静止零漂</p>
+<p style="position:absolute;top:859px;left:393px;white-space:nowrap" class="ft73">水平放置</p>
+<p style="position:absolute;top:859px;left:633px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:856px;left:649px;white-space:nowrap" class="ft72">20~40mg</p>
+<p style="position:absolute;top:896px;left:201px;white-space:nowrap" class="ft73">温漂</p>
+<p style="position:absolute;top:893px;left:361px;white-space:nowrap" class="ft72">-40</p>
+<p style="position:absolute;top:896px;left:387px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:893px;left:403px;white-space:nowrap" class="ft72">C&#160;~&#160;+85</p>
+<p style="position:absolute;top:896px;left:464px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:893px;left:480px;white-space:nowrap" class="ft72">C</p>
+<p style="position:absolute;top:896px;left:625px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:893px;left:641px;white-space:nowrap" class="ft72">0.15mg/</p>
+<p style="position:absolute;top:896px;left:701px;white-space:nowrap" class="ft73">℃</p>
+<p style="position:absolute;top:933px;left:201px;white-space:nowrap" class="ft73">带宽</p>
+<p style="position:absolute;top:929px;left:641px;white-space:nowrap" class="ft72">5~256Hz</p>
+<p style="position:absolute;top:971px;left:105px;white-space:nowrap" class="ft74">陀螺仪参数</p>
+<p style="position:absolute;top:1020px;left:192px;white-space:nowrap" class="ft73">参数</p>
+<p style="position:absolute;top:1020px;left:376px;white-space:nowrap" class="ft73">条件</p>
+<p style="position:absolute;top:1020px;left:624px;white-space:nowrap" class="ft73">典型值</p>
+<p style="position:absolute;top:1057px;left:192px;white-space:nowrap" class="ft73">量程</p>
+<p style="position:absolute;top:1057px;left:606px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:1055px;left:622px;white-space:nowrap" class="ft72">2000</p>
+<p style="position:absolute;top:1057px;left:656px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1055px;left:672px;white-space:nowrap" class="ft72">/s</p>
+<p style="position:absolute;top:1094px;left:184px;white-space:nowrap" class="ft73">分辨率</p>
+<p style="position:absolute;top:1094px;left:350px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:1092px;left:366px;white-space:nowrap" class="ft72">2000</p>
+<p style="position:absolute;top:1094px;left:400px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1092px;left:416px;white-space:nowrap" class="ft72">/s</p>
+<p style="position:absolute;top:1092px;left:575px;white-space:nowrap" class="ft72">0.061(</p>
+<p style="position:absolute;top:1094px;left:627px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1092px;left:642px;white-space:nowrap" class="ft72">/s)/(LSB)</p>
+<p style="position:absolute;top:1129px;left:177px;white-space:nowrap" class="ft72">RMS</p>
+<p style="position:absolute;top:1131px;left:207px;white-space:nowrap" class="ft73">噪声</p>
+<p style="position:absolute;top:1131px;left:350px;white-space:nowrap" class="ft73">带宽</p>
+<p style="position:absolute;top:1129px;left:381px;white-space:nowrap" class="ft72">=100Hz</p>
+<p style="position:absolute;top:1129px;left:562px;white-space:nowrap" class="ft72">0.028~0.07(</p>
+<p style="position:absolute;top:1131px;left:657px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1129px;left:673px;white-space:nowrap" class="ft72">/s)-rms</p>
+<p style="position:absolute;top:1168px;left:176px;white-space:nowrap" class="ft73">静止零漂</p>
+<p style="position:absolute;top:1168px;left:360px;white-space:nowrap" class="ft73">水平放置</p>
+<p style="position:absolute;top:1168px;left:602px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:1166px;left:617px;white-space:nowrap" class="ft72">0.5~1</p>
+<p style="position:absolute;top:1168px;left:661px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1166px;left:676px;white-space:nowrap" class="ft72">/s</p>
+<p style="position:absolute;top:1205px;left:192px;white-space:nowrap" class="ft73">温漂</p>
+<p style="position:absolute;top:1203px;left:328px;white-space:nowrap" class="ft72">-40</p>
+<p style="position:absolute;top:1205px;left:354px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1203px;left:370px;white-space:nowrap" class="ft72">C&#160;~&#160;+85</p>
+<p style="position:absolute;top:1205px;left:431px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1203px;left:446px;white-space:nowrap" class="ft72">C</p>
+<p style="position:absolute;top:1205px;left:550px;white-space:nowrap" class="ft73">±</p>
+<p style="position:absolute;top:1203px;left:566px;white-space:nowrap" class="ft72">0.005~0.015&#160;(</p>
+<p style="position:absolute;top:1205px;left:679px;white-space:nowrap" class="ft73">°</p>
+<p style="position:absolute;top:1203px;left:694px;white-space:nowrap" class="ft72">/s)/</p>
+<p style="position:absolute;top:1205px;left:729px;white-space:nowrap" class="ft73">℃</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft81{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft82{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft83{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft84{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册008.png" alt="background image"/>
+<p style="position:absolute;top:88px;left:192px;white-space:nowrap" class="ft80">带宽</p>
+<p style="position:absolute;top:84px;left:617px;white-space:nowrap" class="ft81">5~256Hz</p>
+<p style="position:absolute;top:126px;left:105px;white-space:nowrap" class="ft82">磁力计参数</p>
+<p style="position:absolute;top:175px;left:191px;white-space:nowrap" class="ft80">参数</p>
+<p style="position:absolute;top:175px;left:357px;white-space:nowrap" class="ft80">条件</p>
+<p style="position:absolute;top:175px;left:607px;white-space:nowrap" class="ft80">典型值</p>
+<p style="position:absolute;top:212px;left:191px;white-space:nowrap" class="ft80">量程</p>
+<p style="position:absolute;top:212px;left:596px;white-space:nowrap" class="ft80">±</p>
+<p style="position:absolute;top:209px;left:612px;white-space:nowrap" class="ft81">2Gauss</p>
+<p style="position:absolute;top:249px;left:183px;white-space:nowrap" class="ft80">分辨率</p>
+<p style="position:absolute;top:249px;left:339px;white-space:nowrap" class="ft80">±</p>
+<p style="position:absolute;top:246px;left:355px;white-space:nowrap" class="ft81">2Gauss</p>
+<p style="position:absolute;top:245px;left:561px;white-space:nowrap" class="ft81">0.0667mGauss/LSB</p>
+<p style="position:absolute;top:287px;left:105px;white-space:nowrap" class="ft82">气压计参数</p>
+<p style="position:absolute;top:336px;left:214px;white-space:nowrap" class="ft80">参数</p>
+<p style="position:absolute;top:336px;left:410px;white-space:nowrap" class="ft80">条件</p>
+<p style="position:absolute;top:336px;left:636px;white-space:nowrap" class="ft80">典型值</p>
+<p style="position:absolute;top:373px;left:214px;white-space:nowrap" class="ft80">量程</p>
+<p style="position:absolute;top:369px;left:612px;white-space:nowrap" class="ft81">300~1100hPa</p>
+<p style="position:absolute;top:408px;left:199px;white-space:nowrap" class="ft81">RMS</p>
+<p style="position:absolute;top:410px;left:229px;white-space:nowrap" class="ft80">噪声</p>
+<p style="position:absolute;top:410px;left:394px;white-space:nowrap" class="ft80">标准模式</p>
+<p style="position:absolute;top:406px;left:621px;white-space:nowrap" class="ft81">0.5Pa-RMS</p>
+<p style="position:absolute;top:447px;left:198px;white-space:nowrap" class="ft80">相对精度</p>
+<p style="position:absolute;top:447px;left:622px;white-space:nowrap" class="ft80">±</p>
+<p style="position:absolute;top:445px;left:638px;white-space:nowrap" class="ft81">0.06hPa</p>
+<p style="position:absolute;top:485px;left:105px;white-space:nowrap" class="ft82">俯仰角、横滚角参数</p>
+<p style="position:absolute;top:534px;left:198px;white-space:nowrap" class="ft80">参数</p>
+<p style="position:absolute;top:534px;left:398px;white-space:nowrap" class="ft80">条件</p>
+<p style="position:absolute;top:534px;left:640px;white-space:nowrap" class="ft80">典型值</p>
+<p style="position:absolute;top:571px;left:198px;white-space:nowrap" class="ft80">量程</p>
+<p style="position:absolute;top:569px;left:586px;white-space:nowrap" class="ft81">X:</p>
+<p style="position:absolute;top:571px;left:603px;white-space:nowrap" class="ft80">±</p>
+<p style="position:absolute;top:569px;left:619px;white-space:nowrap" class="ft81">180</p>
+<p style="position:absolute;top:571px;left:645px;white-space:nowrap" class="ft80">°，</p>
+<p style="position:absolute;top:569px;left:676px;white-space:nowrap" class="ft81">Y:</p>
+<p style="position:absolute;top:571px;left:693px;white-space:nowrap" class="ft80">±</p>
+<p style="position:absolute;top:569px;left:709px;white-space:nowrap" class="ft81">90</p>
+<p style="position:absolute;top:571px;left:726px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:608px;left:182px;white-space:nowrap" class="ft80">倾角精度</p>
+<p style="position:absolute;top:608px;left:398px;white-space:nowrap" class="ft80">静态</p>
+<p style="position:absolute;top:606px;left:643px;white-space:nowrap" class="ft81">0.1</p>
+<p style="position:absolute;top:608px;left:669px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:645px;left:182px;white-space:nowrap" class="ft80">倾角精度</p>
+<p style="position:absolute;top:645px;left:398px;white-space:nowrap" class="ft80">动态</p>
+<p style="position:absolute;top:643px;left:643px;white-space:nowrap" class="ft81">0.5</p>
+<p style="position:absolute;top:645px;left:669px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:682px;left:190px;white-space:nowrap" class="ft80">分辨率</p>
+<p style="position:absolute;top:682px;left:383px;white-space:nowrap" class="ft80">水平放置</p>
+<p style="position:absolute;top:680px;left:630px;white-space:nowrap" class="ft81">0.0055</p>
+<p style="position:absolute;top:682px;left:682px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:720px;left:198px;white-space:nowrap" class="ft80">温漂</p>
+<p style="position:absolute;top:717px;left:351px;white-space:nowrap" class="ft81">-40</p>
+<p style="position:absolute;top:720px;left:377px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:717px;left:392px;white-space:nowrap" class="ft81">C&#160;~&#160;+85</p>
+<p style="position:absolute;top:720px;left:453px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:717px;left:469px;white-space:nowrap" class="ft81">C</p>
+<p style="position:absolute;top:720px;left:627px;white-space:nowrap" class="ft80">±</p>
+<p style="position:absolute;top:717px;left:642px;white-space:nowrap" class="ft81">0.5~1</p>
+<p style="position:absolute;top:720px;left:686px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:758px;left:105px;white-space:nowrap" class="ft82">航向角参数</p>
+<p style="position:absolute;top:806px;left:165px;white-space:nowrap" class="ft80">参数</p>
+<p style="position:absolute;top:806px;left:343px;white-space:nowrap" class="ft80">条件</p>
+<p style="position:absolute;top:806px;left:617px;white-space:nowrap" class="ft80">典型值</p>
+<p style="position:absolute;top:843px;left:165px;white-space:nowrap" class="ft80">量程</p>
+<p style="position:absolute;top:841px;left:604px;white-space:nowrap" class="ft81">Z:</p>
+<p style="position:absolute;top:843px;left:621px;white-space:nowrap" class="ft80">±</p>
+<p style="position:absolute;top:841px;left:637px;white-space:nowrap" class="ft81">180</p>
+<p style="position:absolute;top:843px;left:663px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:881px;left:150px;white-space:nowrap" class="ft80">航向精度</p>
+<p style="position:absolute;top:878px;left:253px;white-space:nowrap" class="ft81">9</p>
+<p style="position:absolute;top:881px;left:266px;white-space:nowrap" class="ft80">轴算法，磁场校准，动</p>
+<p style="position:absolute;top:878px;left:423px;white-space:nowrap" class="ft81">/</p>
+<p style="position:absolute;top:881px;left:432px;white-space:nowrap" class="ft80">静态</p>
+<p style="position:absolute;top:878px;left:526px;white-space:nowrap" class="ft81">1</p>
+<p style="position:absolute;top:881px;left:535px;white-space:nowrap" class="ft80">°（不受磁场干扰情况下）【</p>
+<p style="position:absolute;top:878px;left:732px;white-space:nowrap" class="ft81">1</p>
+<p style="position:absolute;top:881px;left:740px;white-space:nowrap" class="ft80">】</p>
+<p style="position:absolute;top:918px;left:150px;white-space:nowrap" class="ft80">航向精度</p>
+<p style="position:absolute;top:915px;left:305px;white-space:nowrap" class="ft81">6</p>
+<p style="position:absolute;top:918px;left:317px;white-space:nowrap" class="ft80">轴算法，静态</p>
+<p style="position:absolute;top:915px;left:509px;white-space:nowrap" class="ft81">0.5</p>
+<p style="position:absolute;top:918px;left:536px;white-space:nowrap" class="ft80">°（动态存在积分累计误差）【</p>
+<p style="position:absolute;top:915px;left:748px;white-space:nowrap" class="ft81">2</p>
+<p style="position:absolute;top:918px;left:757px;white-space:nowrap" class="ft80">】</p>
+<p style="position:absolute;top:955px;left:158px;white-space:nowrap" class="ft80">分辨率</p>
+<p style="position:absolute;top:955px;left:327px;white-space:nowrap" class="ft80">水平放置</p>
+<p style="position:absolute;top:952px;left:607px;white-space:nowrap" class="ft81">0.0055</p>
+<p style="position:absolute;top:955px;left:659px;white-space:nowrap" class="ft80">°</p>
+<p style="position:absolute;top:992px;left:136px;white-space:nowrap" class="ft80">注：</p>
+<p style="position:absolute;top:1023px;left:136px;white-space:nowrap" class="ft80">【</p>
+<p style="position:absolute;top:1020px;left:152px;white-space:nowrap" class="ft81">1</p>
+<p style="position:absolute;top:1023px;left:161px;white-space:nowrap" class="ft80">】使用前请在测试的环境进行磁场校准，确保传感器熟悉该环境下的磁场，校准时，请远离</p>
+<p style="position:absolute;top:1053px;left:105px;white-space:nowrap" class="ft80">磁干扰。</p>
+<p style="position:absolute;top:1084px;left:136px;white-space:nowrap" class="ft80">【</p>
+<p style="position:absolute;top:1082px;left:152px;white-space:nowrap" class="ft81">2</p>
+<p style="position:absolute;top:1084px;left:161px;white-space:nowrap" class="ft80">】在有些震动环境下，会有累计误差，具体误差不可估计，具体根据实际测试为准。</p>
+<p style="position:absolute;top:1114px;left:105px;white-space:nowrap" class="ft83"><b>1.7</b></p>
+<p style="position:absolute;top:1116px;left:145px;white-space:nowrap" class="ft84">模块参数</p>
+<p style="position:absolute;top:1157px;left:105px;white-space:nowrap" class="ft82">基本参数</p>
+<p style="position:absolute;top:1206px;left:169px;white-space:nowrap" class="ft80">参数</p>
+<p style="position:absolute;top:1206px;left:502px;white-space:nowrap" class="ft80">备注</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft91{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft92{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft93{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft94{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册009.png" alt="background image"/>
+<p style="position:absolute;top:88px;left:122px;white-space:nowrap" class="ft90">串口通讯接口</p>
+<p style="position:absolute;top:88px;left:339px;white-space:nowrap" class="ft90">默认波特率</p>
+<p style="position:absolute;top:85px;left:422px;white-space:nowrap" class="ft91">9600bps</p>
+<p style="position:absolute;top:88px;left:482px;white-space:nowrap" class="ft90">，可选择</p>
+<p style="position:absolute;top:85px;left:549px;white-space:nowrap" class="ft91">4800bps~921600bps</p>
+<p style="position:absolute;top:121px;left:154px;white-space:nowrap" class="ft91">I2C</p>
+<p style="position:absolute;top:124px;left:184px;white-space:nowrap" class="ft90">接口</p>
+<p style="position:absolute;top:124px;left:326px;white-space:nowrap" class="ft90">硬件</p>
+<p style="position:absolute;top:121px;left:361px;white-space:nowrap" class="ft91">I2C</p>
+<p style="position:absolute;top:124px;left:391px;white-space:nowrap" class="ft90">最高支持</p>
+<p style="position:absolute;top:121px;left:458px;white-space:nowrap" class="ft91">400KHz</p>
+<p style="position:absolute;top:124px;left:510px;white-space:nowrap" class="ft90">，软件</p>
+<p style="position:absolute;top:121px;left:561px;white-space:nowrap" class="ft91">I2C</p>
+<p style="position:absolute;top:124px;left:591px;white-space:nowrap" class="ft90">最高支持</p>
+<p style="position:absolute;top:121px;left:658px;white-space:nowrap" class="ft91">100KHz</p>
+<p style="position:absolute;top:161px;left:153px;white-space:nowrap" class="ft90">输出内容</p>
+<p style="position:absolute;top:161px;left:256px;white-space:nowrap" class="ft90">片上时间、</p>
+<p style="position:absolute;top:158px;left:335px;white-space:nowrap" class="ft91">3</p>
+<p style="position:absolute;top:161px;left:348px;white-space:nowrap" class="ft90">轴加速度、</p>
+<p style="position:absolute;top:158px;left:426px;white-space:nowrap" class="ft91">3</p>
+<p style="position:absolute;top:161px;left:439px;white-space:nowrap" class="ft90">轴角速度、</p>
+<p style="position:absolute;top:158px;left:518px;white-space:nowrap" class="ft91">3</p>
+<p style="position:absolute;top:161px;left:530px;white-space:nowrap" class="ft90">轴磁场、</p>
+<p style="position:absolute;top:158px;left:593px;white-space:nowrap" class="ft91">3</p>
+<p style="position:absolute;top:161px;left:606px;white-space:nowrap" class="ft90">轴角度、四元数、端口状</p>
+<p style="position:absolute;top:181px;left:447px;white-space:nowrap" class="ft90">态、气压、高度</p>
+<p style="position:absolute;top:220px;left:153px;white-space:nowrap" class="ft90">输出速率</p>
+<p style="position:absolute;top:220px;left:402px;white-space:nowrap" class="ft90">默认</p>
+<p style="position:absolute;top:218px;left:437px;white-space:nowrap" class="ft91">10Hz</p>
+<p style="position:absolute;top:220px;left:472px;white-space:nowrap" class="ft90">，可选择</p>
+<p style="position:absolute;top:218px;left:539px;white-space:nowrap" class="ft91">0.2Hz~200Hz</p>
+<p style="position:absolute;top:258px;left:153px;white-space:nowrap" class="ft90">启动时间</p>
+<p style="position:absolute;top:254px;left:492px;white-space:nowrap" class="ft91">1000ms</p>
+<p style="position:absolute;top:295px;left:153px;white-space:nowrap" class="ft90">工作温度</p>
+<p style="position:absolute;top:292px;left:476px;white-space:nowrap" class="ft91">-40</p>
+<p style="position:absolute;top:295px;left:502px;white-space:nowrap" class="ft90">℃</p>
+<p style="position:absolute;top:292px;left:518px;white-space:nowrap" class="ft91">~85</p>
+<p style="position:absolute;top:295px;left:544px;white-space:nowrap" class="ft90">℃</p>
+<p style="position:absolute;top:332px;left:153px;white-space:nowrap" class="ft90">储存温度</p>
+<p style="position:absolute;top:329px;left:472px;white-space:nowrap" class="ft91">-40</p>
+<p style="position:absolute;top:332px;left:498px;white-space:nowrap" class="ft90">℃</p>
+<p style="position:absolute;top:329px;left:513px;white-space:nowrap" class="ft91">~100</p>
+<p style="position:absolute;top:332px;left:548px;white-space:nowrap" class="ft90">℃</p>
+<p style="position:absolute;top:369px;left:161px;white-space:nowrap" class="ft90">耐冲击</p>
+<p style="position:absolute;top:367px;left:469px;white-space:nowrap" class="ft91">20kg</p>
+<p style="position:absolute;top:369px;left:503px;white-space:nowrap" class="ft90">（裸板）</p>
+<p style="position:absolute;top:407px;left:105px;white-space:nowrap" class="ft92">电气参数</p>
+<p style="position:absolute;top:456px;left:264px;white-space:nowrap" class="ft90">参数</p>
+<p style="position:absolute;top:456px;left:491px;white-space:nowrap" class="ft90">条件</p>
+<p style="position:absolute;top:456px;left:674px;white-space:nowrap" class="ft90">数值</p>
+<p style="position:absolute;top:490px;left:234px;white-space:nowrap" class="ft91">VCC</p>
+<p style="position:absolute;top:493px;left:264px;white-space:nowrap" class="ft90">供电电压</p>
+<p style="position:absolute;top:489px;left:660px;white-space:nowrap" class="ft91">3.3V/5V</p>
+<p style="position:absolute;top:530px;left:249px;white-space:nowrap" class="ft90">工作电流</p>
+<p style="position:absolute;top:526px;left:498px;white-space:nowrap" class="ft91">5V</p>
+<p style="position:absolute;top:526px;left:672px;white-space:nowrap" class="ft91">12mA</p>
+<p style="position:absolute;top:567px;left:249px;white-space:nowrap" class="ft90">休眠电流</p>
+<p style="position:absolute;top:563px;left:498px;white-space:nowrap" class="ft91">5V</p>
+<p style="position:absolute;top:563px;left:672px;white-space:nowrap" class="ft91">15uA</p>
+<p style="position:absolute;top:628px;left:105px;white-space:nowrap" class="ft93"><b>2.</b></p>
+<p style="position:absolute;top:631px;left:136px;white-space:nowrap" class="ft94">外壳安装</p>
+<p style="position:absolute;top:698px;left:136px;white-space:nowrap" class="ft90">如下图所示是</p>
+<p style="position:absolute;top:696px;left:235px;white-space:nowrap" class="ft91">IMU</p>
+<p style="position:absolute;top:698px;left:265px;white-space:nowrap" class="ft90">模块的金属外壳的安装孔位和裸机版本的安装孔位。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft101{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft102{font-size:14px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册010.png" alt="background image"/>
+<p style="position:absolute;top:691px;left:136px;white-space:nowrap" class="ft100">当需要将</p>
+<p style="position:absolute;top:688px;left:204px;white-space:nowrap" class="ft101">IMU</p>
+<p style="position:absolute;top:691px;left:233px;white-space:nowrap" class="ft100">模块安装到其他设备上时，为了避免安装产生的误差，安装</p>
+<p style="position:absolute;top:688px;left:648px;white-space:nowrap" class="ft101">IMU</p>
+<p style="position:absolute;top:691px;left:678px;white-space:nowrap" class="ft100">模块时应注意以</p>
+<p style="position:absolute;top:721px;left:105px;white-space:nowrap" class="ft100">下几点：</p>
+<p style="position:absolute;top:750px;left:136px;white-space:nowrap" class="ft102">1.</p>
+<p style="position:absolute;top:752px;left:168px;white-space:nowrap" class="ft100">要保证</p>
+<p style="position:absolute;top:749px;left:219px;white-space:nowrap" class="ft101">IMU</p>
+<p style="position:absolute;top:752px;left:249px;white-space:nowrap" class="ft100">模块安装面与被测量面完全紧靠，被测量面要尽可能水平，不能出现夹角产生。</p>
+<p style="position:absolute;top:1012px;left:136px;white-space:nowrap" class="ft101">2.&#160;IMU</p>
+<p style="position:absolute;top:1014px;left:198px;white-space:nowrap" class="ft100">模块底边线和被测物体轴线不能有夹角产生，安装时应保持</p>
+<p style="position:absolute;top:1012px;left:616px;white-space:nowrap" class="ft101">IMU</p>
+<p style="position:absolute;top:1014px;left:646px;white-space:nowrap" class="ft100">模块底边线与被测无</p>
+<p style="position:absolute;top:1045px;left:105px;white-space:nowrap" class="ft100">图转动轴线水平或正交。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft111{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft112{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft113{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册011.png" alt="background image"/>
+<p style="position:absolute;top:739px;left:136px;white-space:nowrap" class="ft110">3.&#160;IMU</p>
+<p style="position:absolute;top:741px;left:198px;white-space:nowrap" class="ft111">模块与被测量面必须固定紧密、接触平整。安装后连接到上位机查看是否稳定，如果不</p>
+<p style="position:absolute;top:772px;left:105px;white-space:nowrap" class="ft111">稳定请校准</p>
+<p style="position:absolute;top:770px;left:188px;white-space:nowrap" class="ft110">IMU</p>
+<p style="position:absolute;top:772px;left:218px;white-space:nowrap" class="ft111">模块。</p>
+<p style="position:absolute;top:827px;left:105px;white-space:nowrap" class="ft112"><b>3.</b></p>
+<p style="position:absolute;top:829px;left:136px;white-space:nowrap" class="ft113">注意事项</p>
+<p style="position:absolute;top:894px;left:136px;white-space:nowrap" class="ft110">1.&#160;IMU</p>
+<p style="position:absolute;top:897px;left:198px;white-space:nowrap" class="ft111">模块分为裸板和外壳版本，外壳版本出厂已经安装好，所有版本焊接后影响保修情况。</p>
+<p style="position:absolute;top:925px;left:136px;white-space:nowrap" class="ft110">2.&#160;IMU</p>
+<p style="position:absolute;top:927px;left:198px;white-space:nowrap" class="ft111">模块上电后，打开上位机显示</p>
+<p style="position:absolute;top:925px;left:405px;white-space:nowrap" class="ft110">3D</p>
+<p style="position:absolute;top:927px;left:426px;white-space:nowrap" class="ft111">模型，转动模块</p>
+<p style="position:absolute;top:925px;left:538px;white-space:nowrap" class="ft110">Z</p>
+<p style="position:absolute;top:927px;left:551px;white-space:nowrap" class="ft111">轴航向角，</p>
+<p style="position:absolute;top:925px;left:628px;white-space:nowrap" class="ft110">3D</p>
+<p style="position:absolute;top:927px;left:649px;white-space:nowrap" class="ft111">模型抖动，或者反应</p>
+<p style="position:absolute;top:958px;left:105px;white-space:nowrap" class="ft111">迟钝，请在上位机进行磁力校准设备。</p>
+<p style="position:absolute;top:986px;left:136px;white-space:nowrap" class="ft110">3.</p>
+<p style="position:absolute;top:988px;left:168px;white-space:nowrap" class="ft111">树莓派、</p>
+<p style="position:absolute;top:986px;left:231px;white-space:nowrap" class="ft110">Jetson&#160;Nano</p>
+<p style="position:absolute;top:988px;left:325px;white-space:nowrap" class="ft111">等支持</p>
+<p style="position:absolute;top:986px;left:377px;white-space:nowrap" class="ft110">USB</p>
+<p style="position:absolute;top:988px;left:406px;white-space:nowrap" class="ft111">通讯的主控板，可以直接使用</p>
+<p style="position:absolute;top:986px;left:615px;white-space:nowrap" class="ft110">Type-C</p>
+<p style="position:absolute;top:988px;left:671px;white-space:nowrap" class="ft111">数据线连接使用，</p>
+<p style="position:absolute;top:1017px;left:105px;white-space:nowrap" class="ft110">STM32</p>
+<p style="position:absolute;top:1019px;left:152px;white-space:nowrap" class="ft111">或者其他支持串口、</p>
+<p style="position:absolute;top:1017px;left:294px;white-space:nowrap" class="ft110">I2C</p>
+<p style="position:absolute;top:1019px;left:324px;white-space:nowrap" class="ft111">通讯的单片机，可以连接到</p>
+<p style="position:absolute;top:1017px;left:517px;white-space:nowrap" class="ft110">IMU</p>
+<p style="position:absolute;top:1019px;left:547px;white-space:nowrap" class="ft111">模块的外接引脚上。</p>
+<p style="position:absolute;top:1047px;left:136px;white-space:nowrap" class="ft110">4.&#160;IMU</p>
+<p style="position:absolute;top:1050px;left:198px;white-space:nowrap" class="ft111">模块的默认通讯波特率为</p>
+<p style="position:absolute;top:1047px;left:377px;white-space:nowrap" class="ft110">9600bps</p>
+<p style="position:absolute;top:1050px;left:438px;white-space:nowrap" class="ft111">，如果连接的设备不支持此通讯速度，可以修改为</p>
+<p style="position:absolute;top:1078px;left:105px;white-space:nowrap" class="ft110">4800bps~921600bps</p>
+<p style="position:absolute;top:1080px;left:256px;white-space:nowrap" class="ft111">使用。一定要确认两者波特率相同才可以进行通讯。</p>
+<p style="position:absolute;top:1109px;left:136px;white-space:nowrap" class="ft110">5.</p>
+<p style="position:absolute;top:1111px;left:168px;white-space:nowrap" class="ft111">如果出现电脑</p>
+<p style="position:absolute;top:1109px;left:267px;white-space:nowrap" class="ft110">USB</p>
+<p style="position:absolute;top:1111px;left:297px;white-space:nowrap" class="ft111">连接模块后，若无法连接上位机，请先确认是否已经安装了串口驱动程</p>
+<p style="position:absolute;top:1142px;left:105px;white-space:nowrap" class="ft111">序。</p>
+<p style="position:absolute;top:1170px;left:136px;white-space:nowrap" class="ft110">6.</p>
+<p style="position:absolute;top:1172px;left:168px;white-space:nowrap" class="ft111">若模块</p>
+<p style="position:absolute;top:1170px;left:219px;white-space:nowrap" class="ft110">D1</p>
+<p style="position:absolute;top:1172px;left:240px;white-space:nowrap" class="ft111">接口连接</p>
+<p style="position:absolute;top:1170px;left:307px;white-space:nowrap" class="ft110">GPS</p>
+<p style="position:absolute;top:1172px;left:337px;white-space:nowrap" class="ft111">模块组成惯导单元，</p>
+<p style="position:absolute;top:1170px;left:476px;white-space:nowrap" class="ft110">GPS</p>
+<p style="position:absolute;top:1172px;left:506px;white-space:nowrap" class="ft111">模块需输出</p>
+<p style="position:absolute;top:1170px;left:589px;white-space:nowrap" class="ft110">NMEA-0183</p>
+<p style="position:absolute;top:1172px;left:671px;white-space:nowrap" class="ft111">标准的串口数据，</p>
+<p style="position:absolute;top:1203px;left:105px;white-space:nowrap" class="ft111">而且</p>
+<p style="position:absolute;top:1200px;left:140px;white-space:nowrap" class="ft110">GPS</p>
+<p style="position:absolute;top:1203px;left:170px;white-space:nowrap" class="ft111">的串口波特率需设置为</p>
+<p style="position:absolute;top:1200px;left:332px;white-space:nowrap" class="ft110">115200bps</p>
+<p style="position:absolute;top:1203px;left:410px;white-space:nowrap" class="ft111">。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft121{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft122{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft123{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft124{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft125{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册012.png" alt="background image"/>
+<p style="position:absolute;top:84px;left:136px;white-space:nowrap" class="ft120">7.</p>
+<p style="position:absolute;top:86px;left:168px;white-space:nowrap" class="ft121">九轴算法下的</p>
+<p style="position:absolute;top:84px;left:270px;white-space:nowrap" class="ft120">Z</p>
+<p style="position:absolute;top:86px;left:287px;white-space:nowrap" class="ft121">轴角度是绝对角度，以东北天为坐标系，不能相对归</p>
+<p style="position:absolute;top:84px;left:657px;white-space:nowrap" class="ft120">0</p>
+<p style="position:absolute;top:86px;left:666px;white-space:nowrap" class="ft121">，转动到</p>
+<p style="position:absolute;top:84px;left:733px;white-space:nowrap" class="ft120">0</p>
+<p style="position:absolute;top:86px;left:745px;white-space:nowrap" class="ft121">度时，</p>
+<p style="position:absolute;top:115px;left:105px;white-space:nowrap" class="ft120">Y</p>
+<p style="position:absolute;top:117px;left:118px;white-space:nowrap" class="ft121">轴所指的方向为北边。</p>
+<p style="position:absolute;top:172px;left:105px;white-space:nowrap" class="ft122"><b>4.</b></p>
+<p style="position:absolute;top:174px;left:136px;white-space:nowrap" class="ft123">上位机使用—安装串口驱动</p>
+<p style="position:absolute;top:242px;left:136px;white-space:nowrap" class="ft121">如果电脑系统中已经安装过</p>
+<p style="position:absolute;top:239px;left:330px;white-space:nowrap" class="ft120">CH340</p>
+<p style="position:absolute;top:242px;left:378px;white-space:nowrap" class="ft121">芯片的驱动，则可以跳过以下内容，不需要再次安装驱动。</p>
+<p style="position:absolute;top:272px;left:105px;white-space:nowrap" class="ft121">下面为安装步骤：</p>
+<p style="position:absolute;top:300px;left:136px;white-space:nowrap" class="ft120">1.</p>
+<p style="position:absolute;top:303px;left:168px;white-space:nowrap" class="ft121">双击打开本文件夹中的</p>
+<p style="position:absolute;top:300px;left:325px;white-space:nowrap" class="ft120">[ch341ser.exe]:</p>
+<p style="position:absolute;top:424px;left:136px;white-space:nowrap" class="ft120">2.</p>
+<p style="position:absolute;top:426px;left:168px;white-space:nowrap" class="ft121">点击安装：</p>
+<p style="position:absolute;top:691px;left:136px;white-space:nowrap" class="ft120">3.</p>
+<p style="position:absolute;top:693px;left:168px;white-space:nowrap" class="ft121">安装成功：</p>
+<p style="position:absolute;top:1082px;left:105px;white-space:nowrap" class="ft124"><b>5.</b></p>
+<p style="position:absolute;top:1084px;left:136px;white-space:nowrap" class="ft123">上位机使用—设备连接</p>
+<p style="position:absolute;top:1149px;left:105px;white-space:nowrap" class="ft124"><b>5.1</b></p>
+<p style="position:absolute;top:1152px;left:145px;white-space:nowrap" class="ft125">串口连接上位机</p>
+<p style="position:absolute;top:1190px;left:136px;white-space:nowrap" class="ft120">1.</p>
+<p style="position:absolute;top:1193px;left:168px;white-space:nowrap" class="ft121">解&#160;压&#160;资&#160;料&#160;中&#160;的&#160;“</p>
+<p style="position:absolute;top:1190px;left:289px;white-space:nowrap" class="ft120">..\1</p>
+<p style="position:absolute;top:1193px;left:333px;white-space:nowrap" class="ft121">教&#160;程&#160;资&#160;料</p>
+<p style="position:absolute;top:1190px;left:402px;white-space:nowrap" class="ft120">\2.</p>
+<p style="position:absolute;top:1193px;left:429px;white-space:nowrap" class="ft121">软&#160;件&#160;工&#160;具</p>
+<p style="position:absolute;top:1190px;left:498px;white-space:nowrap" class="ft120">\imu</p>
+<p style="position:absolute;top:1193px;left:539px;white-space:nowrap" class="ft121">模&#160;块&#160;上&#160;位&#160;机</p>
+<p style="position:absolute;top:1190px;left:625px;white-space:nowrap" class="ft120">\</p>
+<p style="position:absolute;top:1193px;left:635px;white-space:nowrap" class="ft121">维&#160;特&#160;智&#160;能&#160;标&#160;准&#160;上位&#160;机</p>
+<p style="position:absolute;top:1221px;left:105px;white-space:nowrap" class="ft120">(V6.2.60).zip</p>
+<p style="position:absolute;top:1223px;left:221px;white-space:nowrap" class="ft121">压缩包”，进入上位机软件找到</p>
+<p style="position:absolute;top:1221px;left:438px;white-space:nowrap" class="ft120">MiniIMU.exe</p>
+<p style="position:absolute;top:1223px;left:533px;white-space:nowrap" class="ft121">。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft131{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册013.png" alt="background image"/>
+<p style="position:absolute;top:154px;left:136px;white-space:nowrap" class="ft130">双击打开上位机软件，可以看到提示未能搜索到设备，关闭提示框。如果已经连接</p>
+<p style="position:absolute;top:152px;left:711px;white-space:nowrap" class="ft131">IMU</p>
+<p style="position:absolute;top:154px;left:742px;white-space:nowrap" class="ft130">模块会</p>
+<p style="position:absolute;top:185px;left:105px;white-space:nowrap" class="ft130">自动连接上模块。</p>
+<p style="position:absolute;top:659px;left:136px;white-space:nowrap" class="ft131">2.</p>
+<p style="position:absolute;top:661px;left:168px;white-space:nowrap" class="ft130">输入并选择产品型号</p>
+<p style="position:absolute;top:659px;left:314px;white-space:nowrap" class="ft131">JY901B</p>
+<p style="position:absolute;top:661px;left:366px;white-space:nowrap" class="ft130">。如已设置</p>
+<p style="position:absolute;top:659px;left:448px;white-space:nowrap" class="ft131">JY901B</p>
+<p style="position:absolute;top:661px;left:504px;white-space:nowrap" class="ft130">请跳过此步骤。</p>
+<p style="position:absolute;top:907px;left:136px;white-space:nowrap" class="ft131">3.</p>
+<p style="position:absolute;top:910px;left:168px;white-space:nowrap" class="ft130">将</p>
+<p style="position:absolute;top:907px;left:188px;white-space:nowrap" class="ft131">IMU</p>
+<p style="position:absolute;top:910px;left:218px;white-space:nowrap" class="ft130">模块通过</p>
+<p style="position:absolute;top:907px;left:284px;white-space:nowrap" class="ft131">USB-TypeC</p>
+<p style="position:absolute;top:910px;left:366px;white-space:nowrap" class="ft130">数据线连接到电脑上。然后点击然后点击菜单栏的‘自动监测</p>
+<p style="position:absolute;top:940px;left:105px;white-space:nowrap" class="ft130">设备’。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft141{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft142{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft143{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册014.png" alt="background image"/>
+<p style="position:absolute;top:309px;left:136px;white-space:nowrap" class="ft140">4.</p>
+<p style="position:absolute;top:312px;left:168px;white-space:nowrap" class="ft141">连接成功，会显示“成功搜索到设备”，并且可以看到角度</p>
+<p style="position:absolute;top:309px;left:572px;white-space:nowrap" class="ft140">X</p>
+<p style="position:absolute;top:312px;left:580px;white-space:nowrap" class="ft141">、角度</p>
+<p style="position:absolute;top:309px;left:631px;white-space:nowrap" class="ft140">Y</p>
+<p style="position:absolute;top:312px;left:639px;white-space:nowrap" class="ft141">、角度</p>
+<p style="position:absolute;top:309px;left:690px;white-space:nowrap" class="ft140">Z</p>
+<p style="position:absolute;top:312px;left:702px;white-space:nowrap" class="ft141">有数据变化。</p>
+<p style="position:absolute;top:342px;left:105px;white-space:nowrap" class="ft141">如果连接不成功，请确认是否已经安装好串口驱动，或者换个</p>
+<p style="position:absolute;top:340px;left:534px;white-space:nowrap" class="ft140">USB</p>
+<p style="position:absolute;top:342px;left:564px;white-space:nowrap" class="ft141">口试试。</p>
+<p style="position:absolute;top:857px;left:105px;white-space:nowrap" class="ft142"><b>5.2</b></p>
+<p style="position:absolute;top:859px;left:145px;white-space:nowrap" class="ft143">体验</p>
+<p style="position:absolute;top:857px;left:192px;white-space:nowrap" class="ft142"><b>IMU</b></p>
+<p style="position:absolute;top:859px;left:232px;white-space:nowrap" class="ft143">模块</p>
+<p style="position:absolute;top:897px;left:136px;white-space:nowrap" class="ft140">1.&#160;IMU</p>
+<p style="position:absolute;top:900px;left:198px;white-space:nowrap" class="ft141">模块出厂已经烧录好固件，连接上位机后可以用上位机查看</p>
+<p style="position:absolute;top:897px;left:611px;white-space:nowrap" class="ft140">IMU</p>
+<p style="position:absolute;top:900px;left:641px;white-space:nowrap" class="ft141">模块的当前姿态。</p>
+<p style="position:absolute;top:930px;left:136px;white-space:nowrap" class="ft141">点击“三维”，可以看到弹出一个窗口，默认会展示一台汽车模型，当我们改变</p>
+<p style="position:absolute;top:928px;left:680px;white-space:nowrap" class="ft140">IMU</p>
+<p style="position:absolute;top:930px;left:710px;white-space:nowrap" class="ft141">模块的姿态</p>
+<p style="position:absolute;top:961px;left:105px;white-space:nowrap" class="ft141">时，模型的姿态会跟着</p>
+<p style="position:absolute;top:959px;left:266px;white-space:nowrap" class="ft140">IMU</p>
+<p style="position:absolute;top:961px;left:296px;white-space:nowrap" class="ft141">模块的变化。</p>
+<p style="position:absolute;top:959px;left:391px;white-space:nowrap" class="ft140">Y</p>
+<p style="position:absolute;top:961px;left:403px;white-space:nowrap" class="ft141">轴为车头，</p>
+<p style="position:absolute;top:959px;left:482px;white-space:nowrap" class="ft140">IMU</p>
+<p style="position:absolute;top:961px;left:512px;white-space:nowrap" class="ft141">模块也应</p>
+<p style="position:absolute;top:959px;left:579px;white-space:nowrap" class="ft140">Y</p>
+<p style="position:absolute;top:961px;left:592px;white-space:nowrap" class="ft141">轴向前放置。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft151{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft152{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft153{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft154{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft155{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册015.png" alt="background image"/>
+<p style="position:absolute;top:484px;left:136px;white-space:nowrap" class="ft150">2.</p>
+<p style="position:absolute;top:486px;left:168px;white-space:nowrap" class="ft151">还可以将汽车模型替换成飞机模型或者人头模型、方块模型。按住鼠标左键拖动模型可以</p>
+<p style="position:absolute;top:517px;left:105px;white-space:nowrap" class="ft151">改变角度，点击‘</p>
+<p style="position:absolute;top:514px;left:231px;white-space:nowrap" class="ft150">Reset</p>
+<p style="position:absolute;top:517px;left:274px;white-space:nowrap" class="ft151">’恢复视图，点击‘</p>
+<p style="position:absolute;top:514px;left:416px;white-space:nowrap" class="ft150">+</p>
+<p style="position:absolute;top:517px;left:425px;white-space:nowrap" class="ft151">’键放大模型，点击‘</p>
+<p style="position:absolute;top:514px;left:582px;white-space:nowrap" class="ft150">-</p>
+<p style="position:absolute;top:517px;left:591px;white-space:nowrap" class="ft151">’键缩小模型。</p>
+<p style="position:absolute;top:941px;left:105px;white-space:nowrap" class="ft152"><b>6.</b></p>
+<p style="position:absolute;top:943px;left:136px;white-space:nowrap" class="ft153">上位机使用—参数配置说明</p>
+<p style="position:absolute;top:1011px;left:136px;white-space:nowrap" class="ft151">在进行以下操作前，请确认已经将</p>
+<p style="position:absolute;top:1008px;left:377px;white-space:nowrap" class="ft150">IMU</p>
+<p style="position:absolute;top:1011px;left:407px;white-space:nowrap" class="ft151">模块连接到上位机。</p>
+<p style="position:absolute;top:1041px;left:105px;white-space:nowrap" class="ft154"><b>6.1</b></p>
+<p style="position:absolute;top:1043px;left:145px;white-space:nowrap" class="ft155">配置界面讲解</p>
+<p style="position:absolute;top:1084px;left:136px;white-space:nowrap" class="ft151">点击菜单栏上的‘配置’，会弹出一个窗口，查看右下角的状态，一定要是‘在线’才是正确的，</p>
+<p style="position:absolute;top:1114px;left:105px;white-space:nowrap" class="ft151">如果出现‘离线’则说明没连接上</p>
+<p style="position:absolute;top:1112px;left:345px;white-space:nowrap" class="ft150">IMU</p>
+<p style="position:absolute;top:1114px;left:375px;white-space:nowrap" class="ft151">模块。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft161{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft162{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft163{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:892px;height:1263px;">
+<img width="892" height="1263" src="IMU用户手册016.png" alt="background image"/>
+<p style="position:absolute;top:554px;left:105px;white-space:nowrap" class="ft160"><b>6.1.1</b></p>
+<p style="position:absolute;top:556px;left:159px;white-space:nowrap" class="ft161">系统</p>
+<p style="position:absolute;top:670px;left:136px;white-space:nowrap" class="ft162">恢复设置：将</p>
+<p style="position:absolute;top:667px;left:235px;white-space:nowrap" class="ft163">IMU</p>
+<p style="position:absolute;top:670px;left:265px;white-space:nowrap" class="ft162">模块的配置数据恢复默认。</p>
+<p style="position:absolute;top:700px;left:136px;white-space:nowrap" class="ft162">睡眠：让</p>
+<p style="position:absolute;top:698px;left:203px;white-space:nowrap" class="ft163">IMU</p>
+<p style="position:absolute;top:700px;left:233px;white-space:nowrap" class="ft162">模块进入睡眠模式，再次点击退出睡眠模式。</p>
+<p style="position:absolute;top:731px;left:136px;white-space:nowrap" class="ft162">报警：通过上位机报警设置可以将下面引脚设置成报警状态输出口。以下面设置为例，平常状</p>
+<p style="position:absolute;top:762px;left:105px;white-space:nowrap" class="ft162">态</p>
+<p style="position:absolute;top:759px;left:125px;white-space:nowrap" class="ft163">4</p>
+<p style="position:absolute;top:762px;left:137px;white-space:nowrap" class="ft162">个端口输出为低电平（</p>
+<p style="position:absolute;top:759px;left:294px;white-space:nowrap" class="ft163">0V</p>
+<p style="position:absolute;top:762px;left:311px;white-space:nowrap" class="ft162">），</p>
+<p style="position:absolute;top:759px;left:334px;white-space:nowrap" class="ft163">X,Y</p>
+<p style="position:absolute;top:762px;left:364px;white-space:nowrap" class="ft162">轴角度值大于最大值</p>
+<p style="position:absolute;top:759px;left:510px;white-space:nowrap" class="ft163">10</p>
+<p style="position:absolute;top:762px;left:527px;white-space:nowrap" class="ft162">°或者小于最小值</p>
+<p style="position:absolute;top:759px;left:653px;white-space:nowrap" class="ft163">-10</p>
+<p style="position:absolute;top:762px;left:679px;white-space:nowrap" class="ft162">°的时候，对应</p>
+<p style="position:absolute;top:792px;left:105px;white-space:nowrap" class="ft162">端口输出高、低电平报警。点击写入生效配置。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft171{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft172{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft173{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft174{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册017.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft170">17</p>
+<p style="position:absolute;top:590px;left:167px;white-space:nowrap" class="ft171">算法：选六轴，只读取加速度计和陀螺仪的数据融合计算姿态角。选九轴，加上磁力计</p>
+<p style="position:absolute;top:625px;left:135px;white-space:nowrap" class="ft171">数据到融合解算姿态，使用前请先校准</p>
+<p style="position:absolute;top:622px;left:409px;white-space:nowrap" class="ft172">IMU</p>
+<p style="position:absolute;top:625px;left:439px;white-space:nowrap" class="ft171">模块的磁力计数据。&#160;九轴算法下的</p>
+<p style="position:absolute;top:622px;left:694px;white-space:nowrap" class="ft172">Z</p>
+<p style="position:absolute;top:625px;left:710px;white-space:nowrap" class="ft171">轴角度</p>
+<p style="position:absolute;top:660px;left:135px;white-space:nowrap" class="ft171">是绝对角度，以东北天为坐标系，不能相对归</p>
+<p style="position:absolute;top:657px;left:458px;white-space:nowrap" class="ft172">0</p>
+<p style="position:absolute;top:660px;left:467px;white-space:nowrap" class="ft171">，转动到</p>
+<p style="position:absolute;top:657px;left:533px;white-space:nowrap" class="ft172">0</p>
+<p style="position:absolute;top:660px;left:546px;white-space:nowrap" class="ft171">度时，</p>
+<p style="position:absolute;top:657px;left:593px;white-space:nowrap" class="ft172">Y</p>
+<p style="position:absolute;top:660px;left:606px;white-space:nowrap" class="ft171">轴所指的方向为北边。</p>
+<p style="position:absolute;top:695px;left:167px;white-space:nowrap" class="ft171">安装方向：水平安装和垂直安装。模块默认安装方向为水平安装，当模块需要垂直放置</p>
+<p style="position:absolute;top:730px;left:135px;white-space:nowrap" class="ft171">时，可以用垂直安装设置。</p>
+<p style="position:absolute;top:781px;left:135px;white-space:nowrap" class="ft173"><b>6.1.2</b></p>
+<p style="position:absolute;top:783px;left:189px;white-space:nowrap" class="ft174">校准</p>
+<p style="position:absolute;top:909px;left:167px;white-space:nowrap" class="ft171">加速度：校准加速度计。</p>
+<p style="position:absolute;top:944px;left:167px;white-space:nowrap" class="ft171">磁场：校准磁场。</p>
+<p style="position:absolute;top:979px;left:167px;white-space:nowrap" class="ft171">高度：校准高度。</p>
+<p style="position:absolute;top:1012px;left:167px;white-space:nowrap" class="ft172">Z</p>
+<p style="position:absolute;top:1015px;left:179px;white-space:nowrap" class="ft171">轴角度置零：仅六轴时有效，设置相对航向角为零。</p>
+<p style="position:absolute;top:1050px;left:167px;white-space:nowrap" class="ft171">设置角度参考：将当前姿态作为参考。</p>
+<p style="position:absolute;top:1085px;left:167px;white-space:nowrap" class="ft171">陀螺仪自动校准：陀螺仪自动校准开关。</p>
+<p style="position:absolute;top:1120px;left:167px;white-space:nowrap" class="ft171">具体校准方式请查看下一章&#160;‘校准</p>
+<p style="position:absolute;top:1118px;left:415px;white-space:nowrap" class="ft172">IMU</p>
+<p style="position:absolute;top:1120px;left:444px;white-space:nowrap" class="ft171">模块’。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft180{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft181{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft182{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft183{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft184{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册018.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft180">18</p>
+<p style="position:absolute;top:119px;left:135px;white-space:nowrap" class="ft181"><b>6.1.3</b></p>
+<p style="position:absolute;top:121px;left:189px;white-space:nowrap" class="ft182">范围</p>
+<p style="position:absolute;top:246px;left:167px;white-space:nowrap" class="ft183">带宽：设置读取原始数据的带宽，默认为</p>
+<p style="position:absolute;top:244px;left:451px;white-space:nowrap" class="ft184">20Hz</p>
+<p style="position:absolute;top:246px;left:486px;white-space:nowrap" class="ft183">。</p>
+<p style="position:absolute;top:244px;left:508px;white-space:nowrap" class="ft184">GPS</p>
+<p style="position:absolute;top:246px;left:538px;white-space:nowrap" class="ft183">时区：设置</p>
+<p style="position:absolute;top:244px;left:619px;white-space:nowrap" class="ft184">GPS</p>
+<p style="position:absolute;top:246px;left:649px;white-space:nowrap" class="ft183">的时区。仅接入</p>
+<p style="position:absolute;top:279px;left:135px;white-space:nowrap" class="ft184">GPS</p>
+<p style="position:absolute;top:281px;left:165px;white-space:nowrap" class="ft183">模块有效。</p>
+<p style="position:absolute;top:333px;left:135px;white-space:nowrap" class="ft181"><b>6.1.4</b></p>
+<p style="position:absolute;top:335px;left:189px;white-space:nowrap" class="ft182">内容</p>
+<p style="position:absolute;top:482px;left:167px;white-space:nowrap" class="ft183">设置串口输出的内容，串口输出内容可查看协议文件解析数据。</p>
+<p style="position:absolute;top:513px;left:167px;white-space:nowrap" class="ft183">注意：勾选上“</p>
+<p style="position:absolute;top:510px;left:277px;white-space:nowrap" class="ft184">GPS</p>
+<p style="position:absolute;top:513px;left:307px;white-space:nowrap" class="ft183">原始”之后模块只输出</p>
+<p style="position:absolute;top:510px;left:468px;white-space:nowrap" class="ft184">GPS</p>
+<p style="position:absolute;top:513px;left:498px;white-space:nowrap" class="ft183">原始的信息了，其它数据都不会输出。</p>
+<p style="position:absolute;top:543px;left:167px;white-space:nowrap" class="ft183">在菜单栏的‘数据’中查看对应的数据。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft190{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft191{font-size:18px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft192{font-size:18px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft193{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft194{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft195{font-size:15px;font-family:XEKKFX+SimHei;color:#ff0000;}
+	.ft196{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft197{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft198{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft199{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft1910{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page19-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册019.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft190">19</p>
+<p style="position:absolute;top:119px;left:135px;white-space:nowrap" class="ft191"><b>6.1.5</b></p>
+<p style="position:absolute;top:121px;left:189px;white-space:nowrap" class="ft192">通讯</p>
+<p style="position:absolute;top:246px;left:167px;white-space:nowrap" class="ft193">通讯速率：串口通讯速率，默认</p>
+<p style="position:absolute;top:244px;left:391px;white-space:nowrap" class="ft194">9600</p>
+<p style="position:absolute;top:246px;left:426px;white-space:nowrap" class="ft193">，可选择其他波特率（</p>
+<p style="position:absolute;top:244px;left:583px;white-space:nowrap" class="ft194">4800~921600</p>
+<p style="position:absolute;top:246px;left:678px;white-space:nowrap" class="ft193">）。</p>
+<p style="position:absolute;top:281px;left:167px;white-space:nowrap" class="ft193">回传速率：串口回传数据的速率，默认为</p>
+<p style="position:absolute;top:279px;left:458px;white-space:nowrap" class="ft194">10Hz</p>
+<p style="position:absolute;top:281px;left:492px;white-space:nowrap" class="ft193">，可修改为</p>
+<p style="position:absolute;top:279px;left:576px;white-space:nowrap" class="ft194">0.2Hz~200Hz</p>
+<p style="position:absolute;top:281px;left:671px;white-space:nowrap" class="ft193">。</p>
+<p style="position:absolute;top:279px;left:687px;white-space:nowrap" class="ft194">10HZ</p>
+<p style="position:absolute;top:281px;left:726px;white-space:nowrap" class="ft193">指的</p>
+<p style="position:absolute;top:317px;left:135px;white-space:nowrap" class="ft193">是</p>
+<p style="position:absolute;top:314px;left:155px;white-space:nowrap" class="ft194">1S</p>
+<p style="position:absolute;top:317px;left:176px;white-space:nowrap" class="ft193">回传</p>
+<p style="position:absolute;top:314px;left:211px;white-space:nowrap" class="ft194">10</p>
+<p style="position:absolute;top:317px;left:233px;white-space:nowrap" class="ft193">个数据包，按默认回传</p>
+<p style="position:absolute;top:314px;left:394px;white-space:nowrap" class="ft194">1</p>
+<p style="position:absolute;top:317px;left:407px;white-space:nowrap" class="ft193">个数据包是</p>
+<p style="position:absolute;top:314px;left:489px;white-space:nowrap" class="ft194">11</p>
+<p style="position:absolute;top:317px;left:511px;white-space:nowrap" class="ft193">个字节。</p>
+<p style="position:absolute;top:352px;left:167px;white-space:nowrap" class="ft195">注意：</p>
+<p style="position:absolute;top:352px;left:214px;white-space:nowrap" class="ft193">不能选择‘单次’，会导致自动监测设备功能连接不上。</p>
+<p style="position:absolute;top:387px;left:167px;white-space:nowrap" class="ft195">注意：</p>
+<p style="position:absolute;top:387px;left:214px;white-space:nowrap" class="ft193">如果需要</p>
+<p style="position:absolute;top:385px;left:282px;white-space:nowrap" class="ft196"><b>200HZ</b></p>
+<p style="position:absolute;top:387px;left:329px;white-space:nowrap" class="ft193">的回传速率，则只能勾选三个量，比如“加速度”，“角速度”，</p>
+<p style="position:absolute;top:422px;left:135px;white-space:nowrap" class="ft193">“角度”。</p>
+<p style="position:absolute;top:457px;left:167px;white-space:nowrap" class="ft195">注意：</p>
+<p style="position:absolute;top:457px;left:214px;white-space:nowrap" class="ft193">如果回传内容较多，同时通信的波特率又较低的情况下，可能没法传输这么多</p>
+<p style="position:absolute;top:492px;left:135px;white-space:nowrap" class="ft193">数据，此时模块会自动降频，并以允许的最大输出速率进行输出。简单点说&#160;就是回传速率</p>
+<p style="position:absolute;top:527px;left:135px;white-space:nowrap" class="ft193">高的话，波特率也要设置高一点，一般用</p>
+<p style="position:absolute;top:525px;left:424px;white-space:nowrap" class="ft196"><b>115200</b></p>
+<p style="position:absolute;top:527px;left:476px;white-space:nowrap" class="ft193">。</p>
+<p style="position:absolute;top:562px;left:167px;white-space:nowrap" class="ft193">设备地址：</p>
+<p style="position:absolute;top:560px;left:245px;white-space:nowrap" class="ft194">IIC</p>
+<p style="position:absolute;top:562px;left:275px;white-space:nowrap" class="ft193">设备地址，默认</p>
+<p style="position:absolute;top:560px;left:389px;white-space:nowrap" class="ft194">0x50</p>
+<p style="position:absolute;top:562px;left:428px;white-space:nowrap" class="ft193">不需要修改。</p>
+<p style="position:absolute;top:614px;left:135px;white-space:nowrap" class="ft191"><b>6.1.6</b></p>
+<p style="position:absolute;top:616px;left:189px;white-space:nowrap" class="ft192">接口</p>
+<p style="position:absolute;top:783px;left:167px;white-space:nowrap" class="ft193">设置外扩接口模式，总共有四种模式，保持默认即可，不需要修改。</p>
+<p style="position:absolute;top:816px;left:167px;white-space:nowrap" class="ft194">AIN</p>
+<p style="position:absolute;top:819px;left:192px;white-space:nowrap" class="ft193">：模拟输入</p>
+<p style="position:absolute;top:816px;left:279px;white-space:nowrap" class="ft194">DIN</p>
+<p style="position:absolute;top:819px;left:305px;white-space:nowrap" class="ft193">：数字输入</p>
+<p style="position:absolute;top:816px;left:392px;white-space:nowrap" class="ft194">DOH</p>
+<p style="position:absolute;top:819px;left:418px;white-space:nowrap" class="ft193">：输出高电平</p>
+<p style="position:absolute;top:816px;left:520px;white-space:nowrap" class="ft194">DOL</p>
+<p style="position:absolute;top:819px;left:546px;white-space:nowrap" class="ft193">：输出低电平</p>
+<p style="position:absolute;top:879px;left:135px;white-space:nowrap" class="ft197"><b>7.</b></p>
+<p style="position:absolute;top:882px;left:167px;white-space:nowrap" class="ft198">上位机使用—校准</p>
+<p style="position:absolute;top:879px;left:353px;white-space:nowrap" class="ft197"><b>IMU</b></p>
+<p style="position:absolute;top:882px;left:395px;white-space:nowrap" class="ft198">模块</p>
+<p style="position:absolute;top:951px;left:167px;white-space:nowrap" class="ft193">在进行以下操作前，请确认已经将</p>
+<p style="position:absolute;top:948px;left:407px;white-space:nowrap" class="ft194">IMU</p>
+<p style="position:absolute;top:951px;left:437px;white-space:nowrap" class="ft193">模块连接到上位机。</p>
+<p style="position:absolute;top:987px;left:135px;white-space:nowrap" class="ft199"><b>7.1</b></p>
+<p style="position:absolute;top:990px;left:175px;white-space:nowrap" class="ft1910">加速度计校准</p>
+<p style="position:absolute;top:1034px;left:167px;white-space:nowrap" class="ft193">将</p>
+<p style="position:absolute;top:1032px;left:186px;white-space:nowrap" class="ft194">IMU</p>
+<p style="position:absolute;top:1034px;left:216px;white-space:nowrap" class="ft193">模块平放在桌子或者其他设备上，如果发现‘角度</p>
+<p style="position:absolute;top:1032px;left:566px;white-space:nowrap" class="ft194">X</p>
+<p style="position:absolute;top:1034px;left:575px;white-space:nowrap" class="ft193">‘和’角度</p>
+<p style="position:absolute;top:1032px;left:658px;white-space:nowrap" class="ft194">Y</p>
+<p style="position:absolute;top:1034px;left:667px;white-space:nowrap" class="ft193">‘大于</p>
+<p style="position:absolute;top:1032px;left:718px;white-space:nowrap" class="ft194">1</p>
+<p style="position:absolute;top:1034px;left:726px;white-space:nowrap" class="ft193">°，</p>
+<p style="position:absolute;top:1069px;left:135px;white-space:nowrap" class="ft193">那么需要进行加速度计校准。</p>
+<p style="position:absolute;top:1104px;left:167px;white-space:nowrap" class="ft193">点击菜单栏中的’配置‘打开配置界面，保证</p>
+<p style="position:absolute;top:1102px;left:489px;white-space:nowrap" class="ft194">IMU</p>
+<p style="position:absolute;top:1104px;left:519px;white-space:nowrap" class="ft193">模块平放的情况下，点击’加速度</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft200{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft201{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft202{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft203{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft204{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page20-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册020.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft200">20</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft201">‘，然后再点击’设置角度参考‘。</p>
+<p style="position:absolute;top:484px;left:167px;white-space:nowrap" class="ft201">此时主界面的’角度</p>
+<p style="position:absolute;top:482px;left:312px;white-space:nowrap" class="ft202">X</p>
+<p style="position:absolute;top:484px;left:321px;white-space:nowrap" class="ft201">‘和‘角度</p>
+<p style="position:absolute;top:482px;left:404px;white-space:nowrap" class="ft202">Y</p>
+<p style="position:absolute;top:484px;left:412px;white-space:nowrap" class="ft201">’会变为</p>
+<p style="position:absolute;top:482px;left:479px;white-space:nowrap" class="ft202">0</p>
+<p style="position:absolute;top:484px;left:488px;white-space:nowrap" class="ft201">°附近。</p>
+<p style="position:absolute;top:872px;left:135px;white-space:nowrap" class="ft203"><b>7.2</b></p>
+<p style="position:absolute;top:874px;left:175px;white-space:nowrap" class="ft204">磁力计校准</p>
+<p style="position:absolute;top:916px;left:167px;white-space:nowrap" class="ft202">IMU</p>
+<p style="position:absolute;top:919px;left:196px;white-space:nowrap" class="ft201">模块上电后，打开上位机显示</p>
+<p style="position:absolute;top:916px;left:404px;white-space:nowrap" class="ft202">3D</p>
+<p style="position:absolute;top:919px;left:425px;white-space:nowrap" class="ft201">模型，转动模块</p>
+<p style="position:absolute;top:916px;left:538px;white-space:nowrap" class="ft202">Z</p>
+<p style="position:absolute;top:919px;left:550px;white-space:nowrap" class="ft201">轴航向角，</p>
+<p style="position:absolute;top:916px;left:628px;white-space:nowrap" class="ft202">3D</p>
+<p style="position:absolute;top:919px;left:649px;white-space:nowrap" class="ft201">模型抖动，或者</p>
+<p style="position:absolute;top:954px;left:135px;white-space:nowrap" class="ft201">反应迟钝，请在上位机进行磁力校准设备，点击配置界面中的‘磁场’，会弹出校准磁场的</p>
+<p style="position:absolute;top:989px;left:135px;white-space:nowrap" class="ft201">界面。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft210{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft211{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft212{font-size:15px;font-family:XEKKFX+SimHei;color:#4082c3;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page21-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册021.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft210">21</p>
+<p style="position:absolute;top:461px;left:167px;white-space:nowrap" class="ft211">磁场校准有多种校准方式，比较常规的校准方式为球形拟合法，在这里以球形拟合法进</p>
+<p style="position:absolute;top:496px;left:135px;white-space:nowrap" class="ft211">行演示。</p>
+<p style="position:absolute;top:962px;left:167px;white-space:nowrap" class="ft211">可以点击‘查看操作说明’查看校准的步骤。（如上图所示）</p>
+<p style="position:absolute;top:1007px;left:167px;white-space:nowrap" class="ft211">也可以访问以下网址查看校准视频：</p>
+<p style="position:absolute;top:1053px;left:163px;white-space:nowrap" class="ft212"><a href="https://www.bilibili.com/video/BV1PG4y1K7SV/?spm_id_from=333.788.recommend_more_video.0&vd_source=237085b7da7254d04b8760fa9eb9ace1">https://www.bilibili.com/video/BV1PG4y1K7SV/?spm_id_from=333.788.recommend_m</a></p>
+<p style="position:absolute;top:1088px;left:135px;white-space:nowrap" class="ft212"><a href="https://www.bilibili.com/video/BV1PG4y1K7SV/?spm_id_from=333.788.recommend_more_video.0&vd_source=237085b7da7254d04b8760fa9eb9ace1">ore_video.0&amp;vd_source=237085b7da7254d04b8760fa9eb9ace1</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft220{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft221{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft222{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft223{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page22-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册022.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft220">22</p>
+<p style="position:absolute;top:543px;left:167px;white-space:nowrap" class="ft221">校准前准备：</p>
+<p style="position:absolute;top:578px;left:167px;white-space:nowrap" class="ft221">1.&#160;请先打开手机的指南针，将自己面朝北方，或者面朝南方。</p>
+<p style="position:absolute;top:613px;left:167px;white-space:nowrap" class="ft221">2.&#160;用手拿着</p>
+<p style="position:absolute;top:611px;left:265px;white-space:nowrap" class="ft222">IMU</p>
+<p style="position:absolute;top:613px;left:295px;white-space:nowrap" class="ft221">模块悬在空中，距离摆放的平面</p>
+<p style="position:absolute;top:611px;left:519px;white-space:nowrap" class="ft223"><b>10cm</b></p>
+<p style="position:absolute;top:613px;left:558px;white-space:nowrap" class="ft221">以上</p>
+<p style="position:absolute;top:648px;left:167px;white-space:nowrap" class="ft221">3.&#160;注意不要离带磁铁的物品太近，要离电脑的扬声器，铁块尽可能远，最好是拿着手</p>
+<p style="position:absolute;top:683px;left:135px;white-space:nowrap" class="ft221">举在空中。</p>
+<p style="position:absolute;top:718px;left:167px;white-space:nowrap" class="ft221">完成上述校准前准备之后，点击界面当中的‘开始校准’按钮：</p>
+<p style="position:absolute;top:917px;left:167px;white-space:nowrap" class="ft221">等待初始化完成后即可开始校准。</p>
+<p style="position:absolute;top:951px;left:167px;white-space:nowrap" class="ft223"><b>1.Y</b></p>
+<p style="position:absolute;top:952px;left:196px;white-space:nowrap" class="ft221">轴校准：看</p>
+<p style="position:absolute;top:950px;left:280px;white-space:nowrap" class="ft222">chartXZ</p>
+<p style="position:absolute;top:952px;left:344px;white-space:nowrap" class="ft221">变化。将</p>
+<p style="position:absolute;top:950px;left:411px;white-space:nowrap" class="ft222">IMU</p>
+<p style="position:absolute;top:952px;left:441px;white-space:nowrap" class="ft221">模块拿致水平，参考手机指南针的方向将</p>
+<p style="position:absolute;top:950px;left:730px;white-space:nowrap" class="ft222">Y</p>
+<p style="position:absolute;top:952px;left:742px;white-space:nowrap" class="ft221">轴</p>
+<p style="position:absolute;top:987px;left:135px;white-space:nowrap" class="ft221">朝向东边（</p>
+<p style="position:absolute;top:985px;left:215px;white-space:nowrap" class="ft222">Y</p>
+<p style="position:absolute;top:987px;left:227px;white-space:nowrap" class="ft221">轴的正方向和地理位置的东边为相同方向）。然后缓慢绕</p>
+<p style="position:absolute;top:985px;left:620px;white-space:nowrap" class="ft222">Y</p>
+<p style="position:absolute;top:987px;left:633px;white-space:nowrap" class="ft221">轴旋转</p>
+<p style="position:absolute;top:985px;left:684px;white-space:nowrap" class="ft222">360</p>
+<p style="position:absolute;top:987px;left:710px;white-space:nowrap" class="ft221">°以上</p>
+<p style="position:absolute;top:1023px;left:135px;white-space:nowrap" class="ft221">（顺时针逆时针都可以，方向保持一致即可）。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft230{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft231{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft232{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page23-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册023.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft230">23</p>
+<p style="position:absolute;top:473px;left:135px;white-space:nowrap" class="ft231">当在</p>
+<p style="position:absolute;top:470px;left:170px;white-space:nowrap" class="ft232">chartXZ</p>
+<p style="position:absolute;top:473px;left:235px;white-space:nowrap" class="ft231">界面蓝色数据点分布在绿色的椭圆线为比较好的拟合效果。为了数据更加准</p>
+<p style="position:absolute;top:508px;left:135px;white-space:nowrap" class="ft231">确，可多转几圈，并且在翻转的过程当中，尽量有个平稳匀速的翻转状态。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft240{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft241{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft242{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft243{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page24-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册024.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft240">24</p>
+<p style="position:absolute;top:155px;left:167px;white-space:nowrap" class="ft241">2.X</p>
+<p style="position:absolute;top:158px;left:196px;white-space:nowrap" class="ft242">轴校准：看</p>
+<p style="position:absolute;top:155px;left:279px;white-space:nowrap" class="ft241">chartYZ</p>
+<p style="position:absolute;top:158px;left:344px;white-space:nowrap" class="ft242">变化。将</p>
+<p style="position:absolute;top:155px;left:411px;white-space:nowrap" class="ft241">IMU</p>
+<p style="position:absolute;top:158px;left:441px;white-space:nowrap" class="ft242">模块水平放置，参考手机指南针的方向将</p>
+<p style="position:absolute;top:155px;left:730px;white-space:nowrap" class="ft241">X</p>
+<p style="position:absolute;top:158px;left:742px;white-space:nowrap" class="ft242">轴</p>
+<p style="position:absolute;top:193px;left:135px;white-space:nowrap" class="ft242">朝向东边，然后缓慢绕</p>
+<p style="position:absolute;top:191px;left:297px;white-space:nowrap" class="ft241">X</p>
+<p style="position:absolute;top:193px;left:309px;white-space:nowrap" class="ft242">轴旋转</p>
+<p style="position:absolute;top:191px;left:361px;white-space:nowrap" class="ft241">360</p>
+<p style="position:absolute;top:193px;left:386px;white-space:nowrap" class="ft242">°以上（顺时针逆时针都可以，方向保持一致即可）。</p>
+<p style="position:absolute;top:567px;left:167px;white-space:nowrap" class="ft242">当在</p>
+<p style="position:absolute;top:565px;left:202px;white-space:nowrap" class="ft241">chartYZ</p>
+<p style="position:absolute;top:567px;left:267px;white-space:nowrap" class="ft242">界面蓝色数据点分布在绿色的椭圆线为比较好的拟合效果。为了数据更</p>
+<p style="position:absolute;top:602px;left:135px;white-space:nowrap" class="ft242">加准确，可多转几圈，并且在翻转的过程当中，尽量有个平稳匀速的翻转状态。</p>
+<p style="position:absolute;top:1056px;left:167px;white-space:nowrap" class="ft241">3.</p>
+<p style="position:absolute;top:1057px;left:184px;white-space:nowrap" class="ft243"><b>z</b></p>
+<p style="position:absolute;top:1059px;left:196px;white-space:nowrap" class="ft242">轴校准：看</p>
+<p style="position:absolute;top:1056px;left:280px;white-space:nowrap" class="ft241">chartXY</p>
+<p style="position:absolute;top:1059px;left:344px;white-space:nowrap" class="ft242">变化。将</p>
+<p style="position:absolute;top:1056px;left:411px;white-space:nowrap" class="ft241">IMU</p>
+<p style="position:absolute;top:1059px;left:441px;white-space:nowrap" class="ft242">模块垂直放置，参考手机指南针的方向将</p>
+<p style="position:absolute;top:1056px;left:730px;white-space:nowrap" class="ft241">Z</p>
+<p style="position:absolute;top:1059px;left:742px;white-space:nowrap" class="ft242">轴</p>
+<p style="position:absolute;top:1094px;left:135px;white-space:nowrap" class="ft242">朝向东边，然后缓慢绕</p>
+<p style="position:absolute;top:1091px;left:297px;white-space:nowrap" class="ft241">Z</p>
+<p style="position:absolute;top:1094px;left:309px;white-space:nowrap" class="ft242">轴旋转</p>
+<p style="position:absolute;top:1091px;left:361px;white-space:nowrap" class="ft241">360</p>
+<p style="position:absolute;top:1094px;left:386px;white-space:nowrap" class="ft242">°以上（顺时针逆时针都可以，方向保持一致即可）。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft250{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft251{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft252{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft253{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page25-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册025.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft250">25</p>
+<p style="position:absolute;top:590px;left:167px;white-space:nowrap" class="ft251">当在</p>
+<p style="position:absolute;top:587px;left:202px;white-space:nowrap" class="ft252">chartXY</p>
+<p style="position:absolute;top:590px;left:267px;white-space:nowrap" class="ft251">界面蓝色数据点分布在绿色的椭圆线为比较好的拟合效果。为了数据更</p>
+<p style="position:absolute;top:625px;left:135px;white-space:nowrap" class="ft251">加准确，可多转几圈，并且在翻转的过程当中，尽量有个平稳匀速的翻转状态。</p>
+<p style="position:absolute;top:1079px;left:167px;white-space:nowrap" class="ft253"><b>4.XYZ</b></p>
+<p style="position:absolute;top:1081px;left:214px;white-space:nowrap" class="ft251">三轴都校准完成后点击‘结束校准’：</p>
+<p style="position:absolute;top:1116px;left:167px;white-space:nowrap" class="ft251">注意，在校准</p>
+<p style="position:absolute;top:1114px;left:265px;white-space:nowrap" class="ft252">Y</p>
+<p style="position:absolute;top:1116px;left:278px;white-space:nowrap" class="ft251">轴时，只看</p>
+<p style="position:absolute;top:1114px;left:361px;white-space:nowrap" class="ft252">chartXZ</p>
+<p style="position:absolute;top:1116px;left:426px;white-space:nowrap" class="ft251">的数据就好，其他两个视图也有数据，不需要关</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft260{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft261{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft262{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft263{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft264{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page26-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册026.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft260">26</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft261">心。同理其他两个轴也是一样。</p>
+<p style="position:absolute;top:157px;left:167px;white-space:nowrap" class="ft261">下图为球形拟合法校准磁场的完成示意图，仅供参考：</p>
+<p style="position:absolute;top:621px;left:735px;white-space:nowrap" class="ft262">7</p>
+<p style="position:absolute;top:696px;left:135px;white-space:nowrap" class="ft263"><b>7.3</b></p>
+<p style="position:absolute;top:699px;left:175px;white-space:nowrap" class="ft264">陀螺仪校准</p>
+<p style="position:absolute;top:743px;left:167px;white-space:nowrap" class="ft261">陀螺仪默认开启自动校准功能，不需要额外设置。保持开启陀螺仪自动校准功能即可。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft270{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft271{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft272{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page27-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册027.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft270">27</p>
+<p style="position:absolute;top:543px;left:167px;white-space:nowrap" class="ft271">参数定义：</p>
+<p style="position:absolute;top:578px;left:167px;white-space:nowrap" class="ft271">陀螺静止阈值：陀螺仪传感器通常会自带零偏，如</p>
+<p style="position:absolute;top:576px;left:513px;white-space:nowrap" class="ft272">0.5</p>
+<p style="position:absolute;top:578px;left:539px;white-space:nowrap" class="ft271">°</p>
+<p style="position:absolute;top:576px;left:555px;white-space:nowrap" class="ft272">/s</p>
+<p style="position:absolute;top:578px;left:572px;white-space:nowrap" class="ft271">，当传感器不消除零偏，在</p>
+<p style="position:absolute;top:613px;left:135px;white-space:nowrap" class="ft271">输出原始数据时，角速度会一直在</p>
+<p style="position:absolute;top:611px;left:374px;white-space:nowrap" class="ft272">0.5</p>
+<p style="position:absolute;top:613px;left:400px;white-space:nowrap" class="ft271">°</p>
+<p style="position:absolute;top:611px;left:415px;white-space:nowrap" class="ft272">/s</p>
+<p style="position:absolute;top:613px;left:437px;white-space:nowrap" class="ft271">的范围内上下波动，如果此时对角度进行积分，</p>
+<p style="position:absolute;top:648px;left:135px;white-space:nowrap" class="ft271">角度会随着时间增大，导致角度出现漂移。如果要消除角度漂移现象，则要给传感器加入陀</p>
+<p style="position:absolute;top:683px;left:135px;white-space:nowrap" class="ft271">螺仪零偏校准，具体原理是取前后两个相邻角速度数据相减，得出值小于所设陀螺静止阈值</p>
+<p style="position:absolute;top:718px;left:135px;white-space:nowrap" class="ft271">且持续一段时间（陀螺稳定时间）都不超过该值，则认为传感器静止，此时开始进行零偏计</p>
+<p style="position:absolute;top:753px;left:135px;white-space:nowrap" class="ft271">算，取一秒角速度平均值作为零偏，后面的数据都会减去零偏值，传感器陀螺仪数据回到零</p>
+<p style="position:absolute;top:789px;left:135px;white-space:nowrap" class="ft271">位。</p>
+<p style="position:absolute;top:821px;left:167px;white-space:nowrap" class="ft272">Z</p>
+<p style="position:absolute;top:824px;left:179px;white-space:nowrap" class="ft271">轴静止阈值：</p>
+<p style="position:absolute;top:821px;left:275px;white-space:nowrap" class="ft272">Z</p>
+<p style="position:absolute;top:824px;left:287px;white-space:nowrap" class="ft271">轴角速度（原始角速度</p>
+<p style="position:absolute;top:821px;left:446px;white-space:nowrap" class="ft272">-</p>
+<p style="position:absolute;top:824px;left:455px;white-space:nowrap" class="ft271">零偏值）小于所设</p>
+<p style="position:absolute;top:821px;left:586px;white-space:nowrap" class="ft272">Z</p>
+<p style="position:absolute;top:824px;left:599px;white-space:nowrap" class="ft271">轴静止阈值且持续</p>
+<p style="position:absolute;top:821px;left:729px;white-space:nowrap" class="ft272">Z</p>
+<p style="position:absolute;top:824px;left:742px;white-space:nowrap" class="ft271">轴</p>
+<p style="position:absolute;top:859px;left:135px;white-space:nowrap" class="ft271">稳定时间后，将认为传感器是静止的。</p>
+<p style="position:absolute;top:891px;left:167px;white-space:nowrap" class="ft272">1.</p>
+<p style="position:absolute;top:894px;left:198px;white-space:nowrap" class="ft271">如果需要关闭陀螺仪自动校准功能，请将</p>
+<p style="position:absolute;top:891px;left:483px;white-space:nowrap" class="ft272">Z</p>
+<p style="position:absolute;top:894px;left:496px;white-space:nowrap" class="ft271">轴静止阈值改为</p>
+<p style="position:absolute;top:891px;left:610px;white-space:nowrap" class="ft272">0</p>
+<p style="position:absolute;top:894px;left:618px;white-space:nowrap" class="ft271">，陀螺仪静止阈值改</p>
+<p style="position:absolute;top:929px;left:135px;white-space:nowrap" class="ft271">为</p>
+<p style="position:absolute;top:927px;left:155px;white-space:nowrap" class="ft272">0.001</p>
+<p style="position:absolute;top:929px;left:196px;white-space:nowrap" class="ft271">（</p>
+<p style="position:absolute;top:927px;left:211px;white-space:nowrap" class="ft272">0.001</p>
+<p style="position:absolute;top:929px;left:259px;white-space:nowrap" class="ft271">默认是传感器输出未经过零偏校准的原始数据，稳定时间不需要更改，然</p>
+<p style="position:absolute;top:964px;left:135px;white-space:nowrap" class="ft271">后重新读取传感器数据，确认修改成功并生效了，生效后陀螺仪自动校准的功能就关闭了。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft280{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft281{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft282{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page28-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册028.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft280">28</p>
+<p style="position:absolute;top:611px;left:167px;white-space:nowrap" class="ft281">2.</p>
+<p style="position:absolute;top:613px;left:198px;white-space:nowrap" class="ft282">当想使用陀螺仪自动校准功能时，设定所需要的静止阈值（默认</p>
+<p style="position:absolute;top:611px;left:649px;white-space:nowrap" class="ft281">Z</p>
+<p style="position:absolute;top:613px;left:662px;white-space:nowrap" class="ft282">轴静止阈值为</p>
+<p style="position:absolute;top:646px;left:135px;white-space:nowrap" class="ft281">0.3</p>
+<p style="position:absolute;top:648px;left:161px;white-space:nowrap" class="ft282">，陀螺仪静止阈值为</p>
+<p style="position:absolute;top:646px;left:308px;white-space:nowrap" class="ft281">0.000</p>
+<p style="position:absolute;top:648px;left:352px;white-space:nowrap" class="ft282">），当模块的角速度数据超过所设值时，则认为传感器时运</p>
+<p style="position:absolute;top:683px;left:135px;white-space:nowrap" class="ft282">动的，当小于所设值时，则认为传感器是静止的。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft290{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft291{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft292{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft293{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft294{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft295{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft296{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft297{font-size:15px;font-family:OBUTYO+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page29-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册029.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft290">29</p>
+<p style="position:absolute;top:591px;left:135px;white-space:nowrap" class="ft291"><b>7.4</b></p>
+<p style="position:absolute;top:593px;left:175px;white-space:nowrap" class="ft292">高度校准</p>
+<p style="position:absolute;top:638px;left:167px;white-space:nowrap" class="ft293">如果气压计检测到的高度数据异常，则需要校准高度。气压计测量高度只能测量大概范</p>
+<p style="position:absolute;top:673px;left:135px;white-space:nowrap" class="ft293">围，无法精确测出高度。</p>
+<p style="position:absolute;top:778px;left:167px;white-space:nowrap" class="ft293">校准高度前，请先确认周围环境气压平缓，不要有风扇吹风影响校准效果。点击‘配置’</p>
+<p style="position:absolute;top:811px;left:135px;white-space:nowrap" class="ft294">-</p>
+<p style="position:absolute;top:813px;left:144px;white-space:nowrap" class="ft293">‘高度’，等待校准完成即可。</p>
+<p style="position:absolute;top:874px;left:135px;white-space:nowrap" class="ft295"><b>8.</b></p>
+<p style="position:absolute;top:876px;left:167px;white-space:nowrap" class="ft296">上位机使用—图形化显示数据</p>
+<p style="position:absolute;top:945px;left:167px;white-space:nowrap" class="ft293">在进行以下操作前，请确认已经将</p>
+<p style="position:absolute;top:943px;left:407px;white-space:nowrap" class="ft294">IMU</p>
+<p style="position:absolute;top:945px;left:437px;white-space:nowrap" class="ft293">模块连接到上位机。</p>
+<p style="position:absolute;top:981px;left:167px;white-space:nowrap" class="ft293">注意：所有要选择的数据，都需要在菜单栏‘配置’</p>
+<p style="position:absolute;top:980px;left:529px;white-space:nowrap" class="ft297"><b>-</b></p>
+<p style="position:absolute;top:981px;left:537px;white-space:nowrap" class="ft293">‘内容’里打勾开启对应的数据</p>
+<p style="position:absolute;top:1017px;left:135px;white-space:nowrap" class="ft293">输出才有效。</p>
+<p style="position:absolute;top:1054px;left:135px;white-space:nowrap" class="ft291"><b>8.1</b></p>
+<p style="position:absolute;top:1056px;left:175px;white-space:nowrap" class="ft292">显示数据</p>
+<p style="position:absolute;top:1101px;left:167px;white-space:nowrap" class="ft293">点击‘数据’界面，则可以看到所有数据。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft300{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft301{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft302{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft303{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft304{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page30-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册030.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft300">30</p>
+<p style="position:absolute;top:615px;left:135px;white-space:nowrap" class="ft301"><b>8.2</b></p>
+<p style="position:absolute;top:617px;left:175px;white-space:nowrap" class="ft302">加速度图形化展示数据</p>
+<p style="position:absolute;top:661px;left:167px;white-space:nowrap" class="ft303">点击‘加速度’界面，在下列图标当中，蓝色实线表示加速度</p>
+<p style="position:absolute;top:659px;left:589px;white-space:nowrap" class="ft304">x</p>
+<p style="position:absolute;top:661px;left:602px;white-space:nowrap" class="ft303">轴的数据，黄色实线表</p>
+<p style="position:absolute;top:696px;left:135px;white-space:nowrap" class="ft303">示加速度</p>
+<p style="position:absolute;top:694px;left:203px;white-space:nowrap" class="ft304">y</p>
+<p style="position:absolute;top:696px;left:215px;white-space:nowrap" class="ft303">轴的数据，红色实线表示加速度</p>
+<p style="position:absolute;top:694px;left:441px;white-space:nowrap" class="ft304">z</p>
+<p style="position:absolute;top:696px;left:454px;white-space:nowrap" class="ft303">轴的数据，通过加速</p>
+<p style="position:absolute;top:694px;left:601px;white-space:nowrap" class="ft304">IMU</p>
+<p style="position:absolute;top:696px;left:631px;white-space:nowrap" class="ft303">惯导设备不同轴的</p>
+<p style="position:absolute;top:731px;left:135px;white-space:nowrap" class="ft303">方向的速度，对应轴的数据就会做出偏移，并且实时的显示在图表当中。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft310{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft311{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft312{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft313{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft314{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page31-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册031.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft310">31</p>
+<p style="position:absolute;top:591px;left:135px;white-space:nowrap" class="ft311"><b>8.3</b></p>
+<p style="position:absolute;top:593px;left:175px;white-space:nowrap" class="ft312">陀螺仪图形化展示数据</p>
+<p style="position:absolute;top:638px;left:167px;white-space:nowrap" class="ft313">点击‘陀螺仪’界面，在下列图标当中，蓝色实线表示陀螺仪</p>
+<p style="position:absolute;top:635px;left:589px;white-space:nowrap" class="ft314">x</p>
+<p style="position:absolute;top:638px;left:602px;white-space:nowrap" class="ft313">轴的数据，黄色实线表</p>
+<p style="position:absolute;top:673px;left:135px;white-space:nowrap" class="ft313">示陀螺仪</p>
+<p style="position:absolute;top:671px;left:203px;white-space:nowrap" class="ft314">y</p>
+<p style="position:absolute;top:673px;left:215px;white-space:nowrap" class="ft313">轴的数据，红色实线表示陀螺仪</p>
+<p style="position:absolute;top:671px;left:441px;white-space:nowrap" class="ft314">z</p>
+<p style="position:absolute;top:673px;left:454px;white-space:nowrap" class="ft313">轴的数据，通过翻转</p>
+<p style="position:absolute;top:671px;left:601px;white-space:nowrap" class="ft314">IMU</p>
+<p style="position:absolute;top:673px;left:631px;white-space:nowrap" class="ft313">惯导设备，对应轴</p>
+<p style="position:absolute;top:708px;left:135px;white-space:nowrap" class="ft313">的数据就会做出偏移，并且实时的显示在图表当中。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft320{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft321{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft322{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft323{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft324{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page32-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册032.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft320">32</p>
+<p style="position:absolute;top:568px;left:135px;white-space:nowrap" class="ft321"><b>8.4</b></p>
+<p style="position:absolute;top:570px;left:175px;white-space:nowrap" class="ft322">姿态角度图形化展示数据</p>
+<p style="position:absolute;top:614px;left:167px;white-space:nowrap" class="ft323">点击‘姿态角度’界面，在下列图标当中，蓝色实线表示姿态角度</p>
+<p style="position:absolute;top:612px;left:621px;white-space:nowrap" class="ft324">x</p>
+<p style="position:absolute;top:614px;left:633px;white-space:nowrap" class="ft323">轴的数据，黄色实</p>
+<p style="position:absolute;top:650px;left:135px;white-space:nowrap" class="ft323">线表示姿态角度</p>
+<p style="position:absolute;top:647px;left:249px;white-space:nowrap" class="ft324">y</p>
+<p style="position:absolute;top:650px;left:262px;white-space:nowrap" class="ft323">轴的数据，红色实线表示姿态角度</p>
+<p style="position:absolute;top:647px;left:500px;white-space:nowrap" class="ft324">z</p>
+<p style="position:absolute;top:650px;left:513px;white-space:nowrap" class="ft323">轴的数据，通过翻转</p>
+<p style="position:absolute;top:647px;left:657px;white-space:nowrap" class="ft324">IMU</p>
+<p style="position:absolute;top:650px;left:687px;white-space:nowrap" class="ft323">惯导设备，</p>
+<p style="position:absolute;top:685px;left:135px;white-space:nowrap" class="ft323">对应轴的数据就会做出偏移，并且实时的显示在图表当中。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft330{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft331{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft332{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft333{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft334{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page33-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册033.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft330">33</p>
+<p style="position:absolute;top:544px;left:135px;white-space:nowrap" class="ft331"><b>8.5</b></p>
+<p style="position:absolute;top:547px;left:175px;white-space:nowrap" class="ft332">磁场图形化展示数据</p>
+<p style="position:absolute;top:591px;left:167px;white-space:nowrap" class="ft333">点击‘磁场’界面，在下列图标当中，蓝色实线表示磁场</p>
+<p style="position:absolute;top:589px;left:558px;white-space:nowrap" class="ft334">x</p>
+<p style="position:absolute;top:591px;left:570px;white-space:nowrap" class="ft333">轴的数据，黄色实线表示磁</p>
+<p style="position:absolute;top:626px;left:135px;white-space:nowrap" class="ft333">场</p>
+<p style="position:absolute;top:624px;left:155px;white-space:nowrap" class="ft334">y</p>
+<p style="position:absolute;top:626px;left:167px;white-space:nowrap" class="ft333">轴的数据，红色实线表示磁场</p>
+<p style="position:absolute;top:624px;left:378px;white-space:nowrap" class="ft334">z</p>
+<p style="position:absolute;top:626px;left:391px;white-space:nowrap" class="ft333">轴的数据，通过翻转</p>
+<p style="position:absolute;top:624px;left:537px;white-space:nowrap" class="ft334">IMU</p>
+<p style="position:absolute;top:626px;left:568px;white-space:nowrap" class="ft333">惯导设备或者含铁的物品，</p>
+<p style="position:absolute;top:661px;left:135px;white-space:nowrap" class="ft333">对应轴的数据就会做出偏移，并且实时的显示在图表当中。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft340{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft341{font-size:22px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft342{font-size:22px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft343{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft344{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft345{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft346{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page34-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册034.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft340">34</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft341"><b>9.</b></p>
+<p style="position:absolute;top:124px;left:167px;white-space:nowrap" class="ft342">上位机使用—接入</p>
+<p style="position:absolute;top:122px;left:353px;white-space:nowrap" class="ft341"><b>GPS</b></p>
+<p style="position:absolute;top:124px;left:395px;white-space:nowrap" class="ft342">模块</p>
+<p style="position:absolute;top:194px;left:135px;white-space:nowrap" class="ft343"><b>9.1</b></p>
+<p style="position:absolute;top:196px;left:175px;white-space:nowrap" class="ft344">外接</p>
+<p style="position:absolute;top:194px;left:222px;white-space:nowrap" class="ft343"><b>GPS</b></p>
+<p style="position:absolute;top:196px;left:262px;white-space:nowrap" class="ft344">说明</p>
+<p style="position:absolute;top:238px;left:167px;white-space:nowrap" class="ft345">IMU</p>
+<p style="position:absolute;top:241px;left:197px;white-space:nowrap" class="ft346">模块左边红色方框的四个排针可外接</p>
+<p style="position:absolute;top:238px;left:456px;white-space:nowrap" class="ft345">GPS</p>
+<p style="position:absolute;top:241px;left:486px;white-space:nowrap" class="ft346">模块。</p>
+<p style="position:absolute;top:238px;left:534px;white-space:nowrap" class="ft345">GPS</p>
+<p style="position:absolute;top:241px;left:564px;white-space:nowrap" class="ft346">模块需输出符合</p>
+<p style="position:absolute;top:238px;left:680px;white-space:nowrap" class="ft345">NMEA-0183</p>
+<p style="position:absolute;top:276px;left:135px;white-space:nowrap" class="ft346">标准的串口数据，并且</p>
+<p style="position:absolute;top:273px;left:296px;white-space:nowrap" class="ft345">GPS</p>
+<p style="position:absolute;top:276px;left:326px;white-space:nowrap" class="ft346">的串口波特率为</p>
+<p style="position:absolute;top:273px;left:440px;white-space:nowrap" class="ft345">115200bps</p>
+<p style="position:absolute;top:276px;left:518px;white-space:nowrap" class="ft346">，才可以组成</p>
+<p style="position:absolute;top:273px;left:617px;white-space:nowrap" class="ft345">GPS-IMU</p>
+<p style="position:absolute;top:276px;left:681px;white-space:nowrap" class="ft346">惯导单元。</p>
+<p style="position:absolute;top:308px;left:167px;white-space:nowrap" class="ft345">D3</p>
+<p style="position:absolute;top:311px;left:184px;white-space:nowrap" class="ft346">：悬空（不用接收或发送数据，可以不接线）</p>
+<p style="position:absolute;top:344px;left:167px;white-space:nowrap" class="ft345">D1</p>
+<p style="position:absolute;top:346px;left:184px;white-space:nowrap" class="ft346">：连接</p>
+<p style="position:absolute;top:344px;left:235px;white-space:nowrap" class="ft345">GPS</p>
+<p style="position:absolute;top:346px;left:265px;white-space:nowrap" class="ft346">的数据输出引脚</p>
+<p style="position:absolute;top:344px;left:375px;white-space:nowrap" class="ft345">(</p>
+<p style="position:absolute;top:346px;left:384px;white-space:nowrap" class="ft346">接串口的</p>
+<p style="position:absolute;top:344px;left:451px;white-space:nowrap" class="ft345">tx</p>
+<p style="position:absolute;top:346px;left:472px;white-space:nowrap" class="ft346">脚</p>
+<p style="position:absolute;top:344px;left:488px;white-space:nowrap" class="ft345">)</p>
+<p style="position:absolute;top:379px;left:167px;white-space:nowrap" class="ft345">GND</p>
+<p style="position:absolute;top:381px;left:192px;white-space:nowrap" class="ft346">：接地</p>
+<p style="position:absolute;top:414px;left:167px;white-space:nowrap" class="ft345">5V</p>
+<p style="position:absolute;top:416px;left:184px;white-space:nowrap" class="ft346">：</p>
+<p style="position:absolute;top:414px;left:199px;white-space:nowrap" class="ft345">DC&#160;5V</p>
+<p style="position:absolute;top:416px;left:247px;white-space:nowrap" class="ft346">电源</p>
+<p style="position:absolute;top:1038px;left:135px;white-space:nowrap" class="ft343"><b>9.2</b></p>
+<p style="position:absolute;top:1040px;left:175px;white-space:nowrap" class="ft344">修改</p>
+<p style="position:absolute;top:1038px;left:222px;white-space:nowrap" class="ft343"><b>GPS</b></p>
+<p style="position:absolute;top:1040px;left:262px;white-space:nowrap" class="ft344">的串口波特率</p>
+<p style="position:absolute;top:1085px;left:167px;white-space:nowrap" class="ft346">打&#160;开&#160;软&#160;件&#160;“</p>
+<p style="position:absolute;top:1082px;left:255px;white-space:nowrap" class="ft345">1</p>
+<p style="position:absolute;top:1085px;left:273px;white-space:nowrap" class="ft346">教&#160;程&#160;资&#160;料</p>
+<p style="position:absolute;top:1082px;left:343px;white-space:nowrap" class="ft345">\2.</p>
+<p style="position:absolute;top:1085px;left:371px;white-space:nowrap" class="ft346">软&#160;件&#160;工&#160;具</p>
+<p style="position:absolute;top:1082px;left:442px;white-space:nowrap" class="ft345">\GPS</p>
+<p style="position:absolute;top:1085px;left:482px;white-space:nowrap" class="ft346">模&#160;块&#160;上&#160;位&#160;机&#160;”，</p>
+<p style="position:absolute;top:1082px;left:597px;white-space:nowrap" class="ft345">gnsstoolkit3</p>
+<p style="position:absolute;top:1085px;left:707px;white-space:nowrap" class="ft346">工&#160;具&#160;，</p>
+<p style="position:absolute;top:1130px;left:283px;white-space:nowrap" class="ft346">，进入界面后，首先选中三个图标，显示星位视图、基础视图、载噪</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft350{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft351{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft352{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page35-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册035.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft350">35</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft351">比视图，方便实时查看卫星的数据和效果。</p>
+<p style="position:absolute;top:601px;left:135px;white-space:nowrap" class="ft351">然后点击“视图”和“配置”按钮，</p>
+<p style="position:absolute;top:599px;left:387px;white-space:nowrap" class="ft352">Gps</p>
+<p style="position:absolute;top:601px;left:417px;white-space:nowrap" class="ft351">设置波特率为</p>
+<p style="position:absolute;top:599px;left:515px;white-space:nowrap" class="ft352">115200</p>
+<p style="position:absolute;top:601px;left:567px;white-space:nowrap" class="ft351">，修改完毕之后关闭软件。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft360{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft361{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft362{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft363{font-size:21px;font-family:OBUTYO+Consolas;color:#000000;}
+	.ft364{font-size:21px;font-family:XEKKFX+SimHei;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page36-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册036.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft360">36</p>
+<p style="position:absolute;top:122px;left:135px;white-space:nowrap" class="ft361">点击修改波特率为“</p>
+<p style="position:absolute;top:119px;left:277px;white-space:nowrap" class="ft362">115200</p>
+<p style="position:absolute;top:122px;left:329px;white-space:nowrap" class="ft361">”</p>
+<p style="position:absolute;top:603px;left:135px;white-space:nowrap" class="ft363"><b>9.3</b></p>
+<p style="position:absolute;top:605px;left:175px;white-space:nowrap" class="ft364">上位机配置</p>
+<p style="position:absolute;top:603px;left:285px;white-space:nowrap" class="ft363"><b>GPS</b></p>
+<p style="position:absolute;top:605px;left:325px;white-space:nowrap" class="ft364">参数</p>
+<p style="position:absolute;top:660px;left:167px;white-space:nowrap" class="ft361">打开并连接上位机软件，</p>
+<p style="position:absolute;top:660px;left:475px;white-space:nowrap" class="ft361">。</p>
+<p style="position:absolute;top:696px;left:167px;white-space:nowrap" class="ft361">点击菜单栏的‘配置’，在内容里勾选&#160;‘接口’，‘经纬度’，‘地速’，‘定位精度’。</p>
+<p style="position:absolute;top:731px;left:167px;white-space:nowrap" class="ft361">注意：如果勾选上“</p>
+<p style="position:absolute;top:729px;left:305px;white-space:nowrap" class="ft362">GPS</p>
+<p style="position:absolute;top:731px;left:335px;white-space:nowrap" class="ft361">原始”之后，模块只输出</p>
+<p style="position:absolute;top:729px;left:509px;white-space:nowrap" class="ft362">GPS</p>
+<p style="position:absolute;top:731px;left:539px;white-space:nowrap" class="ft361">原始的信息，其它数据都不会输</p>
+<p style="position:absolute;top:767px;left:135px;white-space:nowrap" class="ft361">出。</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU用户手册-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft370{font-size:13px;font-family:QHIUOC+Consolas;color:#000000;}
+	.ft371{font-size:15px;font-family:XEKKFX+SimHei;color:#000000;}
+	.ft372{font-size:15px;font-family:QHIUOC+Consolas;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page37-div" style="position:relative;width:892px;height:1262px;">
+<img width="892" height="1262" src="IMU用户手册037.png" alt="background image"/>
+<p style="position:absolute;top:1164px;left:453px;white-space:nowrap" class="ft370">37</p>
+<p style="position:absolute;top:660px;left:167px;white-space:nowrap" class="ft371">切换到‘数据’界面，在‘</p>
+<p style="position:absolute;top:657px;left:356px;white-space:nowrap" class="ft372">Location</p>
+<p style="position:absolute;top:660px;left:425px;white-space:nowrap" class="ft371">’和‘</p>
+<p style="position:absolute;top:657px;left:472px;white-space:nowrap" class="ft372">PDOP</p>
+<p style="position:absolute;top:660px;left:507px;white-space:nowrap" class="ft371">’查看</p>
+<p style="position:absolute;top:657px;left:558px;white-space:nowrap" class="ft372">GPS</p>
+<p style="position:absolute;top:660px;left:588px;white-space:nowrap" class="ft371">相关数据。</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>IMU模块原理图-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:8px;font-family:CIDFont+F1;color:#004080;}
+	.ft11{font-size:12px;font-family:CIDFont+F2;color:#004080;}
+	.ft12{font-size:9px;font-family:CIDFont+F1;color:#004080;}
+	.ft13{font-size:11px;font-family:CIDFont+F2;color:#0000ff;}
+	.ft14{font-size:9px;font-family:CIDFont+F1;color:#0000ff;}
+	.ft15{font-size:12px;font-family:CIDFont+F2;color:#0000ff;}
+	.ft16{font-size:8px;font-family:CIDFont+F1;color:#0000ff;}
+	.ft17{font-size:29px;font-family:CIDFont+F2;color:#000000;}
+	.ft18{font-size:11px;font-family:CIDFont+F2;color:#000000;}
+	.ft19{font-size:17px;font-family:CIDFont+F2;color:#000000;}
+	.ft110{font-size:24px;font-family:CIDFont+F2;color:#000000;}
+	.ft111{font-size:18px;font-family:CIDFont+F1;color:#000000;}
+	.ft112{font-size:16px;font-family:CIDFont+F2;color:#000000;}
+	.ft113{font-size:21px;font-family:CIDFont+F2;color:#000000;}
+	.ft114{font-size:12px;font-family:CIDFont+F1;color:#000000;}
+	.ft115{font-size:11px;line-height:11px;font-family:CIDFont+F2;color:#0000ff;}
+	.ft116{font-size:11px;line-height:16px;font-family:CIDFont+F2;color:#0000ff;}
+	.ft117{font-size:8px;line-height:13px;font-family:CIDFont+F1;color:#0000ff;}
+	.ft118{font-size:11px;line-height:15px;font-family:CIDFont+F2;color:#0000ff;}
+	.ft119{font-size:11px;line-height:11px;font-family:CIDFont+F2;color:#000000;}
+	.ft120{font-size:11px;line-height:16px;font-family:CIDFont+F2;color:#000000;}
+	.ft121{font-size:11px;line-height:15px;font-family:CIDFont+F2;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:1262px;height:892px;">
+<img width="1262" height="892" src="IMU模块原理图001.png" alt="background image"/>
+<p style="position:absolute;top:135px;left:327px;white-space:nowrap" class="ft10">USB-C1</p>
+<p style="position:absolute;top:358px;left:129px;white-space:nowrap" class="ft11">D1</p>
+<p style="position:absolute;top:305px;left:582px;white-space:nowrap" class="ft12">C7</p>
+<p style="position:absolute;top:305px;left:637px;white-space:nowrap" class="ft12">C5</p>
+<p style="position:absolute;top:105px;left:936px;white-space:nowrap" class="ft10">U3</p>
+<p style="position:absolute;top:179px;left:754px;white-space:nowrap" class="ft12">C1</p>
+<p style="position:absolute;top:191px;left:1017px;white-space:nowrap" class="ft12">C2</p>
+<p style="position:absolute;top:559px;left:292px;white-space:nowrap" class="ft11">U1</p>
+<p style="position:absolute;top:654px;left:526px;white-space:nowrap" class="ft12">C4</p>
+<p style="position:absolute;top:578px;left:427px;white-space:nowrap" class="ft12">C3</p>
+<p style="position:absolute;top:577px;left:695px;white-space:nowrap" class="ft12">R5</p>
+<p style="position:absolute;top:578px;left:632px;white-space:nowrap" class="ft12">R4</p>
+<p style="position:absolute;top:293px;left:938px;white-space:nowrap" class="ft11">U2</p>
+<p style="position:absolute;top:368px;left:753px;white-space:nowrap" class="ft12">R1</p>
+<p style="position:absolute;top:387px;left:752px;white-space:nowrap" class="ft12">R2</p>
+<p style="position:absolute;top:598px;left:1151px;white-space:nowrap" class="ft11">P2</p>
+<p style="position:absolute;top:597px;left:921px;white-space:nowrap" class="ft12">P1</p>
+<p style="position:absolute;top:417px;left:321px;white-space:nowrap" class="ft12">R3</p>
+<p style="position:absolute;top:442px;left:321px;white-space:nowrap" class="ft12">R6</p>
+<p style="position:absolute;top:773px;left:340px;white-space:nowrap" class="ft12">PWR</p>
+<p style="position:absolute;top:770px;left:254px;white-space:nowrap" class="ft12">R7</p>
+<p style="position:absolute;top:659px;left:1036px;white-space:nowrap" class="ft12">C6</p>
+<p style="position:absolute;top:260px;left:278px;white-space:nowrap" class="ft115">B5<br/>B6<br/>B7<br/>B8</p>
+<p style="position:absolute;top:248px;left:410px;white-space:nowrap" class="ft115">A9<br/>A8<br/>A7<br/>A6<br/>A5<br/>A4</p>
+<p style="position:absolute;top:342px;left:410px;white-space:nowrap" class="ft13">A1</p>
+<p style="position:absolute;top:213px;left:410px;white-space:nowrap" class="ft13">A12</p>
+<p style="position:absolute;top:369px;left:368px;white-space:nowrap" class="ft13">4</p>
+<p style="position:absolute;top:369px;left:356px;white-space:nowrap" class="ft13">3</p>
+<p style="position:absolute;top:196px;left:368px;white-space:nowrap" class="ft13">1</p>
+<p style="position:absolute;top:196px;left:356px;white-space:nowrap" class="ft13">2</p>
+<p style="position:absolute;top:156px;left:304px;white-space:nowrap" class="ft13">TYPEC-611-T3</p>
+<p style="position:absolute;top:321px;left:127px;white-space:nowrap" class="ft13">4</p>
+<p style="position:absolute;top:256px;left:127px;white-space:nowrap" class="ft13">1</p>
+<p style="position:absolute;top:256px;left:139px;white-space:nowrap" class="ft13">3</p>
+<p style="position:absolute;top:298px;left:161px;white-space:nowrap" class="ft13">2</p>
+<p style="position:absolute;top:375px;left:101px;white-space:nowrap" class="ft14">TPPRTR5V0U2X</p>
+<p style="position:absolute;top:317px;left:573px;white-space:nowrap" class="ft14">100nF</p>
+<p style="position:absolute;top:317px;left:635px;white-space:nowrap" class="ft14">10uF</p>
+<p style="position:absolute;top:119px;left:911px;white-space:nowrap" class="ft13">RT9013-33GB</p>
+<p style="position:absolute;top:192px;left:755px;white-space:nowrap" class="ft14">1uF</p>
+<p style="position:absolute;top:204px;left:1018px;white-space:nowrap" class="ft14">1uF</p>
+<p style="position:absolute;top:593px;left:219px;white-space:nowrap" class="ft116">1<br/>2<br/>3<br/>4<br/>5</p>
+<p style="position:absolute;top:661px;left:366px;white-space:nowrap" class="ft13">6</p>
+<p style="position:absolute;top:644px;left:366px;white-space:nowrap" class="ft13">7</p>
+<p style="position:absolute;top:627px;left:366px;white-space:nowrap" class="ft13">8</p>
+<p style="position:absolute;top:610px;left:366px;white-space:nowrap" class="ft13">9</p>
+<p style="position:absolute;top:593px;left:366px;white-space:nowrap" class="ft13">10</p>
+<p style="position:absolute;top:574px;left:276px;white-space:nowrap" class="ft15">CH340X</p>
+<p style="position:absolute;top:668px;left:523px;white-space:nowrap" class="ft14">100nF</p>
+<p style="position:absolute;top:565px;left:423px;white-space:nowrap" class="ft14">100nF</p>
+<p style="position:absolute;top:588px;left:689px;white-space:nowrap" class="ft14">4.7K</p>
+<p style="position:absolute;top:590px;left:625px;white-space:nowrap" class="ft14">4.7K</p>
+<p style="position:absolute;top:338px;left:839px;white-space:nowrap" class="ft116">1<br/>2<br/>3<br/>4<br/>5<br/>6</p>
+<p style="position:absolute;top:420px;left:1042px;white-space:nowrap" class="ft13">7</p>
+<p style="position:absolute;top:404px;left:1042px;white-space:nowrap" class="ft13">8</p>
+<p style="position:absolute;top:386px;left:1042px;white-space:nowrap" class="ft13">9</p>
+<p style="position:absolute;top:370px;left:1042px;white-space:nowrap" class="ft13">10</p>
+<p style="position:absolute;top:354px;left:1042px;white-space:nowrap" class="ft13">11</p>
+<p style="position:absolute;top:338px;left:1042px;white-space:nowrap" class="ft13">12</p>
+<p style="position:absolute;top:377px;left:906px;white-space:nowrap" class="ft15">IMU-MODULE</p>
+<p style="position:absolute;top:368px;left:804px;white-space:nowrap" class="ft14">560R</p>
+<p style="position:absolute;top:387px;left:805px;white-space:nowrap" class="ft14">560R</p>
+<p style="position:absolute;top:614px;left:1144px;white-space:nowrap" class="ft14">2.54-1*4</p>
+<p style="position:absolute;top:614px;left:913px;white-space:nowrap" class="ft14">2.54_1x8</p>
+<p style="position:absolute;top:417px;left:372px;white-space:nowrap" class="ft14">5.1K</p>
+<p style="position:absolute;top:442px;left:371px;white-space:nowrap" class="ft14">5.1K</p>
+<p style="position:absolute;top:771px;left:388px;white-space:nowrap" class="ft16">RED</p>
+<p style="position:absolute;top:770px;left:277px;white-space:nowrap" class="ft14">3.3K</p>
+<p style="position:absolute;top:671px;left:1023px;white-space:nowrap" class="ft14">100NF</p>
+<p style="position:absolute;top:278px;left:482px;white-space:nowrap" class="ft16">USB1_D-</p>
+<p style="position:absolute;top:290px;left:482px;white-space:nowrap" class="ft16">USB1_D+</p>
+<p style="position:absolute;top:256px;left:698px;white-space:nowrap" class="ft13">5V</p>
+<p style="position:absolute;top:152px;left:721px;white-space:nowrap" class="ft13">5V</p>
+<p style="position:absolute;top:158px;left:1130px;white-space:nowrap" class="ft16">3.3V</p>
+<p style="position:absolute;top:266px;left:781px;white-space:nowrap" class="ft13">GND</p>
+<p style="position:absolute;top:272px;left:1043px;white-space:nowrap" class="ft13">GND</p>
+<p style="position:absolute;top:615px;left:469px;white-space:nowrap" class="ft16">RX</p>
+<p style="position:absolute;top:633px;left:469px;white-space:nowrap" class="ft16">TX</p>
+<p style="position:absolute;top:530px;left:502px;white-space:nowrap" class="ft13">3.3V</p>
+<p style="position:absolute;top:599px;left:86px;white-space:nowrap" class="ft16">USB1_D+</p>
+<p style="position:absolute;top:615px;left:88px;white-space:nowrap" class="ft16">USB1_D-</p>
+<p style="position:absolute;top:625px;left:575px;white-space:nowrap" class="ft117">SDA<br/>SCL</p>
+<p style="position:absolute;top:476px;left:658px;white-space:nowrap" class="ft13">3.3V</p>
+<p style="position:absolute;top:359px;left:1111px;white-space:nowrap" class="ft116">3.3V<br/>SCL<br/>SDA</p>
+<p style="position:absolute;top:376px;left:689px;white-space:nowrap" class="ft116">TX<br/>RX</p>
+<p style="position:absolute;top:360px;left:678px;white-space:nowrap" class="ft13">3.3V</p>
+<p style="position:absolute;top:426px;left:750px;white-space:nowrap" class="ft13">D1</p>
+<p style="position:absolute;top:594px;left:996px;white-space:nowrap" class="ft115">RX<br/>TX</p>
+<p style="position:absolute;top:617px;left:991px;white-space:nowrap" class="ft13">GND</p>
+<p style="position:absolute;top:629px;left:996px;white-space:nowrap" class="ft13">5V</p>
+<p style="position:absolute;top:569px;left:776px;white-space:nowrap" class="ft16">D3</p>
+<p style="position:absolute;top:581px;left:775px;white-space:nowrap" class="ft13">D1</p>
+<p style="position:absolute;top:604px;left:775px;white-space:nowrap" class="ft13">5V</p>
+<p style="position:absolute;top:652px;left:764px;white-space:nowrap" class="ft13">3.3V</p>
+<p style="position:absolute;top:164px;left:188px;white-space:nowrap" class="ft13">USB1_D+</p>
+<p style="position:absolute;top:356px;left:186px;white-space:nowrap" class="ft13">USB1_D-</p>
+<p style="position:absolute;top:266px;left:219px;white-space:nowrap" class="ft13">B5</p>
+<p style="position:absolute;top:302px;left:482px;white-space:nowrap" class="ft13">A5</p>
+<p style="position:absolute;top:424px;left:221px;white-space:nowrap" class="ft13">B5</p>
+<p style="position:absolute;top:450px;left:222px;white-space:nowrap" class="ft13">A5</p>
+<p style="position:absolute;top:787px;left:141px;white-space:nowrap" class="ft13">3.3V</p>
+<p style="position:absolute;top:423px;left:1111px;white-space:nowrap" class="ft13">D3</p>
+<p style="position:absolute;top:751px;left:1215px;white-space:nowrap" class="ft17">A</p>
+<p style="position:absolute;top:551px;left:1215px;white-space:nowrap" class="ft17">B</p>
+<p style="position:absolute;top:350px;left:1215px;white-space:nowrap" class="ft17">C</p>
+<p style="position:absolute;top:150px;left:1215px;white-space:nowrap" class="ft17">D</p>
+<p style="position:absolute;top:38px;left:1108px;white-space:nowrap" class="ft17">1</p>
+<p style="position:absolute;top:38px;left:917px;white-space:nowrap" class="ft17">2</p>
+<p style="position:absolute;top:38px;left:726px;white-space:nowrap" class="ft17">3</p>
+<p style="position:absolute;top:38px;left:536px;white-space:nowrap" class="ft17">4</p>
+<p style="position:absolute;top:38px;left:345px;white-space:nowrap" class="ft17">5</p>
+<p style="position:absolute;top:38px;left:154px;white-space:nowrap" class="ft17">6</p>
+<p style="position:absolute;top:150px;left:30px;white-space:nowrap" class="ft17">D</p>
+<p style="position:absolute;top:350px;left:30px;white-space:nowrap" class="ft17">C</p>
+<p style="position:absolute;top:551px;left:30px;white-space:nowrap" class="ft17">B</p>
+<p style="position:absolute;top:751px;left:30px;white-space:nowrap" class="ft17">A</p>
+<p style="position:absolute;top:855px;left:997px;white-space:nowrap" class="ft18">SHEET:&#160;&#160;&#160;&#160;&#160;OF</p>
+<p style="position:absolute;top:749px;left:1156px;white-space:nowrap" class="ft18">REV:</p>
+<p style="position:absolute;top:852px;left:1097px;white-space:nowrap" class="ft19">1</p>
+<p style="position:absolute;top:852px;left:1044px;white-space:nowrap" class="ft19">1</p>
+<p style="position:absolute;top:753px;left:897px;white-space:nowrap" class="ft110">幻尔科技有限公司</p>
+<p style="position:absolute;top:809px;left:879px;white-space:nowrap" class="ft110">10-Axis&#160;IMU&#160;Module</p>
+<p style="position:absolute;top:758px;left:692px;white-space:nowrap" class="ft111">daijun</p>
+<p style="position:absolute;top:810px;left:671px;white-space:nowrap" class="ft111">2023.09.14</p>
+<p style="position:absolute;top:810px;left:1155px;white-space:nowrap" class="ft112">V1.0</p>
+<p style="position:absolute;top:764px;left:775px;white-space:nowrap" class="ft18">COMPANY:</p>
+<p style="position:absolute;top:816px;left:782px;white-space:nowrap" class="ft18">TITLE:</p>
+<p style="position:absolute;top:819px;left:624px;white-space:nowrap" class="ft18">DATED:</p>
+<p style="position:absolute;top:761px;left:624px;white-space:nowrap" class="ft18">DRAWN:</p>
+<p style="position:absolute;top:488px;left:287px;white-space:nowrap" class="ft110">TYPE-C电路</p>
+<p style="position:absolute;top:249px;left:863px;white-space:nowrap" class="ft113">5V&#160;转3.3V&#160;电路</p>
+<p style="position:absolute;top:686px;left:828px;white-space:nowrap" class="ft110">输出接口电路</p>
+<p style="position:absolute;top:487px;left:896px;white-space:nowrap" class="ft113">IMU惯导模块</p>
+<p style="position:absolute;top:707px;left:230px;white-space:nowrap" class="ft110">U转串口电路</p>
+<p style="position:absolute;top:484px;left:1102px;white-space:nowrap" class="ft114">X</p>
+<p style="position:absolute;top:450px;left:1066px;white-space:nowrap" class="ft114">Y</p>
+<p style="position:absolute;top:495px;left:1054px;white-space:nowrap" class="ft114">Z</p>
+<p style="position:absolute;top:267px;left:300px;white-space:nowrap" class="ft119">CC2<br/>DP2<br/>DN2<br/>SBU2</p>
+<p style="position:absolute;top:255px;left:377px;white-space:nowrap" class="ft119">VBUS<br/>SBU1</p>
+<p style="position:absolute;top:279px;left:383px;white-space:nowrap" class="ft119">DN1<br/>DP1<br/>CC1</p>
+<p style="position:absolute;top:314px;left:371px;white-space:nowrap" class="ft18">VBUS1</p>
+<p style="position:absolute;top:349px;left:377px;white-space:nowrap" class="ft18">GND1</p>
+<p style="position:absolute;top:220px;left:383px;white-space:nowrap" class="ft18">GND</p>
+<p style="position:absolute;top:353px;left:360px;white-space:nowrap" class="ft18">G</p>
+<p style="position:absolute;top:347px;left:360px;white-space:nowrap" class="ft18">4</p>
+<p style="position:absolute;top:353px;left:348px;white-space:nowrap" class="ft18">G</p>
+<p style="position:absolute;top:347px;left:348px;white-space:nowrap" class="ft18">3</p>
+<p style="position:absolute;top:218px;left:360px;white-space:nowrap" class="ft18">G</p>
+<p style="position:absolute;top:212px;left:360px;white-space:nowrap" class="ft18">1</p>
+<p style="position:absolute;top:218px;left:348px;white-space:nowrap" class="ft18">G</p>
+<p style="position:absolute;top:212px;left:348px;white-space:nowrap" class="ft18">2</p>
+<p style="position:absolute;top:152px;left:908px;white-space:nowrap" class="ft18">VIN</p>
+<p style="position:absolute;top:169px;left:908px;white-space:nowrap" class="ft18">GND</p>
+<p style="position:absolute;top:187px;left:908px;white-space:nowrap" class="ft18">EN</p>
+<p style="position:absolute;top:181px;left:961px;white-space:nowrap" class="ft18">NC</p>
+<p style="position:absolute;top:157px;left:950px;white-space:nowrap" class="ft18">VOUT</p>
+<p style="position:absolute;top:597px;left:244px;white-space:nowrap" class="ft120">UD+<br/>UD-</p>
+<p style="position:absolute;top:631px;left:244px;white-space:nowrap" class="ft121">GND<br/>RTS#</p>
+<p style="position:absolute;top:664px;left:244px;white-space:nowrap" class="ft18">CTS#</p>
+<p style="position:absolute;top:665px;left:296px;white-space:nowrap" class="ft18">TNOW/DTR#</p>
+<p style="position:absolute;top:649px;left:329px;white-space:nowrap" class="ft18">VCC</p>
+<p style="position:absolute;top:632px;left:329px;white-space:nowrap" class="ft18">TXD</p>
+<p style="position:absolute;top:614px;left:329px;white-space:nowrap" class="ft18">RXD</p>
+<p style="position:absolute;top:598px;left:335px;white-space:nowrap" class="ft18">V3</p>
+<p style="position:absolute;top:341px;left:865px;white-space:nowrap" class="ft120">D0<br/>VCC1</p>
+<p style="position:absolute;top:375px;left:865px;white-space:nowrap" class="ft121">RX<br/>TX</p>
+<p style="position:absolute;top:409px;left:865px;white-space:nowrap" class="ft120">GND1<br/>D1</p>
+<p style="position:absolute;top:425px;left:1011px;white-space:nowrap" class="ft18">D3</p>
+<p style="position:absolute;top:409px;left:1005px;white-space:nowrap" class="ft18">GND</p>
+<p style="position:absolute;top:391px;left:1005px;white-space:nowrap" class="ft18">SDA</p>
+<p style="position:absolute;top:374px;left:1005px;white-space:nowrap" class="ft18">SCL</p>
+<p style="position:absolute;top:359px;left:1011px;white-space:nowrap" class="ft18">D2</p>
+<p style="position:absolute;top:342px;left:1005px;white-space:nowrap" class="ft18">VCC</p>
+<p style="position:absolute;top:594px;left:1109px;white-space:nowrap" class="ft119">1<br/>2<br/>3<br/>4</p>
+<p style="position:absolute;top:569px;left:878px;white-space:nowrap" class="ft119">1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+SUBSYSTEM=="tty", KERNEL=="ttyCH341USB2", MODE:="0666", SYMLINK+="imu_usb"
+
