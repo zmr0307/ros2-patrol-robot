@@ -86,7 +86,7 @@ public:
         // =================================================================
         // 第一步：声明 ROS 参数
         // =================================================================
-        this->declare_parameter("serial_port", "/dev/ttyCH341USB0");
+        this->declare_parameter("serial_port", "/dev/ttyCH341USB1");  // 修正：重新上电后映射为USB1
         this->declare_parameter("baud_rate", 115200);
 
         // =================================================================
@@ -173,18 +173,18 @@ private:
     // ==========================================================================
     // 机器人物理参数（必须与 diff_drive_controller.yaml 一致）
     // ==========================================================================
-  static constexpr double WHEEL_SEPARATION = 0.228;   // 轮距 (m) - 360°标定22.8cm（348.4°→360°，修正-11.6°）
-  static constexpr double WHEEL_RADIUS = 0.064;       // 轮径 (m) - 图纸规格直径128mm
+  static constexpr double WHEEL_SEPARATION = 0.23364;   // 轮距 (m) - 旋转标定线性插值（2圈少转10.5°，3圈多转6.1°）
+  static constexpr double WHEEL_RADIUS = 0.06475;     // 轮径 (m) - 直线标定11cm（实际11.0cm，里程计10.8cm）
 
     // ==========================================================================
     // 速度限制（基于8 RPM最大轮速）
     // ==========================================================================
     // 最大轮速: 8 RPM = 0.8378 rad/s
-    // 最大线速度: v = ω * R = 0.8378 * 0.064 = 0.05362 m/s (5.36 cm/s)
-    // 最大角速度: ω = 2 * v / L = 2 * 0.05362 / 0.228 = 0.4703 rad/s (26.95°/s)
+    // 最大线速度: v = ω * R = 0.8378 * 0.06475 = 0.05424 m/s (实测保守值0.05362 m/s)
+    // 最大角速度: ω = 2 * v / L = 2 * 0.05362 / 0.23364 = 0.4590 rad/s (26.29°/s)
     static constexpr double MAX_WHEEL_RAD_S = 0.8378;   // rad/s (8 RPM限制)
-    static constexpr double MAX_LINEAR_VEL = 0.05362;   // m/s
-    static constexpr double MAX_ANGULAR_VEL = 0.4703;   // rad/s (360°标定：2*0.05362/0.228)
+    static constexpr double MAX_LINEAR_VEL = 0.05362;   // m/s (实测保守值)
+    static constexpr double MAX_ANGULAR_VEL = 0.4590;   // rad/s (旋转标定：2*0.05362/0.23364)
 
     // ==========================================================================
     // ROS 2 成员变量

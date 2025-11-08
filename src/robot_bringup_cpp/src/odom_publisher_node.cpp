@@ -33,10 +33,10 @@ public:
         sync_state_(SyncState::SEARCHING), frame_index_(0)
     {
         // Declare parameters
-        this->declare_parameter("serial_port", "/dev/ttyCH341USB1");
+        this->declare_parameter("serial_port", "/dev/ttyCH341USB2");  // 修正：重新上电后映射为USB2
         this->declare_parameter("baud_rate", 115200);
-        this->declare_parameter("wheel_radius", 0.064);  // 图纸规格直径128mm
-        this->declare_parameter("wheel_separation", 0.228);   // 360°标定22.8cm（348.4°→360°，修正-11.6°）
+        this->declare_parameter("wheel_radius", 0.06475);  // 直线标定11cm（实际11.0cm，里程计10.8cm）
+        this->declare_parameter("wheel_separation", 0.23364);   // 旋转标定线性插值（2圈少转10.5°，3圈多转6.1°，取中间值）
         this->declare_parameter("encoder_ppr", 4096);  // 1024线 × 4倍频
         this->declare_parameter("base_frame_id", "base_footprint");
         this->declare_parameter("odom_frame_id", "odom");

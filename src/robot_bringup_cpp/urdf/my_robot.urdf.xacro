@@ -27,7 +27,7 @@
     <visual>
       <origin rpy="1.5707 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.051" radius="0.064"/>
+        <cylinder length="0.051" radius="0.06475"/>
       </geometry>
       <material name="grey_material">
         <color rgba="0.5 0.5 0.5 1.0"/>
@@ -36,7 +36,7 @@
     <collision>
       <origin rpy="1.5707 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.051" radius="0.064"/>
+        <cylinder length="0.051" radius="0.06475"/>
       </geometry>
     </collision>
     <inertial>
@@ -49,7 +49,7 @@
     <visual>
       <origin rpy="1.5707 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.051" radius="0.064"/>
+        <cylinder length="0.051" radius="0.06475"/>
       </geometry>
       <material name="grey_material">
         <color rgba="0.5 0.5 0.5 1.0"/>
@@ -58,7 +58,7 @@
     <collision>
       <origin rpy="1.5707 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.051" radius="0.064"/>
+        <cylinder length="0.051" radius="0.06475"/>
       </geometry>
     </collision>
     <inertial>
@@ -70,20 +70,20 @@
   <joint name="base_footprint_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="base_link"/>
-    <origin xyz="0 0 0.222" rpy="0 0 0"/>  <!-- 修正: 0.222 + (-0.158) = 0.064 (轮半径) -->
+    <origin xyz="0 0 0.222" rpy="0 0 0"/>  <!-- 修正: 0.222 + (-0.158) = 0.06475 (轮半径-直线标定11cm) -->
   </joint>
 
   <joint name="left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="left_wheel_link"/>
-    <origin rpy="0 0 0" xyz="0 0.114 -0.158"/>  <!-- 轮距22.8cm/2=11.4cm（360°标定修正：348.4°→360°）, 轮心离地6.4cm -->
+    <origin rpy="0 0 0" xyz="0 0.11682 -0.158"/>  <!-- 轮距23.364cm/2=11.682cm（线性插值：2圈少转10.5°，3圈多转6.1°）, 轮心离地6.4cm -->
     <axis xyz="0 1 0"/>
   </joint>
 
   <joint name="right_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="right_wheel_link"/>
-    <origin rpy="0 0 0" xyz="0 -0.114 -0.158"/>  <!-- 轮距22.8cm/2=11.4cm（360°标定修正：348.4°→360°）, 轮心离地6.4cm -->
+    <origin rpy="0 0 0" xyz="0 -0.11682 -0.158"/>  <!-- 轮距23.364cm/2=11.682cm（线性插值：2圈少转10.5°，3圈多转6.1°）, 轮心离地6.4cm -->
     <axis xyz="0 1 0"/>
   </joint>
 

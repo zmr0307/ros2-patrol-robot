@@ -44,6 +44,8 @@ class SLAMMonitor(Node):
         self.map_odom_distance = 0.0
         self.robot_yaw = 0.0
         self.robot_distance = 0.0
+        self.robot_x = 0.0  # 机器人X轴位置
+        self.robot_y = 0.0  # 机器人Y轴位置
         
         # 定时器：10Hz刷新显示
         self.timer = self.create_timer(0.1, self.display_callback)
@@ -60,8 +62,8 @@ class SLAMMonitor(Node):
         print("  • map → odom:")
         print("    - 角度偏移：地图坐标系相对于里程计坐标系的旋转角度")
         print("    - 平移距离：两个坐标系原点之间的距离")
-        print("  • 机器人位置 (map → base_link):")
-        print("    - 距离起点：机器人距离地图原点的距离")
+        print("  • 机器人位置 (map → base_footprint):")
+        print("    - 距离起点：机器人底盘（地面投影）距离地图原点的xy平面距离")
         print("    - 朝向角度：机器人在地图中的朝向")
         print("\n【角度对比】")
         print("  - EKF：融合后的角度（编码器+IMU）")
@@ -120,10 +122,10 @@ class SLAMMonitor(Node):
             self.map_odom_yaw = 0.0
             self.map_odom_distance = 0.0
         
-        # 获取机器人位置（map→base_link变换）
+        # 获取机器人位置（map→base_footprint变换）
         try:
             robot_transform = self.tf_buffer.lookup_transform(
-                'map', 'base_link', rclpy.time.Time())
+                'map', 'base_footprint', rclpy.time.Time())
             
             # 提取机器人位置数据
             robot_trans = robot_transform.transform.translation
@@ -133,28 +135,38 @@ class SLAMMonitor(Node):
             self.robot_yaw = self.quaternion_to_yaw(
                 robot_rot.x, robot_rot.y, robot_rot.z, robot_rot.w)
             
-            # 计算机器人距离地图原点的距离
+            # 保存X和Y轴位置
+            self.robot_x = robot_trans.x
+            self.robot_y = robot_trans.y
+            
+            # 计算机器人距离地图原点的距离（仅xy平面，不含高度）
             self.robot_distance = math.sqrt(
-                robot_trans.x**2 + robot_trans.y**2 + robot_trans.z**2)
+                robot_trans.x**2 + robot_trans.y**2)
             
         except Exception as e:
-            # map→base_link变换不存在
+            # map→base_footprint变换不存在
             self.robot_yaw = 0.0
             self.robot_distance = 0.0
+            self.robot_x = 0.0
+            self.robot_y = 0.0
         
         # 计算角度差值
         ekf_encoder_diff = self.normalize_angle(self.ekf_yaw - self.encoder_yaw)
         ekf_imu_diff = self.normalize_angle(self.ekf_yaw - self.imu_yaw)
         encoder_imu_diff = self.normalize_angle(self.encoder_yaw - self.imu_yaw)
         
-        # 实时显示（覆盖两行）
+        # 实时显示（覆盖三行）
         # 第一行：坐标系变换信息
         line1 = (
             f"🗺️ map→odom: 角度 {self.map_odom_yaw:+7.2f}° | 距离 {self.map_odom_distance:6.3f}m  │  "
             f"🤖 机器人: 距起点 {self.robot_distance:6.3f}m | 朝向 {self.robot_yaw:+7.2f}°"
         )
-        # 第二行：传感器角度对比
+        # 第二行：机器人XY坐标
         line2 = (
+            f"📍 机器人坐标: X = {self.robot_x:+7.3f}m | Y = {self.robot_y:+7.3f}m"
+        )
+        # 第三行：传感器角度对比
+        line3 = (
             f"📊 EKF: {self.ekf_yaw:+7.2f}° | "
             f"🔧 编码器: {self.encoder_yaw:+7.2f}° | "
             f"🧭 IMU: {self.imu_yaw:+7.2f}°  │  "
@@ -162,8 +174,8 @@ class SLAMMonitor(Node):
             f"Δ(EKF-IMU): {ekf_imu_diff:+6.2f}°"
         )
         
-        # 清除当前行并显示两行
-        print(f"\r{line1}\n{line2}", end='\r\033[A', flush=True)
+        # 清除当前行并显示三行
+        print(f"\r{line1}\n{line2}\n{line3}", end='\r\033[2A', flush=True)
     
     @staticmethod
     def quaternion_to_yaw(x, y, z, w):

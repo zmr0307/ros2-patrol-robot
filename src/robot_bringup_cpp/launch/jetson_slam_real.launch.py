@@ -20,7 +20,7 @@ def generate_launch_description():
         name='serial_bridge',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/ttyCH341USB0'},
+            {'serial_port': '/dev/ttyCH341USB1'},  # 修正：重新上电后映射为USB1
             {'baud_rate': 115200},
             {'use_sim_time': False}
         ]
@@ -34,10 +34,10 @@ def generate_launch_description():
         name='odom_publisher',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/ttyCH341USB1'},
+            {'serial_port': '/dev/ttyCH341USB2'},  # 修正：重新上电后映射为USB2
             {'baud_rate': 115200},
-            {'wheel_radius': 0.064},  # 图纸规格直径128mm
-            {'wheel_separation': 0.228},   # 360°标定22.8cm（348.4°→360°，修正-11.6°）
+            {'wheel_radius': 0.06475},  # 直线标定11cm（实际11.0cm，里程计10.8cm）
+            {'wheel_separation': 0.23364},   # 旋转标定线性插值（2圈少转10.5°，3圈多转6.1°，取中间值）
             {'encoder_ppr': 4096},  # 1024线 × 4倍频
             {'base_frame_id': 'base_footprint'},
             {'odom_frame_id': 'odom'},
@@ -53,7 +53,7 @@ def generate_launch_description():
         name='imu_publisher',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/imu_usb'},
+            {'serial_port': '/dev/ttyCH341USB3'},  # 修正：重新上电后映射为USB3
             {'baud_rate': 115200},
             {'frame_id': 'imu_link'},
             {'publish_rate': 50.0},
@@ -115,9 +115,9 @@ def generate_launch_description():
             '   4. TF: EKF publishes odom -> base_footprint\n',
             '=' * 80, '\n',
             'Hardware Connections:\n',
-            '   Speed Command: Jetson -> /dev/ttyCH341USB0 -> STM32 USART1\n',
-            '   Odometry: STM32 USART2 -> /dev/ttyCH341USB1 -> Jetson\n',
-            '   IMU (JY901B): Jetson -> /dev/imu_usb (115200 baud, 50Hz)\n',
+            '   Speed Command: Jetson -> /dev/ttyCH341USB1 -> STM32 USART1\n',
+            '   Odometry: STM32 USART2 -> /dev/ttyCH341USB2 -> Jetson\n',
+            '   IMU (JY901B): Jetson -> /dev/ttyCH341USB3 (115200 baud, 50Hz)\n',
             '   Lidar: RPLidar -> /dev/ttyUSB0 -> Jetson\n',
             '=' * 80, '\n',
             'Active Nodes:\n',
