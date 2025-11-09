@@ -4,7 +4,62 @@
 
 ## 工具列表
 
-### 1. imu_angle_monitor.py
+### 1. check_usb_ports.sh
+**功能：** USB端口检查工具（开机检查）
+
+**用途：**
+- 检查USB设备连接状态（USB0-USB3）
+- 检查设备占用情况
+- 通过数据格式自动判断端口对应关系
+- 验证USB端口映射是否正确
+
+**使用方法：**
+```bash
+cd /home/nvidia/robot_ws
+./test_scripts/check_usb_ports.sh
+```
+
+**或者创建别名（推荐）：**
+```bash
+# 添加到 ~/.bashrc
+echo 'alias check_usb="cd /home/nvidia/robot_ws && ./test_scripts/check_usb_ports.sh"' >> ~/.bashrc
+source ~/.bashrc
+
+# 之后直接运行
+check_usb
+```
+
+**开机自动检查（可选）：**
+在 `~/.bashrc` 末尾添加：
+```bash
+# 开机自动检查USB端口
+if [ -f /home/nvidia/robot_ws/test_scripts/check_usb_ports.sh ]; then
+    cd /home/nvidia/robot_ws && ./test_scripts/check_usb_ports.sh
+fi
+```
+
+**说明：**
+- 检查USB设备：`/dev/ttyCH341USB0` ~ `/dev/ttyCH341USB3`
+- 数据格式识别：
+  - **0xA5开头** → 编码器数据（STM32格式）
+  - **0x55开头** → IMU数据（JY901B格式）
+  - **无数据** → 速度指令端口（通常空闲）
+- 自动判断端口对应关系
+
+**预期结果：**
+- ✅ USB0 → serial_bridge_node (速度指令发送到STM32)
+- ✅ USB1 → imu_publisher_node (IMU数据接收，0x55帧头)
+- ✅ USB2 → odom_publisher_node (编码器数据接收，0xA5帧头)
+
+**典型使用场景：**
+- 每次开机后检查USB端口连接
+- 验证USB端口映射是否正确
+- 诊断USB通信问题
+- 确认设备连接状态
+
+---
+
+### 2. imu_angle_monitor.py
 **功能：** IMU角度实时监控工具
 
 **用途：**
@@ -30,7 +85,7 @@ python3 test_scripts/imu_angle_monitor.py
 
 ---
 
-### 2. odom_ekf_compare.py
+### 3. odom_ekf_compare.py
 **功能：** 编码器里程计 vs EKF融合角度对比工具
 
 **用途：**
@@ -59,7 +114,7 @@ python3 test_scripts/odom_ekf_compare.py
 
 ---
 
-### 3. slam_monitor.py
+### 4. slam_monitor.py
 **功能：** SLAM建图实时监控工具（综合监控）
 
 **用途：**
@@ -109,4 +164,5 @@ python3 test_scripts/slam_monitor.py
 - 2025-11-07: 移除 `particle_cloud_to_pose_array.py`（已集成到包内，见 `src/robot_bringup_cpp/scripts/`）
 - 2025-11-07: 创建 `odom_ekf_compare.py` - 编码器vs EKF角度对比工具
 - 2025-11-07: 创建 `slam_monitor.py` - SLAM建图综合监控工具
+- 2025-11-09: 创建 `check_usb_ports.sh` - USB端口检查工具（开机检查）
 

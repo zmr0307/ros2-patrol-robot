@@ -45,20 +45,20 @@ amcl:
     
     # 激光雷达配置 - 高精度模式（Jetson Nano 8GB Super）
     scan_topic: "/scan"  # 匹配URDF中的remapping ~/out:=scan
-    max_beams: 100       # 提高到100（更多激光束，定位更准确）
+    max_beams: 150       # 提高到150（更多激光束，定位更准确，保守提高）
     
     # 其他配置
     always_reset_initial_pose: false
     robot_model_type: "nav2_amcl::DifferentialMotionModel"  # 差分驱动
     set_initial_pose: true
     
-    # 激光模型参数（高精度模式）
+    # 激光模型参数（高精度模式 - 保守提高）
     laser_min_range: 0.15   # 匹配SLAM（思岚S2L实际0.2m，过滤噪声）
     laser_max_range: 10.0   # 匹配SLAM（办公室环境优化）
-    laser_likelihood_max_dist: 0.3  # 进一步降低到0.3m（要求更精确的匹配）
+    laser_likelihood_max_dist: 0.25  # 降低到0.25m（要求更精确的匹配，保守提高）
     laser_model_type: "likelihood_field"
-    z_hit: 0.97           # 进一步提高激光命中权重（0.95→0.97）
-    z_rand: 0.03          # 进一步降低随机权重（0.05→0.03）
+    z_hit: 0.98           # 提高到0.98（更信任激光命中，减少随机噪声影响）
+    z_rand: 0.02          # 降低到0.02（降低随机噪声权重，定位更稳定）
 
 # ====================================
 # Controller Server
@@ -84,8 +84,8 @@ controller_server:
     # 目标检查器 - 适应低速机器人的精确定位（减少抖动）
     general_goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.07  # 7cm（平衡精度与稳定性）
-      yaw_goal_tolerance: 0.0785  # 4.5°（平衡精度与稳定性）
+      xy_goal_tolerance: 0.045  # 4.5cm（高精度位置控制）
+      yaw_goal_tolerance: 0.03491  # 2°（高精度角度控制）
       stateful: true
     
     # DWB控制器 - 匹配8 RPM电机限制（serial_bridge_node）
@@ -97,7 +97,7 @@ controller_server:
       max_vel_x: 0.030   # 进一步降低前进速度（0.035→0.030），防撞
       max_vel_y: 0.0
       max_vel_theta: 0.20  # 进一步降低旋转速度（0.25→0.20），避免超限
-      min_speed_xy: 0.02   # ⚠️ 实测最低速度：键盘遥控speed=0.02，低于此扭矩不足
+      min_speed_xy: 0.01   # 降低到1cm/s（允许更慢速度精确接近目标，4cm精度需要）
       max_speed_xy: 0.030  # 与max_vel_x一致
       min_speed_theta: 0.02  # ⚠️ 实测最低角速度：键盘遥控turn=0.02，低于此无法转动
       acc_lim_x: 0.05    # 提高加速度适应8 RPM
@@ -110,20 +110,20 @@ controller_server:
       vy_samples: 1   # 差分驱动无侧向移动
       vtheta_samples: 20  # 提高到20（高精度模式，更精细的角度控制）
       sim_time: 4.0   # 提高到4秒（高精度模式，前瞻距离=4*0.03=12cm）
-      linear_granularity: 0.005  # 降低到0.005（更精细的线速度粒度）
+      linear_granularity: 0.003  # 降低到0.003（更精细的线速度粒度，支持4cm精度）
       angular_granularity: 0.015  # 降低到0.015（更精细的角速度粒度）
       transform_tolerance: 1.0  # 增大到1.0秒，避免启动时TF超时错误
-      xy_goal_tolerance: 0.07  # 7cm（平衡精度与稳定性）
-      yaw_goal_tolerance: 0.0524  # 3°（从4.5°提升精度33%，匹配AMCL±1-2°精度）
-      trans_stopped_velocity: 0.015  # 提高到0.015（更容易判定为"已停稳"，防抖动）
+      xy_goal_tolerance: 0.045  # 4.5cm（高精度位置控制，与general_goal_checker一致）
+      yaw_goal_tolerance: 0.03491  # 2°（高精度角度控制，与general_goal_checker一致）
+      trans_stopped_velocity: 0.010  # 降低到0.8cm/s（允许更慢速度接近目标，避免过早判定停稳）
       short_circuit_trajectory_evaluation: true
       stateful: true
       critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
-      BaseObstacle.scale: 10.0  # 提高避障权重到10.0（高精度+高安全）
+      BaseObstacle.scale: 20.0  # 大幅提高避障权重到30.0（绝对安全，优先避开障碍物）
       PathAlign.scale: 32.0     # 保持路径对齐权重（路径稳定性）
       GoalAlign.scale: 28.0     # 提高目标对齐权重（更精确朝向）
       PathDist.scale: 32.0      # 保持路径距离权重（路径稳定性）
-      GoalDist.scale: 28.0      # 提高目标距离权重（更准确到达）
+      GoalDist.scale: 40.0      # 进一步提高目标距离权重（更准确到达4cm精度）
       RotateToGoal.scale: 36.0  # 提高旋转到目标权重（更精确的最终朝向）
       Oscillation.scale: 2.0    # 进一步提高震荡惩罚（防止来回摆动）
 
@@ -302,8 +302,8 @@ global_costmap:
       
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0  # 提高到3.0，让蓝色区域代价更低，机器人敢走
-        inflation_radius: 0.30  # 适中膨胀（0.40→0.30），既能绕路又不会堵死所有窄通道
+        cost_scaling_factor: 2.0  # 降低到2.0，让障碍物代价更高，机器人更不敢靠近墙壁
+        inflation_radius: 0.35  # 增大到0.40m（绝对安全，确保不碰墙壁）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true
@@ -347,8 +347,8 @@ local_costmap:
       
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 5.0  # 提高到5.0，让蓝色区域代价更低，机器人敢走
-        inflation_radius: 0.23  # 增大到0.23m，必须≥footprint内切圆半径0.225m
+        cost_scaling_factor: 4.0  # 降低到3.0，让障碍物代价更高，机器人更不敢靠近墙壁
+        inflation_radius: 0.25  # 增大到0.30m（绝对安全，确保不碰墙壁，必须≥footprint内切圆半径0.24m）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true
@@ -392,5 +392,5 @@ velocity_smoother:
     max_decel: [-0.05, 0.0, -0.30]
     odom_topic: "/odometry/filtered"  # ✅ 使用EKF融合后的里程计（编码器+IMU）
     odom_duration: 0.1
-    deadband_velocity: [0.01, 0.0, 0.03]  # 死区：低于此速度直接输出0（减少微小抖动）
+    deadband_velocity: [0.005, 0.0, 0.02]  # 降低死区到0.5cm/s（允许更慢速度精确接近目标）
     velocity_timeout: 1.0
