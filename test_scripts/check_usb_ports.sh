@@ -47,99 +47,156 @@ for port in /dev/ttyCH341USB{0..3}; do
 done
 echo ""
 
-# 检查USB设备数据格式（判断对应关系）
-echo "📋 3. 检查USB端口数据格式（判断对应关系）"
+# 检查USB设备数据格式（自动识别功能）
+echo "📋 3. 自动识别USB端口功能（通过数据格式）"
 echo "----------------------------------------"
-echo "正在读取数据（3秒）..."
+echo "正在读取数据并分析（每个端口约5秒，总共约20秒）..."
 echo ""
 
-# 检查USB0（应该是速度指令端口，通常无数据或很少数据）
-if [ -e "/dev/ttyCH341USB0" ]; then
-    echo -e "${BLUE}USB0 (/dev/ttyCH341USB0):${NC}"
-    timeout 1 hexdump -C /dev/ttyCH341USB0 2>&1 | head -3 > /tmp/usb0_data.txt
-    if [ -s /tmp/usb0_data.txt ]; then
-        first_byte=$(timeout 1 hexdump -C /dev/ttyCH341USB0 2>&1 | head -1 | awk '{print $2}')
-        if [ "$first_byte" = "a5" ]; then
-            echo -e "   数据格式: ${YELLOW}0xA5开头 (可能是编码器数据)${NC}"
-        elif [ "$first_byte" = "55" ]; then
-            echo -e "   数据格式: ${YELLOW}0x55开头 (IMU数据)${NC}"
-        else
-            echo -e "   数据格式: ${GREEN}无固定格式 (可能是速度指令端口，空闲)${NC}"
-        fi
-        echo -e "   判断: ${GREEN}✅ 速度指令端口 (serial_bridge)${NC}"
-    else
-        echo -e "   数据格式: ${GREEN}无数据 (空闲)${NC}"
-        echo -e "   判断: ${GREEN}✅ 速度指令端口 (serial_bridge)${NC}"
-    fi
-    echo ""
-fi
+# 存储检测结果
+declare -A usb_function
+declare -A usb_data_format
 
-# 检查USB1（应该是IMU数据，0x55开头）
-if [ -e "/dev/ttyCH341USB1" ]; then
-    echo -e "${BLUE}USB1 (/dev/ttyCH341USB1):${NC}"
-    # 使用cat读取，更可靠
-    timeout 2 cat /dev/ttyCH341USB1 2>&1 | od -An -tx1 | head -1 > /tmp/usb1_data.txt 2>&1
-    if [ -s /tmp/usb1_data.txt ]; then
-        first_byte=$(cat /tmp/usb1_data.txt | awk '{print $1}')
-        if [ "$first_byte" = "55" ]; then
-            echo -e "   数据格式: ${GREEN}0x55开头 (JY901B IMU格式)${NC}"
-            echo -e "   数据示例: $(timeout 1 cat /dev/ttyCH341USB1 2>&1 | od -An -tx1 | head -1 | cut -c1-30)"
-            echo -e "   判断: ${GREEN}✅ IMU数据端口 (imu_publisher)${NC}"
-        elif [ "$first_byte" = "a5" ]; then
-            echo -e "   数据格式: ${YELLOW}0xA5开头 (编码器格式)${NC}"
-            echo -e "   判断: ${RED}❌ 错误！应该是IMU端口${NC}"
-        else
-            echo -e "   数据格式: ${YELLOW}未知格式 (首字节: 0x$first_byte)${NC}"
-            echo -e "   判断: ${YELLOW}⚠️  需要进一步确认${NC}"
-        fi
-    else
-        echo -e "   数据格式: ${RED}无数据${NC}"
-        echo -e "   判断: ${YELLOW}⚠️  IMU可能未连接或未启动${NC}"
+# 检查所有USB端口，自动识别功能
+for port_num in 0 1 2 3; do
+    port="/dev/ttyCH341USB${port_num}"
+    if [ ! -e "$port" ]; then
+        continue
     fi
-    echo ""
-fi
-
-# 检查USB2（应该是编码器数据，0xA5开头）
-if [ -e "/dev/ttyCH341USB2" ]; then
-    echo -e "${BLUE}USB2 (/dev/ttyCH341USB2):${NC}"
-    # 使用cat读取，更可靠
-    timeout 2 cat /dev/ttyCH341USB2 2>&1 | od -An -tx1 | head -1 > /tmp/usb2_data.txt 2>&1
-    if [ -s /tmp/usb2_data.txt ]; then
-        first_byte=$(cat /tmp/usb2_data.txt | awk '{print $1}')
-        if [ "$first_byte" = "a5" ]; then
-            echo -e "   数据格式: ${GREEN}0xA5开头 (STM32编码器格式)${NC}"
-            echo -e "   数据示例: $(timeout 1 cat /dev/ttyCH341USB2 2>&1 | od -An -tx1 | head -1 | cut -c1-30)"
-            echo -e "   判断: ${GREEN}✅ 编码器数据端口 (odom_publisher)${NC}"
-        elif [ "$first_byte" = "55" ]; then
-            echo -e "   数据格式: ${YELLOW}0x55开头 (IMU格式)${NC}"
-            echo -e "   判断: ${RED}❌ 错误！应该是编码器端口${NC}"
+    
+    echo -e "${BLUE}检测 USB${port_num} ($port):${NC}"
+    
+    # 尝试读取数据（多次尝试以提高可靠性）
+    data_found=false
+    first_byte=""
+    
+    # 方法1: 使用od读取（增加读取时间和尝试次数）
+    for attempt in 1 2 3 4 5; do
+        timeout 2 cat "$port" 2>/dev/null | od -An -tx1 2>/dev/null | head -1 > /tmp/usb${port_num}_data.txt 2>&1
+        if [ -s /tmp/usb${port_num}_data.txt ]; then
+            first_byte=$(cat /tmp/usb${port_num}_data.txt | awk '{print $1}' | tr -d ' ')
+            if [ -n "$first_byte" ] && [ "$first_byte" != "" ] && [ "$first_byte" != "0000000" ]; then
+                data_found=true
+                break
+            fi
+        fi
+        sleep 0.2
+    done
+    
+    # 方法2: 如果方法1失败，尝试hexdump（增加读取时间）
+    if [ "$data_found" = false ]; then
+        timeout 3 hexdump -C "$port" 2>/dev/null | head -1 > /tmp/usb${port_num}_hex.txt 2>&1
+        if [ -s /tmp/usb${port_num}_hex.txt ]; then
+            first_byte=$(cat /tmp/usb${port_num}_hex.txt | awk '{print $2}' | tr -d ' ')
+            if [ -n "$first_byte" ] && [ "$first_byte" != "" ] && [ "$first_byte" != "00000000" ]; then
+                data_found=true
+            fi
+        fi
+    fi
+    
+    # 根据数据格式判断功能
+    if [ "$data_found" = true ] && [ -n "$first_byte" ]; then
+        first_byte_lower=$(echo "$first_byte" | tr '[:upper:]' '[:lower:]')
+        
+        if [ "$first_byte_lower" = "55" ]; then
+            usb_function[$port_num]="IMU数据端口 (imu_publisher)"
+            usb_data_format[$port_num]="0x55开头 (JY901B IMU格式)"
+            echo -e "   数据格式: ${GREEN}${usb_data_format[$port_num]}${NC}"
+            echo -e "   功能识别: ${GREEN}✅ ${usb_function[$port_num]}${NC}"
+        elif [ "$first_byte_lower" = "a5" ]; then
+            usb_function[$port_num]="编码器数据端口 (odom_publisher)"
+            usb_data_format[$port_num]="0xA5开头 (STM32编码器格式)"
+            echo -e "   数据格式: ${GREEN}${usb_data_format[$port_num]}${NC}"
+            echo -e "   功能识别: ${GREEN}✅ ${usb_function[$port_num]}${NC}"
         else
-            echo -e "   数据格式: ${YELLOW}未知格式 (首字节: 0x$first_byte)${NC}"
-            echo -e "   判断: ${YELLOW}⚠️  需要进一步确认${NC}"
+            usb_function[$port_num]="未知功能"
+            usb_data_format[$port_num]="未知格式 (首字节: 0x$first_byte)"
+            echo -e "   数据格式: ${YELLOW}${usb_data_format[$port_num]}${NC}"
+            echo -e "   功能识别: ${YELLOW}⚠️  需要进一步确认${NC}"
         fi
     else
-        echo -e "   数据格式: ${RED}无数据${NC}"
-        echo -e "   判断: ${YELLOW}⚠️  编码器可能未连接或未启动${NC}"
+        # 无数据，可能是速度指令端口（通常空闲）
+        usb_function[$port_num]="速度指令端口 (serial_bridge)"
+        usb_data_format[$port_num]="无数据 (空闲)"
+        echo -e "   数据格式: ${GREEN}${usb_data_format[$port_num]}${NC}"
+        echo -e "   功能识别: ${GREEN}✅ ${usb_function[$port_num]}${NC}"
     fi
     echo ""
-fi
-
-# 检查USB3（通常不存在）
-if [ -e "/dev/ttyCH341USB3" ]; then
-    echo -e "${BLUE}USB3 (/dev/ttyCH341USB3):${NC}"
-    echo -e "   状态: ${YELLOW}设备存在（但通常不使用）${NC}"
-    echo ""
-fi
+done
 
 # 总结
 echo "=========================================="
-echo "📊 端口对应关系总结"
+echo "📊 USB端口功能识别结果"
 echo "=========================================="
 echo ""
-echo "预期配置："
-echo -e "  ${GREEN}USB0${NC} → serial_bridge_node (速度指令发送到STM32)"
-echo -e "  ${GREEN}USB1${NC} → imu_publisher_node (IMU数据接收，0x55帧头)"
-echo -e "  ${GREEN}USB2${NC} → odom_publisher_node (编码器数据接收，0xA5帧头)"
+
+# 显示自动识别的结果
+echo "🔍 自动识别结果："
+for port_num in 0 1 2 3; do
+    port="/dev/ttyCH341USB${port_num}"
+    if [ -e "$port" ]; then
+        if [ -n "${usb_function[$port_num]}" ]; then
+            # 检查是否符合预期
+            expected=""
+            case $port_num in
+                0)
+                    expected="速度指令端口"
+                    ;;
+                1)
+                    expected="IMU数据端口"
+                    ;;
+                2)
+                    expected="编码器数据端口"
+                    ;;
+            esac
+            
+            if [[ "${usb_function[$port_num]}" == *"$expected"* ]]; then
+                echo -e "  ${GREEN}USB${port_num}${NC} → ${GREEN}${usb_function[$port_num]}${NC} ✅"
+            else
+                echo -e "  ${YELLOW}USB${port_num}${NC} → ${YELLOW}${usb_function[$port_num]}${NC} ⚠️  (可能与预期不符)"
+            fi
+        else
+            echo -e "  ${YELLOW}USB${port_num}${NC} → ${YELLOW}未识别${NC}"
+        fi
+    fi
+done
+echo ""
+
+# 检查配置建议
+echo "💡 配置建议："
+imu_port=""
+encoder_port=""
+speed_port=""
+
+for port_num in 0 1 2 3; do
+    if [ -n "${usb_function[$port_num]}" ]; then
+        if [[ "${usb_function[$port_num]}" == *"IMU"* ]]; then
+            imu_port="USB${port_num}"
+        elif [[ "${usb_function[$port_num]}" == *"编码器"* ]]; then
+            encoder_port="USB${port_num}"
+        elif [[ "${usb_function[$port_num]}" == *"速度指令"* ]]; then
+            speed_port="USB${port_num}"
+        fi
+    fi
+done
+
+if [ -n "$imu_port" ]; then
+    imu_num=${imu_port#USB}
+    echo -e "  ${GREEN}✅ IMU端口: ${imu_port}${NC} → 配置 imu_publisher_node 使用 /dev/ttyCH341USB${imu_num}"
+fi
+if [ -n "$encoder_port" ]; then
+    encoder_num=${encoder_port#USB}
+    echo -e "  ${GREEN}✅ 编码器端口: ${encoder_port}${NC} → 配置 odom_publisher_node 使用 /dev/ttyCH341USB${encoder_num}"
+fi
+if [ -n "$speed_port" ]; then
+    speed_num=${speed_port#USB}
+    echo -e "  ${GREEN}✅ 速度指令端口: ${speed_port}${NC} → 配置 serial_bridge_node 使用 /dev/ttyCH341USB${speed_num}"
+fi
+
+if [ -z "$imu_port" ] || [ -z "$encoder_port" ] || [ -z "$speed_port" ]; then
+    echo -e "  ${YELLOW}⚠️  部分端口未识别，请检查设备连接${NC}"
+fi
+
 echo ""
 echo "检查完成！"
 echo "=========================================="
