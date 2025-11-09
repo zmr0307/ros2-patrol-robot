@@ -18,7 +18,7 @@ public:
     IMUPublisherNode() : Node("imu_publisher_node")
     {
         // 声明参数
-        this->declare_parameter("serial_port", "/dev/ttyCH341USB3");  // 修正：重新上电后映射为USB3
+        this->declare_parameter("serial_port", "/dev/ttyCH341USB1");  // 修正：IMU数据接收（USB1，0x55帧头）
         this->declare_parameter("baud_rate", 115200);
         this->declare_parameter("frame_id", "imu_link");
         this->declare_parameter("publish_rate", 50.0);

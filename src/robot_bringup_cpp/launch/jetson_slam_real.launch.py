@@ -36,7 +36,7 @@ def generate_launch_description():
         parameters=[
             {'serial_port': '/dev/ttyCH341USB2'},  # 修正：重新上电后映射为USB2
             {'baud_rate': 115200},
-            {'wheel_radius': 0.06475},  # 直线标定11cm（实际11.0cm，里程计10.8cm）
+            {'wheel_radius': 0.0645},  # 轮径标定：0.0645m
             {'wheel_separation': 0.23364},   # 旋转标定线性插值（2圈少转10.5°，3圈多转6.1°，取中间值）
             {'encoder_ppr': 4096},  # 1024线 × 4倍频
             {'base_frame_id': 'base_footprint'},

@@ -66,7 +66,7 @@ def generate_launch_description():
         name='imu_publisher',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/ttyCH341USB3'},  # 修正：重新上电后映射为USB3
+            {'serial_port': '/dev/ttyCH341USB1'},  # 修正：IMU数据接收（USB1，0x55帧头）
             {'baud_rate': 115200},
             {'frame_id': 'imu_link'},
             {'publish_rate': 50.0},
