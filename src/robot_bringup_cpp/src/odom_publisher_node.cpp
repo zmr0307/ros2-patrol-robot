@@ -19,6 +19,7 @@
 #include <cmath>
 #include <cstring>
 #include <array>
+#include <cerrno>
 
 // Protocol constants
 const uint8_t FRAME_HEADER = 0xA5;
@@ -33,7 +34,7 @@ public:
         sync_state_(SyncState::SEARCHING), frame_index_(0)
     {
         // Declare parameters
-        this->declare_parameter("serial_port", "/dev/ttyCH341USB2");  // 修正：重新上电后映射为USB2
+        this->declare_parameter("serial_port", "/dev/encoder_usb");  // 使用稳定别名：编码器端口（/dev/encoder_usb）
         this->declare_parameter("baud_rate", 115200);
         this->declare_parameter("wheel_radius", 0.0645);  // 轮径标定：0.0645m
         this->declare_parameter("wheel_separation", 0.23364);   // 旋转标定线性插值（2圈少转10.5°，3圈多转6.1°，取中间值）
@@ -163,7 +164,7 @@ private:
             RCLCPP_FATAL(this->get_logger(), "Error: %s", strerror(errno));
             RCLCPP_FATAL(this->get_logger(), "Please check:");
             RCLCPP_FATAL(this->get_logger(), "  1. Device is connected");
-            RCLCPP_FATAL(this->get_logger(), "  2. Permissions (sudo chmod 666 /dev/ttyCH341USB*)");
+            RCLCPP_FATAL(this->get_logger(), "  2. Aliases & permissions: prefer /dev/encoder_usb (udev TAG+=uaccess). If alias missing, install rules, reload (udevadm trigger).");
             RCLCPP_FATAL(this->get_logger(), "  3. Port name is correct");
             RCLCPP_FATAL(this->get_logger(), "Node will exit");
             rclcpp::shutdown();

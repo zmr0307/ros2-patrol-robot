@@ -274,7 +274,7 @@ global_costmap:
       robot_base_frame: base_footprint
       # ✅ 适中footprint（实际45×38cm + 7cm安全余量 = 52×45cm）
       footprint: "[ [0.26, 0.225], [0.26, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
-      resolution: 0.025  # 匹配slam_toolbox的resolution（2.5cm/像素）
+      resolution: 0.02  # costmap分辨率2.0cm/像素（与slam_toolbox地图分辨率一致，提高路径规划精度）
       track_unknown_space: true
       always_send_full_costmap: true
       
@@ -303,7 +303,7 @@ global_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 2.0  # 降低到2.0，让障碍物代价更高，机器人更不敢靠近墙壁
-        inflation_radius: 0.35  # 增大到0.40m（绝对安全，确保不碰墙壁）
+        inflation_radius: 0.35  # 全局膨胀半径0.35m（绝对安全，确保不碰墙壁）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true
@@ -322,7 +322,7 @@ local_costmap:
       rolling_window: true
       width: 3  # 3m×3m（适中范围）
       height: 3
-      resolution: 0.025  # 恢复2.5cm/像素（高精度模式，与global_costmap一致）
+      resolution: 0.02  # costmap分辨率2.0cm/像素（与global_costmap和slam_toolbox地图分辨率一致）
       # 机器人轮廓 - 必须与global_costmap一致（适中安全余量）
       footprint: "[ [0.26, 0.225], [0.26, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
       always_send_full_costmap: true
@@ -347,8 +347,8 @@ local_costmap:
       
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 4.0  # 降低到3.0，让障碍物代价更高，机器人更不敢靠近墙壁
-        inflation_radius: 0.25  # 增大到0.30m（绝对安全，确保不碰墙壁，必须≥footprint内切圆半径0.24m）
+        cost_scaling_factor: 4.0  # 局部costmap代价缩放因子4.0，让障碍物代价更高，机器人更不敢靠近墙壁
+        inflation_radius: 0.25  # 局部膨胀半径0.25m（绝对安全，确保不碰墙壁，footprint短边0.225m，内切圆半径约0.113m）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true

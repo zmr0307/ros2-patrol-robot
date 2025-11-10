@@ -20,7 +20,7 @@ def generate_launch_description():
         name='serial_bridge',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/ttyCH341USB1'},  # 修正：重新上电后映射为USB1
+            {'serial_port': '/dev/cmd_usb'},  # 速度指令端口：稳定别名 /dev/cmd_usb
             {'baud_rate': 115200},
             {'use_sim_time': False}
         ]
@@ -34,7 +34,7 @@ def generate_launch_description():
         name='odom_publisher',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/ttyCH341USB2'},  # 修正：重新上电后映射为USB2
+            {'serial_port': '/dev/encoder_usb'},  # 编码器端口：稳定别名 /dev/encoder_usb
             {'baud_rate': 115200},
             {'wheel_radius': 0.0645},  # 轮径标定：0.0645m
             {'wheel_separation': 0.23364},   # 旋转标定线性插值（2圈少转10.5°，3圈多转6.1°，取中间值）
@@ -53,7 +53,7 @@ def generate_launch_description():
         name='imu_publisher',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/ttyCH341USB3'},  # 修正：重新上电后映射为USB3
+            {'serial_port': '/dev/imu_usb'},  # IMU端口：稳定别名 /dev/imu_usb（0x55帧头）
             {'baud_rate': 115200},
             {'frame_id': 'imu_link'},
             {'publish_rate': 50.0},
@@ -115,9 +115,9 @@ def generate_launch_description():
             '   4. TF: EKF publishes odom -> base_footprint\n',
             '=' * 80, '\n',
             'Hardware Connections:\n',
-            '   Speed Command: Jetson -> /dev/ttyCH341USB1 -> STM32 USART1\n',
-            '   Odometry: STM32 USART2 -> /dev/ttyCH341USB2 -> Jetson\n',
-            '   IMU (JY901B): Jetson -> /dev/ttyCH341USB3 (115200 baud, 50Hz)\n',
+            '   Speed Command: Jetson -> /dev/cmd_usb -> STM32 USART1\n',
+            '   Odometry: STM32 USART2 -> /dev/encoder_usb -> Jetson\n',
+            '   IMU (JY901B): Jetson -> /dev/imu_usb (115200 baud, 50Hz)\n',
             '   Lidar: RPLidar -> /dev/ttyUSB0 -> Jetson\n',
             '=' * 80, '\n',
             'Active Nodes:\n',
@@ -144,7 +144,8 @@ def generate_launch_description():
             '   ros2 run tf2_ros tf2_echo odom base_footprint  # Check TF transform\n',
             '=' * 80, '\n',
             'Important Notes:\n',
-            '   1. Serial permissions: sudo chmod 666 /dev/ttyCH341USB* /dev/imu_usb\n',
+            '   1. Use stable aliases: /dev/imu_usb, /dev/encoder_usb, /dev/cmd_usb\n',
+            '      If aliases missing, install udev rules and reload (TAG+=uaccess provides non-root access)\n',
             '   2. IMU calibration: 6-axis algorithm, 115200 baud, 50Hz output\n',
             '   3. EKF fuses: Encoder (x,y,vx) + IMU (angular_velocity.z)\n',
             '   4. Expected rotation drift: ≤5° after 3×360° turns\n',

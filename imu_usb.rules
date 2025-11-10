@@ -1,2 +1,23 @@
-SUBSYSTEM=="tty", KERNEL=="ttyCH341USB2", MODE:="0666", SYMLINK+="imu_usb"
+# 优先建议：若设备有唯一序列号，可改用 ATTRS{serial} 精确绑定（示例占位）
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", ATTRS{serial}=="<IMU_SERIAL>",     SYMLINK+="imu_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", ATTRS{serial}=="<CMD_SERIAL>",     SYMLINK+="cmd_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", ATTRS{serial}=="<ENCODER_SERIAL>", SYMLINK+="encoder_usb", GROUP="dialout", MODE:="0660", TAG+="uaccess"
+
+# 当前硬件若无唯一序列号，优先使用稳定ID（by-id/by-path）而非固定KERNELS
+# 方案A（首选）：若设备暴露序列号（ID_SERIAL_SHORT），使用它进行精确绑定
+# 示例：请用实际序列号替换占位符 <IMU_SERIAL>/<CMD_SERIAL>/<ENCODER_SERIAL>
+#SUBSYSTEM=="tty", ENV{ID_SERIAL_SHORT}=="<IMU_SERIAL>",     SYMLINK+="imu_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
+#SUBSYSTEM=="tty", ENV{ID_SERIAL_SHORT}=="<CMD_SERIAL>",     SYMLINK+="cmd_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
+#SUBSYSTEM=="tty", ENV{ID_SERIAL_SHORT}=="<ENCODER_SERIAL>", SYMLINK+="encoder_usb", GROUP="dialout", MODE:="0660", TAG+="uaccess"
+
+# 方案B（次选）：基于父设备路径（KERNELS）精确匹配
+# 说明：你的 CH341 设备不提供唯一序列号，且未暴露 ID_PATH 属性；此时只能用父级 KERNELS 链接做稳定映射。
+# 以下三条为当前机器上实测路径（来自 `udevadm info -a -n /dev/ttyCH341USB*`）：
+#   IMU:        .../usb1/1-2/1-2.2/1-2.2.3/1-2.2.3:1.0/tty/ttyCH341USB0
+#   CMD(下发):  .../usb1/1-2/1-2.1/1-2.1:1.0/tty/ttyCH341USB1
+#   ENCODER:    .../usb1/1-2/1-2.2/1-2.2.4/1-2.2.4.2/1-2.2.4.2:1.0/tty/ttyCH341USB2
+# 注意：若更换 HUB 层级或口位，上述路径会变化，需要更新本规则。
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", KERNELS=="1-2.2.3",     SYMLINK+="imu_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", KERNELS=="1-2.1",       SYMLINK+="cmd_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", KERNELS=="1-2.2.4.2",   SYMLINK+="encoder_usb", GROUP="dialout", MODE:="0660", TAG+="uaccess"
 

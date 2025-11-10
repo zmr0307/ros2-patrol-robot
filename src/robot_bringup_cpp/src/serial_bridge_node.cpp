@@ -28,7 +28,7 @@
  * 运行命令（自定义串口参数）：
  *   ros2 run robot_bringup_cpp serial_bridge_node \
  *     --ros-args \
- *     -p serial_port:=/dev/ttyCH341USB0 \
+ *     -p serial_port:=/dev/cmd_usb \
  *     -p baud_rate:=115200
  *
  * 测试命令（在另一个终端）：
@@ -57,6 +57,7 @@
 #include <thread>     // 用于延时
 #include <chrono>     // 用于时间控制
 #include <stdexcept>
+#include <cerrno>
 
 // 通信协议常量
 const uint8_t FRAME_HEADER = 0xA5;  // 帧头标识
@@ -86,7 +87,7 @@ public:
         // =================================================================
         // 第一步：声明 ROS 参数
         // =================================================================
-        this->declare_parameter("serial_port", "/dev/ttyCH341USB0");  // 修正：速度指令发送到STM32（USB0）
+        this->declare_parameter("serial_port", "/dev/cmd_usb");  // 使用稳定别名：速度指令端口（/dev/cmd_usb）
         this->declare_parameter("baud_rate", 115200);
 
         // =================================================================
@@ -249,7 +250,7 @@ private:
             RCLCPP_FATAL(this->get_logger(),
                         "   1. 设备是否已连接");
             RCLCPP_FATAL(this->get_logger(),
-                        "   2. 是否有访问权限（sudo chmod 666 /dev/ttyCH341USB*）");
+                        "   2. 使用稳定别名/权限：/dev/cmd_usb，建议通过udev规则(TAG+=uaccess)赋权；若别名缺失请安装规则并执行 udevadm trigger");
             RCLCPP_FATAL(this->get_logger(),
                         "   3. 端口名称是否正确");
             RCLCPP_FATAL(this->get_logger(), "🔴 节点将退出");
