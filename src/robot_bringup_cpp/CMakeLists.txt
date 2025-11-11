@@ -57,7 +57,6 @@ install(DIRECTORY
 # Install Python helper scripts (nodes)
 install(PROGRAMS
   scripts/particle_cloud_to_pose_array.py
-  scripts/patrol_navigation.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
