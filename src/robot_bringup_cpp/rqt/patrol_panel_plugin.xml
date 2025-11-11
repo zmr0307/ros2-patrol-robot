@@ -1,0 +1,18 @@
+<library path="robot_bringup_cpp_rqt">
+  <class
+      name="robot_bringup_cpp/PatrolPanel"
+      type="robot_bringup_cpp_rqt.patrol_panel.PatrolPanel"
+      base_class_type="rqt_gui_py::Plugin">
+    <description>Patrol control panel for rqt</description>
+    <qtgui>
+      <group>
+        <label>Miscellaneous Tools</label>
+        <icon type="theme">applications-system</icon>
+        <statustip>Utility plugins for patrol operations</statustip>
+      </group>
+      <label>Patrol Panel</label>
+      <icon type="theme">system-run</icon>
+      <statustip>Control and monitor patrol missions</statustip>
+    </qtgui>
+  </class>
+</library>

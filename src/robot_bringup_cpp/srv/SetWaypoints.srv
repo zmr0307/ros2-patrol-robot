@@ -1,0 +1,8 @@
+# Optional absolute path to a YAML file containing waypoints
+string yaml_path
+
+# Optional inline YAML content describing waypoints (same schema as file)
+string yaml_inline
+---
+bool success
+string message

@@ -7,13 +7,16 @@ endif()
 
 # Find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
+find_package(ament_cmake_python REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(tf2 REQUIRED)
-find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(pluginlib REQUIRED)
 
 # Add executable files
 add_executable(serial_bridge_node src/serial_bridge_node.cpp)
@@ -57,9 +60,16 @@ install(DIRECTORY
 # Install Python helper scripts (nodes)
 install(PROGRAMS
   scripts/particle_cloud_to_pose_array.py
+  scripts/patrol_manager.py
+  scripts/waypoint_recorder.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
+ament_python_install_package(robot_bringup_cpp_rqt
+  PACKAGE_DIR python/robot_bringup_cpp_rqt
+)
+
+pluginlib_export_plugin_description_file(rqt_gui rqt/patrol_panel_plugin.xml)
 # Install config files
 install(DIRECTORY
   config
@@ -76,6 +86,12 @@ install(DIRECTORY
 install(DIRECTORY
   rviz
   DESTINATION share/${PROJECT_NAME}
+)
+
+# Install rqt plugin XML
+install(FILES
+  rqt/patrol_panel_plugin.xml
+  DESTINATION share/${PROJECT_NAME}/rqt
 )
 
 # Install map files
@@ -95,5 +111,14 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/PatrolStatus.msg"
+  "srv/SetWaypoints.srv"
+  DEPENDENCIES geometry_msgs
+  SKIP_GROUP_MEMBERSHIP_CHECK
+)
+
+ament_export_dependencies(rosidl_default_runtime)
 
 ament_package()

@@ -52,11 +52,17 @@ def generate_launch_description():
         default_value='true',
         description='Enable ParticleCloud->PoseArray converter node'
     )
+    start_rviz_arg = DeclareLaunchArgument(
+        'start_rviz',
+        default_value='true',
+        description='Start RViz visualization'
+    )
 
     use_sim_time = LaunchConfiguration('use_sim_time')
     map_yaml_file = LaunchConfiguration('map')
     params_file = LaunchConfiguration('params_file')
     enable_particle_viz = LaunchConfiguration('enable_particle_viz')
+    start_rviz = LaunchConfiguration('start_rviz')
 
     # ========== IMU + EKF传感器融合节点（导航需要） ==========
     # IMU publisher node (JY901B IMU sensor)
@@ -126,13 +132,15 @@ def generate_launch_description():
         name='rviz2_nav',
         output='screen',
         arguments=['-d', rviz_config_file],
-        parameters=[{'use_sim_time': use_sim_time}]
+        parameters=[{'use_sim_time': use_sim_time}],
+        condition=IfCondition(start_rviz)
     )
 
     # 使用TimerAction延迟启动RViz（等待其他节点就绪）
     rviz_delayed = TimerAction(
         period=3.0,
-        actions=[rviz_node]
+        actions=[rviz_node],
+        condition=IfCondition(start_rviz)
     )
 
     # 粒子云转换节点（将nav2_msgs/ParticleCloud转为geometry_msgs/PoseArray，便于RViz显示）
@@ -150,6 +158,7 @@ def generate_launch_description():
         map_arg,
         params_file_arg,
         enable_particle_viz_arg,
+        start_rviz_arg,
         imu_node,              # ← IMU数据发布
         imu_tf_node,           # ← 静态TF: base_footprint -> imu_link
         ekf_node,              # ← EKF传感器融合 (输出 /odometry/filtered)
