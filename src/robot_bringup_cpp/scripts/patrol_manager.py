@@ -633,17 +633,31 @@ class PatrolManager(Node):
             self._current_task = task.type or "task"
             self._log_event("TASK_START", task_type=task.type, cmd=task.cmd)
             try:
+                log_handle = None
+                log_path = None
+                if self._task_logs_dir:
+                    log_path = self._task_logs_dir / (
+                        f"wp{self.current_index:03d}_task{task_index:02d}"
+                        f"_try{attempt}_{int(time.time())}.log")
+                    log_handle = open(log_path, "wb")
+                    log_handle.write(b"STDOUT+STDERR (streamed)\n\n")
+                else:
+                    log_handle = open(os.devnull, "wb")
                 with self._task_lock:
                     self._task_proc = subprocess.Popen(
                         task.cmd,
                         shell=True,
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.PIPE,
+                        stdout=log_handle,
+                        stderr=subprocess.STDOUT,
                         preexec_fn=os.setsid,
                     )
                     proc = self._task_proc
                 start = time.time()
-                while proc.poll() is None:
+                retcode = None
+                while True:
+                    retcode = proc.poll()
+                    if retcode is not None:
+                        break
                     if self._stop_event.is_set() or self._paused:
                         self._terminate_task_proc()
                         break
@@ -652,18 +666,13 @@ class PatrolManager(Node):
                         self._terminate_task_proc()
                         break
                     time.sleep(0.1)
-                retcode = proc.poll()
-                stdout, stderr = proc.communicate()
-                log_path = None
-                if self._task_logs_dir:
-                    log_path = self._task_logs_dir / (
-                        f"wp{self.current_index:03d}_task{task_index:02d}"
-                        f"_try{attempt}_{int(time.time())}.log")
-                    with open(log_path, "w", encoding="utf-8") as log_file:
-                        log_file.write("STDOUT:\n")
-                        log_file.write(stdout.decode(errors="ignore"))
-                        log_file.write("\n\nSTDERR:\n")
-                        log_file.write(stderr.decode(errors="ignore"))
+                if retcode is None:
+                    # Process was asked to terminate; wait a bit so log file captures trailing output.
+                    try:
+                        proc.wait(timeout=1.0)
+                        retcode = proc.returncode
+                    except subprocess.TimeoutExpired:
+                        retcode = proc.returncode
                 if retcode == 0:
                     self._log_event(
                         "TASK_OK",
@@ -680,6 +689,8 @@ class PatrolManager(Node):
                     log_path=str(log_path) if log_path else "",
                 )
             finally:
+                if log_handle and not log_handle.closed:
+                    log_handle.close()
                 with self._task_lock:
                     self._task_proc = None
             if attempt < task.retry:

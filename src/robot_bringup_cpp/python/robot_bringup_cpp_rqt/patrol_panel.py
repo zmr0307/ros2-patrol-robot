@@ -34,6 +34,8 @@ class PatrolPanelNode(Node):
     def __init__(self) -> None:
         super().__init__("patrol_panel_gui")
         self.status: Optional[PatrolStatus] = None
+        # Keep references to QTimer objects to prevent premature GC that would suppress timeouts.
+        self._active_timers: dict[object, QTimer] = {}
         self.create_subscription(
             PatrolStatus,
             "/patrol/status",
@@ -59,17 +61,23 @@ class PatrolPanelNode(Node):
         timeout_timer = QTimer()
         timeout_timer.setSingleShot(True)
         timeout_occurred = [False]
+        self._active_timers[future] = timeout_timer
 
         def timeout_cb():
             if not future.done():
                 timeout_occurred[0] = True
                 on_result(False, f"Service call timeout after {timeout_sec}s")
+            timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
 
         timeout_timer.timeout.connect(timeout_cb)
         timeout_timer.start(int(timeout_sec * 1000))
 
         def done_cb(fut):
             timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
             if timeout_occurred[0]:
                 return  # Already handled by timeout
             try:
@@ -92,17 +100,23 @@ class PatrolPanelNode(Node):
         timeout_timer = QTimer()
         timeout_timer.setSingleShot(True)
         timeout_occurred = [False]
+        self._active_timers[future] = timeout_timer
 
         def timeout_cb():
             if not future.done():
                 timeout_occurred[0] = True
                 on_result(False, "Service call timeout after 5s")
+            timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
 
         timeout_timer.timeout.connect(timeout_cb)
         timeout_timer.start(5000)  # 5 seconds
 
         def done_cb(fut):
             timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
             if timeout_occurred[0]:
                 return  # Already handled by timeout
             try:
