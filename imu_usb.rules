@@ -18,6 +18,6 @@
 #   ENCODER:    .../usb1/1-2/1-2.2/1-2.2.4/1-2.2.4.2/1-2.2.4.2:1.0/tty/ttyCH341USB2
 # 注意：若更换 HUB 层级或口位，上述路径会变化，需要更新本规则。
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", KERNELS=="1-2.2.3",     SYMLINK+="imu_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", KERNELS=="1-2.1",       SYMLINK+="cmd_usb",     GROUP="dialout", MODE:="0660", TAG+="uaccess"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", ATTRS{serial}=="5A98051026", SYMLINK+="cmd_usb", GROUP="dialout", MODE:="0660", TAG+="uaccess"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", KERNELS=="1-2.2.4.2",   SYMLINK+="encoder_usb", GROUP="dialout", MODE:="0660", TAG+="uaccess"
 
