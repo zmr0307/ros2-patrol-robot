@@ -125,7 +125,7 @@ controller_server:
       PathDist.scale: 32.0      # 保持路径距离权重（路径稳定性）
       GoalDist.scale: 40.0      # 进一步提高目标距离权重（更准确到达4cm精度）
       RotateToGoal.scale: 36.0  # 提高旋转到目标权重（更精确的最终朝向）
-      Oscillation.scale: 2.0    # 进一步提高震荡惩罚（防止来回摆动）
+      Oscillation.scale: 5.0    # 阶段1优化：提高震荡惩罚到5.0（减少直线抖动，同时保证100%到达目标）
 
 # ====================================
 # Planner Server
