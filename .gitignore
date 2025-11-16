@@ -31,3 +31,5 @@ Thumbs.db
 # maps/*.data
 # maps/*.posegraph
 
+# MCP 记忆系统文件
+.memory/
