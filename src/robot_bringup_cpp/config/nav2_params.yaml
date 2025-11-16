@@ -66,7 +66,7 @@ amcl:
 controller_server:
   ros__parameters:
     use_sim_time: false
-    controller_frequency: 20.0  # 恢复20Hz（高精度模式，Jetson 8GB Super可承受）
+    controller_frequency: 10.0  # 降低到10Hz（减少过度响应，每100ms评估一次，给执行更多時間）
     min_x_velocity_threshold: 0.005  # 提高到0.005（减少静止时微小校正，防抖动）
     min_y_velocity_threshold: 0.0  # 差速底盘无侧向速度
     min_theta_velocity_threshold: 0.01  # 提高到0.01（减少静止时微小旋转校正，防抖动）
@@ -125,7 +125,7 @@ controller_server:
       PathDist.scale: 32.0      # 保持路径距离权重（路径稳定性）
       GoalDist.scale: 40.0      # 进一步提高目标距离权重（更准确到达4cm精度）
       RotateToGoal.scale: 36.0  # 提高旋转到目标权重（更精确的最终朝向）
-      Oscillation.scale: 5.0    # 阶段1优化：提高震荡惩罚到5.0（减少直线抖动，同时保证100%到达目标）
+      Oscillation.scale: 10.0    # 2025-11-16优化：提高摇晃惩罚值到10.0（严厉惩罚左右摇晃）
 
 # ====================================
 # Planner Server
@@ -272,8 +272,8 @@ global_costmap:
       publish_frequency: 1.0
       global_frame: map
       robot_base_frame: base_footprint
-      # ✅ 适中footprint（实际45×38cm + 7cm安全余量 = 52×45cm）
-      footprint: "[ [0.26, 0.225], [0.26, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
+      # ✅ 2025-11-15更新：雷达前移后footprint调整（雷达最前端30.8cm + 3cm余量 = 前端34cm）
+      footprint: "[ [0.34, 0.225], [0.34, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
       resolution: 0.02  # costmap分辨率2.0cm/像素（与slam_toolbox地图分辨率一致，提高路径规划精度）
       track_unknown_space: true
       always_send_full_costmap: true
@@ -303,7 +303,7 @@ global_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 2.0  # 降低到2.0，让障碍物代价更高，机器人更不敢靠近墙壁
-        inflation_radius: 0.35  # 全局膨胀半径0.35m（绝对安全，确保不碰墙壁）
+        inflation_radius: 0.28  # 全局膨胀半径0.28m（减小以提高狭窄空间灵活性，5.5cm余量）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true
@@ -323,8 +323,8 @@ local_costmap:
       width: 3  # 3m×3m（适中范围）
       height: 3
       resolution: 0.02  # costmap分辨率2.0cm/像素（与global_costmap和slam_toolbox地图分辨率一致）
-      # 机器人轮廓 - 必须与global_costmap一致（适中安全余量）
-      footprint: "[ [0.26, 0.225], [0.26, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
+      # 机器人轮廓 - 必须与global_costmap一致（2025-11-15更新：包含突出的雷达）
+      footprint: "[ [0.34, 0.225], [0.34, -0.225], [-0.26, -0.225], [-0.26, 0.225] ]"
       always_send_full_costmap: true
       
       # 使用 ObstacleLayer 而不是 VoxelLayer - 更适合2D激光雷达
@@ -348,7 +348,7 @@ local_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 4.0  # 局部costmap代价缩放因子4.0，让障碍物代价更高，机器人更不敢靠近墙壁
-        inflation_radius: 0.25  # 局部膨胀半径0.25m（绝对安全，确保不碰墙壁，footprint短边0.225m，内切圆半径约0.113m）
+        inflation_radius: 0.20  # 局部膨胀半径0.20m（贴近Footprint边缘，提高狭窄空间灵活性）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true

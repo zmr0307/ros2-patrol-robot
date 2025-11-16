@@ -6,7 +6,7 @@
 <link name="base_link">
     <visual>
       <geometry>
-        <box size="0.45 0.38 0.15" />
+        <box size="0.45 0.38 0.5" />
       </geometry>
       <material name="blue_material">
         <color rgba="0.2 0.2 0.8 0.7" />
@@ -14,7 +14,7 @@
     </visual>
     <collision>
       <geometry>
-        <box size="0.45 0.38 0.15" />
+        <box size="0.45 0.38 0.5" />
       </geometry>
     </collision>
     <inertial>
@@ -70,20 +70,47 @@
   <joint name="base_footprint_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="base_link"/>
-    <origin xyz="0 0 0.2225" rpy="0 0 0"/>  <!-- 修正: 0.2225 + (-0.158) = 0.0645 (轮半径-标定值0.0645m) -->
+    <origin xyz="0 0 0.398" rpy="0 0 0"/>  <!-- 2025-11-15更新: 底盘高50cm，中心离地39.8cm（轮心6.45cm + 底盘下沿到中心25cm） -->
+  </joint>
+
+  <!-- 新增：中心立柱结构 14.4cm×14.4cm×100cm -->
+  <link name="center_pillar_link">
+    <visual>
+      <geometry>
+        <box size="0.144 0.144 1.0" />
+      </geometry>
+      <material name="pillar_material">
+        <color rgba="0.3 0.3 0.3 0.9" />  <!-- 深灰色 -->
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.144 0.144 1.0" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5.0" />
+      <inertia ixx="0.42" ixy="0.0" ixz="0.0" iyy="0.42" iyz="0.0" izz="0.01" />
+    </inertial>
+  </link>
+
+  <joint name="center_pillar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="center_pillar_link"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>  <!-- 立柱中心相对base_link向上25cm，使立柱底面与底盘底面重合 -->
   </joint>
 
   <joint name="left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="left_wheel_link"/>
-    <origin rpy="0 0 0" xyz="0 0.11682 -0.158"/>  <!-- 轮距23.364cm/2=11.682cm（线性插值：2圈少转10.5°，3圈多转6.1°）, 轮心离地6.4cm -->
+    <origin rpy="0 0 0" xyz="0 0.11682 -0.3335"/>  <!-- 2025-11-15更新: 轮距23.364cm/2=11.682cm, 底盘高50cm后轮心相对base_link为-33.35cm -->
     <axis xyz="0 1 0"/>
   </joint>
 
   <joint name="right_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="right_wheel_link"/>
-    <origin rpy="0 0 0" xyz="0 -0.11682 -0.158"/>  <!-- 轮距23.364cm/2=11.682cm（线性插值：2圈少转10.5°，3圈多转6.1°）, 轮心离地6.4cm -->
+    <origin rpy="0 0 0" xyz="0 -0.11682 -0.3335"/>  <!-- 2025-11-15更新: 轮距23.364cm/2=11.682cm, 底盘高50cm后轮心相对base_link为-33.35cm -->
     <axis xyz="0 1 0"/>
   </joint>
 
@@ -110,7 +137,7 @@
   <joint name="laser_joint" type="fixed">
     <parent link="base_link"/>
     <child link="laser_link"/>
-    <origin xyz="0.157 0 0.214" rpy="0 0 0"/>  <!-- 修正+0.002: 思岚S2L精确实测 --> 
+    <origin xyz="0.258 0 0.318" rpy="0 0 0"/>  <!-- 2025-11-15更新: 底盘高50cm，雷达底部仍离地69.6cm，雷达中心相对base_link为31.8cm --> 
   </joint>
 
 </robot>
