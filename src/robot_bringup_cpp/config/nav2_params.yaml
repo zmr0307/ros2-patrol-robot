@@ -119,7 +119,7 @@ controller_server:
       short_circuit_trajectory_evaluation: true
       stateful: true
       critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
-      BaseObstacle.scale: 20.0  # 大幅提高避障权重到30.0（绝对安全，优先避开障碍物）
+      BaseObstacle.scale: 20.0  # 避障权重20.0（优先避开障碍物）
       PathAlign.scale: 32.0     # 保持路径对齐权重（路径稳定性）
       GoalAlign.scale: 28.0     # 提高目标对齐权重（更精确朝向）
       PathDist.scale: 32.0      # 保持路径距离权重（路径稳定性）
