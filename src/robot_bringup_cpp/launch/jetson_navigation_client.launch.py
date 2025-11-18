@@ -36,8 +36,8 @@ def generate_launch_description():
 
     map_arg = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(robot_bringup_pkg, 'maps', 'office_map.yaml'),
-        description='Full path to the map yaml file'
+        default_value=os.path.join(robot_bringup_pkg, 'map3', 'office_map_1.2cm_precision.yaml'),
+        description='Full path to the map yaml file (默认使用1.2cm高精度地图)'
     )
 
     params_file_arg = DeclareLaunchArgument(

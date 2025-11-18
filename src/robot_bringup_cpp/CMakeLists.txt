@@ -94,9 +94,11 @@ install(FILES
   DESTINATION share/${PROJECT_NAME}/rqt
 )
 
-# Install map files
+# Install map files (包含所有地图目录)
 install(DIRECTORY
   maps
+  maps2
+  map3
   DESTINATION share/${PROJECT_NAME}
 )
 
