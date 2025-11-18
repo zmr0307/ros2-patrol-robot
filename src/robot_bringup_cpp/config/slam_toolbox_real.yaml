@@ -70,21 +70,24 @@ slam_toolbox:
     scan_buffer_size: 3000                    # 走一圈3-4分钟 × 10Hz = 需要1800-2400帧，设为3000帧保险
     scan_buffer_maximum_scan_distance: 10.0   # 与max_laser_range保持一致（思岚S2L官方18m，我们限制10m）
     
-    # 回环检测 (优化100㎡大场地 + 补偿后方盲区：进一步放宽参数)
+    # 回环检测 (高精度模式：平衡成功率与精度)
     do_loop_closing: true
-    loop_match_minimum_chain_size: 2          # ✅ 保持2，极宽松
-    loop_match_maximum_variance_coarse: 15.0  # ✅ 从12.0增加到15.0（更宽容，补偿后方盲区）
-    loop_match_minimum_response_coarse: 0.20  # ✅ 从0.25降低到0.20（更宽松，提高回环成功率）
-    loop_search_maximum_distance: 10.0        # 从8.0增加到10.0（更大搜索半径，补偿后方特征缺失）
-    loop_match_minimum_response_fine: 0.30    # ✅ 从0.35降低到0.30（精细匹配更宽松）
-    
-    # 🔧 新增：搜索空间参数（解决回环检测失败）
-    loop_search_space_resolution: 0.1         # 搜索分辨率放宽（从默认0.05→0.1）
-    loop_search_space_smear_deviation: 0.1    # 容差放宽（从默认0.03→0.1）
-    correlation_search_space_smear_deviation: 0.1  # ⚠️ 修正：上限为0.1（之前0.2超出范围导致崩溃）
-    
-    # 🔧 新增：惩罚参数（关键修复！）
-    minimum_angle_penalty: 0.1                # ⚠️ 关键！降低角度惩罚（从默认0.9→0.1）
-    minimum_distance_penalty: 0.01            # ⚠️ 降低距离惩罚（从默认0.05→0.01）
-    angle_variance_penalty: 0.3               # ⚠️ 降低角度方差惩罚（从默认1.0→0.3）
-    distance_variance_penalty: 0.2            # ⚠️ 降低距离方差惩罚（从默认0.5→0.2）
+    loop_match_minimum_chain_size: 3          # 🔧 提高到3（更严格验证，减少错误回环）
+    loop_match_maximum_variance_coarse: 12.0  # 🔧 降低到12.0（提高精度要求）
+    loop_match_minimum_response_coarse: 0.22  # 🔧 提高到0.22（稍微严格，保证质量）
+    loop_search_maximum_distance: 10.0        # ✅ 保持10.0（适合100㎡大场地）
+    loop_match_minimum_response_fine: 0.35    # 🔧 提高到0.35（精细匹配更严格，提高精度）
+
+    # 🔧 搜索空间参数（平衡搜索范围与精度）
+    loop_search_space_resolution: 0.1         # ✅ 搜索分辨率放宽（从默认0.05→0.1，加速搜索）
+    loop_search_space_smear_deviation: 0.05   # 🔧 修正：从0.1降低到0.05（避免过度平滑导致错误回环）
+    correlation_search_space_smear_deviation: 0.1  # ✅ 正确！上限为0.1（0.2会崩溃）
+    use_response_expansion: true              # 🆕 新增：自动扩展搜索网格（初始搜索失败时）
+
+    # 🔴 数值稳定性参数（必须使用默认值，防止协方差矩阵爆炸！）
+    minimum_angle_penalty: 0.9                # 🔴 恢复默认值！这是数值稳定性下界，不是阈值！
+    minimum_distance_penalty: 0.5             # 🔴 恢复默认值！降低会导致优化器崩溃！
+
+    # 🔧 方差惩罚参数（高精度模式：进一步提高里程计权重）
+    angle_variance_penalty: 0.75              # 🔧 高精度优化：提高到0.75（角度误差仅-1.90°，里程计很准）
+    distance_variance_penalty: 0.40           # 🔧 高精度优化：提高到0.40（减少位置漂移）
