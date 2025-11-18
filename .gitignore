@@ -33,3 +33,7 @@ Thumbs.db
 
 # MCP 记忆系统文件
 .memory/
+
+# Augment AI 配置文件
+.augment/
+mcp_config.json

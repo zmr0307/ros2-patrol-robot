@@ -17,15 +17,15 @@ amcl:
     alpha4: 0.05  # 旋转导致的平移噪声（0.2→0.05）
     alpha5: 0.05  # 平移的额外噪声（0.2→0.05）
     
-    # 粒子滤波器参数（高精度模式 - 适配Jetson Nano 8GB Super）
-    min_particles: 1500   # 提高到1500（8GB Super可承受，定位更精准）
-    max_particles: 5000   # 提高到5000（允许更多粒子跟踪复杂环境）
+    # 粒子滤波器参数（高精度模式 + 补偿后方盲区 - 适配Jetson Nano 8GB Super）
+    min_particles: 2000   # 从1500增加到2000（补偿后方盲区，增加粒子数）
+    max_particles: 6000   # 从5000增加到6000（允许更多粒子跟踪复杂环境）
     kld_err: 0.02         # 降低到0.02（要求更高精度，增加粒子数）
     kld_z: 0.99           # KLD置信度（保持）
-    
-    # 更新阈值 - 高频更新以获得精确定位
-    update_min_d: 0.05  # 移动5cm就更新（高频定位，更精确）
-    update_min_a: 0.10  # 旋转5.7°就更新（高频定位）
+
+    # 更新阈值 - 更高频更新以补偿后方盲区
+    update_min_d: 0.04  # 从0.05降低到0.04（更频繁更新，提高定位精度）
+    update_min_a: 0.087  # 从0.10降低到0.087（约5°，更频繁更新）
     resample_interval: 1  # 每次更新都重采样（最高精度）
     
     # 变换容差 - 增大以容忍启动时的延迟
@@ -44,7 +44,7 @@ amcl:
     base_frame_id: "base_footprint"  # 匹配diff_drive_controller的base_frame_id
     
     # 激光雷达配置 - 高精度模式（Jetson Nano 8GB Super）
-    scan_topic: "/scan"  # 匹配URDF中的remapping ~/out:=scan
+    scan_topic: "/scan_filtered"  # 使用过滤后的激光数据（排除立柱遮挡区域）
     max_beams: 150       # 提高到150（更多激光束，定位更准确，保守提高）
     
     # 其他配置
@@ -290,7 +290,7 @@ global_costmap:
         enabled: true
         observation_sources: scan
         scan:
-          topic: /scan
+          topic: /scan_filtered  # 使用过滤后的激光数据
           max_obstacle_height: 2.0
           clearing: true
           marking: true
@@ -335,7 +335,7 @@ local_costmap:
         enabled: true
         observation_sources: scan
         scan:
-          topic: /scan
+          topic: /scan_filtered  # 使用过滤后的激光数据
           max_obstacle_height: 2.0
           clearing: true
           marking: true

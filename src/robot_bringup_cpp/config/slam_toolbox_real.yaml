@@ -21,7 +21,7 @@ slam_toolbox:
     base_frame: base_footprint    # 必须与diff_drive_controller.yaml中的base_frame_id一致
 
     # 2. 定义传感器话题
-    scan_topic: /scan
+    scan_topic: /scan_filtered  # 使用过滤后的激光数据（排除立柱遮挡区域）
     use_map_saver: true
 
     # ###########################
@@ -66,17 +66,17 @@ slam_toolbox:
     minimum_travel_distance: 0.02   # 2cm（从3cm降低），直行时更密集
     minimum_travel_heading: 0.044   # 2.5°（从5°降低），转弯时每2.5°创建节点，90°转弯36个节点
     
-    # 扫描缓冲区 (⚠️ 关键修复！保留完整轨迹用于回环检测)
+    # 扫描缓冲区 (⚠️ 关键修复！保留完整轨迹用于回环检测，提高回环成功率)
     scan_buffer_size: 3000                    # 走一圈3-4分钟 × 10Hz = 需要1800-2400帧，设为3000帧保险
     scan_buffer_maximum_scan_distance: 10.0   # 与max_laser_range保持一致（思岚S2L官方18m，我们限制10m）
     
-    # 回环检测 (优化100㎡大场地：增大搜索半径，适当放宽初筛条件)
+    # 回环检测 (优化100㎡大场地 + 补偿后方盲区：进一步放宽参数)
     do_loop_closing: true
-    loop_match_minimum_chain_size: 2          # ✅ 降到2，极宽松（经验证需要）
-    loop_match_maximum_variance_coarse: 12.0  # ✅ 容忍12倍偏差（适应10°角度误差）
-    loop_match_minimum_response_coarse: 0.25  # ✅ 降低置信度要求（从0.35→0.25）
-    loop_search_maximum_distance: 8.0         # 搜索半径8m (从5.0增到8.0，适合100㎡大场地)
-    loop_match_minimum_response_fine: 0.35    # ✅ 精细匹配放宽（从0.45→0.35）
+    loop_match_minimum_chain_size: 2          # ✅ 保持2，极宽松
+    loop_match_maximum_variance_coarse: 15.0  # ✅ 从12.0增加到15.0（更宽容，补偿后方盲区）
+    loop_match_minimum_response_coarse: 0.20  # ✅ 从0.25降低到0.20（更宽松，提高回环成功率）
+    loop_search_maximum_distance: 10.0        # 从8.0增加到10.0（更大搜索半径，补偿后方特征缺失）
+    loop_match_minimum_response_fine: 0.30    # ✅ 从0.35降低到0.30（精细匹配更宽松）
     
     # 🔧 新增：搜索空间参数（解决回环检测失败）
     loop_search_space_resolution: 0.1         # 搜索分辨率放宽（从默认0.05→0.1）

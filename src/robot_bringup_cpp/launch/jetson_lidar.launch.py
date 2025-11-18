@@ -61,8 +61,23 @@ def generate_launch_description():
         output='screen'
     )
 
+    # 4. 激光雷达角度滤波器节点（排除立柱遮挡区域）
+    laser_filter_config = os.path.join(pkg_path, 'config', 'laser_filter.yaml')
+    laser_filter_node = Node(
+        package='laser_filters',
+        executable='scan_to_scan_filter_chain',
+        name='laser_filter',
+        parameters=[laser_filter_config],
+        remappings=[
+            ('scan', '/scan'),                    # 输入：原始激光数据
+            ('scan_filtered', '/scan_filtered')   # 输出：过滤后的数据
+        ],
+        output='screen'
+    )
+
     return LaunchDescription([
         rplidar_node,
         robot_state_publisher_node,
-        joint_state_publisher_node,  # 新增
+        joint_state_publisher_node,
+        laser_filter_node,  # 新增：激光滤波器节点
     ])
