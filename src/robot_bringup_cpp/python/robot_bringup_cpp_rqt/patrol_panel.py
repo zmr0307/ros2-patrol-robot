@@ -25,9 +25,10 @@ from qt_gui.plugin import Plugin
 from robot_bringup_cpp.msg import PatrolStatus
 from robot_bringup_cpp.srv import SetWaypoints, GoToReturnPoint, StartPatrol
 from rclpy.node import Node
-from rclpy.qos import QoSProfile, ReliabilityPolicy
+from rclpy.qos import QoSProfile, ReliabilityPolicy, QoSDurabilityPolicy
 from std_msgs.msg import String
 from std_srvs.srv import Trigger
+from geometry_msgs.msg import PoseWithCovarianceStamped
 
 
 class PatrolPanelNode(Node):
@@ -58,6 +59,14 @@ class PatrolPanelNode(Node):
         self.stop_client = self.create_client(Trigger, "/patrol/stop")
         self.set_wps_client = self.create_client(SetWaypoints, "/patrol/set_waypoints")
         self.return_point_client = self.create_client(GoToReturnPoint, "/patrol/go_to_return_point")
+        
+        # Create publisher for initial pose (TRANSIENT_LOCAL for AMCL)
+        qos_initialpose = QoSProfile(depth=1, durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)
+        self.initialpose_pub = self.create_publisher(
+            PoseWithCovarianceStamped,
+            "/initialpose",
+            qos_initialpose
+        )
 
     def _status_cb(self, msg: PatrolStatus) -> None:
         self.status = msg
@@ -347,6 +356,36 @@ class PatrolPanel(Plugin):
         self._return_btn.setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold;")
         return_layout.addRow(self._return_btn)
         self._return_btn.clicked.connect(self._go_to_return_point)
+        
+        # AMCL Initial Pose section
+        amcl_box = QGroupBox("AMCL Localization")
+        amcl_layout = QFormLayout()
+        amcl_box.setLayout(amcl_layout)
+        layout.addWidget(amcl_box)
+        
+        self._init_x = QDoubleSpinBox()
+        self._init_x.setRange(-100.0, 100.0)
+        self._init_x.setDecimals(3)
+        self._init_x.setValue(0.0)
+        
+        self._init_y = QDoubleSpinBox()
+        self._init_y.setRange(-100.0, 100.0)
+        self._init_y.setDecimals(3)
+        self._init_y.setValue(0.0)
+        
+        self._init_yaw = QDoubleSpinBox()
+        self._init_yaw.setRange(-180.0, 180.0)
+        self._init_yaw.setDecimals(1)
+        self._init_yaw.setValue(0.0)
+        
+        amcl_layout.addRow("Initial X (m)", self._init_x)
+        amcl_layout.addRow("Initial Y (m)", self._init_y)
+        amcl_layout.addRow("Initial Yaw (deg)", self._init_yaw)
+        
+        self._set_initial_pose_btn = QPushButton("📍 Set Initial Pose")
+        self._set_initial_pose_btn.setStyleSheet("background-color: #2196F3; color: white; font-weight: bold;")
+        amcl_layout.addRow(self._set_initial_pose_btn)
+        self._set_initial_pose_btn.clicked.connect(self._set_initial_pose)
 
         self._log_label = QLabel("Ready")
         layout.addWidget(self._log_label)
@@ -378,6 +417,9 @@ class PatrolPanel(Plugin):
         instance_settings.set_value("return_x", self._return_x.value())
         instance_settings.set_value("return_y", self._return_y.value())
         instance_settings.set_value("return_yaw", self._return_yaw.value())
+        instance_settings.set_value("init_x", self._init_x.value())
+        instance_settings.set_value("init_y", self._init_y.value())
+        instance_settings.set_value("init_yaw", self._init_yaw.value())
 
     def restore_settings(self, plugin_settings, instance_settings) -> None:
         if instance_settings.contains("waypoints_path"):
@@ -398,6 +440,12 @@ class PatrolPanel(Plugin):
             self._return_y.setValue(float(instance_settings.value("return_y")))
         if instance_settings.contains("return_yaw"):
             self._return_yaw.setValue(float(instance_settings.value("return_yaw")))
+        if instance_settings.contains("init_x"):
+            self._init_x.setValue(float(instance_settings.value("init_x")))
+        if instance_settings.contains("init_y"):
+            self._init_y.setValue(float(instance_settings.value("init_y")))
+        if instance_settings.contains("init_yaw"):
+            self._init_yaw.setValue(float(instance_settings.value("init_yaw")))
 
     # Internal slots ------------------------------------------------------
 
@@ -467,3 +515,60 @@ class PatrolPanel(Plugin):
             self._log_label.setText(f"Return: {'OK' if success else 'FAIL'} - {message}")
 
         self._node.call_go_to_return_point(x, y, yaw, on_result)
+    
+    def _set_initial_pose(self) -> None:
+        """Set initial pose for AMCL localization.
+        
+        ⚠️ Note: Setting initial pose will reset AMCL particle cloud.
+        If patrol is running, it may cause temporary navigation disruption.
+        """
+        x = self._init_x.value()
+        y = self._init_y.value()
+        yaw_deg = self._init_yaw.value()
+        yaw_rad = yaw_deg * 3.14159265359 / 180.0
+        
+        # Warn if patrol is active
+        if self._node.status and self._node.status.phase not in ["idle", "stopped"]:
+            self._log_label.setText(
+                f"⚠️ Warning: Patrol is {self._node.status.phase}. "
+                "Setting initial pose may disrupt navigation!"
+            )
+            # Still allow operation but warn user
+        
+        # Create PoseWithCovarianceStamped message
+        msg = PoseWithCovarianceStamped()
+        msg.header.stamp = self._node.get_clock().now().to_msg()
+        msg.header.frame_id = 'map'
+        
+        # Set position
+        msg.pose.pose.position.x = x
+        msg.pose.pose.position.y = y
+        msg.pose.pose.position.z = 0.0
+        
+        # Set orientation (yaw to quaternion)
+        import math
+        cy = math.cos(yaw_rad * 0.5)
+        sy = math.sin(yaw_rad * 0.5)
+        msg.pose.pose.orientation.x = 0.0
+        msg.pose.pose.orientation.y = 0.0
+        msg.pose.pose.orientation.z = sy
+        msg.pose.pose.orientation.w = cy
+        
+        # Set covariance (uncertainty of initial pose)
+        msg.pose.covariance = [
+            0.25, 0.0, 0.0, 0.0, 0.0, 0.0,  # x variance = 0.25 (50cm std dev)
+            0.0, 0.25, 0.0, 0.0, 0.0, 0.0,  # y variance = 0.25
+            0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # z (not used in 2D)
+            0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # roll (not used in 2D)
+            0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   # pitch (not used in 2D)
+            0.0, 0.0, 0.0, 0.0, 0.0, 0.06853892326654787  # yaw variance ~0.0685 (15° std dev)
+        ]
+        
+        # Publish message
+        self._node.initialpose_pub.publish(msg)
+        
+        # Update status only if no warning was shown
+        if not self._node.status or self._node.status.phase in ["idle", "stopped"]:
+            self._log_label.setText(
+                f"AMCL: ✅ Initial pose set to ({x:.2f}, {y:.2f}, {yaw_deg:.1f}°)"
+            )
