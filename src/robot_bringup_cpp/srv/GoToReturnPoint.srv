@@ -1,0 +1,9 @@
+# Request: coordinates of return point (optional, use stored point if empty)
+float64 x
+float64 y
+float64 yaw_deg
+
+---
+# Response
+bool success
+string message

@@ -23,9 +23,10 @@ from python_qt_binding.QtWidgets import (
 )
 from qt_gui.plugin import Plugin
 from robot_bringup_cpp.msg import PatrolStatus
-from robot_bringup_cpp.srv import SetWaypoints
+from robot_bringup_cpp.srv import SetWaypoints, GoToReturnPoint, StartPatrol
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy
+from std_msgs.msg import String
 from std_srvs.srv import Trigger
 
 
@@ -34,6 +35,7 @@ class PatrolPanelNode(Node):
     def __init__(self) -> None:
         super().__init__("patrol_panel_gui")
         self.status: Optional[PatrolStatus] = None
+        self.last_event: Optional[str] = None  # Track latest event
         # Keep references to QTimer objects to prevent premature GC that would suppress timeouts.
         self._active_timers: dict[object, QTimer] = {}
         self.create_subscription(
@@ -42,14 +44,34 @@ class PatrolPanelNode(Node):
             self._status_cb,
             QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT),
         )
+        # Subscribe to patrol events
+        self.create_subscription(
+            String,
+            "/patrol/events",
+            self._events_cb,
+            QoSProfile(depth=50, reliability=ReliabilityPolicy.BEST_EFFORT),
+        )
         self.start_client = self.create_client(Trigger, "/patrol/start")
+        self.start_patrol_client = self.create_client(StartPatrol, "/patrol/start_patrol")
         self.pause_client = self.create_client(Trigger, "/patrol/pause")
         self.resume_client = self.create_client(Trigger, "/patrol/resume")
         self.stop_client = self.create_client(Trigger, "/patrol/stop")
         self.set_wps_client = self.create_client(SetWaypoints, "/patrol/set_waypoints")
+        self.return_point_client = self.create_client(GoToReturnPoint, "/patrol/go_to_return_point")
 
     def _status_cb(self, msg: PatrolStatus) -> None:
         self.status = msg
+
+    def _events_cb(self, msg: String) -> None:
+        """Handle patrol events for return point status updates."""
+        try:
+            import json
+            event_data = json.loads(msg.data)
+            event_type = event_data.get("event", "")
+            if event_type in ["RETURN_POINT_SUCCESS", "RETURN_POINT_FAILED"]:
+                self.last_event = event_type
+        except:  # noqa
+            pass
 
     def call_trigger(self, client, on_result, timeout_sec: float = 5.0) -> None:
         if not client.wait_for_service(timeout_sec=2.0):
@@ -95,6 +117,86 @@ class PatrolPanelNode(Node):
         req = SetWaypoints.Request()
         req.yaml_path = yaml_path
         future = self.set_wps_client.call_async(req)
+
+        # Add timeout handling
+        timeout_timer = QTimer()
+        timeout_timer.setSingleShot(True)
+        timeout_occurred = [False]
+        self._active_timers[future] = timeout_timer
+
+        def timeout_cb():
+            if not future.done():
+                timeout_occurred[0] = True
+                on_result(False, "Service call timeout after 5s")
+            timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
+
+        timeout_timer.timeout.connect(timeout_cb)
+        timeout_timer.start(5000)  # 5 seconds
+
+        def done_cb(fut):
+            timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
+            if timeout_occurred[0]:
+                return  # Already handled by timeout
+            try:
+                resp = fut.result()
+                on_result(resp.success, resp.message)
+            except Exception as exc:  # noqa: BLE001
+                on_result(False, str(exc))
+
+        future.add_done_callback(done_cb)
+
+    def call_go_to_return_point(self, x: float, y: float, yaw_deg: float, on_result) -> None:
+        if not self.return_point_client.wait_for_service(timeout_sec=2.0):
+            on_result(False, "Service unavailable")
+            return
+        req = GoToReturnPoint.Request()
+        req.x = x
+        req.y = y
+        req.yaw_deg = yaw_deg
+        future = self.return_point_client.call_async(req)
+
+        # Add timeout handling
+        timeout_timer = QTimer()
+        timeout_timer.setSingleShot(True)
+        timeout_occurred = [False]
+        self._active_timers[future] = timeout_timer
+
+        def timeout_cb():
+            if not future.done():
+                timeout_occurred[0] = True
+                on_result(False, "Service call timeout after 5s")
+            timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
+
+        timeout_timer.timeout.connect(timeout_cb)
+        timeout_timer.start(5000)  # 5 seconds
+
+        def done_cb(fut):
+            timeout_timer.stop()
+            timeout_timer.deleteLater()
+            self._active_timers.pop(future, None)
+            if timeout_occurred[0]:
+                return  # Already handled by timeout
+            try:
+                resp = fut.result()
+                on_result(resp.success, resp.message)
+            except Exception as exc:  # noqa: BLE001
+                on_result(False, str(exc))
+
+        future.add_done_callback(done_cb)
+
+    def call_start_patrol(self, cycles: int, on_result) -> None:
+        if not self.start_patrol_client.wait_for_service(timeout_sec=2.0):
+            on_result(False, "Service unavailable")
+            return
+        req = StartPatrol.Request()
+        req.cycles = cycles
+        future = self.start_patrol_client.call_async(req)
 
         # Add timeout handling
         timeout_timer = QTimer()
@@ -204,6 +306,48 @@ class PatrolPanel(Plugin):
         params_layout.addRow(self._reload_btn)
         self._reload_btn.clicked.connect(self._reload_waypoints)
 
+        # Loop Settings section
+        loop_box = QGroupBox("循环设置")
+        loop_layout = QFormLayout()
+        loop_box.setLayout(loop_layout)
+        layout.addWidget(loop_box)
+
+        self._patrol_cycles = QSpinBox()
+        self._patrol_cycles.setRange(1, 100)
+        self._patrol_cycles.setValue(1)
+        self._patrol_cycles.setToolTip("设置完整巡检的次数（1-100次）")
+        loop_layout.addRow("巡检次数", self._patrol_cycles)
+
+        # Return Point section
+        return_box = QGroupBox("Return Point")
+        return_layout = QFormLayout()
+        return_box.setLayout(return_layout)
+        layout.addWidget(return_box)
+
+        self._return_x = QDoubleSpinBox()
+        self._return_x.setRange(-100.0, 100.0)
+        self._return_x.setDecimals(3)
+        self._return_x.setValue(0.0)
+        
+        self._return_y = QDoubleSpinBox()
+        self._return_y.setRange(-100.0, 100.0)
+        self._return_y.setDecimals(3)
+        self._return_y.setValue(0.0)
+        
+        self._return_yaw = QDoubleSpinBox()
+        self._return_yaw.setRange(-180.0, 180.0)
+        self._return_yaw.setDecimals(1)
+        self._return_yaw.setValue(0.0)
+        
+        return_layout.addRow("X (m)", self._return_x)
+        return_layout.addRow("Y (m)", self._return_y)
+        return_layout.addRow("Yaw (deg)", self._return_yaw)
+        
+        self._return_btn = QPushButton("🏠 Go To Return Point")
+        self._return_btn.setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold;")
+        return_layout.addRow(self._return_btn)
+        self._return_btn.clicked.connect(self._go_to_return_point)
+
         self._log_label = QLabel("Ready")
         layout.addWidget(self._log_label)
 
@@ -230,6 +374,10 @@ class PatrolPanel(Plugin):
         instance_settings.set_value("wait", self._wait_spin.value())
         instance_settings.set_value("timeout", self._timeout_spin.value())
         instance_settings.set_value("retry", self._retry_spin.value())
+        instance_settings.set_value("patrol_cycles", self._patrol_cycles.value())
+        instance_settings.set_value("return_x", self._return_x.value())
+        instance_settings.set_value("return_y", self._return_y.value())
+        instance_settings.set_value("return_yaw", self._return_yaw.value())
 
     def restore_settings(self, plugin_settings, instance_settings) -> None:
         if instance_settings.contains("waypoints_path"):
@@ -242,6 +390,14 @@ class PatrolPanel(Plugin):
             self._timeout_spin.setValue(float(instance_settings.value("timeout")))
         if instance_settings.contains("retry"):
             self._retry_spin.setValue(int(instance_settings.value("retry")))
+        if instance_settings.contains("patrol_cycles"):
+            self._patrol_cycles.setValue(int(instance_settings.value("patrol_cycles")))
+        if instance_settings.contains("return_x"):
+            self._return_x.setValue(float(instance_settings.value("return_x")))
+        if instance_settings.contains("return_y"):
+            self._return_y.setValue(float(instance_settings.value("return_y")))
+        if instance_settings.contains("return_yaw"):
+            self._return_yaw.setValue(float(instance_settings.value("return_yaw")))
 
     # Internal slots ------------------------------------------------------
 
@@ -262,9 +418,24 @@ class PatrolPanel(Plugin):
         ]
         self._status_text.setPlainText("\n".join(lines))
 
+        # Update return point status
+        if self._node.last_event == "RETURN_POINT_SUCCESS":
+            self._log_label.setText("Return: ✓ SUCCESS - Arrived at return point!")
+            self._node.last_event = None  # Clear after displaying
+        elif self._node.last_event == "RETURN_POINT_FAILED":
+            self._log_label.setText("Return: ✗ FAILED - Could not reach return point")
+            self._node.last_event = None  # Clear after displaying
+
     def _call_trigger(self, action: str) -> None:
+        if action == "start":
+            # Use start_patrol with cycles parameter
+            cycles = self._patrol_cycles.value()
+            def on_result(success: bool, message: str) -> None:
+                self._log_label.setText(f"{action}: {'OK' if success else 'FAIL'} - {message}")
+            self._node.call_start_patrol(cycles, on_result)
+            return
+
         mapping = {
-            "start": self._node.start_client,
             "pause": self._node.pause_client,
             "resume": self._node.resume_client,
             "stop": self._node.stop_client,
@@ -286,3 +457,13 @@ class PatrolPanel(Plugin):
             self._log_label.setText(f"Reload: {'OK' if success else 'FAIL'} - {message}")
 
         self._node.call_set_waypoints(path, on_result)
+
+    def _go_to_return_point(self) -> None:
+        x = self._return_x.value()
+        y = self._return_y.value()
+        yaw = self._return_yaw.value()
+
+        def on_result(success: bool, message: str) -> None:
+            self._log_label.setText(f"Return: {'OK' if success else 'FAIL'} - {message}")
+
+        self._node.call_go_to_return_point(x, y, yaw, on_result)

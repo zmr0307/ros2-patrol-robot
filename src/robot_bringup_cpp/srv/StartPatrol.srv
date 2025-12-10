@@ -1,0 +1,7 @@
+# Request: patrol configuration
+int32 cycles  # Number of complete patrol cycles (1-100)
+
+---
+# Response
+bool success
+string message

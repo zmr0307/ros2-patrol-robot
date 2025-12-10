@@ -117,6 +117,8 @@ endif()
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/PatrolStatus.msg"
   "srv/SetWaypoints.srv"
+  "srv/GoToReturnPoint.srv"
+  "srv/StartPatrol.srv"
   DEPENDENCIES geometry_msgs
   SKIP_GROUP_MEMBERSHIP_CHECK
 )

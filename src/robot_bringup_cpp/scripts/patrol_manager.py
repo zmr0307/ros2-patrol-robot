@@ -46,7 +46,7 @@ from visualization_msgs.msg import Marker, MarkerArray
 import yaml
 
 from robot_bringup_cpp.msg import PatrolStatus
-from robot_bringup_cpp.srv import SetWaypoints
+from robot_bringup_cpp.srv import SetWaypoints, GoToReturnPoint, StartPatrol
 
 
 # Helper dataclasses --------------------------------------------------------
@@ -95,6 +95,8 @@ class PatrolManager(Node):
         self.waypoints: List[Waypoint] = []
         self.current_index = -1
         self.loop_enabled = bool(self.get_parameter("loop").value)
+        self.patrol_cycles = 1  # Number of complete patrol cycles to execute
+        self.current_cycle = 0  # Current cycle count
         self.phase = "idle"
         self.run_id: Optional[str] = None
         self._run_start_time: float = 0.0
@@ -156,11 +158,14 @@ class PatrolManager(Node):
         self._tf_timer = self.create_timer(0.5, self._update_map_pose)
 
         self._start_srv = self.create_service(Trigger, "/patrol/start", self.handle_start)
+        self._start_patrol_srv = self.create_service(StartPatrol, "/patrol/start_patrol", self.handle_start_patrol)
         self._pause_srv = self.create_service(Trigger, "/patrol/pause", self.handle_pause)
         self._resume_srv = self.create_service(Trigger, "/patrol/resume", self.handle_resume)
         self._stop_srv = self.create_service(Trigger, "/patrol/stop", self.handle_stop)
         self._set_waypoints_srv = self.create_service(
             SetWaypoints, "/patrol/set_waypoints", self.handle_set_waypoints)
+        self._go_to_return_point_srv = self.create_service(
+            GoToReturnPoint, "/patrol/go_to_return_point", self.handle_go_to_return_point)
 
         # Load waypoints
         self.load_waypoints(self.get_parameter("waypoints_file").value)
@@ -252,13 +257,14 @@ class PatrolManager(Node):
                 pass
 
     def _log_event(self, event: str, severity: str = "INFO", **data: Any) -> None:
-        if not self.run_id:
+        # Allow RETURN_POINT events even without run_id
+        if not self.run_id and not event.startswith("RETURN_POINT"):
             return
         payload = {
             "ts": datetime.now().isoformat(),
             "event": event,
             "index": self.current_index,
-            "run_id": self.run_id,
+            "run_id": self.run_id or "",
             "phase": self.phase,
             "severity": severity,
             "retries": data.pop("retries", 0),
@@ -394,6 +400,49 @@ class PatrolManager(Node):
         response.message = "Patrol started"
         return response
 
+    def handle_start_patrol(self, request, response):
+        """Handle start patrol with cycles parameter."""
+        if self._runner_thread and self._runner_thread.is_alive():
+            response.success = False
+            response.message = "Patrol already running"
+            return response
+        if not self.waypoints:
+            response.success = False
+            response.message = "No waypoints loaded"
+            return response
+        if not self._nav_client.wait_for_server(timeout_sec=5.0):
+            response.success = False
+            response.message = "NavigateToPose action server not ready"
+            return response
+
+        # Validate cycles
+        cycles = max(1, min(100, request.cycles))
+        self.patrol_cycles = cycles
+
+        self._stop_event.clear()
+        self._paused = False
+        self.current_index = -1
+        self.current_cycle = 0
+        self._visited_ok = self._visited_fail = 0
+        self._task_ok = self._task_fail = 0
+        self._nav_retries_total = 0
+        self._task_retries_total = 0
+        self._nav_retries_current = 0
+        self._task_retries_current = 0
+        self._current_task = ""
+        self._current_goal_id = ""
+        self.phase = "navigating"
+        self._run_start_time = time.time()
+        self._open_run_logs()
+        self._log_event("RUN_START", cycles=cycles)
+
+        self._runner_thread = threading.Thread(target=self._patrol_loop, daemon=True)
+        self._runner_thread.start()
+
+        response.success = True
+        response.message = f"Patrol started with {cycles} cycle(s)"
+        return response
+
     def handle_pause(self, _request, response):
         if not self._runner_thread or not self._runner_thread.is_alive():
             response.success = False
@@ -488,11 +537,78 @@ class PatrolManager(Node):
         response.message = "Provide yaml_path or yaml_inline"
         return response
 
-    # Patrol loop ----------------------------------------------------------
+    def handle_go_to_return_point(self, request, response):
+        """Handle go-to-return-point service request.
+        
+        Interrupts current patrol, navigates to the specified point asynchronously.
+        """
+        if not self._nav_client.wait_for_server(timeout_sec=2.0):
+            response.success = False
+            response.message = "NavigateToPose action server not ready"
+            return response
+
+        # Stop current patrol if running
+        if self._runner_thread and self._runner_thread.is_alive():
+            self.get_logger().info("Stopping current patrol for return point navigation")
+            self._stop_event.set()
+            with self._pause_cv:
+                self._paused = False
+                self._pause_cv.notify_all()
+            self._cancel_nav_goal("Return point requested")
+            self._terminate_task_proc()
+            # Wait for thread to finish
+            self._runner_thread.join(timeout=3.0)
+
+        # Clear stop event for return point navigation
+        self._stop_event.clear()
+
+        # Create waypoint from request
+        return_wp = Waypoint(
+            x=request.x,
+            y=request.y,
+            yaw_deg=request.yaw_deg,
+            wait_s=0.0,
+            tasks=[]
+        )
+
+        # Reset state for single navigation
+        self.phase = "navigating"
+        self._nav_retries_current = 0
+        self._log_event("RETURN_POINT_START", 
+                       waypoint={"x": request.x, "y": request.y, "yaw": request.yaw_deg})
+
+        # Start navigation in background thread
+        def _return_point_nav():
+            success = self._navigate_with_retry(return_wp)
+            if success:
+                self._log_event("RETURN_POINT_SUCCESS")
+                self.phase = "idle"
+                self.get_logger().info(f"Arrived at return point ({request.x:.2f}, {request.y:.2f}, {request.yaw_deg:.1f}°)")
+            else:
+                self._log_event("RETURN_POINT_FAILED", severity="ERROR")
+                self.phase = "idle"
+                self.get_logger().warn("Failed to reach return point after retries")
+        
+        self._runner_thread = threading.Thread(target=_return_point_nav, daemon=True)
+        self._runner_thread.start()
+
+        # Return immediately
+        response.success = True
+        response.message = f"Navigating to return point ({request.x:.2f}, {request.y:.2f}, {request.yaw_deg:.1f}°)..."
+        return response
 
     def _patrol_loop(self) -> None:
         try:
-            while not self._stop_event.is_set():
+            # Outer loop for patrol cycles
+            for cycle in range(self.patrol_cycles):
+                if self._stop_event.is_set():
+                    break
+                
+                self.current_cycle = cycle + 1
+                self.get_logger().info(f"Starting patrol cycle {self.current_cycle}/{self.patrol_cycles}")
+                self._log_event("CYCLE_START", cycle=self.current_cycle, total_cycles=self.patrol_cycles)
+                
+                # Inner loop through waypoints
                 for idx, waypoint in enumerate(self.waypoints):
                     self.current_index = idx
                     self._nav_retries_current = 0
@@ -528,10 +644,23 @@ class PatrolManager(Node):
                     self._current_task = ""
                     if self._stop_event.is_set():
                         break
-                else:
-                    if self.loop_enabled and not self._stop_event.is_set():
+                
+                # Check if cycle completed
+                if self._stop_event.is_set():
+                    break
+                
+                self._log_event("CYCLE_END", cycle=self.current_cycle)
+                
+                # Check if this is the last cycle OR loop is enabled
+                if self.current_cycle >= self.patrol_cycles:
+                    if self.loop_enabled:
+                        # Reset cycle count for infinite loop
+                        cycle = 0
+                        self.current_cycle = 0
                         continue
-                break
+                    else:
+                        # All cycles completed
+                        break
         finally:
             self.phase = "stopped" if self._stop_event.is_set() else "idle"
             self._log_event("RUN_END")

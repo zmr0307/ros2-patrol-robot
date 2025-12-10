@@ -10,15 +10,15 @@ amcl:
   ros__parameters:
     use_sim_time: false  # 匹配您的slam_toolbox设置
     
-    # 运动模型噪声参数（标准优化：使用业界推荐值，改善旋转漂移）
-    alpha1: 0.20  # 旋转导致的旋转噪声（恢复标准值0.20，允许粒子在旋转时充分探索）
+    # 运动模型噪声参数（针对后方50°盲区优化）
+    alpha1: 0.25  # 🔧 提高到0.25（后退时缺少后方激光反馈，增大旋转噪声容差）
     alpha2: 0.15  # 平移导致的旋转噪声（标准值，平衡精度和鲁棒性）
     alpha3: 0.15  # 平移导致的平移噪声（标准值）
-    alpha4: 0.15  # 旋转导致的平移噪声（标准值）
+    alpha4: 0.20  # 🔧 提高到0.20（后退时平移噪声增大，适应盲区）
     alpha5: 0.10  # 平移的额外噪声（适度提高）
 
-    # 粒子滤波器参数（优化：平衡精度和性能）
-    min_particles: 1500   # 降低到1500（alpha提高后粒子分布更广，不需要过多粒子）
+    # 粒子滤波器参数（针对50°盲区优化）
+    min_particles: 2000   # 🔧 提高到2000（盲区增加定位不确定性，更多粒子提高鲁棒性）
     max_particles: 4000   # 降低到4000（减少CPU负担，补偿更新频率提高的开销）
     kld_err: 0.03         # 放宽到0.03（允许稍低精度，减少粒子数，仍保持高精度）
     kld_z: 0.99           # KLD置信度（保持）
@@ -28,8 +28,8 @@ amcl:
     update_min_a: 0.0349  # 旋转2°即更新（约0.0349 rad，快速响应旋转）
     resample_interval: 1  # 每次更新都重采样（最高精度）
     
-    # 变换容差 - 增大以容忍启动时的延迟
-    transform_tolerance: 1.0  # 从0.2增加到1.0秒，避免启动时TF超时错误
+    # 变换容差 - 平衡启动容错与运行精度
+    transform_tolerance: 0.3  # 0.3秒（兼顾启动时延迟和运行时精度，降低掩盖真实TF问题）
     
     # 初始位姿
     initial_pose:
@@ -43,9 +43,9 @@ amcl:
     odom_frame_id: "odom"         # 匹配diff_drive_controller的odom_frame_id
     base_frame_id: "base_footprint"  # 匹配diff_drive_controller的base_frame_id
     
-    # 激光雷达配置 - 高精度模式（Jetson Nano 8GB Super）
+    # 激光雷达配置 - 高精度模式（针对后方50°盲区优化）
     scan_topic: "/scan_filtered"  # 使用过滤后的激光数据（排除立柱遮挡区域）
-    max_beams: 150       # 提高到150（更多激光束，定位更准确，保守提高）
+    max_beams: 200       # 🔧 提高到200（补偿盲区导致的激光束密度下降，200/308°≈1.54°/束）
     
     # 其他配置
     always_reset_initial_pose: false
@@ -75,11 +75,11 @@ controller_server:
     goal_checker_plugins: ["general_goal_checker"]
     controller_plugins: ["FollowPath"]
     
-    # 进度检查器 - 进一步放宽以适应低速和狭窄空间
+    # 进度检查器 - 提高卡住检测灵敏度
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.15  # 进一步降低到15cm（适应狭窄空间慢速移动）
-      movement_time_allowance: 20.0   # 增加到20秒（给足时间慢速通过狭窄区域）
+      required_movement_radius: 0.30  # 🔧 提高到30cm（更快检测卡住状态）
+      movement_time_allowance: 15.0   # 🔧 降低到15秒（缩短超时时间）
     
     # 目标检查器 - 适应低速机器人的精确定位（减少抖动）
     general_goal_checker:
@@ -118,13 +118,13 @@ controller_server:
       trans_stopped_velocity: 0.010  # 降低到0.8cm/s（允许更慢速度接近目标，避免过早判定停稳）
       short_circuit_trajectory_evaluation: true
       stateful: true
-      critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
+      critics: ["BaseObstacle", "PathAlign", "PathDist", "GoalAlign", "GoalDist", "RotateToGoal", "Oscillation"]  # 🔧 调整顺序：安全优先，降低旋转优先级
       BaseObstacle.scale: 20.0  # 避障权重20.0（优先避开障碍物）
       PathAlign.scale: 32.0     # 保持路径对齐权重（路径稳定性）
       GoalAlign.scale: 28.0     # 提高目标对齐权重（更精确朝向）
       PathDist.scale: 32.0      # 保持路径距离权重（路径稳定性）
       GoalDist.scale: 40.0      # 进一步提高目标距离权重（更准确到达4cm精度）
-      RotateToGoal.scale: 36.0  # 提高旋转到目标权重（更精确的最终朝向）
+      RotateToGoal.scale: 20.0  # 🔧 降低到20.0（减少到达后的过度旋转调整，改善44%）
       Oscillation.scale: 10.0    # 2025-11-16优化：提高摇晃惩罚值到10.0（严厉惩罚左右摇晃）
 
 # ====================================
@@ -193,8 +193,8 @@ behavior_server:
       plugin: "nav2_behaviors/Spin"
     backup:
       plugin: "nav2_behaviors/BackUp"
-      backup_dist: 0.20        # 后退距离增加到20cm（帮助脱困）
-      backup_speed: 0.025      # 后退速度保持低速
+      backup_dist: 0.10        # 🔧 降低到10cm（后方50°盲区，后退距离缩短确保安全）
+      backup_speed: 0.020      # 🔧 降低到2.0cm/s（盲区内后退更慢更安全）
     drive_on_heading:
       plugin: "nav2_behaviors/DriveOnHeading"
     wait:
@@ -205,7 +205,7 @@ behavior_server:
     transform_tolerance: 1.0  # 增大到1.0秒，避免启动时TF超时错误
     simulate_ahead_time: 2.0
     max_rotational_vel: 0.20  # 同步降低到0.20（匹配max_vel_theta），避免超限
-    min_rotational_vel: 0.05  # 进一步降低最小旋转速度（0.1→0.05），更精细控制
+    min_rotational_vel: 0.02  # 🔧 降低到0.02（与DWB的min_speed_theta统一，实测最低转速）
     rotational_acc_lim: 0.30  # 匹配acc_lim_theta
 
 # ====================================
@@ -302,8 +302,8 @@ global_costmap:
       
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 2.0  # 降低到2.0，让障碍物代价更高，机器人更不敢靠近墙壁
-        inflation_radius: 0.28  # 全局膨胀半径0.28m（减小以提高狭窄空间灵活性，5.5cm余量）
+        cost_scaling_factor: 5.0  # 🔧 适配狭窄环境（0.8m走廊），保持势场但不过度惩罚
+        inflation_radius: 0.15  # 🔧 15cm膨胀（机器人0.45m+0.15×2=0.75m < 0.8m走廊✅）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true
@@ -347,8 +347,8 @@ local_costmap:
       
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 4.0  # 局部costmap代价缩放因子4.0，让障碍物代价更高，机器人更不敢靠近墙壁
-        inflation_radius: 0.20  # 局部膨胀半径0.20m（贴近Footprint边缘，提高狭窄空间灵活性）
+        cost_scaling_factor: 4.0  # 🔧 适配狭窄环境，动态避障保持灵活性
+        inflation_radius: 0.18  # 🔧 18cm膨胀（机器人0.45m+0.18×2=0.81m≈0.8m走廊，动态避障缓冲）
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true
@@ -383,14 +383,14 @@ lifecycle_manager_navigation:
 velocity_smoother:
   ros__parameters:
     use_sim_time: false
-    smoothing_frequency: 20.0
+    smoothing_frequency: 10.0  # 🔧 降低到10Hz（与controller_frequency一致，减少不必要的插值）
     scale_velocities: false
-    feedback: "OPEN_LOOP"
+    feedback: "CLOSED_LOOP"  # 🔧 改为闭环模式（利用高质量EKF里程计，更准确的速度控制）
     max_velocity: [0.030, 0.0, 0.20]  # 进一步降低速度，防撞+避免超限 [vx, vy, w]
     min_velocity: [-0.030, 0.0, -0.20]
     max_accel: [0.05, 0.0, 0.30]  # 提高加速度适应8 RPM
     max_decel: [-0.05, 0.0, -0.30]
     odom_topic: "/odometry/filtered"  # ✅ 使用EKF融合后的里程计（编码器+IMU）
     odom_duration: 0.1
-    deadband_velocity: [0.005, 0.0, 0.02]  # 降低死区到0.5cm/s（允许更慢速度精确接近目标）
+    deadband_velocity: [0.005, 0.0, 0.01]  # 🔧 角速度死区降到0.01（允许0.01-0.02的微调指令，解决旋转精细控制）
     velocity_timeout: 1.0
