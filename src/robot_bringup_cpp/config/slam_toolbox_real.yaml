@@ -57,30 +57,30 @@ slam_toolbox:
     debug_logging: false
     throttle_scans: 1
     transform_publish_period: 0.02
-    minimum_time_interval: 0.15     # 0.15s强制更新 → 转弯时每0.15s创建节点，避免盲区
+    minimum_time_interval: 0.1      # 🔧 平衡优化：0.1s强制更新（匹配10Hz激光频率）
     transform_timeout: 0.2
     tf_buffer_duration: 30.0
     stack_size_to_use: 40000000
 
     # 运动阈值 (优化转弯跳变：降低阈值让转弯时也密集创建节点)
-    minimum_travel_distance: 0.02   # 2cm（从3cm降低），直行时更密集
-    minimum_travel_heading: 0.044   # 2.5°（从5°降低），转弯时每2.5°创建节点，90°转弯36个节点
+    minimum_travel_distance: 0.02   # 2cm（保持），直行时更密集
+    minimum_travel_heading: 0.0175  # 🔧 平衡优化：1.0°（每度创建节点），90°旋转创建90个节点，足够密集
     
     # 扫描缓冲区 (⚠️ 关键修复！保留完整轨迹用于回环检测，提高回环成功率)
-    scan_buffer_size: 3000                    # 走一圈3-4分钟 × 10Hz = 需要1800-2400帧，设为3000帧保险
+    scan_buffer_size: 30000                  
     scan_buffer_maximum_scan_distance: 10.0   # 与max_laser_range保持一致（思岚S2L官方18m，我们限制10m）
     
-    # 回环检测 (高精度模式：平衡成功率与精度)
+    # 回环检测 (极限宽松模式：最大化回环成功率，52°盲区+编码器大误差专用)
     do_loop_closing: true
-    loop_match_minimum_chain_size: 3          # 🔧 提高到3（更严格验证，减少错误回环）
-    loop_match_maximum_variance_coarse: 12.0  # 🔧 降低到12.0（提高精度要求）
-    loop_match_minimum_response_coarse: 0.22  # 🔧 提高到0.22（稍微严格，保证质量）
-    loop_search_maximum_distance: 10.0        # ✅ 保持10.0（适合100㎡大场地）
-    loop_match_minimum_response_fine: 0.35    # 🔧 提高到0.35（精细匹配更严格，提高精度）
+    loop_match_minimum_chain_size: 1          # 🔧 降到1（单次匹配即可，最大化触发概率）
+    loop_match_maximum_variance_coarse: 30.0  # 🔧 提高到30（容忍极大累积误差）
+    loop_match_minimum_response_coarse: 0.08  # 🔧 降到0.08（极限低阈值）
+    loop_search_maximum_distance: 12.0        # 🔧 扩大到12m（更大搜索范围）
+    loop_match_minimum_response_fine: 0.15    # 🔧 降到0.15（极限低阈值）
 
-    # 🔧 搜索空间参数（平衡搜索范围与精度）
-    loop_search_space_resolution: 0.1         # ✅ 搜索分辨率放宽（从默认0.05→0.1，加速搜索）
-    loop_search_space_smear_deviation: 0.05   # 🔧 修正：从0.1降低到0.05（避免过度平滑导致错误回环）
+    # 🔧 搜索空间参数（极大范围搜索）
+    loop_search_space_resolution: 0.1         # ✅ 搜索分辨率放宽
+    loop_search_space_smear_deviation: 0.1    # 🔧 提高到0.1（最大搜索容错）
     correlation_search_space_smear_deviation: 0.1  # ✅ 正确！上限为0.1（0.2会崩溃）
     use_response_expansion: true              # 🆕 新增：自动扩展搜索网格（初始搜索失败时）
 
@@ -88,6 +88,13 @@ slam_toolbox:
     minimum_angle_penalty: 0.9                # 🔴 恢复默认值！这是数值稳定性下界，不是阈值！
     minimum_distance_penalty: 0.5             # 🔴 恢复默认值！降低会导致优化器崩溃！
 
-    # 🔧 方差惩罚参数（高精度模式：进一步提高里程计权重）
-    angle_variance_penalty: 0.75              # 🔧 高精度优化：提高到0.75（角度误差仅-1.90°，里程计很准）
-    distance_variance_penalty: 0.40           # 🔧 高精度优化：提高到0.40（减少位置漂移）
+    # 🔧 方差惩罚参数（平衡模式：适度降低对编码器角度的信任）
+    angle_variance_penalty: 1.0               # 🔧 平衡值1.0（编码器旋转误差大，适度不信任角度）
+    distance_variance_penalty: 0.5            # 🔧 标准值0.5（位置相对准确，保持标准信任度）
+
+    # ⚠️ 注意：以下参数可能不被slam_toolbox支持，已注释
+    # coarse_search_angle_offset: 0.524       # slam_toolbox可能不支持此参数
+    # coarse_angle_resolution: 0.0349         # slam_toolbox可能不支持此参数
+    # fine_search_angle_offset: 0.0175        # slam_toolbox可能不支持此参数
+    # 
+    # slam_toolbox通过correlation_search_space_*参数控制搜索范围（已在上方配置）

@@ -449,7 +449,7 @@ private:
         odom.pose.covariance[14] = -1.0;    // z variance (not used in 2D navigation)
         odom.pose.covariance[21] = -1.0;    // roll variance (not used in 2D navigation)
         odom.pose.covariance[28] = -1.0;    // pitch variance (not used in 2D navigation)
-        odom.pose.covariance[35] = 0.08;    // yaw variance (stddev=16.2°, proportional)
+        odom.pose.covariance[35] = 0.15;    // 🔧 yaw variance增大到0.15 (stddev≈22°, 编码器旋转误差大，降低信任)
         
         // Twist covariance (6x6 matrix, row-major order)
         // For differential drive, set unused dimensions to -1 per ROS standard

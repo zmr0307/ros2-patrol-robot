@@ -15,12 +15,12 @@ ekf_filter_node:
                    false, false, false]  # ax, ay, az（不用加速度）
     odom0_differential: false
     
-    # IMU输入
+    # IMU输入 - ✅ 启用角速度融合（回环检测需要）
     imu0: /imu/data_raw
     imu0_config: [false, false, false,   # 不使用IMU位置
                   false, false, false,   # ❌ 不用yaw绝对值（避免与编码器参考系冲突）
                   false, false, false,   # 不使用IMU线速度
-                  false, false, true,    # ✅ 使用Z轴角速度（约束旋转，与编码器参考系一致）
+                  false, false, true,    # ✅ 使用Z轴角速度（约束旋转，支持SLAM回环检测）
                   false, false, false]   # 不使用线加速度
     imu0_differential: false
     imu0_remove_gravitational_acceleration: true  # 移除重力加速度影响
