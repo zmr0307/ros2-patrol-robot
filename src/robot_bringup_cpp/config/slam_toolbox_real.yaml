@@ -32,8 +32,8 @@ slam_toolbox:
     mode: mapping  # mapping模式用于构建地图
     enable_interactive_mode: true  # 启用交互模式用于手动回环检测
 
-    # 4. 启用扫描匹配
-    use_scan_matching: true
+    # 4. 扫描匹配配置（长廊环境优化：关闭scan_matching避免特征重复误判）
+    use_scan_matching: false  # 🔧 长廊优化：关闭scan_matching，避免走廊特征相似导致误匹配
     use_scan_barycenter: true
     
     # ###########################
@@ -57,26 +57,26 @@ slam_toolbox:
     debug_logging: false
     throttle_scans: 1
     transform_publish_period: 0.02
-    minimum_time_interval: 0.1      # 🔧 平衡优化：0.1s强制更新（匹配10Hz激光频率）
+    minimum_time_interval: 0.5      # 🔧 长廊优化：0.5s更新（降低相似帧处理频率）
     transform_timeout: 0.2
     tf_buffer_duration: 30.0
     stack_size_to_use: 40000000
 
-    # 运动阈值 (优化转弯跳变：降低阈值让转弯时也密集创建节点)
-    minimum_travel_distance: 0.02   # 2cm（保持），直行时更密集
-    minimum_travel_heading: 0.0175  # 🔧 平衡优化：1.0°（每度创建节点），90°旋转创建90个节点，足够密集
+    # 运动阈值 (长廊环境优化：平衡节点密度，避免过于稀疏)
+    minimum_travel_distance: 0.2    # 🔧 长廊优化：0.2m创建节点（平衡方案）
+    minimum_travel_heading: 0.17    # 🔧 长廊优化：0.17rad（约10°），保证转角密集
     
-    # 扫描缓冲区 (⚠️ 关键修复！保留完整轨迹用于回环检测，提高回环成功率)
-    scan_buffer_size: 30000                  
+    # 扫描缓冲区 (长廊环境优化：减小缓冲避免长距离误匹配，来自GitHub Issue #677)
+    scan_buffer_size: 10                     # 🔧 长廊优化：只保留最近10帧，避免长距离误匹配
     scan_buffer_maximum_scan_distance: 10.0   # 与max_laser_range保持一致（思岚S2L官方18m，我们限制10m）
     
-    # 回环检测 (极限宽松模式：最大化回环成功率，52°盲区+编码器大误差专用)
+    # 回环检测 (长廊环境优化：提高匹配质量避免误回环，来自GitHub Issue #677成功案例)
     do_loop_closing: true
-    loop_match_minimum_chain_size: 1          # 🔧 降到1（单次匹配即可，最大化触发概率）
-    loop_match_maximum_variance_coarse: 30.0  # 🔧 提高到30（容忍极大累积误差）
-    loop_match_minimum_response_coarse: 0.08  # 🔧 降到0.08（极限低阈值）
-    loop_search_maximum_distance: 12.0        # 🔧 扩大到12m（更大搜索范围）
-    loop_match_minimum_response_fine: 0.15    # 🔧 降到0.15（极限低阈值）
+    loop_match_minimum_chain_size: 10         # 🔧 长廊优化：需要10个连续节点才确认回环（避免误判）
+    loop_match_maximum_variance_coarse: 30.0  # 🔧 保持30（容忍累积误差）
+    loop_match_minimum_response_coarse: 0.35  # 🔧 长廊优化：提高到0.35（避免走廊误回环）
+    loop_search_maximum_distance: 20.0        # 🔧 长廊优化：扩大到20m（支持长走廊）
+    loop_match_minimum_response_fine: 0.45    # 🔧 长廊优化：提高到0.45（确保回环质量）
 
     # 🔧 搜索空间参数（极大范围搜索）
     loop_search_space_resolution: 0.1         # ✅ 搜索分辨率放宽

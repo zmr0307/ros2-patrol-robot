@@ -25,6 +25,7 @@ def generate_launch_description() -> LaunchDescription:
     params_file = LaunchConfiguration("params_file")
     enable_particle_viz = LaunchConfiguration("enable_particle_viz")
     start_lowlevel = LaunchConfiguration("start_lowlevel")
+    start_rviz = LaunchConfiguration("start_rviz")  # 新增：RViz启动参数
     waypoints_file = LaunchConfiguration("waypoints_file")
     loop = LaunchConfiguration("loop")
     default_wait_s = LaunchConfiguration("default_wait_s")
@@ -55,6 +56,10 @@ def generate_launch_description() -> LaunchDescription:
             "start_lowlevel",
             default_value="true",
             description="Start serial/odom/imu low-level nodes"),
+        DeclareLaunchArgument(
+            "start_rviz",
+            default_value="false",
+            description="Start RViz for visualization"),  # 新增：RViz启动参数声明
         DeclareLaunchArgument(
             "waypoints_file",
             default_value=os.path.join(pkg_share, "config", "patrol_waypoints.yaml"),
@@ -128,7 +133,7 @@ def generate_launch_description() -> LaunchDescription:
             "map": map_yaml,
             "params_file": params_file,
             "enable_particle_viz": enable_particle_viz,
-            "start_rviz": "false",
+            "start_rviz": start_rviz,  # 修改：使用传入的start_rviz参数
         }.items(),
     )
 

@@ -18,8 +18,8 @@ amcl:
     alpha5: 0.10  # 平移的额外噪声（适度提高）
 
     # 粒子滤波器参数（针对50°盲区优化）
-    min_particles: 2000   # 🔧 提高到2000（盲区增加定位不确定性，更多粒子提高鲁棒性）
-    max_particles: 4000   # 降低到4000（减少CPU负担，补偿更新频率提高的开销）
+    min_particles: 2000   # 🔧 保持2000（平衡启动速度和定位鲁棒性）
+    max_particles: 5000   # 🔧 提高到5000（增强复杂环境定位能力）
     kld_err: 0.03         # 放宽到0.03（允许稍低精度，减少粒子数，仍保持高精度）
     kld_z: 0.99           # KLD置信度（保持）
 
@@ -45,7 +45,7 @@ amcl:
     
     # 激光雷达配置 - 高精度模式（针对后方50°盲区优化）
     scan_topic: "/scan_filtered"  # 使用过滤后的激光数据（排除立柱遮挡区域）
-    max_beams: 200       # 🔧 提高到200（补偿盲区导致的激光束密度下降，200/308°≈1.54°/束）
+    max_beams: 360       # 🔧 提高到360（最大化激光特征匹配，360/308°≈0.86°/束）
     
     # 其他配置
     always_reset_initial_pose: false
@@ -84,8 +84,8 @@ controller_server:
     # 目标检查器 - 适应低速机器人的精确定位（减少抖动）
     general_goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.045  # 4.5cm（高精度位置控制）
-      yaw_goal_tolerance: 0.03491  # 2°（高精度角度控制）
+      xy_goal_tolerance: 0.07  # 7cm（放宽位置容差，提高巡检流畅度）
+      yaw_goal_tolerance: 0.1745  # 10°（宽松角度容差，提高巡检流畅度）
       stateful: true
     
     # DWB控制器 - 匹配8 RPM电机限制（serial_bridge_node）
@@ -113,8 +113,8 @@ controller_server:
       linear_granularity: 0.003  # 降低到0.003（更精细的线速度粒度，支持4cm精度）
       angular_granularity: 0.015  # 降低到0.015（更精细的角速度粒度）
       transform_tolerance: 1.0  # 增大到1.0秒，避免启动时TF超时错误
-      xy_goal_tolerance: 0.045  # 4.5cm（高精度位置控制，与general_goal_checker一致）
-      yaw_goal_tolerance: 0.03491  # 2°（高精度角度控制，与general_goal_checker一致）
+      xy_goal_tolerance: 0.07  # 7cm（放宽位置容差，提高巡检流畅度，与general_goal_checker一致）
+      yaw_goal_tolerance: 0.1745  # 10°（宽松角度容差，提高巡检流畅度，与general_goal_checker一致）
       trans_stopped_velocity: 0.010  # 降低到0.8cm/s（允许更慢速度接近目标，避免过早判定停稳）
       short_circuit_trajectory_evaluation: true
       stateful: true
@@ -348,7 +348,7 @@ local_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 4.0  # 🔧 适配狭窄环境，动态避障保持灵活性
-        inflation_radius: 0.18  # 🔧 18cm膨胀（机器人0.45m+0.18×2=0.81m≈0.8m走廊，动态避障缓冲）
+        inflation_radius: 0.10  # 🔧 降低到10cm
         inflate_unknown: true    # 未知区域也膨胀，更安全
         inflate_around_unknown: true  # 未知区域周围也膨胀
         enabled: true
