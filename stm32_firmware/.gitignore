@@ -1,0 +1,37 @@
+# Keil MDK Build Output
+Objects/
+Listings/
+*.hex
+*.axf
+*.lnp
+*.d
+*.o
+*.crf
+*.dep
+*.htm
+*.map
+*.lst
+*.build_log.htm
+
+# Keil Project User Settings
+*.uvguix.*
+JLinkLog.txt
+EventRecorderStub.scvd
+
+# User output folder
+User/output/
+
+# Temporary files
+*.bak
+*.tmp
+~$*
+
+# Log files
+build_log.txt
+download_log.txt
+
+# IDE folders
+.vscode/
+.claude/
+.kiro/
+.git/
